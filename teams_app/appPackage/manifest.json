@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "${APP_ID}",
+  "developer": {
+    "name": "${DEVELOPER_NAME}",
+    "websiteUrl": "${WEBSITE_URL}",
+    "privacyUrl": "${PRIVACY_URL}",
+    "termsOfUseUrl": "${TERMS_URL}"
+  },
+  "name": {
+    "short": "HR Policy",
+    "full": "HR Policy Assistant"
+  },
+  "description": {
+    "short": "Ask HR policy questions with source references.",
+    "full": "Find policy excerpts about leave, remote work, benefits, expenses, conduct and onboarding. Contact HR for individual eligibility."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#5146B9",
+  "staticTabs": [
+    {
+      "entityId": "hr-policy",
+      "name": "Ask HR",
+      "contentUrl": "${BASE_URL}/",
+      "websiteUrl": "${BASE_URL}/",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "validDomains": [
+    "${HOSTNAME}"
+  ]
+}

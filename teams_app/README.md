@@ -51,3 +51,55 @@ No credentials, organization branding or tenant IDs are fabricated or committed.
 References:
 - [Rasa Microsoft Bot Framework connector](https://legacy-docs-oss.rasa.com/docs/rasa/connectors/microsoft-bot-framework/)
 - [Microsoft bot authentication types](https://learn.microsoft.com/en-us/azure/bot-service/bot-builder-concept-authentication-types)
+
+## Manifest, icons and JavaScript placement
+
+The source package files are now explicit:
+
+```text
+teams_app/
+  appPackage/
+    manifest.json       # Template; ${...} placeholders are resolved by package.py
+    color.png           # 192×192 color icon
+    outline.png         # 32×32 transparent outline icon
+  package.py
+  config.example.json
+api/
+  main.py               # Serves the UI and REST API on one HTTPS origin
+  static/
+    index.html          # Hosted tab page
+    app.js              # Chat UI and TeamsJS initialization
+    style.css
+```
+
+The manifest's `staticTabs[0].contentUrl` points to the hosted HTML page, not to a JavaScript file. `validDomains` lists the host. The packaging command resolves the template using `config.local.json` and writes both `dist/manifest.json` for inspection and `dist/hr-policy-teams.zip`. Do not upload the placeholder template directly.
+
+The ZIP contains only the resolved manifest and icons at its root. HTML, CSS, JavaScript and Python remain on your web server. Teams loads the tab as a hosted webpage. Keeping JS under `api/static/` is our single-server layout choice, not a Teams requirement; FastAPI serves those files while the browser executes them. This preserves the combined deployment requested for this project.
+
+### How JavaScript is loaded
+
+`api/static/index.html` loads the SDK first, followed by our script:
+
+```html
+<script defer src="https://res.cdn.office.net/teams-js/2.19.0/js/MicrosoftTeams.min.js"></script>
+<script defer src="/static/app.js"></script>
+```
+
+Both are classic deferred scripts, so they execute in document order after HTML parsing. `app.js` calls `microsoftTeams.app.initialize()` before `app.getContext()` and theme handling. It uses `fetch('/chat', ...)` against the same host. Teams context is used for presentation, not authentication.
+
+To add a new script:
+
+1. Save it under `api/static/`, for example `policy-help.js`.
+2. Add `<script defer src="/static/policy-help.js"></script>` to `index.html`, after any scripts it depends on.
+3. Verify it loads at `http://localhost:8000/static/policy-help.js` and check the browser console/network panel.
+4. Deploy the changed static files with the API. No JS filename is added to the Teams manifest or ZIP. Rebuild the package when the host or manifest changes.
+
+Do not mix bare npm imports with this plain-script approach. A frontend bundler would be needed for `import ... from '@microsoft/teams-js'`; this small app uses the browser CDN SDK and requires no Node build step. Never put server credentials in JavaScript.
+
+The UI response has a Teams-compatible `frame-ancestors` policy, including `*.cloud.microsoft`. Production Teams tabs require HTTPS. Local browser preview works without a Teams host; initialization failure displays the browser-preview status.
+
+Official references:
+- [Package a Teams app](https://learn.microsoft.com/en-gb/microsoftteams/platform/concepts/build-and-test/apps-package)
+- [Tabs and contentUrl](https://learn.microsoft.com/microsoftteams/platform/tabs/what-are-tabs)
+- [TeamsJS client library](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/using-teams-client-library)
+- [Tab requirements](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/tab-requirements)
