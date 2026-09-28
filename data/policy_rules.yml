@@ -1,0 +1,122 @@
+version: "3.1"
+rules:
+- rule: Route policy_bereavement_eligibility
+  steps:
+    - intent: policy_bereavement_eligibility
+    - action: action_answer_policy
+- rule: Route policy_bereavement_family
+  steps:
+    - intent: policy_bereavement_family
+    - action: action_answer_policy
+- rule: Route policy_bereavement_entitlement
+  steps:
+    - intent: policy_bereavement_entitlement
+    - action: action_answer_policy
+- rule: Route policy_bereavement_application
+  steps:
+    - intent: policy_bereavement_application
+    - action: action_answer_policy
+- rule: Route policy_bereavement_documentation
+  steps:
+    - intent: policy_bereavement_documentation
+    - action: action_answer_policy
+- rule: Route policy_bereavement_combination
+  steps:
+    - intent: policy_bereavement_combination
+    - action: action_answer_policy
+- rule: Route policy_parental_maternity_eligibility
+  steps:
+    - intent: policy_parental_maternity_eligibility
+    - action: action_answer_policy
+- rule: Route policy_parental_maternity_entitlement
+  steps:
+    - intent: policy_parental_maternity_entitlement
+    - action: action_answer_policy
+- rule: Route policy_parental_maternity_application
+  steps:
+    - intent: policy_parental_maternity_application
+    - action: action_answer_policy
+- rule: Route policy_parental_maternity_benefits
+  steps:
+    - intent: policy_parental_maternity_benefits
+    - action: action_answer_policy
+- rule: Route policy_parental_paternity_entitlement
+  steps:
+    - intent: policy_parental_paternity_entitlement
+    - action: action_answer_policy
+- rule: Route policy_parental_paternity_application
+  steps:
+    - intent: policy_parental_paternity_application
+    - action: action_answer_policy
+- rule: Route policy_posh_scope
+  steps:
+    - intent: policy_posh_scope
+    - action: action_answer_policy
+- rule: Route policy_posh_committee
+  steps:
+    - intent: policy_posh_committee
+    - action: action_answer_policy
+- rule: Route policy_posh_complaint
+  steps:
+    - intent: policy_posh_complaint
+    - action: action_answer_policy
+- rule: Route policy_posh_inquiry
+  steps:
+    - intent: policy_posh_inquiry
+    - action: action_answer_policy
+- rule: Route policy_posh_protection
+  steps:
+    - intent: policy_posh_protection
+    - action: action_answer_policy
+- rule: Route policy_posh_appeal
+  steps:
+    - intent: policy_posh_appeal
+    - action: action_answer_policy
+- rule: Route policy_general_leave_entitlement
+  steps:
+    - intent: policy_general_leave_entitlement
+    - action: action_answer_policy
+- rule: Route policy_general_leave_privilege
+  steps:
+    - intent: policy_general_leave_privilege
+    - action: action_answer_policy
+- rule: Route policy_general_leave_casual
+  steps:
+    - intent: policy_general_leave_casual
+    - action: action_answer_policy
+- rule: Route policy_general_leave_approval
+  steps:
+    - intent: policy_general_leave_approval
+    - action: action_answer_policy
+- rule: Route policy_general_leave_credit
+  steps:
+    - intent: policy_general_leave_credit
+    - action: action_answer_policy
+- rule: Route policy_referral_eligibility
+  steps:
+    - intent: policy_referral_eligibility
+    - action: action_answer_policy
+- rule: Route policy_referral_submission
+  steps:
+    - intent: policy_referral_submission
+    - action: action_answer_policy
+- rule: Route policy_referral_contacts
+  steps:
+    - intent: policy_referral_contacts
+    - action: action_answer_policy
+- rule: Route policy_referral_validity
+  steps:
+    - intent: policy_referral_validity
+    - action: action_answer_policy
+- rule: Route policy_referral_bonus
+  steps:
+    - intent: policy_referral_bonus
+    - action: action_answer_policy
+- rule: Route policy_referral_payment
+  steps:
+    - intent: policy_referral_payment
+    - action: action_answer_policy
+- rule: Route policy_general_leave_notice
+  steps:
+    - intent: policy_general_leave_notice
+    - action: action_answer_policy

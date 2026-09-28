@@ -36,13 +36,13 @@ curl http://localhost:8000/policies/upload \
 
 The first upload removes the known fictional demo corpus. Later `upsert` uploads preserve other documents and replace the previous document with the **same filename**. Renaming a document adds a new document; it does not remove the old version. Use `mode=replace` to replace the entire active library with this PDF. Previously indexed non-demo documents are preserved by upsert.
 
-Only extracted text and source metadata are retained; uploaded original PDFs are temporary and are removed after extraction. A filename appears in citations but is not a download URL. Source PDFs should remain in your managed document repository. PDF headings are not reliably extracted; citations retain the filename and page number.
+Original PDFs and processed Markdown are retained under content-addressed paths in `artifacts/documents/`. The index stores the active filename-to-document mapping; old versions are retained for recovery but are not publicly listed or downloadable through the active-document route. PDF headings are not reliably extracted; citations retain the filename and page number.
 
 Local CLI import uses exactly the same update behavior:
 
 ```bash
-.venv/bin/python -m hr_policy.store /absolute/path/company-policy.pdf
-.venv/bin/python -m hr_policy.store /absolute/path/new-handbook.pdf --mode replace
+.venv-runtime/bin/python -m hr_policy.store /absolute/path/company-policy.pdf
+.venv-runtime/bin/python -m hr_policy.store /absolute/path/new-handbook.pdf --mode replace
 ```
 
 Do not run `make ingest` after uploading company policies unless you intentionally want to restore the demo corpus. The legacy `engine ingest` command replaces the index independently; do not run it concurrently with API/local-import updates.
@@ -124,7 +124,7 @@ This reports API process health only. A missing index still returns 200 with `fa
 }
 ```
 
-`demo_removed` indicates that the previous library consisted of the known sample corpus. Uploads affect every user. A successful upload is immediately active; original PDFs are not stored for download.
+`demo_removed` indicates that the previous library consisted of the known sample corpus. Uploads affect every user. A successful upload is immediately active; active original PDFs can be downloaded through the authenticated `/policies/pdfs/{filename}` route.
 
 ### POST /chat
 
@@ -149,7 +149,7 @@ Response (illustrative; text depends on your library):
 }
 ```
 
-`answer` joins textual Rasa messages with blank lines. `messages` preserves upstream Rasa payloads, including non-text fields if present. There is no streaming or separate structured citation field. Keep a stable sender per conversation; use a new sender to begin another conversation.
+`answer` joins textual Rasa messages with blank lines. `messages` preserves upstream Rasa payloads, including non-text fields if present. The response also includes `sources`, `chunk` (first source or null), and the Rasa action’s intent/status metadata when available. `/chat/stream` sends buffered SSE after the complete Rasa answer; it is not model-token streaming. Keep a stable sender per conversation; use a new sender to begin another conversation.
 
 ### POST /ask
 
@@ -234,7 +234,19 @@ Limits: 20 MiB and 500 pages. Encrypted, malformed and entirely text-free PDFs a
 Preview processing without modifying the active policies:
 
 ```bash
-.venv/bin/python -m hr_policy.processing /path/to/policy.pdf --output artifacts/processing-report.json
+.venv-runtime/bin/python -m hr_policy.processing /path/to/policy.pdf --output artifacts/processing-report.json
 ```
 
 The report contains `source`, `page_count`, `pages` (`number`, `text`, `word_count`) and `warnings`. Warnings identify text-free pages and cases where cleaning would erase an entire page. The current upload response remains unchanged; use this preview to inspect page-level warnings before publication. Reports contain policy text and should be handled with the same access restrictions as the source documents.
+
+## Rasa intent inspection and evidence
+
+`GET /policies/intents` (API-key protected) returns the reviewed 30 intent mappings. `POST /nlu/parse` accepts `{"message":"How many days of bereavement leave are allowed?"}` and returns Rasa's `intent`, `intent_ranking` and `policy_mapping`. Rasa must run with `--enable-api` on its private interface; the launcher handles this.
+
+`POST /chat` returns the exact Rasa action's `sources` array, `chunk` (first source or null), `intent` and `status` where applicable. Greeting/fallback responses do not get unrelated evidence attached. PDF URLs are only provided for active retained documents. `GET /policies/pdfs/{filename}` requires the same API authentication; URLs alone do not authorize access.
+
+Uploads additionally return `page_count`, `warnings`, `intents`, and `intent_mapping_status` (`mapped` or `needs_review`). New intent labels need reviewed examples and Rasa retraining; document ingestion alone cannot teach the classifier new labels.
+
+Bulk rebuild via `make reindex` validates all five registered PDFs before atomically replacing the index. A failed or empty rebuild preserves the prior library. Metadata-only cover/contents/version sections are omitted from searchable chunks, physical page numbers are retained, and chunks have a hard 180-word limit. Review layout/table extraction and warnings before relying on answers.
+
+Optional model/embedding configuration is described in `.env.example` and the main README. Generation is optional and unavailable model services fall back to excerpts. No model quality claim is implied by that fallback. `/chat/stream` uses buffered SSE, not live token generation.

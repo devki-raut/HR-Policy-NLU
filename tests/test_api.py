@@ -73,9 +73,13 @@ class APITests(unittest.TestCase):
         self.assertEqual(self.client.get('/health', headers={'X-API-Key': ''}).status_code, 200)
 
     def test_chat_and_combined(self):
-        response = {'sender': 'user', 'answer': 'answer', 'messages': [{'text': 'answer'}]}
+        response = {'sender': 'user', 'answer': 'answer', 'messages': [{'text': 'answer', 'custom': {'sources': [{'source':'leave.pdf', 'pdf_url':'/policies/pdfs/leave.pdf'}]}}]}
         with patch('api.main.rasa_chat', AsyncMock(return_value=response)) as chat:
-            self.assertEqual(self.client.post('/chat', json={'sender': 'user', 'message': 'annual leave days'}).json()['answer'], 'answer')
+            payload = self.client.post('/chat', json={'sender': 'user', 'message': 'annual leave days'}).json()
+            self.assertEqual(payload['answer'], 'answer')
+            self.assertIn('chunk', payload)
+            self.assertIn('pdf_url', payload['chunk'])
+            self.assertIn('/policies/pdfs/', payload['chunk']['pdf_url'])
             result = self.client.post('/ask', data={'sender': 'user', 'message': 'annual leave days'}, files={'file': ('leave.pdf', pdf(), 'application/pdf')})
             self.assertEqual(result.status_code, 200, result.text)
             self.assertTrue(result.json()['policy_update']['demo_removed'])
@@ -99,5 +103,34 @@ class APITests(unittest.TestCase):
         self.assertEqual(self.upload(mode='bad').status_code, 422)
         self.assertEqual(self.client.post('/chat', json={'sender': 'x', 'message': ''}).status_code, 422)
 
+    def test_policy_pdf_download_requires_auth_and_active_document(self):
+        self.upload('demo.pdf')
+        response = self.client.get('/policies/pdfs/demo.pdf')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('application/pdf', response.headers.get('content-type', ''))
+        self.assertEqual(self.client.get('/policies/pdfs/demo.pdf', headers={'X-API-Key':'wrong'}).status_code, 401)
+        self.upload('replacement.pdf', mode='replace')
+        self.assertEqual(self.client.get('/policies/pdfs/demo.pdf').status_code, 404)
+
+    def test_no_unrelated_evidence_added_to_greeting(self):
+        with patch('api.main.rasa_chat', AsyncMock(return_value={'sender':'x','answer':'Hello','messages':[{'text':'Hello'}]})):
+            result = self.client.post('/chat', json={'sender':'x','message':'hello'}).json()
+        self.assertIsNone(result['chunk'])
+        self.assertEqual(result['sources'], [])
+
 if __name__ == '__main__':
     unittest.main()
+
+class IntentEndpointTests(unittest.TestCase):
+    def test_rasa_intent_forwarding(self):
+        import httpx
+        original=httpx.AsyncClient
+        def handle(request):
+            self.assertEqual(request.url.path,'/model/parse')
+            self.assertEqual(json.loads(request.content)['text'],'bereavement days')
+            return httpx.Response(200,json={'intent':{'name':'policy_bereavement_entitlement','confidence':.95},'intent_ranking':[]})
+        with patch.dict(os.environ,{'HR_API_KEY':''}), patch('api.main.httpx.AsyncClient',side_effect=lambda **kw: original(transport=httpx.MockTransport(handle),**kw)):
+            with TestClient(app) as client:
+                result=client.post('/nlu/parse',json={'message':'bereavement days'})
+                self.assertEqual(result.status_code,200)
+                self.assertEqual(result.json()['policy_mapping']['sections'],['Leave Entitlement'])

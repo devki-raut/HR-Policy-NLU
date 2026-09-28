@@ -1,4 +1,4 @@
-version: "3.1"
+version: '3.1'
 nlu:
 - intent: greet
   examples: |
@@ -19,6 +19,8 @@ nlu:
 - intent: ask_leave
   examples: |
     - How many days of annual leave do I get?
+    - What is my annual leave entitlement?
+    - How much annual leave is credited each year?
     - How do I request annual leave?
     - What is the sick leave policy?
     - How many sick days are available?
@@ -28,6 +30,29 @@ nlu:
     - Tell me about parental leave
     - What is the annual leave allowance?
     - How early should I apply for leave?
+    - What is the bereavement leave policy?
+    - What is the funeral leave policy?
+    - Can I take time off for a family funeral?
+    - Can I take bereavement leave after a death in the family?
+    - How much bereavement leave am I entitled to?
+    - How do I request bereavement leave?
+    - How do I apply for funeral leave?
+    - What documents are needed for bereavement leave?
+    - What are the bereavement leave benefits?
+    - Is paid leave available after a family member dies?
+    - How long is bereavement leave for a parent or spouse?
+    - I need to take time off for a funeral, what policy applies?
+    - My parent passed away, how much leave can I take?
+    - My spouse died, what leave entitlements are available?
+    - What is the company policy for time off after a death in the family?
+    - How do I request parental leave?
+    - How do I apply for leave after the birth of a child?
+    - What leave options are available for new parents?
+    - How do I request sick leave?
+    - Who approves my annual leave request?
+    - How much leave can I take for family emergencies?
+    - How many days of paternity leave are allowed?
+    - What are the paternity leave rules after childbirth?
 - intent: ask_remote_work
   examples: |
     - Can I work from home?
