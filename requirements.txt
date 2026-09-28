@@ -1,0 +1,11 @@
+rasa==3.6.21
+rasa-sdk==3.6.2
+pypdf==4.3.1
+python-docx==1.1.2
+# Bound TensorFlow's optional JAX dependency to avoid resolver backtracking.
+jax==0.4.23
+jaxlib==0.4.23
+fastapi==0.115.6
+uvicorn==0.32.1
+python-multipart==0.0.20
+httpx==0.27.2

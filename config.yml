@@ -1,0 +1,20 @@
+recipe: default.v1
+assistant_id: hr-policy-assistant
+language: en
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 3
+    max_ngram: 5
+  - name: DIETClassifier
+    epochs: 60
+    constrain_similarities: true
+  - name: FallbackClassifier
+    threshold: 0.65
+    ambiguity_threshold: 0.15
+policies:
+  - name: RulePolicy

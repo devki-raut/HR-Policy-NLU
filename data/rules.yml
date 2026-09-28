@@ -1,0 +1,42 @@
+version: "3.1"
+rules:
+- rule: Handle greet
+  steps:
+    - intent: greet
+    - action: utter_greet
+- rule: Handle goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+- rule: Handle ask_leave
+  steps:
+    - intent: ask_leave
+    - action: action_answer_policy
+- rule: Handle ask_remote_work
+  steps:
+    - intent: ask_remote_work
+    - action: action_answer_policy
+- rule: Handle ask_benefits
+  steps:
+    - intent: ask_benefits
+    - action: action_answer_policy
+- rule: Handle ask_expenses
+  steps:
+    - intent: ask_expenses
+    - action: action_answer_policy
+- rule: Handle ask_conduct
+  steps:
+    - intent: ask_conduct
+    - action: action_answer_policy
+- rule: Handle ask_onboarding
+  steps:
+    - intent: ask_onboarding
+    - action: action_answer_policy
+- rule: Handle out_of_scope
+  steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+- rule: Handle nlu_fallback
+  steps:
+    - intent: nlu_fallback
+    - action: utter_clarify

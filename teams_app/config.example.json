@@ -1,0 +1,8 @@
+{
+  "app_id": "REPLACE_WITH_A_UUID",
+  "base_url": "https://your-tab-host.example.com",
+  "developer_name": "Your Organization",
+  "website_url": "https://your-organization.example.com",
+  "privacy_url": "https://your-organization.example.com/privacy",
+  "terms_url": "https://your-organization.example.com/terms"
+}

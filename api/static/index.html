@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR Policy Assistant</title>
+<link rel="stylesheet" href="/static/style.css">
+<script defer src="https://res.cdn.office.net/teams-js/2.19.0/js/MicrosoftTeams.min.js"></script>
+<script defer src="/static/app.js"></script>
+</head>
+<body>
+<main>
+<header><div class="mark" aria-hidden="true">HR</div><div><h1>HR Policy Assistant</h1><p>Find answers in your organization’s policy library.</p></div></header>
+<p id="status" role="status">Connecting to Teams…</p>
+<section id="messages" aria-label="Conversation" aria-live="polite"><article class="assistant">Hello! Ask about leave, remote work, benefits, expenses, conduct or onboarding. Answers include policy references.</article></section>
+<div class="suggestions"><button type="button" data-question="How many days of annual leave do I get?">Annual leave</button><button type="button" data-question="How many days can I work remotely?">Remote work</button><button type="button" data-question="How do I claim travel expenses?">Expenses</button></div>
+<details><summary>API authentication (if enabled)</summary><label for="api-key">API key</label><input id="api-key" type="password" autocomplete="off" placeholder="Optional X-API-Key"><p>Used only for requests from this page; not saved.</p></details>
+<form id="chat-form"><label for="question">Your policy question</label><div class="compose"><textarea id="question" maxlength="4000" rows="2" required placeholder="How do I request annual leave?"></textarea><button id="send" type="submit">Send</button></div></form>
+<footer>Answers quote available policies. Contact HR for individual eligibility. <button id="reset" type="button">New conversation</button></footer>
+</main>
+</body></html>

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+credentials.yml
+models/
+.rasa/
+artifacts/
+policies/company/
+.pytest_cache/
+results/
+teams_app/config.local.json
+teams_app/dist/

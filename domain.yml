@@ -1,0 +1,26 @@
+version: "3.1"
+intents:
+  - greet
+  - goodbye
+  - ask_leave
+  - ask_remote_work
+  - ask_benefits
+  - ask_expenses
+  - ask_conduct
+  - ask_onboarding
+  - out_of_scope
+  - nlu_fallback
+responses:
+  utter_greet:
+    - text: "Hi! Ask me about leave, remote work, benefits, expenses, conduct or onboarding. I answer from the policy library with source references."
+  utter_goodbye:
+    - text: "Goodbye! Contact HR if you need help with your individual circumstances."
+  utter_out_of_scope:
+    - text: "I can explain HR policies, but cannot access employee records or perform HR transactions. Please ask a policy question or contact HR."
+  utter_clarify:
+    - text: "Could you rephrase with a specific topic: leave, remote work, benefits, expenses, conduct or onboarding?"
+actions:
+  - action_answer_policy
+session_config:
+  session_expiration_time: 30
+  carry_over_slots_to_new_session: false
