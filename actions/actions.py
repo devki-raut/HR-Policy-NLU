@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Text
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from .faq_matcher import find_faq
+from .faq_matcher import find_faq, retrieve_policy_chunks
 
 FAQ_THRESHOLD = float(os.getenv("FAQ_EMBEDDING_THRESHOLD", "0.75"))
 
@@ -35,6 +35,29 @@ class ActionAnswerPolicy(Action):
             if source:
                 answer += f"\n\nSource: {source}"
             dispatcher.utter_message(text=answer)
+
+            chunks = retrieve_policy_chunks(question, result, limit=5)
+            for position, chunk in enumerate(chunks, start=1):
+                dispatcher.utter_message(
+                    json_message={
+                        "type": "policy_evidence",
+                        "position": position,
+                        "total": len(chunks),
+                        "label": (
+                            "Mapped evidence"
+                            if chunk.get("mapped")
+                            else "Related chunk"
+                        ),
+                        "chunk": {
+                            "id": chunk.get("id"),
+                            "source": chunk.get("source"),
+                            "page": chunk.get("page"),
+                            "section": chunk.get("section"),
+                            "text": chunk.get("text"),
+                            "mapped": bool(chunk.get("mapped")),
+                        },
+                    }
+                )
             return []
 
         # Replace this block with your existing PDF RAG function.

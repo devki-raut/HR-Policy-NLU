@@ -3,3 +3,12 @@ rasa-sdk
 sentence-transformers
 numpy
 PyYAML
+fastapi
+httpx
+uvicorn
+gunicorn
+python-multipart
+python-dotenv
+pypdf
+aiohttp
+botbuilder-core

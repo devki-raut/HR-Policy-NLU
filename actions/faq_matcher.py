@@ -1,6 +1,8 @@
 import hashlib
 import json
+import math
 import os
+import re
 from pathlib import Path
 
 import numpy as np
@@ -12,6 +14,7 @@ DATA_DIR = BASE_DIR / "data"
 
 FAQ_PATH = DATA_DIR / "faq_answers.json"
 EMBEDDINGS_PATH = DATA_DIR / "faq_embeddings.npz"
+POLICY_PATH = DATA_DIR / "policies" / "policies.json"
 
 MODEL_NAME = os.getenv(
     "FAQ_EMBEDDING_MODEL",
@@ -79,6 +82,10 @@ def _calculate_fingerprint(rows):
                 "intent": row["intent"],
                 "routing_intent": row["routing_intent"],
                 "question": row["question"],
+                "entry_id": row["entry"].get("id"),
+                "answer": row["entry"].get("answer"),
+                "source": row["entry"].get("source"),
+                "evidence": row["entry"].get("evidence"),
             }
             for row in rows
         ],
@@ -325,6 +332,8 @@ def find_faq(
 
     entry = best_row["entry"]
 
+    evidence = entry.get("evidence") or {}
+
     return {
         "intent": best_row["intent"],
         "routing_intent": best_row["routing_intent"],
@@ -333,8 +342,72 @@ def find_faq(
         "answer": entry.get("answer", ""),
         "source": entry.get("source", ""),
         "entry_id": entry.get("id", ""),
+        "evidence": {
+            "chunk_id": evidence.get("chunk_id", ""),
+            "page": evidence.get("page"),
+            "section": evidence.get("section", ""),
+            "quote": evidence.get("quote", ""),
+        },
         "answer_mode": entry.get(
             "answer_mode",
             "fixed",
         ),
     }
+
+_RETRIEVAL_STOP_WORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "can", "do", "does",
+    "for", "from", "get", "how", "i", "in", "is", "it", "many", "of", "on",
+    "or", "the", "their", "to", "what", "when", "who", "with",
+}
+
+
+def _retrieval_tokens(value):
+    return {
+        token for token in re.findall(r"[a-z0-9]+", str(value).casefold())
+        if len(token) > 1 and token not in _RETRIEVAL_STOP_WORDS
+    }
+
+
+def retrieve_policy_chunks(question, faq_result, limit=5):
+    """Return mapped evidence first, then related chunks from the same policy."""
+    if limit < 1 or not POLICY_PATH.exists():
+        return []
+    chunks = _load_json(POLICY_PATH).get("chunks", [])
+    source = faq_result.get("source")
+    candidates = [chunk for chunk in chunks if chunk.get("source") == source]
+    if not candidates:
+        return []
+
+    mapped_id = (faq_result.get("evidence") or {}).get("chunk_id")
+    mapped = next((chunk for chunk in candidates if chunk.get("id") == mapped_id), None)
+    query = _retrieval_tokens(" ".join((
+        question,
+        faq_result.get("matched_question", ""),
+        faq_result.get("answer", ""),
+        faq_result.get("intent", "").replace("_", " "),
+    )))
+    terms = [
+        _retrieval_tokens(f"{chunk.get('section', '')} {chunk.get('text', '')}")
+        for chunk in candidates
+    ]
+    count = max(len(candidates), 1)
+    frequencies = {term: sum(term in document for document in terms) for term in query}
+    ranked = []
+    for chunk, document in zip(candidates, terms):
+        if chunk.get("id") == mapped_id:
+            continue
+        score = sum(
+            math.log((count + 1) / (frequencies[term] + 1)) + 1
+            for term in query & document
+        ) / math.sqrt(max(len(document), 1))
+        ranked.append((score, chunk))
+    ranked.sort(key=lambda item: (item[0], item[1].get("id", "")), reverse=True)
+
+    selected = []
+    if mapped:
+        selected.append({**mapped, "mapped": True, "retrieval_score": 1.0})
+    for score, chunk in ranked:
+        if len(selected) >= limit:
+            break
+        selected.append({**chunk, "mapped": False, "retrieval_score": round(score, 4)})
+    return selected

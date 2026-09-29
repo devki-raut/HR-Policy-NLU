@@ -1111,13 +1111,13 @@
       "enabled": true,
       "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
       "mapped_sections": [
-        "Eligibility / Scope"
+        "• Permanent Employees and Contractors:"
       ],
       "evidence": {
-        "chunk_id": "1de8aaa85836b174",
+        "chunk_id": "fe35925009371210",
         "page": 1,
-        "section": "Eligibility / Scope",
-        "quote": "This policy applies to leave of normal nature for all categories of employees, including permanent employees, contractual staff, and interns, as detailed below:"
+        "section": "• Permanent Employees and Contractors:",
+        "quote": "➢ Entitled to 18 Privileged Leaves (PL) and 8 Casual Leaves (CL) per calendar year . ➢ The calendar year is considered from January to December."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_general_leave"
@@ -1141,13 +1141,13 @@
       "enabled": true,
       "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
       "mapped_sections": [
-        "Eligibility / Scope"
+        "• Permanent Employees and Contractors:"
       ],
       "evidence": {
-        "chunk_id": "1de8aaa85836b174",
+        "chunk_id": "fe35925009371210",
         "page": 1,
-        "section": "Eligibility / Scope",
-        "quote": "This policy applies to leave of normal nature for all categories of employees, including permanent employees, contractual staff, and interns, as detailed below:"
+        "section": "• Permanent Employees and Contractors:",
+        "quote": "➢ Entitled to 18 Privileged Leaves (PL) and 8 Casual Leaves (CL) per calendar year . ➢ The calendar year is considered from January to December."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_general_leave"

@@ -22,6 +22,18 @@ You do **not** need to run `sync_intents.py` for every chat. Run `make sync-inte
 
 The FAQ matcher loads `sentence-transformers/all-MiniLM-L6-v2` directly inside the Rasa action server. No separate embedding HTTP service and no Rasa `LanguageModelFeaturizer` are required.
 
+## Bot Service
+
+Azure Bot Service ->
+APP_ID/CLIENT_ID, CLIENT_SECRET, TENANT_ID
+
+TERMS_URL, PRIVACY_URL -> dummy endpoints
+WEBSITE_URL ->
+
+32x32 , 192x192 logo
+manifest
+zip & upload on developer portal
+
 ## Install
 
 ```bash
@@ -35,17 +47,17 @@ make sync-intents
 make train
 ```
 
-Terminal 1:
+Start the Rasa action server and HTTP API together:
 
 ```bash
-make actions
+make start
 ```
 
-Terminal 2:
+This exposes the action server on port `5055` and the Rasa API on port `5005`.
+Both processes log to the same terminal, and `Ctrl+C` stops both.
 
-```bash
-make chat
-```
+For an interactive shell, run `make actions` in one terminal and `make chat`
+in another.
 
 ## Threshold
 
@@ -60,3 +72,12 @@ FAQ_EMBEDDING_THRESHOLD=0.80
 ## PDF RAG
 
 Replace the fallback block in `actions/actions.py` with your existing PDF retrieval function/service. The FAQ matcher only returns reviewed fixed answers from `faq_answers.json`; it does not invent policy content.
+## Teams deployment
+
+Run the single public application endpoint, including the Teams tab and bot handler:
+
+```bash
+make run_deployment
+```
+
+See `teams_app/README.md` for separate local and Docker commands.

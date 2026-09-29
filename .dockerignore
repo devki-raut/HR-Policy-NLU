@@ -1,0 +1,10 @@
+.git
+.old
+.rasa
+.venv
+.venv-*
+**/__pycache__
+*.pyc
+*.log
+teams_app/**/.env
+artifacts
