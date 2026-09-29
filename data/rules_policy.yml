@@ -1,0 +1,26 @@
+version: "3.1"
+rules:
+- rule: Route policy_bereavement
+  steps:
+    - intent: policy_bereavement
+    - action: action_answer_policy
+- rule: Route policy_maternity
+  steps:
+    - intent: policy_maternity
+    - action: action_answer_policy
+- rule: Route policy_paternity
+  steps:
+    - intent: policy_paternity
+    - action: action_answer_policy
+- rule: Route policy_posh
+  steps:
+    - intent: policy_posh
+    - action: action_answer_policy
+- rule: Route policy_general_leave
+  steps:
+    - intent: policy_general_leave
+    - action: action_answer_policy
+- rule: Route policy_referral
+  steps:
+    - intent: policy_referral
+    - action: action_answer_policy

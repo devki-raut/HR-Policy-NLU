@@ -1,579 +1,351 @@
 {
-  "policy_bereavement_eligibility": {
+  "policy_bereavement": {
     "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
     "category": "leave",
     "sections": [
+      "Definitions",
+      "Leave Application Process",
+      "Leave Combination",
+      "Leave Entitlement",
       "Scope"
     ],
     "examples": [
+      "What is bereavement leave?",
+      "What are bereavement leaves?",
+      "Tell me about bereavement leave",
+      "I need information about bereavement leave",
+      "What is the funeral leave policy?",
+      "I need time off because of a death in my family",
       "Who is eligible for bereavement leave?",
-      "Can contractors take bereavement leave?",
-      "Please explain: who is eligible for bereavement leave?",
-      "Please explain: can contractors take bereavement leave?",
-      "I need help. Who is eligible for bereavement leave?",
-      "I need help. Can contractors take bereavement leave?",
-      "Am I entitled to funeral leave as a contractor?",
-      "Is bereavement leave available to full time staff?",
-      "Which employees qualify for leave after a death?",
-      "Does the bereavement policy include direct contractors?"
-    ]
-  },
-  "policy_bereavement_family": {
-    "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "Definitions"
-    ],
-    "examples": [
-      "Which family members are covered by bereavement leave?",
-      "Does bereavement cover parents in law?",
-      "Please explain: which family members are covered by bereavement leave?",
-      "Please explain: does bereavement cover parents in law?",
-      "I need help. Which family members are covered by bereavement leave?",
-      "I need help. Does bereavement cover parents in law?",
-      "Is my spouse covered under bereavement?",
-      "Can I take bereavement leave for my sibling?",
-      "What does immediate family mean for funeral leave?",
-      "Are adoptive parents included in bereavement coverage?"
-    ]
-  },
-  "policy_bereavement_entitlement": {
-    "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "Leave Entitlement"
-    ],
-    "examples": [
+      "Who qualifies for bereavement leave?",
+      "Who can apply for bereavement leave?",
+      "Are contractors eligible for bereavement leave?",
+      "Does the policy cover family members beyond parents and spouse?",
+      "Who counts as immediate family for bereavement leave?",
+      "Are in-laws covered?",
+      "Does bereavement leave include grandparents?",
+      "Which relatives are treated as immediate family for bereavement leave?",
+      "Who is considered immediate family?",
+      "Which family members are covered?",
+      "Are parents-in-law included?",
+      "What if the employee has a domestic partner?",
+      "Is a domestic partner included under bereavement leave?",
+      "Does domestic partnership count?",
+      "Is a partner eligible?",
       "How many days of bereavement leave are allowed?",
-      "How much paid time off is available for a funeral?",
-      "Please explain: how many days of bereavement leave are allowed?",
-      "Please explain: how much paid time off is available for a funeral?",
-      "I need help. How many days of bereavement leave are allowed?",
-      "I need help. How much paid time off is available for a funeral?",
-      "My parent died how much time off can I get?",
-      "What is the duration of paid funeral leave?",
-      "How long can I be absent after a death in my family?",
-      "How many consecutive working days does funeral leave provide?"
+      "How much bereavement leave is an employee entitled to?",
+      "What is the leave duration?",
+      "How many consecutive working days are allowed?",
+      "Is bereavement leave paid?",
+      "Is bereavement leave paid leave?",
+      "Is it fully paid?",
+      "Are bereavement days compensated?",
+      "How do employees apply for bereavement leave?",
+      "How do I request bereavement leave?",
+      "What is the application process?",
+      "Who should be informed when a family member passes away?",
+      "What information is needed for a bereavement leave request?",
+      "What documents are needed for bereavement leave?",
+      "Do I need to send proof?",
+      "What should be shared with HR?",
+      "What documentation may be required for bereavement leave?",
+      "Do I need a death certificate for bereavement leave?",
+      "Is proof required?",
+      "What paperwork is needed?",
+      "Can bereavement leave be requested without written documentation?",
+      "Can bereavement leave be requested by email only?",
+      "Is a written form required?",
+      "Can I request verbally?",
+      "Can bereavement leave be combined with other leave?",
+      "Can bereavement leave be combined with earned leave?",
+      "Can it be combined with casual leave?",
+      "Is additional leave allowed with approval?",
+      "What happens if an employee needs more time than the standard bereavement leave?",
+      "Can I extend bereavement leave?",
+      "What if I need more than 5 days?",
+      "Can I combine leave to cover more time?"
     ]
   },
-  "policy_bereavement_application": {
-    "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "Leave Application Process"
-    ],
-    "examples": [
-      "How do I apply for bereavement leave?",
-      "Who should I notify about a family death?",
-      "Please explain: how do I apply for bereavement leave?",
-      "Please explain: who should I notify about a family death?",
-      "I need help. How do I apply for bereavement leave?",
-      "I need help. Who should I notify about a family death?",
-      "What is the procedure to notify HR of bereavement?",
-      "Can I request funeral leave by email?",
-      "How should a bereavement request be entered in HRMS?",
-      "I need to inform my manager that I need funeral leave"
-    ]
-  },
-  "policy_bereavement_documentation": {
-    "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "Leave Application Process"
-    ],
-    "examples": [
-      "Is a death certificate needed for bereavement leave?",
-      "What documents are required for funeral leave?",
-      "Please explain: is a death certificate needed for bereavement leave?",
-      "Please explain: what documents are required for funeral leave?",
-      "I need help. Is a death certificate needed for bereavement leave?",
-      "I need help. What documents are required for funeral leave?",
-      "Must I produce proof of death to HR?",
-      "Is documentary evidence compulsory for funeral leave?",
-      "Do I have to attach a death certificate?",
-      "Which supporting records are required for bereavement?"
-    ]
-  },
-  "policy_bereavement_combination": {
-    "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "Leave Combination"
-    ],
-    "examples": [
-      "Can I combine bereavement leave with earned leave?",
-      "Can funeral leave be extended using other leave?",
-      "Please explain: can I combine bereavement leave with earned leave?",
-      "Please explain: can funeral leave be extended using other leave?",
-      "I need help. Can I combine bereavement leave with earned leave?",
-      "I need help. Can funeral leave be extended using other leave?",
-      "Can other leave be added after bereavement ends?",
-      "Can I use casual leave along with funeral leave?",
-      "May I join earned leave to my bereavement absence?",
-      "I need extra time after funeral leave can other leave be used?"
-    ]
-  },
-  "policy_parental_maternity_eligibility": {
+  "policy_maternity": {
     "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
     "category": "leave",
     "sections": [
-      "3.1 Eligibility"
-    ],
-    "examples": [
-      "Who is eligible for maternity leave?",
-      "How much service is needed before maternity leave?",
-      "Please explain: who is eligible for maternity leave?",
-      "Please explain: how much service is needed before maternity leave?",
-      "I need help. Who is eligible for maternity leave?",
-      "I need help. How much service is needed before maternity leave?",
-      "How long must a woman work here to qualify for maternity leave?",
-      "What is the minimum service requirement for maternity benefits?",
-      "Are new employees eligible for maternity leave?",
-      "How many days of employment qualify a woman for maternity leave?"
-    ]
-  },
-  "policy_parental_maternity_entitlement": {
-    "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "3.2 Maternity Leave Entitlement"
-    ],
-    "examples": [
-      "How many weeks of maternity leave are available?",
-      "What is the maternity leave allowance for adoption?",
-      "Please explain: how many weeks of maternity leave are available?",
-      "Please explain: what is the maternity leave allowance for adoption?",
-      "I need help. How many weeks of maternity leave are available?",
-      "I need help. What is the maternity leave allowance for adoption?",
-      "What duration of paid maternity absence is permitted?",
-      "How much maternity leave is available for the third child?",
-      "What leave is available after miscarriage?",
-      "What is the maternity allowance for a commissioning mother?"
-    ]
-  },
-  "policy_parental_maternity_application": {
-    "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
+      "3.1 Eligibility",
+      "3.2 Maternity Leave Entitlement",
+      "3.4 Benefits",
       "3.5 Maternity Leave Application"
     ],
     "examples": [
-      "How do I apply for maternity leave?",
-      "What documents must I submit for maternity leave?",
-      "Please explain: how do I apply for maternity leave?",
-      "Please explain: what documents must I submit for maternity leave?",
-      "I need help. How do I apply for maternity leave?",
-      "I need help. What documents must I submit for maternity leave?",
-      "Which paperwork does HR need for a maternity request?",
-      "How early should I notify HR about maternity leave?",
-      "What medical certificate is needed when applying for maternity leave?",
-      "What is the maternity leave application procedure?"
+      "What is the maternity leave policy?",
+      "Tell me about maternity leave",
+      "I need information about maternity leave",
+      "What leave is available after childbirth?",
+      "What is the maternity leave eligibility requirement?",
+      "What is required to qualify for maternity leave?",
+      "How many days of service are needed?",
+      "When can a woman apply for maternity leave?",
+      "Is there a minimum service condition for maternity leave?",
+      "Do I need 80 days before maternity leave?",
+      "Is continuous service required?",
+      "What is the service threshold?",
+      "How much maternity leave is available?",
+      "How many weeks of maternity leave are allowed?",
+      "What is the maternity leave entitlement?",
+      "For the first two surviving children, how much paid leave is available?",
+      "What is the maternity leave entitlement for adoption or surrogacy?",
+      "Are adoption mothers eligible for maternity leave?",
+      "Is maternity leave available for commissioning mothers?",
+      "How much leave is allowed for adopted children?",
+      "How is maternity leave applied for?",
+      "How do employees apply for maternity leave?",
+      "What is the documentation process?",
+      "What should be notified before maternity leave?",
+      "Can maternity leave be taken in parts?",
+      "Is maternity leave allowed in parts?",
+      "Can it be split?",
+      "Can maternity leave be availed in multiple blocks?",
+      "Are there any benefits during maternity leave?",
+      "What benefits are available during maternity leave?",
+      "Is maternity leave fully paid?",
+      "Are there special benefits?",
+      "What happens if a pregnancy ends in miscarriage or medical termination?",
+      "Does the policy cover miscarriage leave?",
+      "Is there leave after medical termination?",
+      "How much leave is available after miscarriage?"
     ]
   },
-  "policy_parental_maternity_benefits": {
-    "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
-      "3.4 Benefits"
-    ],
-    "examples": [
-      "Are benefits continued during maternity leave?",
-      "Is medical insurance available during maternity leave?",
-      "Please explain: are benefits continued during maternity leave?",
-      "Please explain: is medical insurance available during maternity leave?",
-      "I need help. Are benefits continued during maternity leave?",
-      "I need help. Is medical insurance available during maternity leave?",
-      "Will I get salary while on maternity leave?",
-      "What medical bonus can a woman get during maternity?",
-      "Does my service continue during maternity absence?",
-      "Is my newborn covered by insurance during maternity?"
-    ]
-  },
-  "policy_parental_paternity_entitlement": {
+  "policy_paternity": {
     "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
     "category": "leave",
     "sections": [
       "4.1 Eligibility",
-      "4.2 Paternity Leave Entitlement"
-    ],
-    "examples": [
-      "How many days of paternity leave are allowed?",
-      "Who is eligible for paternity leave?",
-      "Please explain: how many days of paternity leave are allowed?",
-      "Please explain: who is eligible for paternity leave?",
-      "I need help. How many days of paternity leave are allowed?",
-      "I need help. Who is eligible for paternity leave?",
-      "How much paid time off does a father get after childbirth?",
-      "What is the duration of paternity absence?",
-      "How long can a male employee take paternity leave?",
-      "What are the conditions for a father to qualify for leave?"
-    ]
-  },
-  "policy_parental_paternity_application": {
-    "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
-    "category": "leave",
-    "sections": [
+      "4.2 Paternity Leave Entitlement",
       "4.3 Usage",
       "4.5 Paternity Leave Application"
     ],
     "examples": [
-      "How do I request paternity leave?",
-      "What documents are needed for paternity leave?",
-      "Please explain: how do I request paternity leave?",
-      "Please explain: what documents are needed for paternity leave?",
-      "I need help. How do I request paternity leave?",
-      "I need help. What documents are needed for paternity leave?",
-      "What paperwork is required to apply for paternity leave?",
-      "How soon must I submit a paternity leave request?",
-      "What is the HRMS process for a new father requesting leave?",
-      "Can a father split paternity leave into separate periods?"
+      "What is the paternity leave policy?",
+      "Tell me about paternity leave",
+      "I need information about paternity leave",
+      "What leave is available for a father after childbirth?",
+      "How much paternity leave is available?",
+      "How many days of paternity leave are allowed?",
+      "How much paid leave is given for a new child?",
+      "What is the paternity entitlement?",
+      "When should paternity leave be taken?",
+      "Can paternity leave be used after some time?",
+      "Is it flexible?",
+      "When is paternity leave taken?",
+      "How is paternity leave applied for?",
+      "How do employees apply for paternity leave?",
+      "What is the application process?",
+      "What is required to use paternity leave?",
+      "Is paternity leave continuous or can it be split?",
+      "Can paternity leave be split?",
+      "Is it taken as one block?",
+      "Can it be partial?"
     ]
   },
-  "policy_posh_scope": {
-    "source": "POSH Policy_Emergys Solutions.pdf",
-    "category": "conduct",
-    "sections": [
-      "Applicability",
-      "Sexual Harassment"
-    ],
-    "examples": [
-      "Who does the POSH policy cover?",
-      "What counts as sexual harassment at work?",
-      "Please explain: who does the POSH policy cover?",
-      "Please explain: what counts as sexual harassment at work?",
-      "I need help. Who does the POSH policy cover?",
-      "I need help. What counts as sexual harassment at work?",
-      "Does the sexual harassment policy apply to contractors?",
-      "What behaviour is sexual harassment under POSH?",
-      "Who is protected by the workplace harassment policy?",
-      "Where does the POSH policy apply?"
-    ]
-  },
-  "policy_posh_committee": {
-    "source": "POSH Policy_Emergys Solutions.pdf",
-    "category": "conduct",
-    "sections": [
-      "Composition of the Internal Committee"
-    ],
-    "examples": [
-      "Who is on the POSH internal committee?",
-      "How is the harassment committee formed?",
-      "Please explain: who is on the POSH internal committee?",
-      "Please explain: how is the harassment committee formed?",
-      "I need help. Who is on the POSH internal committee?",
-      "I need help. How is the harassment committee formed?",
-      "How many members make up the internal complaints committee?",
-      "Who handles the internal committee for sexual harassment?",
-      "What is the composition of the POSH committee?",
-      "Who chairs the sexual harassment committee?"
-    ]
-  },
-  "policy_posh_complaint": {
-    "source": "POSH Policy_Emergys Solutions.pdf",
-    "category": "conduct",
-    "sections": [
-      "Complaint Mechanism",
-      "Documentation"
-    ],
-    "examples": [
-      "How can I file a POSH complaint?",
-      "What documentation is required to report sexual harassment?",
-      "Please explain: how can I file a POSH complaint?",
-      "Please explain: what documentation is required to report sexual harassment?",
-      "I need help. How can I file a POSH complaint?",
-      "I need help. What documentation is required to report sexual harassment?",
-      "Where should a sexual harassment complaint be submitted?",
-      "How do I lodge a sexual harassment grievance?",
-      "What information should a POSH complaint contain?",
-      "What is the time limit to file a harassment complaint?"
-    ]
-  },
-  "policy_posh_inquiry": {
-    "source": "POSH Policy_Emergys Solutions.pdf",
-    "category": "conduct",
-    "sections": [
-      "Enquiry Process",
-      "Investigation"
-    ],
-    "examples": [
-      "What is the POSH inquiry process?",
-      "How is a sexual harassment complaint investigated?",
-      "Please explain: what is the POSH inquiry process?",
-      "Please explain: how is a sexual harassment complaint investigated?",
-      "I need help. What is the POSH inquiry process?",
-      "I need help. How is a sexual harassment complaint investigated?",
-      "What happens during the investigation of a POSH complaint?",
-      "How does the committee conduct a harassment enquiry?",
-      "What procedure is followed after a sexual harassment complaint?",
-      "How long does a POSH investigation take?"
-    ]
-  },
-  "policy_posh_protection": {
-    "source": "POSH Policy_Emergys Solutions.pdf",
-    "category": "conduct",
-    "sections": [
-      "Non-Retaliation"
-    ],
-    "examples": [
-      "Does POSH protect me from retaliation?",
-      "Can someone retaliate after I report sexual harassment?",
-      "Please explain: does POSH protect me from retaliation?",
-      "Please explain: can someone retaliate after I report sexual harassment?",
-      "I need help. Does POSH protect me from retaliation?",
-      "I need help. Can someone retaliate after I report sexual harassment?",
-      "Is retaliation against a harassment complainant forbidden?",
-      "What protection does a witness have against retaliation?",
-      "Can my manager punish me for a POSH complaint?",
-      "What is the non retaliation rule under POSH?"
-    ]
-  },
-  "policy_posh_appeal": {
+  "policy_posh": {
     "source": "POSH Policy_Emergys Solutions.pdf",
     "category": "conduct",
     "sections": [
       "Appeal",
-      "Disciplinary Action"
+      "Applicability",
+      "Complaint Mechanism",
+      "Composition of the Internal Committee",
+      "Disciplinary Action",
+      "Documentation",
+      "Enquiry Process",
+      "Investigation",
+      "Non-Retaliation",
+      "Sexual Harassment"
     ],
     "examples": [
-      "How do I appeal a POSH decision?",
-      "What disciplinary action follows a POSH finding?",
-      "Please explain: how do I appeal a POSH decision?",
-      "Please explain: what disciplinary action follows a POSH finding?",
-      "I need help. How do I appeal a POSH decision?",
-      "I need help. What disciplinary action follows a POSH finding?",
-      "Can I challenge the result of a harassment inquiry?",
-      "What is the appeal period under POSH?",
-      "What punishment can follow a proven harassment complaint?",
-      "How can an employee contest the internal committee decision?"
+      "What is the POSH policy?",
+      "Tell me about the POSH policy",
+      "How does the POSH policy work?",
+      "I need information about POSH",
+      "What workplace harassment policy applies?",
+      "What is the scope of the POSH policy?",
+      "What does the POSH policy cover?",
+      "What workplace issues are included?",
+      "What is the scope of sexual harassment prevention?",
+      "Does the policy apply to all employees?",
+      "Is the POSH policy applicable to all employees?",
+      "Does the policy cover interns and contractors?",
+      "Who falls under the policy?",
+      "What is the role of the POSH committee?",
+      "Who makes up the POSH committee?",
+      "What does the committee do?",
+      "What is the internal committee responsible for?",
+      "What is the tenure of committee members?",
+      "How long do committee members serve?",
+      "What is the term of the committee?",
+      "How long are committee positions valid?",
+      "How can an employee file a POSH complaint?",
+      "How do I complain under POSH?",
+      "Who can receive a complaint?",
+      "What is the complaint filing process?",
+      "Where should a POSH complaint be submitted?",
+      "Who receives POSH complaints?",
+      "Is HR the place to report?",
+      "Can a committee member receive the complaint?",
+      "Who can file a complaint on behalf of someone who cannot write it themselves?",
+      "Who can file on behalf of the complainant?",
+      "Can a friend or legal heir submit it?",
+      "Can someone else complain for them?",
+      "What if the complaint is made by someone with a disability or inability to write?",
+      "Can the committee assist someone who cannot write?",
+      "Is assistance provided to the complainant?",
+      "What if the person cannot draft the complaint?",
+      "What protections are provided under the POSH policy?",
+      "How is the complainant protected?",
+      "What safeguards exist?",
+      "Are there confidentiality protections?",
+      "What is the rule for false or malicious complaints?",
+      "What happens if a complaint is false?",
+      "Is there punishment for malicious complaints?",
+      "Can false allegations trigger action?",
+      "Is there an appeal or review mechanism under the POSH policy?",
+      "How can the outcome be challenged?",
+      "Is there a grievance mechanism?",
+      "Can the decision be appealed?",
+      "What happens after the complaint is investigated?",
+      "What is the outcome after the inquiry?",
+      "What happens after the committee reviews the matter?",
+      "How are findings handled?"
     ]
   },
-  "policy_general_leave_entitlement": {
+  "policy_general_leave": {
     "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
     "category": "leave",
     "sections": [
-      "Eligibility / Scope"
-    ],
-    "examples": [
-      "How many annual leaves are credited?",
-      "How much leave do interns get?",
-      "Please explain: how many annual leaves are credited?",
-      "Please explain: how much leave do interns get?",
-      "I need help. How many annual leaves are credited?",
-      "I need help. How much leave do interns get?",
-      "What is the annual leave quota for permanent employees?",
-      "How many PL and CL days does a contractor receive?",
-      "What monthly leave is available to an intern?",
-      "What are the yearly leave entitlements?"
-    ]
-  },
-  "policy_general_leave_privilege": {
-    "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
-    "category": "leave",
-    "sections": [
+      "Casual Leave",
+      "Eligibility / Scope",
+      "Leave Credit Based",
+      "Leave Planning and Approval",
+      "Leaves During Notice Period",
       "Privilege Leave"
     ],
     "examples": [
-      "What are the rules for privilege leave?",
-      "How much PL can be carried forward?",
-      "Please explain: what are the rules for privilege leave?",
-      "Please explain: how much PL can be carried forward?",
-      "I need help. What are the rules for privilege leave?",
-      "I need help. How much PL can be carried forward?",
-      "What is the maximum carry forward balance of PL?",
-      "Can unused privileged leave move to the next calendar year?",
-      "How many PL days can be saved for next year?",
-      "What restrictions apply to privilege leave?"
+      "What is the general leave policy?",
+      "Tell me about general leave",
+      "How does the general leave policy work?",
+      "What types of general leave are available?",
+      "How does privilege leave work?",
+      "How does casual leave work?",
+      "What are the general leave entitlements?",
+      "How many privileged and casual leaves are employees entitled to?",
+      "What are the general leave benefits?",
+      "What leave days are available to permanent employees?",
+      "How many days of annual leave do permanent employees get?",
+      "What is the annual leave allowance?",
+      "How many privileged leave days do employees receive?",
+      "What are the leave days in the year?",
+      "What is the rule for leave without pay across a weekend?",
+      "How is leave without pay treated over a weekend?",
+      "Does Friday to Monday count as LWP?",
+      "What is the sandwich rule for leave?",
+      "Does leave without pay count over the weekend?",
+      "Does the weekend count as LWP?",
+      "Are weekend days included when leave spans Friday to Monday?",
+      "Is there an LWP sandwich rule?",
+      "How many casual leaves are allowed?",
+      "What is the casual leave entitlement?",
+      "How many CLs do employees get?",
+      "Are casual leaves cumulative?",
+      "Can casual leave be carried forward to the next year?",
+      "Can CL be carried forward?",
+      "Is casual leave cumulative?",
+      "Is there a carryover rule for casual leave?",
+      "How should leave be requested and approved?",
+      "How do employees request leave?",
+      "What is the notice requirement for planned leave?",
+      "How is emergency leave handled?",
+      "What is the approval process for planned leave?",
+      "How do I get planned leave approved?",
+      "What is the approval requirement for annual leave?",
+      "Must leave be approved in advance?",
+      "Are leave balances carried forward between periods?",
+      "Can leave be carried forward?",
+      "Is there a credit balance system?",
+      "Can unused leave be retained?",
+      "What is the leave policy for interns?",
+      "How much leave can interns take?",
+      "Are interns eligible for leave?",
+      "What is the intern leave rule?",
+      "What are the rules for emergency leave?",
+      "How is emergency leave approved?",
+      "What if leave is unplanned?",
+      "Is emergency leave treated differently?"
     ]
   },
-  "policy_general_leave_casual": {
-    "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
-    "category": "leave",
-    "sections": [
-      "Casual Leave"
-    ],
-    "examples": [
-      "How many casual leaves can I take in a row?",
-      "Can casual leave be carried forward?",
-      "Please explain: how many casual leaves can I take in a row?",
-      "Please explain: can casual leave be carried forward?",
-      "I need help. How many casual leaves can I take in a row?",
-      "I need help. Can casual leave be carried forward?",
-      "Are unused CL days lost at the end of the year?",
-      "Can I combine casual leave with other leave?",
-      "What is the limit for consecutive casual leave?",
-      "Is casual leave cumulative?"
-    ]
-  },
-  "policy_general_leave_approval": {
-    "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
-    "category": "leave",
-    "sections": [
-      "Leave Planning and Approval"
-    ],
-    "examples": [
-      "Who approves a leave request?",
-      "Do I need client manager approval for leave?",
-      "Please explain: who approves a leave request?",
-      "Please explain: do I need client manager approval for leave?",
-      "I need help. Who approves a leave request?",
-      "I need help. Do I need client manager approval for leave?",
-      "How do I obtain approval from my reporting manager for leave?",
-      "What approval is required for employees at a client location?",
-      "What is the procedure for planning leave with the team lead?",
-      "Can a manager reject emergency leave?"
-    ]
-  },
-  "policy_general_leave_credit": {
-    "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
-    "category": "leave",
-    "sections": [
-      "Leave Credit Based"
-    ],
-    "examples": [
-      "How is leave credit calculated when I join?",
-      "Are leave credits prorated?",
-      "Please explain: how is leave credit calculated when I join?",
-      "Please explain: are leave credits prorated?",
-      "I need help. How is leave credit calculated when I join?",
-      "I need help. Are leave credits prorated?",
-      "How are leave days prorated for a new employee?",
-      "When does HRMS credit leave after joining?",
-      "What is the calculation of leave based on joining date?",
-      "How are leave balances credited for part of a year?"
-    ]
-  },
-  "policy_referral_eligibility": {
+  "policy_referral": {
     "source": "Referral Bonus Policy_Emergys Solutions.pdf",
-    "category": "benefits",
+    "category": "referral",
     "sections": [
-      "Scope / Eligibility",
-      "Referral Criteria"
+      "Company -wise Referral Email",
+      "Employee Referral Business Rules",
+      "Referral Bonus Structure",
+      "Referral Criteria",
+      "Referral Submission Process",
+      "Referral Validity",
+      "Scope / Eligibility"
     ],
     "examples": [
-      "Who can participate in employee referrals?",
-      "Can interns refer candidates?",
-      "Please explain: who can participate in employee referrals?",
-      "Please explain: can interns refer candidates?",
-      "I need help. Who can participate in employee referrals?",
-      "I need help. Can interns refer candidates?",
-      "Are contractors allowed to refer candidates?",
-      "Who qualifies as a referrer?",
-      "Can a candidate who applied recently be referred?",
-      "Which staff members can join the referral program?"
-    ]
-  },
-  "policy_referral_submission": {
-    "source": "Referral Bonus Policy_Emergys Solutions.pdf",
-    "category": "benefits",
-    "sections": [
-      "Referral Submission Process"
-    ],
-    "examples": [
-      "How do I submit an employee referral?",
-      "How should a referred candidate send their CV?",
-      "Please explain: how do I submit an employee referral?",
-      "Please explain: how should a referred candidate send their CV?",
-      "I need help. How do I submit an employee referral?",
-      "I need help. How should a referred candidate send their CV?",
-      "What is the procedure for referring a friend for a job?",
-      "How should I send a candidate resume as a referral?",
-      "Can the candidate submit their own referral CV?",
-      "What details must be included when submitting a referral?"
-    ]
-  },
-  "policy_referral_contacts": {
-    "source": "Referral Bonus Policy_Emergys Solutions.pdf",
-    "category": "benefits",
-    "sections": [
-      "Company -wise Referral Email"
-    ],
-    "examples": [
-      "Where do I email a referral for Emergys Solutions?",
-      "What is the recruitment email for a referral?",
-      "Please explain: where do I email a referral for Emergys Solutions?",
-      "Please explain: what is the recruitment email for a referral?",
-      "I need help. Where do I email a referral for Emergys Solutions?",
-      "I need help. What is the recruitment email for a referral?",
-      "Which mailbox accepts employee referrals?",
-      "What referral email should Emergys Labs use?",
-      "Which address receives referral resumes for Emergys Software?",
-      "What is the referral email for the Solutions company?"
-    ]
-  },
-  "policy_referral_validity": {
-    "source": "Referral Bonus Policy_Emergys Solutions.pdf",
-    "category": "benefits",
-    "sections": [
-      "Referral Validity"
-    ],
-    "examples": [
+      "What is the employee referral policy?",
+      "Tell me about the referral program",
+      "How does employee referral work?",
+      "I need information about referral bonuses",
+      "Who is eligible to refer a candidate?",
+      "Who can make an employee referral?",
+      "What are the conditions for referral eligibility?",
+      "What candidates can be referred?",
+      "Is there a restriction on the number of referrals an employee may submit?",
+      "Can an employee refer multiple people?",
+      "Is there a cap on referrals?",
+      "How many referrals are allowed?",
+      "How are employee referrals submitted and paid?",
+      "How do employees submit referrals?",
+      "When is referral bonus paid?",
+      "What is the required service period before payout?",
+      "What is the employee referral process?",
+      "How is a referral submitted?",
+      "What happens after I refer someone?",
+      "What is the referral workflow?",
+      "Who should I contact for referral queries?",
+      "Who can answer referral questions?",
+      "Which department handles referrals?",
+      "Who should I contact for referral support?",
+      "Are there internal roles excluded from referral payouts?",
+      "Who is not eligible for referral bonus?",
+      "Are hiring managers excluded?",
+      "Are BU heads eligible?",
       "How long is a referral valid?",
-      "When does a candidate referral expire?",
-      "Please explain: how long is a referral valid?",
-      "Please explain: when does a candidate referral expire?",
-      "I need help. How long is a referral valid?",
-      "I need help. When does a candidate referral expire?",
-      "What is the validity period of an employee referral?",
-      "How long does a referral remain in the candidate database?",
-      "For what period is a referred resume considered active?",
-      "When will a referral entry lapse?"
-    ]
-  },
-  "policy_referral_bonus": {
-    "source": "Referral Bonus Policy_Emergys Solutions.pdf",
-    "category": "benefits",
-    "sections": [
-      "Referral Bonus Structure"
-    ],
-    "examples": [
-      "How much referral bonus will I receive?",
-      "What is the referral bonus for a fresher?",
-      "Please explain: how much referral bonus will I receive?",
-      "Please explain: what is the referral bonus for a fresher?",
-      "I need help. How much referral bonus will I receive?",
-      "I need help. What is the referral bonus for a fresher?",
-      "What is the cash incentive for referring a new graduate?",
-      "What amount is paid for a referral with ten years experience?",
-      "How much is the bonus for a candidate with six years experience?",
-      "What is the referral reward amount by experience level?"
-    ]
-  },
-  "policy_referral_payment": {
-    "source": "Referral Bonus Policy_Emergys Solutions.pdf",
-    "category": "benefits",
-    "sections": [
-      "Employee Referral Business Rules"
-    ],
-    "examples": [
-      "When is the referral bonus paid?",
-      "What are the referral bonus payment conditions?",
-      "Please explain: when is the referral bonus paid?",
-      "Please explain: what are the referral bonus payment conditions?",
-      "I need help. When is the referral bonus paid?",
-      "I need help. What are the referral bonus payment conditions?",
-      "At what stage is the employee referral reward disbursed?",
-      "Does the referred person need to join before I receive a bonus?",
-      "What conditions must be met to receive the referral payment?",
-      "When will my referral incentive be credited?"
-    ]
-  },
-  "policy_general_leave_notice": {
-    "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
-    "category": "leave",
-    "sections": [
-      "Leaves During Notice Period"
-    ],
-    "examples": [
-      "Can I use leave during my notice period?",
-      "What are the rules for leave during notice?",
-      "Can an employee take leave while serving notice?",
-      "Will approved leave extend my notice period?",
-      "Who can approve leave during the notice period?",
-      "What happens if I take time off while serving notice?",
-      "Please explain leave restrictions after resignation",
-      "Is leave allowed before my last working day during notice?",
-      "I am serving notice can I take a day off?",
-      "How does taking leave affect my notice period?"
+      "Does a referral expire?",
+      "Is there a time validity period?",
+      "How long is a candidate referral valid?",
+      "Is a referral valid if the candidate had already applied earlier?",
+      "What if the candidate already applied before referral?",
+      "Is the referral invalid if the candidate previously applied?",
+      "Are prior applicants eligible to be referred?",
+      "What are the referral bonus amounts?",
+      "How much referral bonus is paid?",
+      "What amount is given by experience level?",
+      "What is the bonus range?",
+      "Is the bonus different for junior and senior candidates?",
+      "How does experience affect referral bonus?",
+      "Are there different bonus bands?",
+      "Does seniority change the payout?",
+      "When is the referral bonus actually paid?",
+      "When is the payout made?",
+      "After what period is the referral amount paid?",
+      "Is it paid after joining?",
+      "What conditions must be met before the bonus is paid?",
+      "What are the payout conditions?",
+      "What must the candidate achieve before referral bonus?",
+      "What are the eligibility conditions for payout?"
     ]
   }
 }

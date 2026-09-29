@@ -10,48 +10,33 @@ intents:
 - ask_onboarding
 - out_of_scope
 - nlu_fallback
-- policy_bereavement_eligibility
-- policy_bereavement_family
-- policy_bereavement_entitlement
-- policy_bereavement_application
-- policy_bereavement_documentation
-- policy_bereavement_combination
-- policy_parental_maternity_eligibility
-- policy_parental_maternity_entitlement
-- policy_parental_maternity_application
-- policy_parental_maternity_benefits
-- policy_parental_paternity_entitlement
-- policy_parental_paternity_application
-- policy_posh_scope
-- policy_posh_committee
-- policy_posh_complaint
-- policy_posh_inquiry
-- policy_posh_protection
-- policy_posh_appeal
-- policy_general_leave_entitlement
-- policy_general_leave_privilege
-- policy_general_leave_casual
-- policy_general_leave_approval
-- policy_general_leave_credit
-- policy_referral_eligibility
-- policy_referral_submission
-- policy_referral_contacts
-- policy_referral_validity
-- policy_referral_bonus
-- policy_referral_payment
-- policy_general_leave_notice
+- policy_bereavement
+- policy_maternity
+- policy_paternity
+- policy_posh
+- policy_general_leave
+- policy_referral
 responses:
   utter_greet:
-  - text: Hi! Ask me about leave, remote work, benefits, expenses, conduct or onboarding.
+  - text: 'Hi! Ask me about leave, remote work, benefits, expenses, conduct or onboarding.
+
       I answer from the policy library with source references.
+
+      '
   utter_goodbye:
   - text: Goodbye! Contact HR if you need help with your individual circumstances.
   utter_out_of_scope:
-  - text: I can explain HR policies, but cannot access employee records or perform
+  - text: 'I can explain HR policies, but cannot access employee records or perform
+
       HR transactions. Please ask a policy question or contact HR.
+
+      '
   utter_clarify:
   - text: 'Could you rephrase with a specific topic: leave, remote work, benefits,
-      expenses, conduct or onboarding?'
+
+      expenses, conduct or onboarding?
+
+      '
 actions:
 - action_answer_policy
 session_config:

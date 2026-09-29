@@ -1,0 +1,279 @@
+version: "3.1"
+nlu:
+- intent: policy_bereavement
+  examples: |
+    - What is bereavement leave?
+    - What are bereavement leaves?
+    - Tell me about bereavement leave
+    - I need information about bereavement leave
+    - What is the funeral leave policy?
+    - I need time off because of a death in my family
+    - Who is eligible for bereavement leave?
+    - Who qualifies for bereavement leave?
+    - Who can apply for bereavement leave?
+    - Are contractors eligible for bereavement leave?
+    - Does the policy cover family members beyond parents and spouse?
+    - Who counts as immediate family for bereavement leave?
+    - Are in-laws covered?
+    - Does bereavement leave include grandparents?
+    - Which relatives are treated as immediate family for bereavement leave?
+    - Who is considered immediate family?
+    - Which family members are covered?
+    - Are parents-in-law included?
+    - What if the employee has a domestic partner?
+    - Is a domestic partner included under bereavement leave?
+    - Does domestic partnership count?
+    - Is a partner eligible?
+    - How many days of bereavement leave are allowed?
+    - How much bereavement leave is an employee entitled to?
+    - What is the leave duration?
+    - How many consecutive working days are allowed?
+    - Is bereavement leave paid?
+    - Is bereavement leave paid leave?
+    - Is it fully paid?
+    - Are bereavement days compensated?
+    - How do employees apply for bereavement leave?
+    - How do I request bereavement leave?
+    - What is the application process?
+    - Who should be informed when a family member passes away?
+    - What information is needed for a bereavement leave request?
+    - What documents are needed for bereavement leave?
+    - Do I need to send proof?
+    - What should be shared with HR?
+    - What documentation may be required for bereavement leave?
+    - Do I need a death certificate for bereavement leave?
+    - Is proof required?
+    - What paperwork is needed?
+    - Can bereavement leave be requested without written documentation?
+    - Can bereavement leave be requested by email only?
+    - Is a written form required?
+    - Can I request verbally?
+    - Can bereavement leave be combined with other leave?
+    - Can bereavement leave be combined with earned leave?
+    - Can it be combined with casual leave?
+    - Is additional leave allowed with approval?
+    - What happens if an employee needs more time than the standard bereavement leave?
+    - Can I extend bereavement leave?
+    - What if I need more than 5 days?
+    - Can I combine leave to cover more time?
+- intent: policy_maternity
+  examples: |
+    - What is the maternity leave policy?
+    - Tell me about maternity leave
+    - I need information about maternity leave
+    - What leave is available after childbirth?
+    - What is the maternity leave eligibility requirement?
+    - What is required to qualify for maternity leave?
+    - How many days of service are needed?
+    - When can a woman apply for maternity leave?
+    - Is there a minimum service condition for maternity leave?
+    - Do I need 80 days before maternity leave?
+    - Is continuous service required?
+    - What is the service threshold?
+    - How much maternity leave is available?
+    - How many weeks of maternity leave are allowed?
+    - What is the maternity leave entitlement?
+    - For the first two surviving children, how much paid leave is available?
+    - What is the maternity leave entitlement for adoption or surrogacy?
+    - Are adoption mothers eligible for maternity leave?
+    - Is maternity leave available for commissioning mothers?
+    - How much leave is allowed for adopted children?
+    - How is maternity leave applied for?
+    - How do employees apply for maternity leave?
+    - What is the documentation process?
+    - What should be notified before maternity leave?
+    - Can maternity leave be taken in parts?
+    - Is maternity leave allowed in parts?
+    - Can it be split?
+    - Can maternity leave be availed in multiple blocks?
+    - Are there any benefits during maternity leave?
+    - What benefits are available during maternity leave?
+    - Is maternity leave fully paid?
+    - Are there special benefits?
+    - What happens if a pregnancy ends in miscarriage or medical termination?
+    - Does the policy cover miscarriage leave?
+    - Is there leave after medical termination?
+    - How much leave is available after miscarriage?
+- intent: policy_paternity
+  examples: |
+    - What is the paternity leave policy?
+    - Tell me about paternity leave
+    - I need information about paternity leave
+    - What leave is available for a father after childbirth?
+    - How much paternity leave is available?
+    - How many days of paternity leave are allowed?
+    - How much paid leave is given for a new child?
+    - What is the paternity entitlement?
+    - When should paternity leave be taken?
+    - Can paternity leave be used after some time?
+    - Is it flexible?
+    - When is paternity leave taken?
+    - How is paternity leave applied for?
+    - How do employees apply for paternity leave?
+    - What is the application process?
+    - What is required to use paternity leave?
+    - Is paternity leave continuous or can it be split?
+    - Can paternity leave be split?
+    - Is it taken as one block?
+    - Can it be partial?
+- intent: policy_posh
+  examples: |
+    - What is the POSH policy?
+    - Tell me about the POSH policy
+    - How does the POSH policy work?
+    - I need information about POSH
+    - What workplace harassment policy applies?
+    - What is the scope of the POSH policy?
+    - What does the POSH policy cover?
+    - What workplace issues are included?
+    - What is the scope of sexual harassment prevention?
+    - Does the policy apply to all employees?
+    - Is the POSH policy applicable to all employees?
+    - Does the policy cover interns and contractors?
+    - Who falls under the policy?
+    - What is the role of the POSH committee?
+    - Who makes up the POSH committee?
+    - What does the committee do?
+    - What is the internal committee responsible for?
+    - What is the tenure of committee members?
+    - How long do committee members serve?
+    - What is the term of the committee?
+    - How long are committee positions valid?
+    - How can an employee file a POSH complaint?
+    - How do I complain under POSH?
+    - Who can receive a complaint?
+    - What is the complaint filing process?
+    - Where should a POSH complaint be submitted?
+    - Who receives POSH complaints?
+    - Is HR the place to report?
+    - Can a committee member receive the complaint?
+    - Who can file a complaint on behalf of someone who cannot write it themselves?
+    - Who can file on behalf of the complainant?
+    - Can a friend or legal heir submit it?
+    - Can someone else complain for them?
+    - What if the complaint is made by someone with a disability or inability to write?
+    - Can the committee assist someone who cannot write?
+    - Is assistance provided to the complainant?
+    - What if the person cannot draft the complaint?
+    - What protections are provided under the POSH policy?
+    - How is the complainant protected?
+    - What safeguards exist?
+    - Are there confidentiality protections?
+    - What is the rule for false or malicious complaints?
+    - What happens if a complaint is false?
+    - Is there punishment for malicious complaints?
+    - Can false allegations trigger action?
+    - Is there an appeal or review mechanism under the POSH policy?
+    - How can the outcome be challenged?
+    - Is there a grievance mechanism?
+    - Can the decision be appealed?
+    - What happens after the complaint is investigated?
+    - What is the outcome after the inquiry?
+    - What happens after the committee reviews the matter?
+    - How are findings handled?
+- intent: policy_general_leave
+  examples: |
+    - What is the general leave policy?
+    - Tell me about general leave
+    - How does the general leave policy work?
+    - What types of general leave are available?
+    - How does privilege leave work?
+    - How does casual leave work?
+    - What are the general leave entitlements?
+    - How many privileged and casual leaves are employees entitled to?
+    - What are the general leave benefits?
+    - What leave days are available to permanent employees?
+    - How many days of annual leave do permanent employees get?
+    - What is the annual leave allowance?
+    - How many privileged leave days do employees receive?
+    - What are the leave days in the year?
+    - What is the rule for leave without pay across a weekend?
+    - How is leave without pay treated over a weekend?
+    - Does Friday to Monday count as LWP?
+    - What is the sandwich rule for leave?
+    - Does leave without pay count over the weekend?
+    - Does the weekend count as LWP?
+    - Are weekend days included when leave spans Friday to Monday?
+    - Is there an LWP sandwich rule?
+    - How many casual leaves are allowed?
+    - What is the casual leave entitlement?
+    - How many CLs do employees get?
+    - Are casual leaves cumulative?
+    - Can casual leave be carried forward to the next year?
+    - Can CL be carried forward?
+    - Is casual leave cumulative?
+    - Is there a carryover rule for casual leave?
+    - How should leave be requested and approved?
+    - How do employees request leave?
+    - What is the notice requirement for planned leave?
+    - How is emergency leave handled?
+    - What is the approval process for planned leave?
+    - How do I get planned leave approved?
+    - What is the approval requirement for annual leave?
+    - Must leave be approved in advance?
+    - Are leave balances carried forward between periods?
+    - Can leave be carried forward?
+    - Is there a credit balance system?
+    - Can unused leave be retained?
+    - What is the leave policy for interns?
+    - How much leave can interns take?
+    - Are interns eligible for leave?
+    - What is the intern leave rule?
+    - What are the rules for emergency leave?
+    - How is emergency leave approved?
+    - What if leave is unplanned?
+    - Is emergency leave treated differently?
+- intent: policy_referral
+  examples: |
+    - What is the employee referral policy?
+    - Tell me about the referral program
+    - How does employee referral work?
+    - I need information about referral bonuses
+    - Who is eligible to refer a candidate?
+    - Who can make an employee referral?
+    - What are the conditions for referral eligibility?
+    - What candidates can be referred?
+    - Is there a restriction on the number of referrals an employee may submit?
+    - Can an employee refer multiple people?
+    - Is there a cap on referrals?
+    - How many referrals are allowed?
+    - How are employee referrals submitted and paid?
+    - How do employees submit referrals?
+    - When is referral bonus paid?
+    - What is the required service period before payout?
+    - What is the employee referral process?
+    - How is a referral submitted?
+    - What happens after I refer someone?
+    - What is the referral workflow?
+    - Who should I contact for referral queries?
+    - Who can answer referral questions?
+    - Which department handles referrals?
+    - Who should I contact for referral support?
+    - Are there internal roles excluded from referral payouts?
+    - Who is not eligible for referral bonus?
+    - Are hiring managers excluded?
+    - Are BU heads eligible?
+    - How long is a referral valid?
+    - Does a referral expire?
+    - Is there a time validity period?
+    - How long is a candidate referral valid?
+    - Is a referral valid if the candidate had already applied earlier?
+    - What if the candidate already applied before referral?
+    - Is the referral invalid if the candidate previously applied?
+    - Are prior applicants eligible to be referred?
+    - What are the referral bonus amounts?
+    - How much referral bonus is paid?
+    - What amount is given by experience level?
+    - What is the bonus range?
+    - Is the bonus different for junior and senior candidates?
+    - How does experience affect referral bonus?
+    - Are there different bonus bands?
+    - Does seniority change the payout?
+    - When is the referral bonus actually paid?
+    - When is the payout made?
+    - After what period is the referral amount paid?
+    - Is it paid after joining?
+    - What conditions must be met before the bonus is paid?
+    - What are the payout conditions?
+    - What must the candidate achieve before referral bonus?
+    - What are the eligibility conditions for payout?

@@ -1,0 +1,1967 @@
+{
+  "version": 2,
+  "generated_from": "policy_questions_and_answers.csv",
+  "policy_index": "policies/policies.json",
+  "entries": [
+    {
+      "id": "646574df82a728e0",
+      "intent": "policy_bereavement_eligibility",
+      "question": "Who is eligible for bereavement leave?",
+      "utterances": [
+        "Who qualifies for bereavement leave?",
+        "Who can apply for bereavement leave?",
+        "Are contractors eligible for bereavement leave?"
+      ],
+      "answer": "All active full-time employees and direct contractors are eligible for bereavement leave. Immediate family members include a spouse or domestic partner, children, parents, siblings, and parents-in-law.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "bereavement",
+        "eligibility"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Scope"
+      ],
+      "evidence": {
+        "chunk_id": "aee7f82477c9bb08",
+        "page": 3,
+        "section": "1. Scope",
+        "quote": "All active full -time employees and direct contractors are eligible for bereavement leave and benefits under this policy."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "4bbd95ef16f5f2e0",
+      "intent": "policy_bereavement_eligibility",
+      "question": "Does the policy cover family members beyond parents and spouse?",
+      "utterances": [
+        "Who counts as immediate family for bereavement leave?",
+        "Are in-laws covered?",
+        "Does bereavement leave include grandparents?"
+      ],
+      "answer": "The policy covers an employee’s spouse or domestic partner, children, parents, siblings, and parents-in-law as immediate family members for bereavement leave.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "bereavement",
+        "family"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Scope"
+      ],
+      "evidence": {
+        "chunk_id": "aee7f82477c9bb08",
+        "page": 3,
+        "section": "1. Scope",
+        "quote": "All active full -time employees and direct contractors are eligible for bereavement leave and benefits under this policy."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "68d4f1be1942247f",
+      "intent": "policy_bereavement_family",
+      "question": "Which relatives are treated as immediate family for bereavement leave?",
+      "utterances": [
+        "Who is considered immediate family?",
+        "Which family members are covered?",
+        "Are parents-in-law included?"
+      ],
+      "answer": "Immediate family includes a spouse or domestic partner, biological, adopted, or stepchildren, parents, siblings, and parents-in-law.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "family"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Definitions"
+      ],
+      "evidence": {
+        "chunk_id": "49d73bbf3be76ef8",
+        "page": 3,
+        "section": "3. Definitions",
+        "quote": "i. Immediate family member : For the purposes of this policy, \"immediate family member\" includes: a) Spouse or domestic partner b) Children (biological, adoptive, or stepchildren) c) Parents (biological, adoptive, or stepparents) d) Siblings e) Parents -in-law"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "ea387ed4551fc4aa",
+      "intent": "policy_bereavement_family",
+      "question": "What if the employee has a domestic partner?",
+      "utterances": [
+        "Is a domestic partner included under bereavement leave?",
+        "Does domestic partnership count?",
+        "Is a partner eligible?"
+      ],
+      "answer": "Yes. A domestic partner is treated as an immediate family member under the bereavement leave policy.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "domestic partner"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Definitions"
+      ],
+      "evidence": {
+        "chunk_id": "49d73bbf3be76ef8",
+        "page": 3,
+        "section": "3. Definitions",
+        "quote": "i. Immediate family member : For the purposes of this policy, \"immediate family member\" includes: a) Spouse or domestic partner b) Children (biological, adoptive, or stepchildren) c) Parents (biological, adoptive, or stepparents) d) Siblings e) Parents -in-law"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "e5d0b1f5fca8af0e",
+      "intent": "policy_bereavement_entitlement",
+      "question": "How many days of bereavement leave are allowed?",
+      "utterances": [
+        "How much bereavement leave is an employee entitled to?",
+        "What is the leave duration?",
+        "How many consecutive working days are allowed?"
+      ],
+      "answer": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave after the death of an immediate family member.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "bereavement",
+        "entitlement"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "2688c0ea4597e88b",
+        "page": 3,
+        "section": "4. Leave Entitlement",
+        "quote": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave in the event of the death of an immediate family member."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "70ab76d98f5706ce",
+      "intent": "policy_bereavement_entitlement",
+      "question": "Is bereavement leave paid?",
+      "utterances": [
+        "Is bereavement leave paid leave?",
+        "Is it fully paid?",
+        "Are bereavement days compensated?"
+      ],
+      "answer": "Yes. Bereavement leave is paid leave and is provided to eligible employees for the approved period.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "bereavement",
+        "paid leave"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "2688c0ea4597e88b",
+        "page": 3,
+        "section": "4. Leave Entitlement",
+        "quote": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave in the event of the death of an immediate family member."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "a124d4e9744d3a95",
+      "intent": "policy_bereavement_application",
+      "question": "How do employees apply for bereavement leave?",
+      "utterances": [
+        "How do I request bereavement leave?",
+        "What is the application process?",
+        "Who should be informed when a family member passes away?"
+      ],
+      "answer": "Employees should inform their immediate manager and HR as soon as possible. Requests may be made verbally or by email and should be recorded in the HRMS.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "request",
+        "hrms"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Application Process"
+      ],
+      "evidence": {
+        "chunk_id": "cf73c11b03327b81",
+        "page": 3,
+        "section": "5. Leave Application Process",
+        "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "152d51ecdac40902",
+      "intent": "policy_bereavement_application",
+      "question": "What information is needed for a bereavement leave request?",
+      "utterances": [
+        "What documents are needed for bereavement leave?",
+        "Do I need to send proof?",
+        "What should be shared with HR?"
+      ],
+      "answer": "The employee should notify the manager and HR immediately. The leave can be requested verbally or by email, and the approved leave is then entered in the HRMS. HR may request relevant documentation when needed.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "documentation"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Application Process"
+      ],
+      "evidence": {
+        "chunk_id": "cf73c11b03327b81",
+        "page": 3,
+        "section": "5. Leave Application Process",
+        "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "953e38bf24ad08f8",
+      "intent": "policy_bereavement_documentation",
+      "question": "What documentation may be required for bereavement leave?",
+      "utterances": [
+        "Do I need a death certificate for bereavement leave?",
+        "Is proof required?",
+        "What paperwork is needed?"
+      ],
+      "answer": "The policy requires employees to inform HR and their manager promptly. HR may request documentation such as a death certificate or other evidence when necessary.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "documentation",
+        "hr"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Application Process"
+      ],
+      "evidence": {
+        "chunk_id": "cf73c11b03327b81",
+        "page": 3,
+        "section": "5. Leave Application Process",
+        "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "8032be7497fda299",
+      "intent": "policy_bereavement_documentation",
+      "question": "Can bereavement leave be requested without written documentation?",
+      "utterances": [
+        "Can bereavement leave be requested by email only?",
+        "Is a written form required?",
+        "Can I request verbally?"
+      ],
+      "answer": "Yes. The leave request may be made verbally or by email, and the final approval and recording are completed in the HRMS.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "request",
+        "email"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Application Process"
+      ],
+      "evidence": {
+        "chunk_id": "cf73c11b03327b81",
+        "page": 3,
+        "section": "5. Leave Application Process",
+        "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "12fc8e1aab3ae057",
+      "intent": "policy_bereavement_combination",
+      "question": "Can bereavement leave be combined with other leave?",
+      "utterances": [
+        "Can bereavement leave be combined with earned leave?",
+        "Can it be combined with casual leave?",
+        "Is additional leave allowed with approval?"
+      ],
+      "answer": "Yes. Bereavement leave may be combined with other leave types such as earned or casual leave, subject to approval when the employee needs additional time off.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "leave",
+        "combination"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Combination"
+      ],
+      "evidence": {
+        "chunk_id": "66d1022122538b06",
+        "page": 3,
+        "section": "6. Leave Combination",
+        "quote": "Bereavement leave may be combined with other forms of leave (earned leave, casual leave, etc.) upon approval if the employee requires additional time off."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "867351454df5b668",
+      "intent": "policy_bereavement_combination",
+      "question": "What happens if an employee needs more time than the standard bereavement leave?",
+      "utterances": [
+        "Can I extend bereavement leave?",
+        "What if I need more than 5 days?",
+        "Can I combine leave to cover more time?"
+      ],
+      "answer": "The policy allows additional leave to be combined with other approved leave types if the employee requires more time and management approves it.",
+      "answer_mode": "fixed",
+      "tags": [
+        "bereavement",
+        "extension",
+        "approval"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Combination"
+      ],
+      "evidence": {
+        "chunk_id": "66d1022122538b06",
+        "page": 3,
+        "section": "6. Leave Combination",
+        "quote": "Bereavement leave may be combined with other forms of leave (earned leave, casual leave, etc.) upon approval if the employee requires additional time off."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "5539edf3e6e20fd1",
+      "intent": "policy_parental_maternity_eligibility",
+      "question": "What is the maternity leave eligibility requirement?",
+      "utterances": [
+        "What is required to qualify for maternity leave?",
+        "How many days of service are needed?",
+        "When can a woman apply for maternity leave?"
+      ],
+      "answer": "A female employee must complete at least 80 days of continuous service in the 12 months before the expected date of delivery to qualify for maternity leave.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "eligibility",
+        "leave"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.1 Eligibility"
+      ],
+      "evidence": {
+        "chunk_id": "2a0abf07e7a2fa78",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.1 Eligibility:",
+        "quote": "A female employee is entitled to maternity leave if she has completed a minimum of 80 days of continuous service with the organization in the 12 months preceding the expected date of delivery, as per the Maternity Benefit Act, 1961."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "ae0b40db00a88454",
+      "intent": "policy_parental_maternity_eligibility",
+      "question": "Is there a minimum service condition for maternity leave?",
+      "utterances": [
+        "Do I need 80 days before maternity leave?",
+        "Is continuous service required?",
+        "What is the service threshold?"
+      ],
+      "answer": "Yes. The employee must have completed a minimum of 80 days of continuous service with the organization in the 12 months before the expected date of delivery.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "service",
+        "continuous service"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.1 Eligibility"
+      ],
+      "evidence": {
+        "chunk_id": "2a0abf07e7a2fa78",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.1 Eligibility:",
+        "quote": "A female employee is entitled to maternity leave if she has completed a minimum of 80 days of continuous service with the organization in the 12 months preceding the expected date of delivery, as per the Maternity Benefit Act, 1961."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "59d8d0a000ae270d",
+      "intent": "policy_parental_maternity_entitlement",
+      "question": "How much maternity leave is available?",
+      "utterances": [
+        "How many weeks of maternity leave are allowed?",
+        "What is the maternity leave entitlement?",
+        "For the first two surviving children, how much paid leave is available?"
+      ],
+      "answer": "Eligible employees receive up to 26 weeks of paid maternity leave for the first two surviving children, and up to 12 weeks when the employee has two or more surviving children.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "entitlement",
+        "weeks"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.2 Maternity Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "315b7103cc9f5ac3",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.2 Maternity Leave Entitlement:",
+        "quote": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "3f91e3dd532fbc76",
+      "intent": "policy_parental_maternity_entitlement",
+      "question": "What is the maternity leave entitlement for adoption or surrogacy?",
+      "utterances": [
+        "Are adoption mothers eligible for maternity leave?",
+        "Is maternity leave available for commissioning mothers?",
+        "How much leave is allowed for adopted children?"
+      ],
+      "answer": "Adoption and commissioning mothers may be eligible for 12 weeks of paid maternity leave under the policy, subject to the applicable conditions.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "adoption",
+        "commissioning mother"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.2 Maternity Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "315b7103cc9f5ac3",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.2 Maternity Leave Entitlement:",
+        "quote": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "0d1ad5f3a9ebb15a",
+      "intent": "policy_parental_maternity_application",
+      "question": "How is maternity leave applied for?",
+      "utterances": [
+        "How do employees apply for maternity leave?",
+        "What is the documentation process?",
+        "What should be notified before maternity leave?"
+      ],
+      "answer": "Employees should notify the organization and submit the required documentation in the HR process. The policy also covers adoption and commissioning mothers as applicable.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "application",
+        "documentation"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.5 Maternity Leave Application"
+      ],
+      "evidence": {
+        "chunk_id": "c72a9f012a31c45a",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
+        "quote": "permitted under applicable law."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "cce86985d6ef8ea7",
+      "intent": "policy_parental_maternity_application",
+      "question": "Can maternity leave be taken in parts?",
+      "utterances": [
+        "Is maternity leave allowed in parts?",
+        "Can it be split?",
+        "Can maternity leave be availed in multiple blocks?"
+      ],
+      "answer": "No. The policy states that maternity leave should be taken in one continuous stretch and cannot be availed in parts.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "leave",
+        "continuous"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.5 Maternity Leave Application"
+      ],
+      "evidence": {
+        "chunk_id": "c72a9f012a31c45a",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
+        "quote": "permitted under applicable law."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "a21348a609f5feea",
+      "intent": "policy_parental_maternity_benefits",
+      "question": "Are there any benefits during maternity leave?",
+      "utterances": [
+        "What benefits are available during maternity leave?",
+        "Is maternity leave fully paid?",
+        "Are there special benefits?"
+      ],
+      "answer": "The policy provides paid maternity leave and specific benefits depending on the applicable entitlement and the employee’s family situation.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "benefits",
+        "paid leave"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.4 Benefits"
+      ],
+      "evidence": {
+        "chunk_id": "504a27cb5620e8a4",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:",
+        "quote": "During approved maternity leave – i. Salary shall be paid in accordance with applicable law and company payroll practices; Continuity of service shall be maintained and statutory and eligible employment benefits shall continue as applicable. ii. Medical Bonus: Every woman entitled to maternity benefit under this Act shall also be entitled to receive a medical bonus of three thous and five hundred rupees, if no pre -natal confinement and post -natal care is provided for by the employer free of charge. This is one -time medical bonus. iii. Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses. b. Employees are advised to consult with HR for further information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "e54a1d87ab31f11e",
+      "intent": "policy_parental_maternity_benefits",
+      "question": "What happens if a pregnancy ends in miscarriage or medical termination?",
+      "utterances": [
+        "Does the policy cover miscarriage leave?",
+        "Is there leave after medical termination?",
+        "How much leave is available after miscarriage?"
+      ],
+      "answer": "Employees who experience a miscarriage or medical termination of pregnancy may be eligible for six weeks of paid leave after the event, subject to medical certification and legal requirements.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "miscarriage",
+        "medical termination"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.4 Benefits"
+      ],
+      "evidence": {
+        "chunk_id": "504a27cb5620e8a4",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:",
+        "quote": "During approved maternity leave – i. Salary shall be paid in accordance with applicable law and company payroll practices; Continuity of service shall be maintained and statutory and eligible employment benefits shall continue as applicable. ii. Medical Bonus: Every woman entitled to maternity benefit under this Act shall also be entitled to receive a medical bonus of three thous and five hundred rupees, if no pre -natal confinement and post -natal care is provided for by the employer free of charge. This is one -time medical bonus. iii. Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses. b. Employees are advised to consult with HR for further information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "e0ff290c477451ad",
+      "intent": "policy_parental_paternity_entitlement",
+      "question": "How much paternity leave is available?",
+      "utterances": [
+        "How many days of paternity leave are allowed?",
+        "How much paid leave is given for a new child?",
+        "What is the paternity entitlement?"
+      ],
+      "answer": "Eligible permanent male employees may receive 10 working days of paternity leave, which is exclusive of public holidays and other paid leave.",
+      "answer_mode": "fixed",
+      "tags": [
+        "paternity",
+        "entitlement",
+        "leave"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4.1 Eligibility",
+        "4.2 Paternity Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "4cfded1b889ad9e4",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.2 Paternity Leave Entitlement",
+        "quote": "Eligible employees are entitled to 10 working days of paternity leave, which is exclusive of public holidays and other paid time off."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity"
+    },
+    {
+      "id": "ea93bdb89a8f5ba1",
+      "intent": "policy_parental_paternity_entitlement",
+      "question": "When should paternity leave be taken?",
+      "utterances": [
+        "Can paternity leave be used after some time?",
+        "Is it flexible?",
+        "When is paternity leave taken?"
+      ],
+      "answer": "Paternity leave is generally taken as a continuous block and must typically be used within six months of the child’s birth.",
+      "answer_mode": "fixed",
+      "tags": [
+        "paternity",
+        "timing",
+        "child birth"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4.1 Eligibility",
+        "4.2 Paternity Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "4cfded1b889ad9e4",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.2 Paternity Leave Entitlement",
+        "quote": "Eligible employees are entitled to 10 working days of paternity leave, which is exclusive of public holidays and other paid time off."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity"
+    },
+    {
+      "id": "6614e23b68de3a6b",
+      "intent": "policy_parental_paternity_application",
+      "question": "How is paternity leave applied for?",
+      "utterances": [
+        "How do employees apply for paternity leave?",
+        "What is the application process?",
+        "What is required to use paternity leave?"
+      ],
+      "answer": "The employee must apply through the company process and take the approved leave within the policy time window, typically as a continuous block.",
+      "answer_mode": "fixed",
+      "tags": [
+        "paternity",
+        "application",
+        "process"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4.3 Usage",
+        "4.5 Paternity Leave Application"
+      ],
+      "evidence": {
+        "chunk_id": "ba69f3ee9f51d546",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.3 Usage",
+        "quote": "Leave must be taken as one continuous block within six months of the child’s birth ."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity"
+    },
+    {
+      "id": "f14952e2d124b32f",
+      "intent": "policy_parental_paternity_application",
+      "question": "Is paternity leave continuous or can it be split?",
+      "utterances": [
+        "Can paternity leave be split?",
+        "Is it taken as one block?",
+        "Can it be partial?"
+      ],
+      "answer": "The policy generally expects paternity leave to be taken as one continuous block, rather than spread out across multiple periods.",
+      "answer_mode": "fixed",
+      "tags": [
+        "paternity",
+        "continuous",
+        "block"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4.3 Usage",
+        "4.5 Paternity Leave Application"
+      ],
+      "evidence": {
+        "chunk_id": "ba69f3ee9f51d546",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.3 Usage",
+        "quote": "Leave must be taken as one continuous block within six months of the child’s birth ."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity"
+    },
+    {
+      "id": "cf937d1934f2139f",
+      "intent": "policy_posh_scope",
+      "question": "What is the scope of the POSH policy?",
+      "utterances": [
+        "What does the POSH policy cover?",
+        "What workplace issues are included?",
+        "What is the scope of sexual harassment prevention?"
+      ],
+      "answer": "The POSH policy covers the prevention and redressal of sexual harassment at the workplace, including definitions, committee roles, and complaint handling procedures.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "workplace",
+        "scope"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Applicability",
+        "Sexual Harassment"
+      ],
+      "evidence": {
+        "chunk_id": "6af49bb7879d5ab4",
+        "page": 3,
+        "section": "2. Applicability & Effective Date",
+        "quote": "This Policy extends to all employees of Emergys and is deemed to be incorporated in the service conditions of all employees. This Policy shall be binding not only on the employees of Emergys but also on any third parties suspected of Sexual Harassment on t he premises of the Emergys or at any location over which the Emergys has control including sites occupied by clients. This Policy shall be applicable to all the subsidiaries, associates, affiliates, group companies, sister concerns, holding companies (coll ectively “Affiliates” ) of the Emergys."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "440a08f567a20a32",
+      "intent": "policy_posh_scope",
+      "question": "Does the policy apply to all employees?",
+      "utterances": [
+        "Is the POSH policy applicable to all employees?",
+        "Does the policy cover interns and contractors?",
+        "Who falls under the policy?"
+      ],
+      "answer": "The policy applies across the workplace and covers employees, contractors, interns, and other relevant persons as described by the organization’s policy framework.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "applicability",
+        "employees"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Applicability",
+        "Sexual Harassment"
+      ],
+      "evidence": {
+        "chunk_id": "6af49bb7879d5ab4",
+        "page": 3,
+        "section": "2. Applicability & Effective Date",
+        "quote": "This Policy extends to all employees of Emergys and is deemed to be incorporated in the service conditions of all employees. This Policy shall be binding not only on the employees of Emergys but also on any third parties suspected of Sexual Harassment on t he premises of the Emergys or at any location over which the Emergys has control including sites occupied by clients. This Policy shall be applicable to all the subsidiaries, associates, affiliates, group companies, sister concerns, holding companies (coll ectively “Affiliates” ) of the Emergys."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "04bd5492fa8eb862",
+      "intent": "policy_posh_committee",
+      "question": "What is the role of the POSH committee?",
+      "utterances": [
+        "Who makes up the POSH committee?",
+        "What does the committee do?",
+        "What is the internal committee responsible for?"
+      ],
+      "answer": "The POSH committee is responsible for handling complaints, overseeing inquiries, and ensuring the policy is implemented fairly and confidentially.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "committee",
+        "inquiry"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Composition of the Internal Committee"
+      ],
+      "evidence": {
+        "chunk_id": "fca117063435db79",
+        "page": 4,
+        "section": "4. Composition of the Internal Committee",
+        "quote": "An internal committee (the ‘Committee’) has been constituted by the management of the Company to consider and redress complaints and allegations of Sexual Harassment. The Presiding Officer and members of the Committee are as follows: For Emergys Solutions Private Limited : # Name Department Role E-mail ID"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "344f4b51fa47dc58",
+      "intent": "policy_posh_committee",
+      "question": "What is the tenure of committee members?",
+      "utterances": [
+        "How long do committee members serve?",
+        "What is the term of the committee?",
+        "How long are committee positions valid?"
+      ],
+      "answer": "Committee members serve a three-year term from the date of appointment, unless they are disqualified under the policy.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "committee",
+        "tenure"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Composition of the Internal Committee"
+      ],
+      "evidence": {
+        "chunk_id": "fca117063435db79",
+        "page": 4,
+        "section": "4. Composition of the Internal Committee",
+        "quote": "An internal committee (the ‘Committee’) has been constituted by the management of the Company to consider and redress complaints and allegations of Sexual Harassment. The Presiding Officer and members of the Committee are as follows: For Emergys Solutions Private Limited : # Name Department Role E-mail ID"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "8540c810d322d422",
+      "intent": "policy_posh_complaint",
+      "question": "How can an employee file a POSH complaint?",
+      "utterances": [
+        "How do I complain under POSH?",
+        "Who can receive a complaint?",
+        "What is the complaint filing process?"
+      ],
+      "answer": "An aggrieved person may submit a written and signed complaint within three months of the incident or within three months of the last incident in a series of incidents.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "complaint",
+        "process"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Complaint Mechanism",
+        "Documentation"
+      ],
+      "evidence": {
+        "chunk_id": "b189e5acdc186130",
+        "page": 5,
+        "section": "7. Complaint Mechanism",
+        "quote": "the circumstances were such which prevented the Employee from filing a complaint within three months from the date of the occurrence of the incident."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "e1a639b009fd20d6",
+      "intent": "policy_posh_complaint",
+      "question": "Where should a POSH complaint be submitted?",
+      "utterances": [
+        "Who receives POSH complaints?",
+        "Is HR the place to report?",
+        "Can a committee member receive the complaint?"
+      ],
+      "answer": "The complaint can be submitted directly to a committee member or to HR, which then forwards it to the relevant committee.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "complaint",
+        "reporting"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Complaint Mechanism",
+        "Documentation"
+      ],
+      "evidence": {
+        "chunk_id": "a23c3ed2de0909d3",
+        "page": 6,
+        "section": "7. Complaint Mechanism",
+        "quote": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "5a8324cf48092df7",
+      "intent": "policy_posh_inquiry",
+      "question": "Who can file a complaint on behalf of someone who cannot write it themselves?",
+      "utterances": [
+        "Who can file on behalf of the complainant?",
+        "Can a friend or legal heir submit it?",
+        "Can someone else complain for them?"
+      ],
+      "answer": "A legal heir, relative, friend, colleague, or any person with knowledge of the incident may file the complaint on behalf of the aggrieved person with the person’s written consent.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "complaint",
+        "third party"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Enquiry Process",
+        "Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "98912f434c46daec",
+        "page": 6,
+        "section": "8. Enquiry Process",
+        "quote": "confidentiality cannot be maintained include circumstances when the law requires disclosure of information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "305fd378218f93d7",
+      "intent": "policy_posh_inquiry",
+      "question": "What if the complaint is made by someone with a disability or inability to write?",
+      "utterances": [
+        "Can the committee assist someone who cannot write?",
+        "Is assistance provided to the complainant?",
+        "What if the person cannot draft the complaint?"
+      ],
+      "answer": "Yes. If the aggrieved person is unable to write the complaint, the committee may assist them in preparing and filing it.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "accessibility",
+        "assistance"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Enquiry Process",
+        "Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "0017a74d46034c7a",
+        "page": 7,
+        "section": "10. Investigation",
+        "quote": "i. Subject to outcome of the Conciliation, the Committee shall immediately proceed with the inquiry under the Act and communicate the same to the Complainant and the Respondent. ii. The Committee shall prepare and hand over the copy of the complaint within 7 days to the person against whom the complaint is made and give an opportunity by issuing a show cause notice to submit a written explanation within seven ( 7) days of receipt of the same. iii. The Committee shall hand over a copy of the written explanation submitted by the Respondent, to the Complainant. iv. If the Complainant or the person against whom the complaint is made desires any witness(es) to be called, they shall communicate in writing to the Committee the names of such witness(es). v. If the Complainant desires to tender any documents by way of evidence before the Committee, he/she/they shall submit such documents in original. Similarly, if the person against whom the complaint is made desires to tender any documents in evidence before the Committee, he/she/they shall submit such documents in original. Both"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "38a864515e5b5054",
+      "intent": "policy_posh_protection",
+      "question": "What protections are provided under the POSH policy?",
+      "utterances": [
+        "How is the complainant protected?",
+        "What safeguards exist?",
+        "Are there confidentiality protections?"
+      ],
+      "answer": "The POSH policy provides workplace protection, a fair inquiry process, confidentiality where required, and the right to a complaint process free from retaliation or bias.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "protection",
+        "confidentiality"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Non-Retaliation"
+      ],
+      "evidence": {
+        "chunk_id": "0c6109886aa5f3e3",
+        "page": 8,
+        "section": "13. Non-Retaliation Policy",
+        "quote": "Retaliation against an Employee who has complained about sexual or other discriminatory harassment or against an individual who has cooperated with an investigation of such harassment is strictly prohibited within the Company."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "f7cd94bb83aa83f2",
+      "intent": "policy_posh_protection",
+      "question": "What is the rule for false or malicious complaints?",
+      "utterances": [
+        "What happens if a complaint is false?",
+        "Is there punishment for malicious complaints?",
+        "Can false allegations trigger action?"
+      ],
+      "answer": "The policy states that false or malicious complaints made with the intent to harm someone may lead to disciplinary action.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "false complaint",
+        "disciplinary action"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Non-Retaliation"
+      ],
+      "evidence": {
+        "chunk_id": "0c6109886aa5f3e3",
+        "page": 8,
+        "section": "13. Non-Retaliation Policy",
+        "quote": "Retaliation against an Employee who has complained about sexual or other discriminatory harassment or against an individual who has cooperated with an investigation of such harassment is strictly prohibited within the Company."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "bc363fc8bbda109b",
+      "intent": "policy_posh_appeal",
+      "question": "Is there an appeal or review mechanism under the POSH policy?",
+      "utterances": [
+        "How can the outcome be challenged?",
+        "Is there a grievance mechanism?",
+        "Can the decision be appealed?"
+      ],
+      "answer": "The policy includes the processes and safeguards needed for fair inquiry and resolution, and any employee may use the relevant company procedures for a proper review.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "appeal",
+        "review"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Appeal",
+        "Disciplinary Action"
+      ],
+      "evidence": {
+        "chunk_id": "545bf3ef88badb50",
+        "page": 9,
+        "section": "14. Appeal",
+        "quote": "Any party not satisfied or further aggrieved by the implementation or non -implementation of recommendations made, may appeal to the appellate authority in accordance with the Act and rules, within 90 days of the recommendations being communicated."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "6594972bb70e52ec",
+      "intent": "policy_posh_appeal",
+      "question": "What happens after the complaint is investigated?",
+      "utterances": [
+        "What is the outcome after the inquiry?",
+        "What happens after the committee reviews the matter?",
+        "How are findings handled?"
+      ],
+      "answer": "After the investigation, the committee evaluates the matter and takes appropriate action in line with the policy, including remedial and disciplinary steps if warranted.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "inquiry",
+        "outcome"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Appeal",
+        "Disciplinary Action"
+      ],
+      "evidence": {
+        "chunk_id": "0640aae878247389",
+        "page": 8,
+        "section": "11. Disciplinary Action:",
+        "quote": "Where any person is found guilty of Sexual Harassment by the Committee, appropriate disciplinary action may include: i. warning or reprimand, ii. transfer, iii. withholding of increment, bonus or promotion, iv. suspension or terminating from employment, or v. any other action as may deem fit to the Committee members. The disciplinary action shall be in addition to any legal recourse that may be sought by the Complainant."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "07533cc7fcdb06c6",
+      "intent": "policy_general_leave_entitlement",
+      "question": "What are the general leave entitlements?",
+      "utterances": [
+        "How many privileged and casual leaves are employees entitled to?",
+        "What are the general leave benefits?",
+        "What leave days are available to permanent employees?"
+      ],
+      "answer": "Permanent employees and contractors are entitled to 18 Privileged Leaves and 8 Casual Leaves per calendar year. Interns are entitled to 1 leave per month during the internship period.",
+      "answer_mode": "fixed",
+      "tags": [
+        "general leave",
+        "entitlement",
+        "leaves"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Eligibility / Scope"
+      ],
+      "evidence": {
+        "chunk_id": "1de8aaa85836b174",
+        "page": 1,
+        "section": "Eligibility / Scope",
+        "quote": "This policy applies to leave of normal nature for all categories of employees, including permanent employees, contractual staff, and interns, as detailed below:"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "da52b60d468ef595",
+      "intent": "policy_general_leave_entitlement",
+      "question": "How many days of annual leave do permanent employees get?",
+      "utterances": [
+        "What is the annual leave allowance?",
+        "How many privileged leave days do employees receive?",
+        "What are the leave days in the year?"
+      ],
+      "answer": "Permanent employees and contractors receive 18 Privileged Leaves and 8 Casual Leaves each calendar year as part of their general leave entitlement.",
+      "answer_mode": "fixed",
+      "tags": [
+        "general leave",
+        "privileged leave",
+        "casual leave"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Eligibility / Scope"
+      ],
+      "evidence": {
+        "chunk_id": "1de8aaa85836b174",
+        "page": 1,
+        "section": "Eligibility / Scope",
+        "quote": "This policy applies to leave of normal nature for all categories of employees, including permanent employees, contractual staff, and interns, as detailed below:"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "eafd9cfb9dee654e",
+      "intent": "policy_general_leave_privilege",
+      "question": "What is the rule for leave without pay across a weekend?",
+      "utterances": [
+        "How is leave without pay treated over a weekend?",
+        "Does Friday to Monday count as LWP?",
+        "What is the sandwich rule for leave?"
+      ],
+      "answer": "If an employee takes leave from Friday through Monday, the weekend days are also treated as leave without pay. This is the sandwich rule for leave without pay.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "LWP",
+        "weekend"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Privilege Leave"
+      ],
+      "evidence": {
+        "chunk_id": "9352dbafe1c94664",
+        "page": 1,
+        "section": "• Privilege Leave (PL)",
+        "quote": "➢ May be availed without specific restrictions, subject to approval. ➢ Eligible for carry -forward to the subsequent calendar year. ➢ A maximum of 20 PLs can be carried forward to the subsequent calendar year."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "5eb8e15ef59ee81b",
+      "intent": "policy_general_leave_privilege",
+      "question": "Does leave without pay count over the weekend?",
+      "utterances": [
+        "Does the weekend count as LWP?",
+        "Are weekend days included when leave spans Friday to Monday?",
+        "Is there an LWP sandwich rule?"
+      ],
+      "answer": "Yes. When leave spans a weekend, the weekend days are also treated as leave without pay under the policy’s sandwich rule.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "weekend",
+        "LWP"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Privilege Leave"
+      ],
+      "evidence": {
+        "chunk_id": "9352dbafe1c94664",
+        "page": 1,
+        "section": "• Privilege Leave (PL)",
+        "quote": "➢ May be availed without specific restrictions, subject to approval. ➢ Eligible for carry -forward to the subsequent calendar year. ➢ A maximum of 20 PLs can be carried forward to the subsequent calendar year."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "ffd6c3eb79f00a44",
+      "intent": "policy_general_leave_casual",
+      "question": "How many casual leaves are allowed?",
+      "utterances": [
+        "What is the casual leave entitlement?",
+        "How many CLs do employees get?",
+        "Are casual leaves cumulative?"
+      ],
+      "answer": "Permanent employees and contractors are entitled to 8 Casual Leaves per calendar year. Casual leave is non-cumulative and cannot be carried forward.",
+      "answer_mode": "fixed",
+      "tags": [
+        "casual leave",
+        "carry forward",
+        "leave"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Casual Leave"
+      ],
+      "evidence": {
+        "chunk_id": "9bbb6d911f1a057b",
+        "page": 1,
+        "section": "• Casual Leave (CL)",
+        "quote": "➢ Intended to meet extraordinary or unforeseen circumstances ."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "d380f82495e97929",
+      "intent": "policy_general_leave_casual",
+      "question": "Can casual leave be carried forward to the next year?",
+      "utterances": [
+        "Can CL be carried forward?",
+        "Is casual leave cumulative?",
+        "Is there a carryover rule for casual leave?"
+      ],
+      "answer": "No. Casual Leave is non-cumulative and cannot be carried forward to the next year.",
+      "answer_mode": "fixed",
+      "tags": [
+        "casual leave",
+        "carry forward"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Casual Leave"
+      ],
+      "evidence": {
+        "chunk_id": "b8d4feab39007c62",
+        "page": 2,
+        "section": "• Casual Leave (CL)",
+        "quote": "➢ They are emergent and incidental in nature. ➢ Limited to a maximum of two (2) consecutive CLs per month. ➢ CLs cannot be combined with other types of leave. ➢ CLs are non -cumulative and cannot be carried forward to the next year."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "a184b5963af90233",
+      "intent": "policy_general_leave_approval",
+      "question": "How should leave be requested and approved?",
+      "utterances": [
+        "How do employees request leave?",
+        "What is the notice requirement for planned leave?",
+        "How is emergency leave handled?"
+      ],
+      "answer": "Leaves must be requested through the HRMS. Planned leave should be approved in advance, and emergency or unplanned leave is subject to approval based on business requirements.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "approval",
+        "HRMS"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Leave Planning and Approval"
+      ],
+      "evidence": {
+        "chunk_id": "ed334e466d9e521e",
+        "page": 2,
+        "section": "• Leave Planning and Approval",
+        "quote": "➢ All leave s must be planned in advance in consultation with the respective Team Lead or Manager. ➢ Unplanned or emergency leave may be subject to rejection based on business requirements. ➢ Leave approval is contingent upon ongoing business priorities. ➢ Associates deployed at client locations must obtain written approval from the designated Client Manager."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "498658d4e067511d",
+      "intent": "policy_general_leave_approval",
+      "question": "What is the approval process for planned leave?",
+      "utterances": [
+        "How do I get planned leave approved?",
+        "What is the approval requirement for annual leave?",
+        "Must leave be approved in advance?"
+      ],
+      "answer": "Planned leave should be requested and approved in advance through the HRMS, while emergency and unplanned leave are considered based on business needs.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "planned leave",
+        "approval"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Leave Planning and Approval"
+      ],
+      "evidence": {
+        "chunk_id": "ed334e466d9e521e",
+        "page": 2,
+        "section": "• Leave Planning and Approval",
+        "quote": "➢ All leave s must be planned in advance in consultation with the respective Team Lead or Manager. ➢ Unplanned or emergency leave may be subject to rejection based on business requirements. ➢ Leave approval is contingent upon ongoing business priorities. ➢ Associates deployed at client locations must obtain written approval from the designated Client Manager."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "2a88ab382050d4f8",
+      "intent": "policy_general_leave_credit",
+      "question": "Are leave balances carried forward between periods?",
+      "utterances": [
+        "Can leave be carried forward?",
+        "Is there a credit balance system?",
+        "Can unused leave be retained?"
+      ],
+      "answer": "Leave balances are governed by the company policy and specific leave types; casual leave is non-cumulative, while other leave rules may differ based on policy conditions.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "carry forward",
+        "credit"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Leave Credit Based"
+      ],
+      "evidence": {
+        "chunk_id": "f9a411752465ba9b",
+        "page": 2,
+        "section": "• Leave Credit Based on Date of Joining",
+        "quote": "➢ Official HRMS system ca lculates the leave credit s on pro -rata basis ."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "fe7919106bbffc93",
+      "intent": "policy_general_leave_credit",
+      "question": "What is the leave policy for interns?",
+      "utterances": [
+        "How much leave can interns take?",
+        "Are interns eligible for leave?",
+        "What is the intern leave rule?"
+      ],
+      "answer": "Interns are eligible for 1 leave per month during the internship period. Unused leaves may be treated according to the policy’s applicable rules.",
+      "answer_mode": "fixed",
+      "tags": [
+        "interns",
+        "leave",
+        "policy"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Leave Credit Based"
+      ],
+      "evidence": {
+        "chunk_id": "f9a411752465ba9b",
+        "page": 2,
+        "section": "• Leave Credit Based on Date of Joining",
+        "quote": "➢ Official HRMS system ca lculates the leave credit s on pro -rata basis ."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "2e352aac0f7e9ab4",
+      "intent": "policy_referral_eligibility",
+      "question": "Who is eligible to refer a candidate?",
+      "utterances": [
+        "Who can make an employee referral?",
+        "What are the conditions for referral eligibility?",
+        "What candidates can be referred?"
+      ],
+      "answer": "An employee may refer any candidate who meets the qualifications for an open position and has not applied to the company in the six months before the referral.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "eligibility",
+        "hiring"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Scope / Eligibility",
+        "Referral Criteria"
+      ],
+      "evidence": {
+        "chunk_id": "8b5ef0b05e41630f",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.1 Referral Criteria",
+        "quote": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "915b5ab24abdd676",
+      "intent": "policy_referral_eligibility",
+      "question": "Is there a restriction on the number of referrals an employee may submit?",
+      "utterances": [
+        "Can an employee refer multiple people?",
+        "Is there a cap on referrals?",
+        "How many referrals are allowed?"
+      ],
+      "answer": "No. There is no restriction on the number of referrals an eligible employee may submit under the policy.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "limit",
+        "number"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Scope / Eligibility",
+        "Referral Criteria"
+      ],
+      "evidence": {
+        "chunk_id": "8b5ef0b05e41630f",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.1 Referral Criteria",
+        "quote": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "8aa1250eac9a7991",
+      "intent": "policy_referral_submission",
+      "question": "How are employee referrals submitted and paid?",
+      "utterances": [
+        "How do employees submit referrals?",
+        "When is referral bonus paid?",
+        "What is the required service period before payout?"
+      ],
+      "answer": "The referral bonus is paid after the referred candidate completes six months of continuous employment and successfully completes probation, while still remaining an active employee at payout.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "bonus",
+        "payout"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Referral Submission Process"
+      ],
+      "evidence": {
+        "chunk_id": "d245555dd125ce87",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.2 Referral Submission Process",
+        "quote": "Referrals may be submitted through either of the following methods: a) Option A: Email the referred candidate’s updated CV to the applicable referral email ID specified in Section 4 .3, clearly marking the submission as a referral. b) Option B: The referred candidate may directly email their CV to the applicable referral email ID specified in Section 4.3, explicitly including the name and employee ID of the referring employee."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "2b84701c68cdcebc",
+      "intent": "policy_referral_submission",
+      "question": "What is the employee referral process?",
+      "utterances": [
+        "How is a referral submitted?",
+        "What happens after I refer someone?",
+        "What is the referral workflow?"
+      ],
+      "answer": "Employees can refer candidates who meet the eligibility criteria. Once the candidate is selected and joins the company, the referrer becomes eligible for the referral bonus under the policy conditions.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "process",
+        "workflow"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Referral Submission Process"
+      ],
+      "evidence": {
+        "chunk_id": "d245555dd125ce87",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.2 Referral Submission Process",
+        "quote": "Referrals may be submitted through either of the following methods: a) Option A: Email the referred candidate’s updated CV to the applicable referral email ID specified in Section 4 .3, clearly marking the submission as a referral. b) Option B: The referred candidate may directly email their CV to the applicable referral email ID specified in Section 4.3, explicitly including the name and employee ID of the referring employee."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "675662c16d044dac",
+      "intent": "policy_referral_contacts",
+      "question": "Who should I contact for referral queries?",
+      "utterances": [
+        "Who can answer referral questions?",
+        "Which department handles referrals?",
+        "Who should I contact for referral support?"
+      ],
+      "answer": "Employees may contact the relevant HR or Talent Acquisition contact for guidance on the referral process and eligibility requirements.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "contact",
+        "HR"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Company -wise Referral Email"
+      ],
+      "evidence": {
+        "chunk_id": "2045960ca053ffa2",
+        "page": 4,
+        "section": "4. Terms and Conditions / 4.3 Company -wise Referral Email IDs",
+        "quote": "Employees shall submit referrals to the designated email ID corresponding to the respective company for which the candidate is being referred, as provided below: Company Name Referral Email ID Emergys Labs Pvt. Ltd., hiring@emergys.com Emergys Sherpa Technologies Pvt. Ltd., hiring@emergys.com Emergys Solutions Pvt. Ltd., hr.emergyssolutions@emergys.com Emergys Software Pvt. Ltd., recruitment.india@emergys.com"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "04dede7529477158",
+      "intent": "policy_referral_contacts",
+      "question": "Are there internal roles excluded from referral payouts?",
+      "utterances": [
+        "Who is not eligible for referral bonus?",
+        "Are hiring managers excluded?",
+        "Are BU heads eligible?"
+      ],
+      "answer": "Talent Acquisition personnel, hiring managers, department heads, and certain BU heads are not eligible for referral bonuses in positions under their direct or indirect reporting structure.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "excluded roles",
+        "HR"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Company -wise Referral Email"
+      ],
+      "evidence": {
+        "chunk_id": "2045960ca053ffa2",
+        "page": 4,
+        "section": "4. Terms and Conditions / 4.3 Company -wise Referral Email IDs",
+        "quote": "Employees shall submit referrals to the designated email ID corresponding to the respective company for which the candidate is being referred, as provided below: Company Name Referral Email ID Emergys Labs Pvt. Ltd., hiring@emergys.com Emergys Sherpa Technologies Pvt. Ltd., hiring@emergys.com Emergys Solutions Pvt. Ltd., hr.emergyssolutions@emergys.com Emergys Software Pvt. Ltd., recruitment.india@emergys.com"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "81a66d61638a3274",
+      "intent": "policy_referral_validity",
+      "question": "How long is a referral valid?",
+      "utterances": [
+        "Does a referral expire?",
+        "Is there a time validity period?",
+        "How long is a candidate referral valid?"
+      ],
+      "answer": "The policy requires the referred candidate to meet the qualification criteria and remain eligible at the time of hiring and payout under the policy timeline.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "validity",
+        "timeline"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Referral Validity"
+      ],
+      "evidence": {
+        "chunk_id": "8de208c4ddc7a5f7",
+        "page": 4,
+        "section": "5. Referral Validity and Evaluation",
+        "quote": "i. All referral entries will remain active in our candidate database for a period of six (6) months from the date of submission. ii. Referrals will be assessed in accordance with the applicable job description and minimum eligibility criteria. iii. Suitable candidates will be contacted by the Recruitment Team for the next stages of the hiring process."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "685f77540c4cb294",
+      "intent": "policy_referral_validity",
+      "question": "Is a referral valid if the candidate had already applied earlier?",
+      "utterances": [
+        "What if the candidate already applied before referral?",
+        "Is the referral invalid if the candidate previously applied?",
+        "Are prior applicants eligible to be referred?"
+      ],
+      "answer": "No. If the candidate already applied to the company in the six months before the referral, they would not be eligible to be referred under the policy.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "prior application",
+        "validity"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Referral Validity"
+      ],
+      "evidence": {
+        "chunk_id": "8de208c4ddc7a5f7",
+        "page": 4,
+        "section": "5. Referral Validity and Evaluation",
+        "quote": "i. All referral entries will remain active in our candidate database for a period of six (6) months from the date of submission. ii. Referrals will be assessed in accordance with the applicable job description and minimum eligibility criteria. iii. Suitable candidates will be contacted by the Recruitment Team for the next stages of the hiring process."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "d8d26dd69c0937a5",
+      "intent": "policy_referral_bonus",
+      "question": "What are the referral bonus amounts?",
+      "utterances": [
+        "How much referral bonus is paid?",
+        "What amount is given by experience level?",
+        "What is the bonus range?"
+      ],
+      "answer": "The policy pays INR 60,000 for 10+ years of experience, INR 45,000 for 6 to less than 10 years, INR 30,000 for 6 months to less than 6 years, and INR 15,000 for freshers with less than 6 months of experience.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "bonus",
+        "compensation"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Referral Bonus Structure"
+      ],
+      "evidence": {
+        "chunk_id": "e8422f246918aff3",
+        "page": 4,
+        "section": "6. Referral Bonus Structure",
+        "quote": "Relevant Exp Referral Bonus (INR) 10 years & above 60,000 6 years to less than 10 years 45,000 6 months to less than 6 years 30,000 Fresher (less than 6 months) 15,000"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "1a7121e4f25dd468",
+      "intent": "policy_referral_bonus",
+      "question": "Is the bonus different for junior and senior candidates?",
+      "utterances": [
+        "How does experience affect referral bonus?",
+        "Are there different bonus bands?",
+        "Does seniority change the payout?"
+      ],
+      "answer": "Yes. The amount depends on the candidate’s relevant experience, with higher payout levels for more experienced hires and smaller amounts for early-career referrals.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "bonus",
+        "experience"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Referral Bonus Structure"
+      ],
+      "evidence": {
+        "chunk_id": "e8422f246918aff3",
+        "page": 4,
+        "section": "6. Referral Bonus Structure",
+        "quote": "Relevant Exp Referral Bonus (INR) 10 years & above 60,000 6 years to less than 10 years 45,000 6 months to less than 6 years 30,000 Fresher (less than 6 months) 15,000"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "a94f35c699b71459",
+      "intent": "policy_referral_payment",
+      "question": "When is the referral bonus actually paid?",
+      "utterances": [
+        "When is the payout made?",
+        "After what period is the referral amount paid?",
+        "Is it paid after joining?"
+      ],
+      "answer": "Referral bonus is paid once the referred candidate has successfully completed the assigned probation period and remains employed under the policy conditions.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "payment",
+        "payout"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Employee Referral Business Rules"
+      ],
+      "evidence": {
+        "chunk_id": "0252e2c17f327f64",
+        "page": 5,
+        "section": "7. Employee Referral Business Rules",
+        "quote": "bonus will be included in the Referrer’s regular compensation and shall be subject to applicable statutory deductions , including income tax, as per prevailing regulations. xii. The bonus will be paid in the payroll cycle following the completion of the eligibility period. xiii. All interpretations, decisions, and amendments related to this Referral Program shall be made by Management and will be final, conclusive, and binding on all participants. xiv. xiv. Although referred candidates may be given preferential consideration, referral submission does not guarantee selection . Final hiring decisions will be based on business requirements, candidate qualifications, and organizational priorities."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "6223f3f6b447830b",
+      "intent": "policy_referral_payment",
+      "question": "What conditions must be met before the bonus is paid?",
+      "utterances": [
+        "What are the payout conditions?",
+        "What must the candidate achieve before referral bonus?",
+        "What are the eligibility conditions for payout?"
+      ],
+      "answer": "The referred candidate must successfully complete the required probation and remain active as an employee at payout, and the referrer must remain eligible under the policy.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "payout",
+        "conditions"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Employee Referral Business Rules"
+      ],
+      "evidence": {
+        "chunk_id": "f2c55ecde2b8f60c",
+        "page": 5,
+        "section": "7. Employee Referral Business Rules",
+        "quote": "employees, and remaining active employees on the date of payout. The referred candida te must also meet the 6 month’s continuous employment requirement under this Policy. vi. Referrals re sulting in the hiring trainees, apprentices, hired under campus shall not be eligible for a referral bonus payout. vii. Referral bonus shall be payable only for eligible hires made against positions designated under the Employee Referral Program . viii. The Talent Acquisition personnel managing the requisition/hiring process, the Hiring Manager, Practice Manager, Department/Function Head shall not be eligible for a referral bonus payout, also it will not be payable to a BU Head where the referred candidat e is appointed to a position that falls within the BU Head’s direct or indirect reporting structure. ix. To qualify for the referral bonus, both the Referrer and the referred candidate must be active employees of Emergys Solutions Private Limited at the time of bonus disbursement. x. Referral bonus will not be payable for the rehiring of any former employee who rejoins the Company within one year of separation from employment. xi. The referral"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    },
+    {
+      "id": "f7402227797f2035",
+      "intent": "policy_general_leave_notice",
+      "question": "How should leave be requested and approved?",
+      "utterances": [
+        "How do employees request leave?",
+        "What is the notice requirement for planned leave?",
+        "How is emergency leave handled?"
+      ],
+      "answer": "Leaves must be requested through the HRMS. Planned leave should be approved in advance, and emergency or unplanned leave is subject to approval based on business requirements.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "request",
+        "approval"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Leaves During Notice Period"
+      ],
+      "evidence": {
+        "chunk_id": "8d3ca7fe3c8a392c",
+        "page": 2,
+        "section": "• Leaves During Notice Period :",
+        "quote": "➢ Employees are not entitled to take a leave during the notice period. ➢ Normally, the leaves may not get approved in such a situation. ➢ However, if approved by the reporting manager, a ny leave taken during the notice period will result in a corresponding extension of the notice period."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "e152bb116b82c4d7",
+      "intent": "policy_general_leave_notice",
+      "question": "What are the rules for emergency leave?",
+      "utterances": [
+        "How is emergency leave approved?",
+        "What if leave is unplanned?",
+        "Is emergency leave treated differently?"
+      ],
+      "answer": "Emergency or unplanned leave is reviewed based on business requirements and the approval process, even when the employee may not have formal notice in advance.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "emergency",
+        "approval"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "Leaves During Notice Period"
+      ],
+      "evidence": {
+        "chunk_id": "8d3ca7fe3c8a392c",
+        "page": 2,
+        "section": "• Leaves During Notice Period :",
+        "quote": "➢ Employees are not entitled to take a leave during the notice period. ➢ Normally, the leaves may not get approved in such a situation. ➢ However, if approved by the reporting manager, a ny leave taken during the notice period will result in a corresponding extension of the notice period."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "ccaa9341624c9532",
+      "intent": "policy_bereavement_overview",
+      "question": "What is bereavement leave?",
+      "utterances": [
+        "What are bereavement leaves?",
+        "Tell me about bereavement leave.",
+        "Can you explain bereavement leave?",
+        "What does bereavement leave cover?",
+        "Give me an overview of bereavement leave."
+      ],
+      "answer": "Bereavement leave provides eligible employees with paid time off following the death of an immediate family member. Eligible active full-time employees and direct contractors may receive up to 5 consecutive working days, subject to the policy and approval process.",
+      "answer_mode": "fixed",
+      "tags": [
+        "leave",
+        "bereavement",
+        "overview"
+      ],
+      "enabled": true,
+      "source": "HR Policy Manual",
+      "mapped_sections": [],
+      "evidence": {},
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement"
+    },
+    {
+      "id": "43ace4e77829a424",
+      "intent": "policy_parental_maternity_overview",
+      "question": "What is the maternity leave policy?",
+      "utterances": [
+        "What is maternity leave?",
+        "Can you explain maternity leave?",
+        "What are the maternity leave rules?",
+        "Tell me about maternity leave.",
+        "Give me an overview of maternity leave."
+      ],
+      "answer": "Eligible employees can receive paid maternity leave subject to the policy conditions. The policy requires at least 80 days of continuous service in the 12 months before the expected date of delivery; the standard entitlement is up to 26 weeks for the first two surviving children and up to 12 weeks when there are two or more surviving children.",
+      "answer_mode": "fixed",
+      "tags": [
+        "maternity",
+        "leave",
+        "overview"
+      ],
+      "enabled": true,
+      "source": "HR Policy Manual",
+      "mapped_sections": [],
+      "evidence": {},
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity"
+    },
+    {
+      "id": "aefa72b9076ee289",
+      "intent": "policy_parental_paternity_overview",
+      "question": "What is the paternity leave policy?",
+      "utterances": [
+        "What is paternity leave?",
+        "Can you explain paternity leave?",
+        "What are the paternity leave rules?",
+        "Tell me about paternity leave.",
+        "Give me an overview of paternity leave."
+      ],
+      "answer": "Eligible permanent male employees may receive 10 working days of paternity leave. The policy generally requires the leave to be taken as a continuous block within the applicable time window, typically within six months of the child's birth.",
+      "answer_mode": "fixed",
+      "tags": [
+        "paternity",
+        "leave",
+        "overview"
+      ],
+      "enabled": true,
+      "source": "HR Policy Manual",
+      "mapped_sections": [],
+      "evidence": {},
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity"
+    },
+    {
+      "id": "f2bc50f10c8b0d77",
+      "intent": "policy_posh_overview",
+      "question": "What is the POSH policy?",
+      "utterances": [
+        "What does POSH mean?",
+        "Can you explain the POSH policy?",
+        "What is the workplace sexual harassment policy?",
+        "Tell me about POSH.",
+        "Give me an overview of the POSH policy."
+      ],
+      "answer": "The POSH policy covers prevention and redressal of sexual harassment at the workplace, including the role of the POSH committee, complaint handling, inquiry procedures, confidentiality, and protections for people using the complaint process.",
+      "answer_mode": "fixed",
+      "tags": [
+        "posh",
+        "sexual harassment",
+        "overview"
+      ],
+      "enabled": true,
+      "source": "HR Policy Manual",
+      "mapped_sections": [],
+      "evidence": {},
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh"
+    },
+    {
+      "id": "dbc016cf1011e3f6",
+      "intent": "policy_general_leave_overview",
+      "question": "What is the general leave policy?",
+      "utterances": [
+        "What are the general leave rules?",
+        "Can you explain the leave policy?",
+        "What leave entitlements do employees have?",
+        "Tell me about general leave.",
+        "Give me an overview of the leave policy."
+      ],
+      "answer": "Permanent employees and contractors are entitled to 18 Privileged Leaves and 8 Casual Leaves per calendar year. Interns are entitled to 1 leave per month during the internship period. Leave requests are handled through the HRMS and planned leave should be approved in advance.",
+      "answer_mode": "fixed",
+      "tags": [
+        "general leave",
+        "leave",
+        "overview"
+      ],
+      "enabled": true,
+      "source": "HR Policy Manual",
+      "mapped_sections": [],
+      "evidence": {},
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave"
+    },
+    {
+      "id": "b59f4f2c884d98d1",
+      "intent": "policy_referral_overview",
+      "question": "What is the employee referral policy?",
+      "utterances": [
+        "What is the referral policy?",
+        "Can you explain employee referrals?",
+        "How does the employee referral program work?",
+        "Tell me about referrals.",
+        "Give me an overview of the referral policy."
+      ],
+      "answer": "Employees can refer candidates who meet the policy eligibility conditions, including candidates who have not applied to the company in the six months before the referral. Referral bonuses are subject to the policy's eligibility, employment, probation, and payout conditions.",
+      "answer_mode": "fixed",
+      "tags": [
+        "referral",
+        "hiring",
+        "overview"
+      ],
+      "enabled": true,
+      "source": "HR Policy Manual",
+      "mapped_sections": [],
+      "evidence": {},
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral"
+    }
+  ]
+}

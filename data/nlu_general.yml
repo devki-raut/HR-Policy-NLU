@@ -1,0 +1,170 @@
+version: '3.1'
+nlu:
+- intent: greet
+  examples: '- hello
+
+    - hi
+
+    - hey there
+
+    - good morning
+
+    - hello HR
+
+    - hi assistant
+
+    '
+- intent: goodbye
+  examples: '- bye
+
+    - goodbye
+
+    - see you later
+
+    - thanks goodbye
+
+    - that is all
+
+    - quit
+
+    - exit
+
+    '
+- intent: ask_leave
+  examples: '- I need help understanding leave policies
+
+    - What types of leave are available?
+
+    - Can you explain leave policies?
+
+    - I have a general question about leave
+
+    '
+- intent: ask_remote_work
+  examples: '- Can I work from home?
+
+    - What is the remote work policy?
+
+    - How many days can I work remotely?
+
+    - Who approves remote work?
+
+    - How do I request remote work?
+
+    - Is hybrid working allowed?
+
+    - Do I need to attend the office?
+
+    - Can my role work from home?
+
+    - What are the rules for WFH?
+
+    - Tell me about office attendance
+
+    '
+- intent: ask_benefits
+  examples: '- What health insurance benefits are available?
+
+    - When does medical coverage start?
+
+    - How do I enroll for insurance?
+
+    - Are dependents covered by health insurance?
+
+    - Tell me about employee benefits
+
+    - What medical benefits do I receive?
+
+    - Can HR explain my insurance coverage?
+
+    - Where do I find the health plan?
+
+    - Does my family get health coverage?
+
+    - When do benefits begin?
+
+    '
+- intent: ask_expenses
+  examples: '- How do I claim travel expenses?
+
+    - What is the reimbursement deadline?
+
+    - Do I need receipts for expenses?
+
+    - Can I claim personal purchases?
+
+    - Who approves expense claims?
+
+    - How do I submit a travel reimbursement?
+
+    - What expenses are reimbursable?
+
+    - When should I submit travel receipts?
+
+    - Explain the expense policy
+
+    - Can I get reimbursed for a business trip?
+
+    '
+- intent: ask_conduct
+  examples: '- What is the workplace conduct policy?
+
+    - How do I raise a general workplace grievance?
+
+    - Who handles general workplace complaints?
+
+    - What happens after I complain to HR?
+
+    - Is retaliation prohibited at work?
+
+    - I need to report workplace misconduct
+
+    - How do I contact HR about a workplace issue?
+
+    - What is the grievance review process?
+
+    '
+- intent: ask_onboarding
+  examples: '- How long is the probation period?
+
+    - When is onboarding orientation?
+
+    - What do new employees need to do?
+
+    - Who coordinates my probation review?
+
+    - Tell me about joining the company
+
+    - What happens in my first week?
+
+    - How does onboarding work?
+
+    - When does my probation end?
+
+    - What is the orientation schedule?
+
+    - Explain the probation policy
+
+    '
+- intent: out_of_scope
+  examples: '- What is the weather?
+
+    - Write me a poem
+
+    - Tell me a joke
+
+    - What is my bank balance?
+
+    - Book a flight
+
+    - What is my coworker salary?
+
+    - Give me employee medical records
+
+    - Show all employee personal details
+
+    - Reset my password
+
+    - Order lunch
+
+    '

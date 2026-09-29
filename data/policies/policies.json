@@ -1,0 +1,679 @@
+{
+  "version": 1,
+  "library": "company",
+  "pipeline_version": 2,
+  "documents": {
+    "Bereavement Leave Policy_Emergys Solutions.pdf": {
+      "pdf_path": "documents/pdfs/Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page_count": 3,
+      "warnings": [],
+      "sha256": "a8f1c8e83b81f92213da75557031e279d68f5c945c8f106455560ce75dc69bea"
+    },
+    "Maternity and Paternity Leave Policy_Emergys Solutions.pdf": {
+      "pdf_path": "documents/pdfs/Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page_count": 6,
+      "warnings": [],
+      "sha256": "a19534fa62f99056b25228e33fd87943ed7f1a421bc2ec05656583149406997d"
+    },
+    "POSH Policy_Emergys Solutions.pdf": {
+      "pdf_path": "documents/pdfs/POSH Policy_Emergys Solutions.pdf",
+      "page_count": 9,
+      "warnings": [],
+      "sha256": "95ebed4e6c4490a5f5a669d7fc3d11f1e2d3e5fe26140ea51248da06236d8c3a"
+    },
+    "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf": {
+      "pdf_path": "documents/pdfs/QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page_count": 3,
+      "warnings": [],
+      "sha256": "edfc5cabd469ae2a1079b77b6ce03ace874c9584588b5cae8067f2824ee1194e"
+    },
+    "Referral Bonus Policy_Emergys Solutions.pdf": {
+      "pdf_path": "documents/pdfs/Referral Bonus Policy_Emergys Solutions.pdf",
+      "page_count": 5,
+      "warnings": [],
+      "sha256": "83d9acfb9bb1ab2972060134279efb71f92abd784d71164165118cb1bbe5a713"
+    }
+  },
+  "chunks": [
+    {
+      "id": "aee7f82477c9bb08",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "1. Scope",
+      "category": "leave",
+      "text": "All active full -time employees and direct contractors are eligible for bereavement leave and benefits under this policy."
+    },
+    {
+      "id": "b48704df0b58a9f2",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "2. Objective",
+      "category": "leave",
+      "text": "The Bereavement Leave Policy establishes uniform guideli nes for providing paid time off to employees of Emergys Solutions Pr ivate Limited for absences related to the death of immediate family members. The company recognizes the emotional difficulty of losing a loved one and aims to support employees during such times."
+    },
+    {
+      "id": "49d73bbf3be76ef8",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "3. Definitions",
+      "category": "leave",
+      "text": "i. Immediate family member : For the purposes of this policy, \"immediate family member\" includes: a) Spouse or domestic partner b) Children (biological, adoptive, or stepchildren) c) Parents (biological, adoptive, or stepparents) d) Siblings e) Parents -in-law"
+    },
+    {
+      "id": "2688c0ea4597e88b",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "4. Leave Entitlement",
+      "category": "leave",
+      "text": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave in the event of the death of an immediate family member."
+    },
+    {
+      "id": "cf73c11b03327b81",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "5. Leave Application Process",
+      "category": "leave",
+      "text": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
+    },
+    {
+      "id": "66d1022122538b06",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "6. Leave Combination",
+      "category": "leave",
+      "text": "Bereavement leave may be combined with other forms of leave (earned leave, casual leave, etc.) upon approval if the employee requires additional time off."
+    },
+    {
+      "id": "640aa6609c37edb3",
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "7. Policy Review",
+      "category": "leave",
+      "text": "This policy may be reviewed and amended periodically to reflect employee needs and organizational priorities."
+    },
+    {
+      "id": "1c55722a90d8423f",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "1. Scope",
+      "category": "leave",
+      "text": "This policy is applicable to all eligible permanent employees of the Organization."
+    },
+    {
+      "id": "2be5652c0e380971",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "2. Objective",
+      "category": "leave",
+      "text": "The purpose of this policy is to support employees during childbirth, adoption, and early parenthood by providing eligible maternity and paternity leave benefits in compliance with the provisions of Maternity Leave Act, 1961 and applicable laws and company practices."
+    },
+    {
+      "id": "2a0abf07e7a2fa78",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "3. Maternity Leave / 3.1 Eligibility:",
+      "category": "leave",
+      "text": "A female employee is entitled to maternity leave if she has completed a minimum of 80 days of continuous service with the organization in the 12 months preceding the expected date of delivery, as per the Maternity Benefit Act, 1961."
+    },
+    {
+      "id": "315b7103cc9f5ac3",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "3. Maternity Leave / 3.2 Maternity Leave Entitlement:",
+      "category": "leave",
+      "text": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
+    },
+    {
+      "id": "21db0e1c60a17964",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "3. Maternity Leave / 3.3 Usage:",
+      "category": "leave",
+      "text": "Maternity leave should be taken in one stretch, and employees cannot avail it in parts. If they resume work within or before their applicable maternity leave(s) duration the remainder will stand expired and cannot be availed at any later point in time."
+    },
+    {
+      "id": "504a27cb5620e8a4",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:",
+      "category": "benefits",
+      "text": "During approved maternity leave – i. Salary shall be paid in accordance with applicable law and company payroll practices; Continuity of service shall be maintained and statutory and eligible employment benefits shall continue as applicable. ii. Medical Bonus: Every woman entitled to maternity benefit under this Act shall also be entitled to receive a medical bonus of three thous and five hundred rupees, if no pre -natal confinement and post -natal care is provided for by the employer free of charge. This is one -time medical bonus. iii. Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses. b. Employees are advised to consult with HR for further information."
+    },
+    {
+      "id": "38e001c7f7e5e85b",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
+      "category": "benefits",
+      "text": "i. Notification and Leave Application a) Employees shall notify HR and their Reporting Manager of their intended maternity leave and submit a leave request through the HRMS at least sixty (60) days prior to the proposed commencement date, wherever practicable. b) A medical certificate from a registered medical practitioner indicating the expected date of delivery and proposed leave commencement date must be submitted in support of the application. c) In exceptional circumstances where the employee is unable to submit the leave request, HR may facilitate the application process on her behalf. ii. Communication During and After Leave a) The actual date of childbirth shall be communicated to HR within seven (7) days by the employee or an immediate family member. b) A copy of the birth certificate shall be submitted within sixty (60) days of the child's birth. iii. Compliance a) Maternity benefits under this Policy shall be subject to compliance with applicable laws and regulations. Any employee found to be engaged in employment with another establishment during the maternity leave period may forfeit eligibility for maternity bene fits, as"
+    },
+    {
+      "id": "c72a9f012a31c45a",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
+      "category": "leave",
+      "text": "permitted under applicable law."
+    },
+    {
+      "id": "313a75ce0a3af98c",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "3. Maternity Leave / 3.6 Separation d uring M aternity Leave:",
+      "category": "leave",
+      "text": "In case an employee voluntarily resigns during or upon completion of maternity leave, any unutilized maternity leave shall lapse and shall not form part of the full and final settlement."
+    },
+    {
+      "id": "47c3a911b6d66334",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "3. Maternity Leave / 3.7 Return to Work:",
+      "category": "leave",
+      "text": "Employees are expected to resume duties upon completion of approved maternity leave unless additional leave is approved in accordance with Company leave policies. In the event of an extension of Maternity Leave, the employee must notify their Reporting Manager and the Attendance Desk via email. Upon appr oval from the Reporting Manager an employee shall apply the extended leave in Darwin using the employee's available leave balance. Any period of absence exceeding the available leave balance shall be treated as Leave Without Pay (LWP). Employees shall notify HR at least one (1) month prior to their scheduled return -to- work date to confirm their return or communicate any approved extension of leave."
+    },
+    {
+      "id": "e4d7e0d0006a07d7",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "4. Paternity Leave: / 4.1 Eligibility",
+      "category": "leave",
+      "text": "A permanent male employee shall be eligible for paternity leave upon completing a minimum of eighty (80) days of continuous service with the organization during the twelve (12) months immediately preceding: (i) the expected date of delivery of his wife; (ii) the date on which a child is placed with him for legal adoption; or (iii) the date on which a child is handed over to him through surrogacy."
+    },
+    {
+      "id": "4cfded1b889ad9e4",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "4. Paternity Leave: / 4.2 Paternity Leave Entitlement",
+      "category": "leave",
+      "text": "Eligible employees are entitled to 10 working days of paternity leave, which is exclusive of public holidays and other paid time off."
+    },
+    {
+      "id": "ba69f3ee9f51d546",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "4. Paternity Leave: / 4.3 Usage",
+      "category": "leave",
+      "text": "Leave must be taken as one continuous block within six months of the child’s birth ."
+    },
+    {
+      "id": "513619c21538cfc1",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "4. Paternity Leave: / 4.4 Benefits during Paternity Leave:",
+      "category": "benefits",
+      "text": "Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses of his wife . b. Employees are advised to consult with HR for further information."
+    },
+    {
+      "id": "f24de44ffd0eb459",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "4. Paternity Leave: / 4.5 Paternity Leave Application and Documentation:",
+      "category": "leave",
+      "text": "a. Employees shall inform their reporting manager and HR as early as reasonably practicable via email. b. Raise a leave request on HRMS . c. The birth certificate of the child must be submitted to HR within 60 days from the date of birth, if the employee returns to work before completing the full leave period, the remaining days will be forfeited."
+    },
+    {
+      "id": "548984d10e749c13",
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "page": 6,
+      "section": "5. Policy Review",
+      "category": "leave",
+      "text": "This policy may be reviewed and amended periodically to reflect employee needs and organizational priorities."
+    },
+    {
+      "id": "184ef3c712f24ab2",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "1. Policy Statement",
+      "category": "conduct",
+      "text": "(Complaints & Investigation Procedure for Employees of Emergys Solutions Private Limited ) The Sexual Harassment of Women at Workplace (Prevention Prohibition and Redressal) Act, 2013 (‘Act’) directs companies to lay down guidelines and a forum for redressal of grievances related to Sexual Harassment. Emergys Solutions Private Limited (hereinafter referred as “Emergys/Company”) is committed to ensure that the Act is followed in writing and in spirit. Emergys including its affiliates respects the dignity of all the employees working for the organisation, irrespective of their gender or hierarchy and we expect responsible conduct and behaviour on the part of all our employees across levels. Providing saf e and congenial work environment is an integral part of the Company policies. Through this gender -neutral policy, we exhibit our commitment to providing enabling work conditions and a workplace that is gender sensitive recognizing role of every employee (regardless of gender) as an equal player. The policy has been adapted based on Vishakha guidelines and norms prescribed by the Supreme Court, The Sexual harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 and"
+    },
+    {
+      "id": "b427a9408abd0a9b",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "1. Policy Statement",
+      "category": "conduct",
+      "text": "rules made there under and under the principles of Article 14, 15 and 21 of Indian Constitution."
+    },
+    {
+      "id": "6af49bb7879d5ab4",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "2. Applicability & Effective Date",
+      "category": "conduct",
+      "text": "This Policy extends to all employees of Emergys and is deemed to be incorporated in the service conditions of all employees. This Policy shall be binding not only on the employees of Emergys but also on any third parties suspected of Sexual Harassment on t he premises of the Emergys or at any location over which the Emergys has control including sites occupied by clients. This Policy shall be applicable to all the subsidiaries, associates, affiliates, group companies, sister concerns, holding companies (coll ectively “Affiliates” ) of the Emergys."
+    },
+    {
+      "id": "01c1c600e22df6d3",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "3. Sexual Harassment at the Workplace",
+      "category": "conduct",
+      "text": "“Sexual Harassment” shall mean and include any of the following: i. Unwelcome sexual advances, requests, or demands for sexual favours, either explicitly or implicitly, in return for employment, promotion, examination or evaluation of a person towards any Company activity. ii. Unwelcome sexual advances involving verbal, non -verbal, or physical conduct such as sexually coloured remarks, jokes, letters, electronic messages through mobile phones, phone calls, e -mail, gestures, showing of pornography, lurid stares, physical contact or molestation, stalking, sounds, display of pictures, signs, verbal or non -verbal communication which offends the individual’s sensibilities and affect her/ his performance."
+    },
+    {
+      "id": "6f4cfb34ab4c2a42",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "3. Sexual Harassment at the Workplace",
+      "category": "conduct",
+      "text": "iii. Stalking which may including unsolicited phone calls, phone calls to a private mobile or land line outside of office hours, following a person to their home or other place outside their workplace, following or physically pursuing a person while at their workplace but without lawful excuse. iv. Eve teasing, innuendos and taunts, physical confinement against one’s will and likely to intrude upon one’s privacy. v. Act or conduct by a person in authority which creates an environment at the workplace which is hostile or intimidating to a person which may be perceived as sexual in nature. vi. Conduct of such an act at the workplace or outside in relation to an Employee of Company, or vice versa during employment which may be perceived as sexual in nature or as harassment; and vii. Any unwelcome gesture by an Employee having sexual overtones. viii. Words and expressions used and not defined in this Policy shall have the same meaning assigned to them under the Act."
+    },
+    {
+      "id": "fca117063435db79",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "4. Composition of the Internal Committee",
+      "category": "conduct",
+      "text": "An internal committee (the ‘Committee’) has been constituted by the management of the Company to consider and redress complaints and allegations of Sexual Harassment. The Presiding Officer and members of the Committee are as follows: For Emergys Solutions Private Limited : # Name Department Role E-mail ID"
+    },
+    {
+      "id": "483ab678213a1a0e",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "1 Ms. Mugdha Wagh Management Presiding",
+      "category": "conduct",
+      "text": "Officer Mugdha.wagh@emergys.com"
+    },
+    {
+      "id": "21d3badbcda926c8",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "2 Mr. Ninad Inamdar Management IC",
+      "category": "conduct",
+      "text": "Member Ninad.inamdar@emergys.com"
+    },
+    {
+      "id": "028077b7ca5be42f",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "3 Mr. Saumitra Modak Management IC",
+      "category": "conduct",
+      "text": "Member Saumitra.modak@emergys.com"
+    },
+    {
+      "id": "0876e63610dcc5ba",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "4 Mrs. Kishori Gaikwad Management IC",
+      "category": "conduct",
+      "text": "Member Kishori.gaikwad@emergys.com"
+    },
+    {
+      "id": "9f37a867b30f19a7",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "5 Mrs. Vaishali Sonavane - External",
+      "category": "conduct",
+      "text": "Member ecdysisconsulting@gmail.com i. The Committee shall be governed by the Act and such rules as may be framed thereunder or amendments thereto or any other legislation enacted later on. ii. Emergys shall communicate the Policy to all its employees including the contact details of the Committee and the procedure for lodging such complaints."
+    },
+    {
+      "id": "6b3f02f88fd33e65",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "5. Term of the Committee Members",
+      "category": "conduct",
+      "text": "i. The term of the Committee Members shall be three (3) years from the date of appointment. ii. A person shall be disqualified from being appointed, elected, nominated or designated or continue as a Member, (i) if there is any complaint concerning Sexual Harassment pending against him/ her or if he/she is found guilty of Sexual Harassment or any othe r act of moral turpitude, (ii) if he/ she shows bias towards any party or has abused his/ her position in any manner, (iii) if he/ she discloses any information regarding the Complainant or the inquiry proceedings in violation of section 16 of the Act. iii. If he/ she has been convicted of any offence or an inquiry into any offence, under any law is pending against such person, (iii) if he/ she has been found guilty in any disciplinary proceedings or a disciplinary proceeding is pending against such person and (iv) if he/ she ceases to be an Employee of the Company. iv. Such Presiding Officer or Member, as the case may be, shall be removed from the Committee"
+    },
+    {
+      "id": "67b0299bce8dd4ec",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "5. Term of the Committee Members",
+      "category": "conduct",
+      "text": "and the vacancy so created or any casual vacancy shall be filled by fresh nomination in accordance with the provisions of the Act."
+    },
+    {
+      "id": "f36dd2f4aa1a34f2",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "6. Documentation",
+      "category": "conduct",
+      "text": "The committee shall keep complete and accurate documentation of the complaint, its investigations, and the resolution thereof. The incident would be documented in both the complainant’s and the accused files with the full report of the Complaints Committee ."
+    },
+    {
+      "id": "82c2dfc98f08098d",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "7. Complaint Mechanism",
+      "category": "conduct",
+      "text": "i. The complaint mechanism and reliefs as per the law are for women. With respect to men, complaint mechanism and reliefs as per this policy are non -statutory and at the discretion of Emergys. We extend the same redressal process for employees irrespective of gender. ii. Any aggrieved person who feels that he / she / they is/are being sexually harassed directly or indirectly may submit a written and signed complaint of the alleged incident within three (3) months of the date of incident and in case of series of incidents, within a period of three (3) months from the date of last incident. iii. The Complaint may be given directly to any member of the Committee or through the human resource manager who shall forward the Complaint to the Committee. iv. In case of complaints preceding three (3) months from the date of last date of the incident, the Committee, for the reasons to be recorded in writing, may extend the time limit for submitting such complaint not exceeding further three months, if the Commit tee is satisfied that"
+    },
+    {
+      "id": "b189e5acdc186130",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "7. Complaint Mechanism",
+      "category": "conduct",
+      "text": "the circumstances were such which prevented the Employee from filing a complaint within three months from the date of the occurrence of the incident."
+    },
+    {
+      "id": "a23c3ed2de0909d3",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 6,
+      "section": "7. Complaint Mechanism",
+      "category": "conduct",
+      "text": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
+    },
+    {
+      "id": "3440844d02c96ecb",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 6,
+      "section": "8. Enquiry Process",
+      "category": "conduct",
+      "text": "i. The Committee will maintain a register of all complaints received by it and keep the contents confidential, except to use the same for discreet investigation. ii. The Committee will hold a meeting with the Complainant within seven (7) days of the receipt of the complaint. iii. At the first meeting, the Committee members shall hear the Complainant and record the allegations. iv. Thereafter, the person against whom the complaint is made may be called for a deposition before the Committee and an opportunity will be given to the person to give an explanation, whereafter, an “Enquiry” shall be conducted and concluded. v. In the event that the Committee determines, acting reasonably that the complaint does not fall under the purview of Sexual Harassment, or the complaint does not tantamount to an offence of Sexual Harassment, the complaint shall be closed after recording th e reasons thereof. vi. Management and others responsible for implementation of this Policy will respect the confidentiality and privacy of individuals reporting or accused of Sexual Harassment to the extent reasonably possible. Examples of situations where"
+    },
+    {
+      "id": "98912f434c46daec",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 6,
+      "section": "8. Enquiry Process",
+      "category": "conduct",
+      "text": "confidentiality cannot be maintained include circumstances when the law requires disclosure of information."
+    },
+    {
+      "id": "2fe697817724b4b5",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 6,
+      "section": "9. Conciliation",
+      "category": "conduct",
+      "text": "i. The Committee shall, before initiating an inquiry under the Act as stated below, at the request of the Complainant take steps to settle the matter between the Complainant and the Respondent through conciliation. Provided that no monetary settlement shall b e made as a basis of conciliation. ii. Where a settlement has been arrived at as stated above, the Committee shall record such settlement and forward the same to the HR Head to take action as specified in the recommendation."
+    },
+    {
+      "id": "f362aa5103702816",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 7,
+      "section": "9. Conciliation",
+      "category": "conduct",
+      "text": "iii. The Committee shall provide copies of the settlement to the Complainant and the Respondent. iv. Where a settlement is arrived at as above, no further inquiry shall be conducted by the Committee, and the case shall be closed. Provided that where the Complainant informs the Committee that the term or condition of the settlement has not been complied with by the Respondent, the Committee shall proceed to make an inquiry into the complaint afresh."
+    },
+    {
+      "id": "0017a74d46034c7a",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 7,
+      "section": "10. Investigation",
+      "category": "conduct",
+      "text": "i. Subject to outcome of the Conciliation, the Committee shall immediately proceed with the inquiry under the Act and communicate the same to the Complainant and the Respondent. ii. The Committee shall prepare and hand over the copy of the complaint within 7 days to the person against whom the complaint is made and give an opportunity by issuing a show cause notice to submit a written explanation within seven ( 7) days of receipt of the same. iii. The Committee shall hand over a copy of the written explanation submitted by the Respondent, to the Complainant. iv. If the Complainant or the person against whom the complaint is made desires any witness(es) to be called, they shall communicate in writing to the Committee the names of such witness(es). v. If the Complainant desires to tender any documents by way of evidence before the Committee, he/she/they shall submit such documents in original. Similarly, if the person against whom the complaint is made desires to tender any documents in evidence before the Committee, he/she/they shall submit such documents in original. Both"
+    },
+    {
+      "id": "f4bbc90d1d59be77",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 7,
+      "section": "10. Investigation",
+      "category": "conduct",
+      "text": "shall affix his / her / their signature on the respective documents. vi. The Committee shall call upon all witnesses mentioned by both parties. vii. The Committee shall provide every reasonable opportunity to the Complainant and to the person against whom the complaint is made, for putting forward and defending their respective case as per the principle of natural justice. viii. The Committee shall complete the inquiry under the Act within reasonable period but not beyond three (3) months after the date of receipt of the original Complaint and communicate its findings and its recommendations for action to the HR - Head of the Compa ny within 10 days of the completion of the Enquiry. The report of the Committee shall be treated as an enquiry report on the basis of which an erring Employee can be awarded appropriate punishment straightaway. ix. The HR -Head will direct appropriate action in accordance with the recommendation proposed by the Committee within sixty (60) days of submission of the report by the Committee."
+    },
+    {
+      "id": "8b808fae6ca6186e",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 8,
+      "section": "10. Investigation",
+      "category": "conduct",
+      "text": "x. Where the subject of a Complaint amounts to a specific offence under the Indian Penal Code, 1860 or under any other law, the Committee shall forward the Complaint to the police, within a period of seven (7) days from receiving such complaint. The victims o f Sexual Harassment should have the option to seek transfer of the perpetrator or their own transfer."
+    },
+    {
+      "id": "0640aae878247389",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 8,
+      "section": "11. Disciplinary Action:",
+      "category": "conduct",
+      "text": "Where any person is found guilty of Sexual Harassment by the Committee, appropriate disciplinary action may include: i. warning or reprimand, ii. transfer, iii. withholding of increment, bonus or promotion, iv. suspension or terminating from employment, or v. any other action as may deem fit to the Committee members. The disciplinary action shall be in addition to any legal recourse that may be sought by the Complainant."
+    },
+    {
+      "id": "67d24c7929a13891",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 8,
+      "section": "12. Additional Role of the Committee",
+      "category": "conduct",
+      "text": "i. All information received shall be kept confidential. Any person (including witnesses) who breaches confidentiality shall be subject to disciplinary action. ii. The Committee may make recommendations to the HR - Head as deemed fit and appropriate. iii. The management shall provide all necessary assistance for the purpose of ensuring full, effective and speedy implementation of this Policy. iv. Where Sexual Harassment occurs as a result of an act or omission by any third party or outsider, Company shall take all steps necessary and reasonable to assist the affected person in terms of support and preventive action. v. The Committee shall analyse and publish reports on all complaints of this nature at the end of the year for submission to all the authorities as mentioned under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013."
+    },
+    {
+      "id": "0c6109886aa5f3e3",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 8,
+      "section": "13. Non-Retaliation Policy",
+      "category": "conduct",
+      "text": "Retaliation against an Employee who has complained about sexual or other discriminatory harassment or against an individual who has cooperated with an investigation of such harassment is strictly prohibited within the Company."
+    },
+    {
+      "id": "545bf3ef88badb50",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 9,
+      "section": "14. Appeal",
+      "category": "conduct",
+      "text": "Any party not satisfied or further aggrieved by the implementation or non -implementation of recommendations made, may appeal to the appellate authority in accordance with the Act and rules, within 90 days of the recommendations being communicated."
+    },
+    {
+      "id": "584b81352ba09b85",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 9,
+      "section": "15. Punishment for false or malicious complaint and false evidence",
+      "category": "conduct",
+      "text": "It is of utmost importance that all complaints related to sexual harassment are made in good faith and with genuine concern for the welfare of individuals and the organization. Any individual found to be making a false or malicious complaint with the inten tion of causing harm, tarnishing another's reputation, or misleading the Internal Committee shall be subject to disciplinary action."
+    },
+    {
+      "id": "a5fc8aead9807721",
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "page": 9,
+      "section": "16. Policy Review & Evaluation",
+      "category": "conduct",
+      "text": "The Policy comes into effect immediately and is subject to periodical review by the Company. A. RASCI: Responsible: Who will carry out the task Respective committee members Accountable: Accountable for task completion Respective committee members Consult: Who will be consulted/ SME Presiding officer & External Member Support: Who will be responsible to carry out the tasks Respective committee members Informed: Whom the final task completion status is to be informed Respective committee members, and Employees"
+    },
+    {
+      "id": "8503a62c2bcec151",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "Purpose / Objective",
+      "category": "leave",
+      "text": "This document serves to formally communicate the leave policy to all relevant employees of Emergys Solutions . This policy is designed to encourage employees to take time off from work, promoting well -being, reducing stress, and enhancing overall productivity. It details the types of leave employees are entitled to and outlines the procedures for applying for leave."
+    },
+    {
+      "id": "1de8aaa85836b174",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "Eligibility / Scope",
+      "category": "leave",
+      "text": "This policy applies to leave of normal nature for all categories of employees, including permanent employees, contractual staff, and interns, as detailed below:"
+    },
+    {
+      "id": "fe35925009371210",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "• Permanent Employees and Contractors:",
+      "category": "leave",
+      "text": "➢ Entitled to 18 Privileged Leaves (PL) and 8 Casual Leaves (CL) per calendar year . ➢ The calendar year is considered from January to December."
+    },
+    {
+      "id": "dc407692b5030751",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "• Contractors:",
+      "category": "leave",
+      "text": "➢ Leave entitlement shall be granted on a pro-rata basis at the commencement of the contractual period. ➢ In the event of an extension of the contract, the leave shall be credited in accordance with the extended duration using the same pro-rata principles. ➢ Unused leaves may be carried forward to the extended period."
+    },
+    {
+      "id": "5cfad4c40d710d81",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "• Interns:",
+      "category": "leave",
+      "text": "➢ Eligible for 1 Leave (OL) per month for the duration of the internship. ➢ Unused leaves may be carried forward to subsequent months during the internship period. ➢ In the event of an extension of the internship , the leave shall be credited in accordance with the extended duration using the same pro-rata principles. ➢ Unused leaves may be carried forward to the extended period."
+    },
+    {
+      "id": "9352dbafe1c94664",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "• Privilege Leave (PL)",
+      "category": "leave",
+      "text": "➢ May be availed without specific restrictions, subject to approval. ➢ Eligible for carry -forward to the subsequent calendar year. ➢ A maximum of 20 PLs can be carried forward to the subsequent calendar year."
+    },
+    {
+      "id": "9bbb6d911f1a057b",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 1,
+      "section": "• Casual Leave (CL)",
+      "category": "leave",
+      "text": "➢ Intended to meet extraordinary or unforeseen circumstances ."
+    },
+    {
+      "id": "b8d4feab39007c62",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 2,
+      "section": "• Casual Leave (CL)",
+      "category": "leave",
+      "text": "➢ They are emergent and incidental in nature. ➢ Limited to a maximum of two (2) consecutive CLs per month. ➢ CLs cannot be combined with other types of leave. ➢ CLs are non -cumulative and cannot be carried forward to the next year."
+    },
+    {
+      "id": "f9a411752465ba9b",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 2,
+      "section": "• Leave Credit Based on Date of Joining",
+      "category": "leave",
+      "text": "➢ Official HRMS system ca lculates the leave credit s on pro -rata basis ."
+    },
+    {
+      "id": "ed334e466d9e521e",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 2,
+      "section": "• Leave Planning and Approval",
+      "category": "leave",
+      "text": "➢ All leave s must be planned in advance in consultation with the respective Team Lead or Manager. ➢ Unplanned or emergency leave may be subject to rejection based on business requirements. ➢ Leave approval is contingent upon ongoing business priorities. ➢ Associates deployed at client locations must obtain written approval from the designated Client Manager."
+    },
+    {
+      "id": "f6584151fcfc3506",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 2,
+      "section": "• Leave Application Process:",
+      "category": "leave",
+      "text": "➢ All planned leave requests must be submitted in advance via the official HRMS system. ➢ For emergency situations, the leave application must be submitted promptly upon resuming work. ➢ Half -day leave (0.5) applications must also be submitted through the official HRMS system."
+    },
+    {
+      "id": "2b31804230e65ab6",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 2,
+      "section": "• Client Site Deployment:",
+      "category": "leave",
+      "text": "➢ Employees assigned to client sites will follow the client's holiday calendar. ➢ Discrepancies between the client and company holiday calendars will be reconciled as follows: ➢ If the employee works on a company holiday not recognized by the client, 1 additional leave day will be credited. (Emergys Solutions has a holiday for Holi. If the client doesn't have a holiday for Holi and the employee works on that day, 1 day will be added to the leave balance. ) Employee needs to apply for a comp off in this case. ➢ If the employee takes leave on a client holiday not recognized by the company, 1 leave day will be debited. (The client has a holiday for Easter. If Emergys Solutions does not have a holiday and the employee takes holiday, the leave balance will be reduced by 1. )"
+    },
+    {
+      "id": "8d3ca7fe3c8a392c",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 2,
+      "section": "• Leaves During Notice Period :",
+      "category": "leave",
+      "text": "➢ Employees are not entitled to take a leave during the notice period. ➢ Normally, the leaves may not get approved in such a situation. ➢ However, if approved by the reporting manager, a ny leave taken during the notice period will result in a corresponding extension of the notice period."
+    },
+    {
+      "id": "8dbc1cae97364699",
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "page": 3,
+      "section": "• Sandwich Rule for Leave Without Pay (LWP):",
+      "category": "leave",
+      "text": "➢ This rule applies to associates taking a LWP i .e. They may not have any leave balanc e. ➢ In this case, if an associate takes leave from Friday through the coming Monday (Friday, Saturday, Sunday, Monday) then, the weekend will also be considered as LWP. It will count to 4 days of LWP. E.g. If an employee is on LWP from 13th May 202 5 to 5th June 202 5, then ALL Saturdays and Sundays i.e. 1 7th , 18th , 24th , 25th and 31st May and 1st June will be considered as Leave without pay. Policy Review This policy may be reviewed and amended periodically to reflect employee needs and organizational priorities. Drafted And Reviewed By, Mugdha Wagh Assistant General Manager - HR and Talent Management"
+    },
+    {
+      "id": "fae60fd485dc38a6",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "1. Purpose",
+      "category": "benefits",
+      "text": "This Employee Referral Bonus Policy is established to formalize the process through which curren t employees of Emergys Solutions Private Limited may refer potential candidates for employment. At Emergys Solutions Private Limited , we highly value employee referrals, as we believe our team members understand what’s best for the organization. The objective of this policy is to provide a transparent, efficient, and structured referral mechanism that benefits both the referrer and the referred candidate."
+    },
+    {
+      "id": "5828e9e396a35da8",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "2. Scope / Eligibility",
+      "category": "benefits",
+      "text": "This policy applies to all individuals currentl y engaged with Emergys Solutions Private Limited in the following categories:"
+    },
+    {
+      "id": "8cfef1981ecff7d9",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "• Interns",
+      "category": "benefits",
+      "text": "All the above categories are eligible to participate in the referral program, subject to the terms outlined herein."
+    },
+    {
+      "id": "ab475738d3ba43cf",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "3. Definitions",
+      "category": "benefits",
+      "text": "• Referrer : An eligible employee of Emergys Solutions Private Limited who submits a candidate’s profile for consideration. • Referral : A candidate whose profile is submitted by an eligible employee for a job vacancy at Emergys Solutions Private Limited ."
+    },
+    {
+      "id": "8b5ef0b05e41630f",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "4. Terms and Conditions / 4.1 Referral Criteria",
+      "category": "benefits",
+      "text": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
+    },
+    {
+      "id": "d245555dd125ce87",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 3,
+      "section": "4. Terms and Conditions / 4.2 Referral Submission Process",
+      "category": "benefits",
+      "text": "Referrals may be submitted through either of the following methods: a) Option A: Email the referred candidate’s updated CV to the applicable referral email ID specified in Section 4 .3, clearly marking the submission as a referral. b) Option B: The referred candidate may directly email their CV to the applicable referral email ID specified in Section 4.3, explicitly including the name and employee ID of the referring employee."
+    },
+    {
+      "id": "2045960ca053ffa2",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "4. Terms and Conditions / 4.3 Company -wise Referral Email IDs",
+      "category": "benefits",
+      "text": "Employees shall submit referrals to the designated email ID corresponding to the respective company for which the candidate is being referred, as provided below: Company Name Referral Email ID Emergys Labs Pvt. Ltd., hiring@emergys.com Emergys Sherpa Technologies Pvt. Ltd., hiring@emergys.com Emergys Solutions Pvt. Ltd., hr.emergyssolutions@emergys.com Emergys Software Pvt. Ltd., recruitment.india@emergys.com"
+    },
+    {
+      "id": "8de208c4ddc7a5f7",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "5. Referral Validity and Evaluation",
+      "category": "benefits",
+      "text": "i. All referral entries will remain active in our candidate database for a period of six (6) months from the date of submission. ii. Referrals will be assessed in accordance with the applicable job description and minimum eligibility criteria. iii. Suitable candidates will be contacted by the Recruitment Team for the next stages of the hiring process."
+    },
+    {
+      "id": "e8422f246918aff3",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "6. Referral Bonus Structure",
+      "category": "benefits",
+      "text": "Relevant Exp Referral Bonus (INR) 10 years & above 60,000 6 years to less than 10 years 45,000 6 months to less than 6 years 30,000 Fresher (less than 6 months) 15,000"
+    },
+    {
+      "id": "a036d41c90484660",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 4,
+      "section": "7. Employee Referral Business Rules",
+      "category": "benefits",
+      "text": "i. The referring employee (\"Referrer\") shall be eligible to receive a referral bonus upon the successful selection and onboarding of the referred candidate, provided the candidate completes the recruitment process and formally joins Emergys Solutions Private Limited . The bonus amount will correspond to the referred candidate’s relevant experience category. ii. The referral bonus will be paid to the Referrer after the referred candidate has completed six (6) months of continuous employment with the organization and has successfully completed the probation period and received confirmation of employment. iii. If multiple employees or external agencies refer to the same candidate, the referral bonus will be awarded on a first-come, first -served basis , determined by the timestamp of submission. The final decision in such matters will rest solely with the Recruitment Team and shall be binding. iv. There is no restriction on the number of referrals an eligible employee may submit under this program. v. Referral incentive eligibility is subject to both the referrer and the referred candidate successfully completing probation, being confirmed as full -time"
+    },
+    {
+      "id": "f2c55ecde2b8f60c",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "7. Employee Referral Business Rules",
+      "category": "benefits",
+      "text": "employees, and remaining active employees on the date of payout. The referred candida te must also meet the 6 month’s continuous employment requirement under this Policy. vi. Referrals re sulting in the hiring trainees, apprentices, hired under campus shall not be eligible for a referral bonus payout. vii. Referral bonus shall be payable only for eligible hires made against positions designated under the Employee Referral Program . viii. The Talent Acquisition personnel managing the requisition/hiring process, the Hiring Manager, Practice Manager, Department/Function Head shall not be eligible for a referral bonus payout, also it will not be payable to a BU Head where the referred candidat e is appointed to a position that falls within the BU Head’s direct or indirect reporting structure. ix. To qualify for the referral bonus, both the Referrer and the referred candidate must be active employees of Emergys Solutions Private Limited at the time of bonus disbursement. x. Referral bonus will not be payable for the rehiring of any former employee who rejoins the Company within one year of separation from employment. xi. The referral"
+    },
+    {
+      "id": "0252e2c17f327f64",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "7. Employee Referral Business Rules",
+      "category": "benefits",
+      "text": "bonus will be included in the Referrer’s regular compensation and shall be subject to applicable statutory deductions , including income tax, as per prevailing regulations. xii. The bonus will be paid in the payroll cycle following the completion of the eligibility period. xiii. All interpretations, decisions, and amendments related to this Referral Program shall be made by Management and will be final, conclusive, and binding on all participants. xiv. xiv. Although referred candidates may be given preferential consideration, referral submission does not guarantee selection . Final hiring decisions will be based on business requirements, candidate qualifications, and organizational priorities."
+    },
+    {
+      "id": "ab580b19e1bfb246",
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "page": 5,
+      "section": "8. Policy Review",
+      "category": "benefits",
+      "text": "This policy may be reviewed and amended periodically to reflect employee needs and organizational priorities."
+    }
+  ]
+}
