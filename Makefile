@@ -10,7 +10,10 @@ export RASA_TELEMETRY_ENABLED := false
 export FAQ_EMBEDDING_MODEL ?= sentence-transformers/all-MiniLM-L6-v2
 export FAQ_EMBEDDING_THRESHOLD ?= 0.75
 
-.PHONY: setup install sync-intents validate train test benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment docker_deployment clean
+DEPLOYMENT_PID := artifacts/logs/deployment.pid
+DEPLOYMENT_LOG := artifacts/logs/deployment.log
+
+.PHONY: setup install sync-intents validate train test benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
 
 setup:
 	python3 setup.py
@@ -57,19 +60,63 @@ start:
 # run_bot:
 #	$(PYTHON) scripts/run_deployment.py bot
 
+# Run the combined local deployment in the background.
 run_deployment:
-	$(PYTHON) scripts/run_deployment.py web
-
-# Restart the installed local EmployeeAssist user service. Install/start it when absent.
-restart_deployment:
-	@if systemctl --user cat employeeassist.service >/dev/null 2>&1; then \
-		systemctl --user restart employeeassist.service; \
+	@mkdir -p artifacts/logs
+	@if [ -f "$(DEPLOYMENT_PID)" ] && kill -0 "$$(cat "$(DEPLOYMENT_PID)")" 2>/dev/null; then \
+		echo "EmployeeAssist is already running (PID $$(cat "$(DEPLOYMENT_PID)"))."; \
 	else \
-		./deploy/start.sh local; \
+		rm -f "$(DEPLOYMENT_PID)"; \
+		nohup $(PYTHON) scripts/run_deployment.py web >> "$(DEPLOYMENT_LOG)" 2>&1 & \
+		echo $$! > "$(DEPLOYMENT_PID)"; \
+		sleep 2; \
+		if kill -0 "$$(cat "$(DEPLOYMENT_PID)")" 2>/dev/null; then \
+			echo "EmployeeAssist started in the background (PID $$(cat "$(DEPLOYMENT_PID)"))."; \
+			echo "Logs: $(DEPLOYMENT_LOG)"; \
+		else \
+			echo "EmployeeAssist failed to start. Recent logs:" >&2; \
+			tail -n 40 "$(DEPLOYMENT_LOG)" >&2; \
+			rm -f "$(DEPLOYMENT_PID)"; \
+			exit 1; \
+		fi; \
 	fi
-	@systemctl --user --no-pager --full status employeeassist.service
+
+stop_deployment:
+	@if [ -f "$(DEPLOYMENT_PID)" ]; then \
+		pid="$$(cat "$(DEPLOYMENT_PID)")"; \
+		if kill -0 "$$pid" 2>/dev/null; then \
+			echo "Stopping EmployeeAssist (PID $$pid)..."; \
+			kill -TERM "$$pid"; \
+			for attempt in $$(seq 1 40); do \
+				kill -0 "$$pid" 2>/dev/null || break; \
+				sleep 0.25; \
+			done; \
+			if kill -0 "$$pid" 2>/dev/null; then kill -KILL "$$pid"; fi; \
+		fi; \
+		rm -f "$(DEPLOYMENT_PID)"; \
+	fi
+	@./deploy/stop.sh local
+	@echo "EmployeeAssist stopped."
+
+restart_deployment: stop_deployment run_deployment
+
+status_deployment:
+	@if [ -f "$(DEPLOYMENT_PID)" ] && kill -0 "$$(cat "$(DEPLOYMENT_PID)")" 2>/dev/null; then \
+		echo "EmployeeAssist supervisor: running (PID $$(cat "$(DEPLOYMENT_PID)"))"; \
+	else \
+		echo "EmployeeAssist supervisor: stopped"; \
+	fi
+	@./deploy/status.sh local
+
+logs_deployment:
+	@mkdir -p artifacts/logs
+	@touch "$(DEPLOYMENT_LOG)"
+	@tail -f "$(DEPLOYMENT_LOG)"
 
 restart-deployment: restart_deployment
+stop-deployment: stop_deployment
+status-deployment: status_deployment
+logs-deployment: logs_deployment
 
 # docker_web and docker_bot are intentionally disabled; deploy one endpoint.
 docker_deployment:

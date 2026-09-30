@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
-# Print copy-pasteable EmployeeAssist service commands. This file does not
+# Print copy-pasteable EmployeeAssist deployment commands. This file does not
 # start or stop any service itself.
 cat <<'COMMANDS'
 cd /home/ojas/HR-Policy-NLU
 
-# Local deployment
-./deploy/start.sh local
-./deploy/status.sh local
-./deploy/stop.sh local
-journalctl --user -u employeeassist.service -f
+# Local background deployment
+make run_deployment
+make restart-deployment
+make status-deployment
+make logs-deployment
+make stop-deployment
 
-# Docker deployment
+# Foreground helper, useful for interactive debugging
+./deploy/start.sh local
+
+# Local Docker testing (foreground; Azure manages the production container)
 ./deploy/start.sh docker
 ./deploy/status.sh docker
 ./deploy/stop.sh docker
-journalctl --user -u employeeassist-docker.service -f
-
-# Check or stop both deployment types
-./deploy/status.sh all
-./deploy/stop.sh all
 COMMANDS

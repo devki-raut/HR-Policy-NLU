@@ -8,6 +8,7 @@ __pycache__/
 .env
 credentials.yml
 models/
+logs/
 .rasa/
 .old/
 artifacts/
