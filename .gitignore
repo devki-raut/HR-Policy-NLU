@@ -20,3 +20,6 @@ teams_app/dist/
 .venv-runtime/
 policies/pdfs/
 policies/mds/
+
+# Keep the reproducible model comparison script.
+!scripts/benchmark_embeddings.py

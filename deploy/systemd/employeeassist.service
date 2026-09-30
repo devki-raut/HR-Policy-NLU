@@ -1,0 +1,17 @@
+[Unit]
+Description=EmployeeAssist local deployment (Rasa, actions, web API, and Teams bot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/HR-Policy-NLU
+EnvironmentFile=-%h/HR-Policy-NLU/.env
+ExecStart=%h/HR-Policy-NLU/.venv-runtime/bin/python %h/HR-Policy-NLU/scripts/run_deployment.py web
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillMode=control-group
+
+[Install]
+WantedBy=default.target

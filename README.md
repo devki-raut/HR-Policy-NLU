@@ -1,4 +1,4 @@
-# HR Policy Rasa FAQ Bot
+# EmployeeAssist
 
 ## Architecture
 

@@ -10,7 +10,7 @@ export RASA_TELEMETRY_ENABLED := false
 export FAQ_EMBEDDING_MODEL ?= sentence-transformers/all-MiniLM-L6-v2
 export FAQ_EMBEDDING_THRESHOLD ?= 0.75
 
-.PHONY: setup install sync-intents validate train test actions chat serve start run_deployment docker_deployment clean
+.PHONY: setup install sync-intents validate train test benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment docker_deployment clean
 
 setup:
 	python3 setup.py
@@ -28,6 +28,9 @@ train: sync-intents validate
 
 test:
 	@if [ -d tests ]; then $(PYTHON) -m unittest discover -s tests -v; else echo "No tests directory; skipping tests."; fi
+
+benchmark-embeddings:
+	$(PYTHON) scripts/benchmark_embeddings.py
 
 actions:
 	$(RASA) run actions
@@ -56,6 +59,17 @@ start:
 
 run_deployment:
 	$(PYTHON) scripts/run_deployment.py web
+
+# Restart the installed local EmployeeAssist user service. Install/start it when absent.
+restart_deployment:
+	@if systemctl --user cat employeeassist.service >/dev/null 2>&1; then \
+		systemctl --user restart employeeassist.service; \
+	else \
+		./deploy/start.sh local; \
+	fi
+	@systemctl --user --no-pager --full status employeeassist.service
+
+restart-deployment: restart_deployment
 
 # docker_web and docker_bot are intentionally disabled; deploy one endpoint.
 docker_deployment:

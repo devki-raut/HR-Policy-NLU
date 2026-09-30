@@ -1,0 +1,22 @@
+[Unit]
+Description=EmployeeAssist Docker deployment
+After=network-online.target
+Wants=network-online.target
+Conflicts=employeeassist.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/HR-Policy-NLU
+EnvironmentFile=-%h/HR-Policy-NLU/.env
+ExecStartPre=/usr/bin/docker info
+ExecStartPre=-/usr/bin/docker rm -f employeeassist
+ExecStartPre=/usr/bin/docker build --target deployment -f Dockerfile -t employeeassist:local .
+ExecStart=/usr/bin/docker run --rm --name employeeassist --env-file %h/HR-Policy-NLU/.env -p 8610:8610 -v %h/HR-Policy-NLU/data/policies:/app/data/policies employeeassist:local
+ExecStop=/usr/bin/docker stop -t 20 employeeassist
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=0
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

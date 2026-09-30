@@ -28,7 +28,7 @@ from botbuilder.schema import Activity
 from teams_app.bot_package.adapter import ADAPTER
 from teams_app.bot_package.bot_handler import BOT
 
-app = FastAPI(title='HR Policy API', version='1.0.0', description='Upload company policies and chat through Rasa. Set HR_API_KEY to protect API routes.')
+app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload company policies and chat through Rasa. Set HR_API_KEY to protect API routes.')
 
 
 if load_dotenv is not None:
