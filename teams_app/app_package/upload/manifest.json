@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
+  "developer": {
+    "name": "Emergys Solutions",
+    "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
+    "privacyUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/privacy-policy",
+    "termsOfUseUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/terms-n-conditions"
+  },
+  "name": {
+    "short": "EmployeeAssist",
+    "full": "EmployeeAssist"
+  },
+  "description": {
+    "short": "Ask HR policy questions with source references.",
+    "full": "Find policy excerpts about leave, remote work, benefits, expenses, conduct and onboarding. Contact HR for individual eligibility."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#5146B9",
+  "staticTabs": [
+    {
+      "entityId": "employee-assist",
+      "name": "EmployeeAssist",
+      "contentUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
+      "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
+      "scopes": [
+        "personal"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": [
+            "personal"
+          ],
+          "commands": [
+            {
+              "title": "help",
+              "description": "Show how to ask EmployeeAssist about HR policies"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "validDomains": [
+    "dockerpoc-webapp01.azurewebsites.net"
+  ]
+}

@@ -8,3 +8,7 @@
 *.log
 teams_app/**/.env
 artifacts
+logs
+results
+.pytest_cache
+*.zip
