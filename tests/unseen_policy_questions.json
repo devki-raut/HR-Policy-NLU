@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "description": "Frozen unseen questions created after the FAQ/training registry. Do not copy these into training data before evaluating.",
+  "cases": [
+    {
+      "id": "u01",
+      "question": "After telling my manager verbally about a bereavement, where must I formally record the request?",
+      "intent": "policy_bereavement",
+      "facts": [
+        [
+          "hrms"
+        ]
+      ]
+    },
+    {
+      "id": "u02",
+      "question": "Is proof of death compulsory for every bereavement request?",
+      "intent": "policy_bereavement",
+      "facts": [
+        [
+          "not mandatory"
+        ],
+        [
+          "hr's discretion",
+          "hr discretion",
+          "its discretion"
+        ]
+      ]
+    },
+    {
+      "id": "u03",
+      "question": "Does a directly contracted worker qualify for bereavement benefits?",
+      "intent": "policy_bereavement",
+      "facts": [
+        [
+          "direct contractors"
+        ]
+      ]
+    },
+    {
+      "id": "u04",
+      "question": "What paid absence is provided when adopting a baby younger than three months?",
+      "intent": "policy_maternity",
+      "facts": [
+        [
+          "12 weeks"
+        ],
+        [
+          "below three months",
+          "under three months"
+        ]
+      ]
+    },
+    {
+      "id": "u05",
+      "question": "What medical bonus applies when prenatal and postnatal care is not supplied by the employer?",
+      "intent": "policy_maternity",
+      "facts": [
+        [
+          "3,500",
+          "3500",
+          "three thousand five hundred"
+        ]
+      ]
+    },
+    {
+      "id": "u06",
+      "question": "How far ahead should HR normally receive notice of the proposed maternity start date?",
+      "intent": "policy_maternity",
+      "facts": [
+        [
+          "60 days",
+          "sixty days"
+        ]
+      ]
+    },
+    {
+      "id": "u07",
+      "question": "What becomes of unused maternity entitlement if the employee resigns during the leave?",
+      "intent": "policy_maternity",
+      "facts": [
+        [
+          "lapse"
+        ],
+        [
+          "full and final settlement"
+        ]
+      ]
+    },
+    {
+      "id": "u08",
+      "question": "How soon after birth must a father provide the child's birth certificate to HR?",
+      "intent": "policy_paternity",
+      "facts": [
+        [
+          "60 days",
+          "sixty days"
+        ]
+      ]
+    },
+    {
+      "id": "u09",
+      "question": "Are contractors' annual leave balances calculated proportionally when their contract begins?",
+      "intent": "policy_general_leave",
+      "facts": [
+        [
+          "pro-rata",
+          "pro rata"
+        ],
+        [
+          "commencement"
+        ]
+      ]
+    },
+    {
+      "id": "u10",
+      "question": "May an intern retain unused monthly leave for a later internship month?",
+      "intent": "policy_general_leave",
+      "facts": [
+        [
+          "carried forward"
+        ],
+        [
+          "subsequent months"
+        ]
+      ]
+    },
+    {
+      "id": "u11",
+      "question": "May casual leave be joined with a different category of leave?",
+      "intent": "policy_general_leave",
+      "facts": [
+        [
+          "cannot be combined"
+        ]
+      ]
+    },
+    {
+      "id": "u12",
+      "question": "Which holiday calendar applies while I am assigned to a customer's site?",
+      "intent": "policy_general_leave",
+      "facts": [
+        [
+          "client's holiday calendar",
+          "client holiday calendar"
+        ]
+      ]
+    },
+    {
+      "id": "u13",
+      "question": "What happens to my notice end date if my manager approves leave during notice?",
+      "intent": "policy_general_leave",
+      "facts": [
+        [
+          "extension",
+          "extended"
+        ],
+        [
+          "notice period"
+        ]
+      ]
+    },
+    {
+      "id": "u14",
+      "question": "Where should a half-day absence be submitted?",
+      "intent": "policy_general_leave",
+      "facts": [
+        [
+          "hrms"
+        ]
+      ]
+    },
+    {
+      "id": "u15",
+      "question": "Can the candidate email their own CV and still identify me as the referrer?",
+      "intent": "policy_referral",
+      "facts": [
+        [
+          "employee id"
+        ],
+        [
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "u16",
+      "question": "For how long does a submitted candidate remain active in the recruitment database?",
+      "intent": "policy_referral",
+      "facts": [
+        [
+          "six months",
+          "6 months"
+        ]
+      ]
+    },
+    {
+      "id": "u17",
+      "question": "Does hiring an apprentice through campus create a referral payout?",
+      "intent": "policy_referral",
+      "facts": [
+        [
+          "not be eligible",
+          "not eligible"
+        ],
+        [
+          "apprentices"
+        ]
+      ]
+    },
+    {
+      "id": "u18",
+      "question": "Is referral incentive money subject to income-tax or other statutory deductions?",
+      "intent": "policy_referral",
+      "facts": [
+        [
+          "statutory deductions"
+        ],
+        [
+          "income tax"
+        ]
+      ]
+    },
+    {
+      "id": "u19",
+      "question": "In which salary cycle is an earned referral incentive released?",
+      "intent": "policy_referral",
+      "facts": [
+        [
+          "payroll cycle"
+        ],
+        [
+          "following"
+        ]
+      ]
+    },
+    {
+      "id": "u20",
+      "question": "How long does an Internal Committee member's appointment last?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "three years",
+          "3 years"
+        ]
+      ]
+    },
+    {
+      "id": "u21",
+      "question": "How quickly must the committee first meet the complainant after receiving a case?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "seven days",
+          "7 days"
+        ]
+      ]
+    },
+    {
+      "id": "u22",
+      "question": "Can money be the agreed basis for settling a POSH matter through conciliation?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "no monetary settlement",
+          "monetary settlement cannot"
+        ]
+      ]
+    },
+    {
+      "id": "u23",
+      "question": "How much time does the respondent receive to provide a written explanation?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "seven days",
+          "7 days"
+        ]
+      ]
+    },
+    {
+      "id": "u24",
+      "question": "When alleged conduct is a criminal offence, by when is the complaint sent to police?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "seven days",
+          "7 days"
+        ],
+        [
+          "police"
+        ]
+      ]
+    },
+    {
+      "id": "u25",
+      "question": "What is the deadline to appeal a committee recommendation?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "90 days",
+          "ninety days"
+        ]
+      ]
+    },
+    {
+      "id": "u26",
+      "question": "Can a deliberately malicious harassment allegation lead to disciplinary action?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "disciplinary action"
+        ],
+        [
+          "false or malicious"
+        ]
+      ]
+    },
+    {
+      "id": "u27",
+      "question": "What consequence can a witness face for disclosing confidential inquiry information?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "disciplinary action"
+        ],
+        [
+          "confidentiality"
+        ]
+      ]
+    },
+    {
+      "id": "u28",
+      "question": "Can an employee ask for a transfer when reported conduct may be a criminal offence?",
+      "intent": "policy_posh",
+      "facts": [
+        [
+          "transfer"
+        ]
+      ]
+    },
+    {
+      "id": "u29",
+      "question": "Does the referral reward become part of regular compensation?",
+      "intent": "policy_referral",
+      "facts": [
+        [
+          "regular compensation"
+        ]
+      ]
+    },
+    {
+      "id": "u30",
+      "question": "If a father returns before using all approved paternity days, what happens to the balance?",
+      "intent": "policy_paternity",
+      "facts": [
+        [
+          "forfeited"
+        ]
+      ]
+    }
+  ]
+}

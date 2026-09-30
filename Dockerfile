@@ -24,7 +24,7 @@ COPY config.yml domain.yml endpoints.yml /app/
 COPY models /app/models
 
 RUN useradd --create-home --uid 10001 appuser && \
-    mkdir -p /app/.cache /app/data/policies && \
+    mkdir -p /app/.cache /app/data/policies /app/artifacts/logs && \
     chown -R appuser:appuser /app
 USER appuser
 

@@ -25,6 +25,10 @@ THRESHOLD = float(
     os.getenv("FAQ_EMBEDDING_THRESHOLD", "0.75")
 )
 
+MARGIN = float(
+    os.getenv("FAQ_EMBEDDING_MARGIN", "0.01")
+)
+
 
 MODEL = SentenceTransformer(MODEL_NAME)
 
@@ -32,6 +36,14 @@ MODEL = SentenceTransformer(MODEL_NAME)
 def _load_json(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def _policy_chunks():
+    payload = _load_json(POLICY_PATH)
+    return {chunk["id"]: chunk for chunk in payload.get("chunks", [])}
+
+
+POLICY_CHUNKS = _policy_chunks()
 
 
 def _build_candidates():
@@ -84,6 +96,9 @@ def _calculate_fingerprint(rows):
                 "question": row["question"],
                 "entry_id": row["entry"].get("id"),
                 "answer": row["entry"].get("answer"),
+                "answer_mode": row["entry"].get("answer_mode"),
+                "facts": row["entry"].get("facts", []),
+                "keywords": row["entry"].get("keywords", []),
                 "source": row["entry"].get("source"),
                 "evidence": row["entry"].get("evidence"),
             }
@@ -277,6 +292,7 @@ def find_faq(
     question: str,
     routing_intent: str,
     threshold: float = THRESHOLD,
+    margin: float = MARGIN,
 ):
     """
     Match a user question against FAQs belonging
@@ -306,10 +322,31 @@ def find_faq(
         query_embedding,
     )
 
-    best_position = int(np.argmax(scores))
-    best_score = float(scores[best_position])
+    # Multiple utterances point to the same FAQ entry. Rank distinct entries
+    # by their best utterance so near-duplicate phrases from one entry do not
+    # incorrectly trigger the ambiguity margin.
+    query_tokens = _retrieval_tokens(question)
+    best_by_entry = {}
+    for position, (_index, row) in enumerate(candidates):
+        entry_id = row["entry"].get("id") or f"row-{position}"
+        semantic_score = float(scores[position])
+        keyword_tokens = _retrieval_tokens(" ".join(row["entry"].get("keywords", [])))
+        keyword_score = (
+            len(query_tokens & keyword_tokens) / max(min(len(query_tokens), len(keyword_tokens)), 1)
+            if keyword_tokens else 0.0
+        )
+        # Keywords are a small supporting signal. Semantic similarity remains
+        # decisive, while policy-specific terms help unseen phrasings clear the
+        # confidence boundary and break close matches within one route.
+        combined_score = min(1.0, semantic_score + 0.05 * keyword_score)
+        current = best_by_entry.get(entry_id)
+        candidate = (combined_score, row, semantic_score, keyword_score)
+        if current is None or combined_score > current[0]:
+            best_by_entry[entry_id] = candidate
 
-    best_row = candidates[best_position][1]
+    ranked = sorted(best_by_entry.values(), key=lambda item: item[0], reverse=True)
+    best_score, best_row, best_semantic_score, best_keyword_score = ranked[0]
+    second_score = ranked[1][0] if len(ranked) > 1 else None
 
     print(
         f"[FAQ] routing_intent={routing_intent}"
@@ -324,22 +361,39 @@ def find_faq(
         f"[FAQ] score={best_score:.4f}"
     )
     print(
-        f"[FAQ] threshold={threshold}"
+        f"[FAQ] threshold={threshold} margin={margin} second_score={second_score}"
     )
 
     if best_score < threshold:
         return None
+    if second_score is not None and best_score - second_score < margin:
+        print("[FAQ] ambiguous match; top entries are within the confidence margin")
+        return None
 
     entry = best_row["entry"]
-
     evidence = entry.get("evidence") or {}
+    chunk = POLICY_CHUNKS.get(evidence.get("chunk_id"))
+    if (
+        chunk is None
+        or chunk.get("source") != entry.get("source")
+        or chunk.get("text") != evidence.get("quote")
+    ):
+        print("[FAQ] rejected stale or invalid policy evidence")
+        return None
+
+    facts = [str(fact).strip() for fact in entry.get("facts", []) if str(fact).strip()]
+    answer = str(entry.get("answer", "")).strip()
+    if not answer and facts:
+        answer = " ".join(facts)
 
     return {
         "intent": best_row["intent"],
         "routing_intent": best_row["routing_intent"],
         "matched_question": best_row["question"],
         "score": best_score,
-        "answer": entry.get("answer", ""),
+        "semantic_score": best_semantic_score,
+        "keyword_score": best_keyword_score,
+        "answer": answer,
         "source": entry.get("source", ""),
         "entry_id": entry.get("id", ""),
         "evidence": {

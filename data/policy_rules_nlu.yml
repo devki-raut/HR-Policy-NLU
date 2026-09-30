@@ -34,7 +34,6 @@ nlu:
     - Are bereavement days compensated?
     - How do employees apply for bereavement leave?
     - How do I request bereavement leave?
-    - What is the application process?
     - Who should be informed when a family member passes away?
     - What information is needed for a bereavement leave request?
     - What documents are needed for bereavement leave?
@@ -56,6 +55,23 @@ nlu:
     - Can I extend bereavement leave?
     - What if I need more than 5 days?
     - Can I combine leave to cover more time?
+    - Does bereavement leave cover the death of a parent-in-law?
+    - Is leave available when my spouse's parent dies?
+    - Does bereavement cover my spouse's mother or father?
+    - Is a parent in law immediate family for bereavement?
+    - How much paid time is allowed after an immediate family death?
+    - How many paid working days follow a death in my family?
+    - What proof might HR ask for after a family death?
+    - What evidence is needed after bereavement?
+    - Will HR ask me for proof of death?
+    - Tell me about bereavement leave.
+    - Can you explain bereavement leave?
+    - What does bereavement leave cover?
+    - Give me an overview of bereavement leave.
+    - How should bereavement leave be formally recorded after notifying the manager?
+    - Where do I submit bereavement leave after informing HR?
+    - Must a bereavement absence be entered in the HR system?
+    - How is a verbal bereavement request formalized?
 - intent: policy_maternity
   examples: |
     - What is the maternity leave policy?
@@ -94,6 +110,52 @@ nlu:
     - Does the policy cover miscarriage leave?
     - Is there leave after medical termination?
     - How much leave is available after miscarriage?
+    - How long must an employee have worked to be eligible for maternity leave?
+    - What is maternity leave?
+    - Can you explain maternity leave?
+    - What are the maternity leave rules?
+    - Tell me about maternity leave.
+    - Give me an overview of maternity leave.
+    - Can I work from home during maternity leave?
+    - Does maternity leave include work from home?
+    - Can I work remotely while on maternity leave?
+    - Is WFH allowed during maternity leave?
+    - Can I work from home after maternity leave?
+    - What does the policy say about returning after maternity absence?
+    - When must I resume work after maternity leave?
+    - Can maternity leave be extended instead of returning?
+    - What maternity leave applies when adopting a child below three months old?
+    - How much adoption leave is available for a young infant?
+    - Is paid leave provided to a woman adopting a newborn?
+    - What is the adoption benefit for a baby under three months?
+    - Is a medical bonus available when the employer does not provide prenatal and postnatal care?
+    - What maternity medical bonus does the policy provide?
+    - How much is the medical bonus if care is not provided free?
+    - Is there a cash medical benefit during maternity leave?
+    - How much advance notice is expected before maternity leave begins?
+    - When should maternity leave be notified to HR?
+    - How early must I submit a maternity request in HRMS?
+    - What is the notice period for maternity leave?
+    - What happens to unused maternity leave when an employee resigns?
+    - Is unused maternity entitlement paid in final settlement?
+    - Does maternity leave balance lapse after resignation?
+    - Can remaining maternity days be encashed on separation?
+    - Are salary, service continuity, and employment benefits maintained during maternity leave?
+    - Will I continue receiving salary during approved maternity absence?
+    - Does maternity leave interrupt my service record?
+    - Which employment benefits continue during maternity leave?
+    - Does company medical insurance cover the newborn and maternity expenses?
+    - Is a newborn included in Emergys group medical insurance?
+    - Are maternity-related medical costs covered by company insurance?
+    - What insurance benefit continues after childbirth?
+    - How should an approved maternity leave extension be recorded?
+    - Who must be emailed about extending maternity leave?
+    - Where do I apply for approved extended maternity absence?
+    - Does a maternity extension use my available leave balance?
+    - When should HR be told about returning from maternity leave?
+    - How early must I confirm my maternity return date?
+    - When do I notify HR of a return or approved extension?
+    - What is the notice period before resuming work after maternity leave?
 - intent: policy_paternity
   examples: |
     - What is the paternity leave policy?
@@ -110,12 +172,33 @@ nlu:
     - When is paternity leave taken?
     - How is paternity leave applied for?
     - How do employees apply for paternity leave?
-    - What is the application process?
     - What is required to use paternity leave?
     - Is paternity leave continuous or can it be split?
     - Can paternity leave be split?
     - Is it taken as one block?
     - Can it be partial?
+    - What is the time limit for taking paternity leave after childbirth?
+    - How soon after birth must father leave be used?
+    - Does paternity leave have to be used in one block?
+    - Must paternity leave be continuous?
+    - Can a father split paternity leave across dates?
+    - What is paternity leave?
+    - Can you explain paternity leave?
+    - What are the paternity leave rules?
+    - Tell me about paternity leave.
+    - Give me an overview of paternity leave.
+    - When must a child birth certificate be submitted for paternity leave?
+    - What is the deadline for giving the birth certificate to HR?
+    - How many days does a father have to submit proof of birth?
+    - Which paternity document is due within sixty days?
+    - What happens to unused paternity leave after an early return to work?
+    - Are remaining paternity days saved if I return early?
+    - Does unused father leave expire after resuming work?
+    - Can the balance of paternity leave be used later?
+    - What medical insurance benefits apply during paternity leave?
+    - Does company insurance cover a newborn for a male employee?
+    - Are the wife maternity expenses covered during paternity leave?
+    - Who can explain paternity medical insurance coverage?
 - intent: policy_posh
   examples: |
     - What is the POSH policy?
@@ -171,6 +254,102 @@ nlu:
     - What is the outcome after the inquiry?
     - What happens after the committee reviews the matter?
     - How are findings handled?
+    - Within how many months should a POSH complaint be filed?
+    - What is the deadline for filing a POSH complaint?
+    - How long do I have to submit a sexual harassment complaint?
+    - Is there a three month time limit for a POSH complaint?
+    - When must a POSH complaint be submitted?
+    - What does POSH mean?
+    - Can you explain the POSH policy?
+    - What is the workplace sexual harassment policy?
+    - Tell me about POSH.
+    - Give me an overview of the POSH policy.
+    - What types of behaviour are considered sexual harassment under the policy?
+    - What behavior counts as sexual harassment?
+    - What conduct is covered by POSH?
+    - Give examples of workplace sexual harassment
+    - What acts constitute sexual harassment?
+    - What conduct falls within the definition of workplace sexual harassment?
+    - Which workplace actions count as sexual harassment?
+    - What is included in sexual harassment conduct?
+    - How long does the Internal Committee have to complete its inquiry?
+    - What is the deadline for completing a POSH inquiry?
+    - How many months can an Internal Committee inquiry take?
+    - When must the POSH investigation be completed?
+    - What is the IC inquiry time limit?
+    - What happens if someone retaliates against an employee for filing a POSH complaint?
+    - Is retaliation after a POSH complaint allowed?
+    - How is a complainant protected from retaliation?
+    - What if someone retaliates against a complainant?
+    - Is victimisation after reporting harassment prohibited?
+    - Does the policy forbid action against a witness who helped an investigation?
+    - Is a witness protected from retaliation?
+    - Can someone be punished for cooperating with a POSH inquiry?
+    - What is the term of appointment for Internal Committee members?
+    - How long does a POSH committee member serve?
+    - What is the tenure of the Internal Committee?
+    - After how many years does an IC term end?
+    - When must the Committee first meet the complainant?
+    - How soon after a complaint does the first POSH meeting happen?
+    - What is the deadline to hear the complainant initially?
+    - Within how many days does the IC meet a complainant?
+    - Can monetary settlement be the basis of POSH conciliation?
+    - May a POSH case be settled for money through conciliation?
+    - Are financial terms permitted in committee conciliation?
+    - Can cash resolve a harassment complaint informally?
+    - How long does a respondent have to submit a written explanation?
+    - When is the accused response to a POSH complaint due?
+    - What is the show-cause reply deadline?
+    - How many days are allowed for the respondent statement?
+    - When must a potentially criminal complaint be forwarded to police?
+    - What is the police referral deadline for a POSH offence?
+    - How quickly does the committee send a criminal matter to police?
+    - When is harassment reported to law enforcement?
+    - Can a sexual-harassment victim request a workplace transfer?
+    - May the complainant seek their own transfer?
+    - Can the alleged perpetrator be transferred?
+    - Is transfer available as protection in a POSH case?
+    - Is transfer available when sexual harassment may also constitute an offence?
+    - What is the deadline for appealing a POSH recommendation?
+    - How long does a party have to appeal an IC outcome?
+    - Within how many days can committee recommendations be challenged?
+    - What is the POSH appeal period?
+    - What happens when a POSH complaint is deliberately false or malicious?
+    - Is disciplinary action possible for a knowingly false complaint?
+    - What is the consequence of malicious harassment evidence?
+    - How does the policy address a complaint intended to harm someone?
+    - What happens if a witness breaches POSH confidentiality?
+    - Can disclosure of inquiry information lead to discipline?
+    - What is the penalty for revealing confidential complaint details?
+    - Must witnesses keep committee information private?
+    - Does the POSH policy apply to third parties and client locations?
+    - Are non-employees covered by the harassment policy on company premises?
+    - Does POSH apply at a customer site controlled by Emergys?
+    - Can the policy bind a third party suspected of harassment?
+    - Which Emergys entities are covered by the POSH policy?
+    - Does POSH apply to subsidiaries and group companies?
+    - Are affiliates and sister concerns included in the harassment policy?
+    - What related companies fall under the policy?
+    - What forms of stalking are treated as sexual harassment?
+    - Do repeated private calls outside work count as stalking?
+    - Is following someone home covered by POSH?
+    - Does physically pursuing a person at work count as harassment?
+    - Are eve teasing, innuendos, taunts, or forced confinement covered by POSH?
+    - Does the policy treat sexual taunts as harassment?
+    - Is confinement against someone’s will prohibited conduct?
+    - Are innuendos and privacy intrusion included in POSH?
+    - What disciplinary actions may follow a finding of sexual harassment?
+    - Can a person be suspended or terminated after a POSH finding?
+    - May an increment, bonus, or promotion be withheld?
+    - What penalties can the Internal Committee recommend?
+    - Who can help when a POSH complaint cannot be put in writing?
+    - Can the Presiding Officer help draft a complaint?
+    - What assistance is available for submitting a written harassment complaint?
+    - Who may complain for a person who is unable to file personally?
+    - How are POSH complaints and investigations documented?
+    - Does the committee retain a complete investigation record?
+    - Where is the complaints committee report recorded?
+    - Are both complainant and accused files updated?
 - intent: policy_general_leave
   examples: |
     - What is the general leave policy?
@@ -223,6 +402,54 @@ nlu:
     - How is emergency leave approved?
     - What if leave is unplanned?
     - Is emergency leave treated differently?
+    - Do weekends increase unpaid leave when absence runs Friday through Monday?
+    - How many LWP days count from Friday to Monday?
+    - Are Saturday and Sunday included in a Friday-to-Monday LWP?
+    - What are the general leave rules?
+    - Can you explain the leave policy?
+    - What leave entitlements do employees have?
+    - Tell me about general leave.
+    - Give me an overview of the leave policy.
+    - How many Privilege Leaves can I carry forward to the next year?
+    - How many PL can I carry forward to the next year?
+    - What is the PL carry-forward limit?
+    - Can unused privileged leave be carried over?
+    - How many earned leaves can move to next year?
+    - What is the maximum unused PL balance I can move into January?
+    - What is the maximum PL balance for next year?
+    - How much unused privilege leave rolls over?
+    - Can I take three Casual Leaves continuously in a month?
+    - Can I take 3 CL continuously?
+    - How many consecutive Casual Leaves can I take?
+    - What is the monthly consecutive CL limit?
+    - Can I take more than two Casual Leaves together?
+    - Are three CL days in a row permitted?
+    - May I use three casual leave days consecutively?
+    - What is the consecutive casual leave limit?
+    - How is leave credited when a contractor starts or extends a contract?
+    - Are contractor leave balances calculated proportionally?
+    - What is the pro-rata rule for contractual staff?
+    - How does a contract extension affect leave credit?
+    - Can interns carry unused monthly leave into later internship months?
+    - Does an intern lose unused leave each month?
+    - Can internship leave roll over to the following month?
+    - What happens to an intern unused monthly leave?
+    - Can Casual Leave be combined with another type of leave?
+    - May CL be attached to Privilege Leave?
+    - Can casual and earned leave be joined?
+    - Is combining CL with a different leave category allowed?
+    - Which holiday calendar applies to employees deployed at client sites?
+    - Do client-site employees follow the company holiday list?
+    - Whose holidays apply while assigned to a customer?
+    - What calendar applies during client deployment?
+    - What happens when leave is approved during the notice period?
+    - Can approved notice-period leave change my final working day?
+    - Does taking leave extend a resignation notice?
+    - What is the rule for leave while serving notice?
+    - How should a half-day leave request be submitted?
+    - Where do I apply for 0.5 day leave?
+    - Must half-day absence be entered in HRMS?
+    - What system accepts half-day leave applications?
 - intent: policy_referral
   examples: |
     - What is the employee referral policy?
@@ -277,3 +504,51 @@ nlu:
     - What are the payout conditions?
     - What must the candidate achieve before referral bonus?
     - What are the eligibility conditions for payout?
+    - Who is eligible to participate in the employee referral program?
+    - Which employees can participate in the referral program?
+    - How are employee referrals submitted?
+    - How can I send a candidate referral?
+    - Where do I submit an employee referral?
+    - Can I refer someone who applied to Emergys three months ago?
+    - Can I refer a candidate who applied three months ago?
+    - Is someone eligible for referral if they applied within the last six months?
+    - What rule applies to a candidate who submitted an application recently?
+    - Can a recently applied candidate be referred?
+    - How does a prior job application affect referral eligibility?
+    - Which bonus bracket covers eight years of experience?
+    - What referral bonus applies for eight years experience?
+    - How much is paid for a candidate between six and ten years?
+    - When will the referral bonus be paid?
+    - What is the referral policy?
+    - Can you explain employee referrals?
+    - How does the employee referral program work?
+    - Tell me about referrals.
+    - Give me an overview of the referral policy.
+    - What happens if two employees refer the same candidate?
+    - Who gets the bonus when the same candidate is referred twice?
+    - How are duplicate employee referrals handled?
+    - What if multiple people refer one candidate?
+    - Which referral counts first for the same candidate?
+    - Who receives credit when a candidate is submitted twice?
+    - Who gets the bonus for a duplicate referral?
+    - How is referral ownership decided for duplicate submissions?
+    - Can a candidate email their own CV while naming the referring employee?
+    - May the referred person send the resume directly?
+    - How does a candidate identify their employee referrer by email?
+    - Can an applicant submit a referral CV themselves?
+    - How long does a referral remain active in the candidate database?
+    - When does a submitted referral expire?
+    - How long is a referred profile retained as active?
+    - What is the database validity period for referrals?
+    - Do trainee, apprentice, or campus hires qualify for a referral bonus?
+    - Is a campus recruitment hire eligible for referral payout?
+    - Can I earn a bonus for referring an apprentice?
+    - Are trainees covered by referral incentives?
+    - Are statutory deductions applied to referral bonus payments?
+    - Is income tax deducted from a referral incentive?
+    - Is referral bonus taxable compensation?
+    - What deductions apply to employee referral rewards?
+    - In which payroll cycle is an eligible referral bonus paid?
+    - When does an earned referral payment appear in salary?
+    - Which payroll includes the referral incentive?
+    - Is the bonus paid after the eligibility period?

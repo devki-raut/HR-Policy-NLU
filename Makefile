@@ -9,11 +9,12 @@ RASA := .venv-runtime/bin/rasa
 export RASA_TELEMETRY_ENABLED := false
 export FAQ_EMBEDDING_MODEL ?= sentence-transformers/all-MiniLM-L6-v2
 export FAQ_EMBEDDING_THRESHOLD ?= 0.75
+export FAQ_EMBEDDING_MARGIN ?= 0.01
 
 DEPLOYMENT_PID := artifacts/logs/deployment.pid
 DEPLOYMENT_LOG := artifacts/logs/deployment.log
 
-.PHONY: setup install sync-intents validate train test benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
+.PHONY: setup install sync-intents validate train test evaluate-final evaluate-unseen evaluate-fact-coverage benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
 
 setup:
 	python3 setup.py
@@ -31,6 +32,15 @@ train: sync-intents validate
 
 test:
 	@if [ -d tests ]; then $(PYTHON) -m unittest discover -s tests -v; else echo "No tests directory; skipping tests."; fi
+
+evaluate-final:
+	$(PYTHON) scripts/evaluate_final_pipeline.py
+
+evaluate-unseen:
+	$(PYTHON) scripts/evaluate_unseen_questions.py
+
+evaluate-fact-coverage:
+	$(PYTHON) scripts/evaluate_document_fact_coverage.py
 
 benchmark-embeddings:
 	$(PYTHON) scripts/benchmark_embeddings.py
@@ -121,7 +131,7 @@ logs-deployment: logs_deployment
 # docker_web and docker_bot are intentionally disabled; deploy one endpoint.
 docker_deployment:
 	docker build --target deployment -f Dockerfile -t hr-policy-deployment .
-	docker run --rm -p 8610:8610 -v "$(CURDIR)/data/policies:/app/data/policies" --env-file .env hr-policy-deployment
+	docker run --rm -p 8610:8610 -v "$(CURDIR)/data/policies:/app/data/policies" -v "$(CURDIR)/artifacts:/app/artifacts" --env-file .env hr-policy-deployment
 
 clean:
 	rm -rf models .rasa __pycache__ actions/__pycache__ scripts/__pycache__

@@ -12,8 +12,8 @@
         "Who can apply for bereavement leave?",
         "Are contractors eligible for bereavement leave?"
       ],
-      "answer": "All active full-time employees and direct contractors are eligible for bereavement leave. Immediate family members include a spouse or domestic partner, children, parents, siblings, and parents-in-law.",
-      "answer_mode": "fixed",
+      "answer": "Bereavement leave applies to active full-time employees and direct contractors.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "bereavement",
@@ -31,7 +31,10 @@
         "quote": "All active full -time employees and direct contractors are eligible for bereavement leave and benefits under this policy."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "Bereavement leave applies to active full-time employees and direct contractors."
+      ]
     },
     {
       "id": "4bbd95ef16f5f2e0",
@@ -40,10 +43,14 @@
       "utterances": [
         "Who counts as immediate family for bereavement leave?",
         "Are in-laws covered?",
-        "Does bereavement leave include grandparents?"
+        "Does bereavement leave include grandparents?",
+        "Does bereavement leave cover the death of a parent-in-law?",
+        "Is leave available when my spouse's parent dies?",
+        "Does bereavement cover my spouse's mother or father?",
+        "Is a parent in law immediate family for bereavement?"
       ],
-      "answer": "The policy covers an employee’s spouse or domestic partner, children, parents, siblings, and parents-in-law as immediate family members for bereavement leave.",
-      "answer_mode": "fixed",
+      "answer": "Immediate family includes a spouse or domestic partner, children, parents, siblings, and parents-in-law.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "bereavement",
@@ -61,7 +68,10 @@
         "quote": "All active full -time employees and direct contractors are eligible for bereavement leave and benefits under this policy."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "Immediate family includes a spouse or domestic partner, children, parents, siblings, and parents-in-law."
+      ]
     },
     {
       "id": "68d4f1be1942247f",
@@ -101,8 +111,8 @@
         "Does domestic partnership count?",
         "Is a partner eligible?"
       ],
-      "answer": "Yes. A domestic partner is treated as an immediate family member under the bereavement leave policy.",
-      "answer_mode": "fixed",
+      "answer": "A domestic partner is included within the policy definition of an immediate family member.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "bereavement",
         "domestic partner"
@@ -119,7 +129,10 @@
         "quote": "i. Immediate family member : For the purposes of this policy, \"immediate family member\" includes: a) Spouse or domestic partner b) Children (biological, adoptive, or stepchildren) c) Parents (biological, adoptive, or stepparents) d) Siblings e) Parents -in-law"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "A domestic partner is included within the policy definition of an immediate family member."
+      ]
     },
     {
       "id": "e5d0b1f5fca8af0e",
@@ -128,10 +141,12 @@
       "utterances": [
         "How much bereavement leave is an employee entitled to?",
         "What is the leave duration?",
-        "How many consecutive working days are allowed?"
+        "How many consecutive working days are allowed?",
+        "How much paid time is allowed after an immediate family death?",
+        "How many paid working days follow a death in my family?"
       ],
-      "answer": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave after the death of an immediate family member.",
-      "answer_mode": "fixed",
+      "answer": "Eligible employees receive up to five consecutive working days of paid bereavement leave following the death of an immediate family member.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "bereavement",
@@ -149,7 +164,10 @@
         "quote": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave in the event of the death of an immediate family member."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "Eligible employees receive up to five consecutive working days of paid bereavement leave following the death of an immediate family member."
+      ]
     },
     {
       "id": "70ab76d98f5706ce",
@@ -160,8 +178,8 @@
         "Is it fully paid?",
         "Are bereavement days compensated?"
       ],
-      "answer": "Yes. Bereavement leave is paid leave and is provided to eligible employees for the approved period.",
-      "answer_mode": "fixed",
+      "answer": "Bereavement leave provides paid leave for the approved entitlement period.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "bereavement",
@@ -179,7 +197,10 @@
         "quote": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave in the event of the death of an immediate family member."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "Bereavement leave provides paid leave for the approved entitlement period."
+      ]
     },
     {
       "id": "a124d4e9744d3a95",
@@ -187,7 +208,6 @@
       "question": "How do employees apply for bereavement leave?",
       "utterances": [
         "How do I request bereavement leave?",
-        "What is the application process?",
         "Who should be informed when a family member passes away?"
       ],
       "answer": "Employees should inform their immediate manager and HR as soon as possible. Requests may be made verbally or by email and should be recorded in the HRMS.",
@@ -247,10 +267,13 @@
       "utterances": [
         "Do I need a death certificate for bereavement leave?",
         "Is proof required?",
-        "What paperwork is needed?"
+        "What paperwork is needed?",
+        "What proof might HR ask for after a family death?",
+        "What evidence is needed after bereavement?",
+        "Will HR ask me for proof of death?"
       ],
-      "answer": "The policy requires employees to inform HR and their manager promptly. HR may request documentation such as a death certificate or other evidence when necessary.",
-      "answer_mode": "fixed",
+      "answer": "HR may request a death certificate or other documentation at its discretion. Documentation is not mandatory unless there is cause for concern.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "bereavement",
         "documentation",
@@ -268,7 +291,18 @@
         "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "HR may request a death certificate or other documentation at its discretion.",
+        "Documentation is not mandatory unless there is cause for concern."
+      ],
+      "keywords": [
+        "death certificate",
+        "proof of death",
+        "documentation",
+        "not mandatory",
+        "HR discretion"
+      ]
     },
     {
       "id": "8032be7497fda299",
@@ -279,8 +313,8 @@
         "Is a written form required?",
         "Can I request verbally?"
       ],
-      "answer": "Yes. The leave request may be made verbally or by email, and the final approval and recording are completed in the HRMS.",
-      "answer_mode": "fixed",
+      "answer": "A bereavement-leave request may be communicated verbally or by email. Final approval and recording are completed in the HRMS.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "bereavement",
         "request",
@@ -298,7 +332,11 @@
         "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "A bereavement-leave request may be communicated verbally or by email.",
+        "Final approval and recording are completed in the HRMS."
+      ]
     },
     {
       "id": "12fc8e1aab3ae057",
@@ -309,8 +347,8 @@
         "Can it be combined with casual leave?",
         "Is additional leave allowed with approval?"
       ],
-      "answer": "Yes. Bereavement leave may be combined with other leave types such as earned or casual leave, subject to approval when the employee needs additional time off.",
-      "answer_mode": "fixed",
+      "answer": "Bereavement leave may be combined with earned leave, casual leave, or other leave when additional time is required, subject to approval.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "bereavement",
         "leave",
@@ -328,7 +366,10 @@
         "quote": "Bereavement leave may be combined with other forms of leave (earned leave, casual leave, etc.) upon approval if the employee requires additional time off."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "Bereavement leave may be combined with earned leave, casual leave, or other leave when additional time is required, subject to approval."
+      ]
     },
     {
       "id": "867351454df5b668",
@@ -367,10 +408,11 @@
       "utterances": [
         "What is required to qualify for maternity leave?",
         "How many days of service are needed?",
-        "When can a woman apply for maternity leave?"
+        "When can a woman apply for maternity leave?",
+        "How long must an employee have worked to be eligible for maternity leave?"
       ],
-      "answer": "A female employee must complete at least 80 days of continuous service in the 12 months before the expected date of delivery to qualify for maternity leave.",
-      "answer_mode": "fixed",
+      "answer": "Maternity-leave eligibility requires at least 80 days of continuous service during the 12 months preceding the expected delivery date.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "maternity",
         "eligibility",
@@ -388,7 +430,10 @@
         "quote": "A female employee is entitled to maternity leave if she has completed a minimum of 80 days of continuous service with the organization in the 12 months preceding the expected date of delivery, as per the Maternity Benefit Act, 1961."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_maternity"
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Maternity-leave eligibility requires at least 80 days of continuous service during the 12 months preceding the expected delivery date."
+      ]
     },
     {
       "id": "ae0b40db00a88454",
@@ -399,8 +444,8 @@
         "Is continuous service required?",
         "What is the service threshold?"
       ],
-      "answer": "Yes. The employee must have completed a minimum of 80 days of continuous service with the organization in the 12 months before the expected date of delivery.",
-      "answer_mode": "fixed",
+      "answer": "Maternity-leave eligibility requires at least 80 days of continuous service during the 12 months preceding the expected delivery date.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "maternity",
         "service",
@@ -418,7 +463,10 @@
         "quote": "A female employee is entitled to maternity leave if she has completed a minimum of 80 days of continuous service with the organization in the 12 months preceding the expected date of delivery, as per the Maternity Benefit Act, 1961."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_maternity"
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Maternity-leave eligibility requires at least 80 days of continuous service during the 12 months preceding the expected delivery date."
+      ]
     },
     {
       "id": "59d8d0a000ae270d",
@@ -429,8 +477,8 @@
         "What is the maternity leave entitlement?",
         "For the first two surviving children, how much paid leave is available?"
       ],
-      "answer": "Eligible employees receive up to 26 weeks of paid maternity leave for the first two surviving children, and up to 12 weeks when the employee has two or more surviving children.",
-      "answer_mode": "fixed",
+      "answer": "Paid maternity leave is up to 26 weeks for the first two surviving children. When an employee has two or more surviving children, paid maternity leave is up to 12 weeks.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "maternity",
         "entitlement",
@@ -448,7 +496,11 @@
         "quote": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_maternity"
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Paid maternity leave is up to 26 weeks for the first two surviving children.",
+        "When an employee has two or more surviving children, paid maternity leave is up to 12 weeks."
+      ]
     },
     {
       "id": "3f91e3dd532fbc76",
@@ -519,8 +571,8 @@
         "Can it be split?",
         "Can maternity leave be availed in multiple blocks?"
       ],
-      "answer": "No. The policy states that maternity leave should be taken in one continuous stretch and cannot be availed in parts.",
-      "answer_mode": "fixed",
+      "answer": "Maternity leave is taken in one continuous stretch and is not availed in separate parts.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "maternity",
         "leave",
@@ -538,7 +590,10 @@
         "quote": "permitted under applicable law."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_maternity"
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Maternity leave is taken in one continuous stretch and is not availed in separate parts."
+      ]
     },
     {
       "id": "a21348a609f5feea",
@@ -609,8 +664,8 @@
         "How much paid leave is given for a new child?",
         "What is the paternity entitlement?"
       ],
-      "answer": "Eligible permanent male employees may receive 10 working days of paternity leave, which is exclusive of public holidays and other paid leave.",
-      "answer_mode": "fixed",
+      "answer": "Permanent male employees receive 10 working days of paternity leave, exclusive of public holidays and other paid leave.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "paternity",
         "entitlement",
@@ -629,7 +684,10 @@
         "quote": "Eligible employees are entitled to 10 working days of paternity leave, which is exclusive of public holidays and other paid time off."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_paternity"
+      "routing_intent": "policy_paternity",
+      "facts": [
+        "Permanent male employees receive 10 working days of paternity leave, exclusive of public holidays and other paid leave."
+      ]
     },
     {
       "id": "ea93bdb89a8f5ba1",
@@ -638,7 +696,9 @@
       "utterances": [
         "Can paternity leave be used after some time?",
         "Is it flexible?",
-        "When is paternity leave taken?"
+        "When is paternity leave taken?",
+        "What is the time limit for taking paternity leave after childbirth?",
+        "How soon after birth must father leave be used?"
       ],
       "answer": "Paternity leave is generally taken as a continuous block and must typically be used within six months of the child’s birth.",
       "answer_mode": "fixed",
@@ -660,7 +720,14 @@
         "quote": "Eligible employees are entitled to 10 working days of paternity leave, which is exclusive of public holidays and other paid time off."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_paternity"
+      "routing_intent": "policy_paternity",
+      "keywords": [
+        "paternity leave",
+        "within six months",
+        "child birth",
+        "deadline",
+        "continuous block"
+      ]
     },
     {
       "id": "6614e23b68de3a6b",
@@ -668,7 +735,6 @@
       "question": "How is paternity leave applied for?",
       "utterances": [
         "How do employees apply for paternity leave?",
-        "What is the application process?",
         "What is required to use paternity leave?"
       ],
       "answer": "The employee must apply through the company process and take the approved leave within the policy time window, typically as a continuous block.",
@@ -700,7 +766,10 @@
       "utterances": [
         "Can paternity leave be split?",
         "Is it taken as one block?",
-        "Can it be partial?"
+        "Can it be partial?",
+        "Does paternity leave have to be used in one block?",
+        "Must paternity leave be continuous?",
+        "Can a father split paternity leave across dates?"
       ],
       "answer": "The policy generally expects paternity leave to be taken as one continuous block, rather than spread out across multiple periods.",
       "answer_mode": "fixed",
@@ -849,14 +918,15 @@
     {
       "id": "8540c810d322d422",
       "intent": "policy_posh_complaint",
-      "question": "How can an employee file a POSH complaint?",
+      "question": "Within how many months should a POSH complaint be filed?",
       "utterances": [
-        "How do I complain under POSH?",
-        "Who can receive a complaint?",
-        "What is the complaint filing process?"
+        "What is the deadline for filing a POSH complaint?",
+        "How long do I have to submit a sexual harassment complaint?",
+        "Is there a three month time limit for a POSH complaint?",
+        "When must a POSH complaint be submitted?"
       ],
-      "answer": "An aggrieved person may submit a written and signed complaint within three months of the incident or within three months of the last incident in a series of incidents.",
-      "answer_mode": "fixed",
+      "answer": "A written and signed POSH complaint should be submitted within three months of the incident. For a series of incidents, the three-month period runs from the date of the last incident. The Committee may extend the filing period by up to a further three months when recorded circumstances prevented timely filing.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "posh",
         "complaint",
@@ -865,17 +935,21 @@
       "enabled": true,
       "source": "POSH Policy_Emergys Solutions.pdf",
       "mapped_sections": [
-        "Complaint Mechanism",
-        "Documentation"
+        "7. Complaint Mechanism"
       ],
       "evidence": {
-        "chunk_id": "b189e5acdc186130",
+        "chunk_id": "82c2dfc98f08098d",
         "page": 5,
         "section": "7. Complaint Mechanism",
-        "quote": "the circumstances were such which prevented the Employee from filing a complaint within three months from the date of the occurrence of the incident."
+        "quote": "i. The complaint mechanism and reliefs as per the law are for women. With respect to men, complaint mechanism and reliefs as per this policy are non -statutory and at the discretion of Emergys. We extend the same redressal process for employees irrespective of gender. ii. Any aggrieved person who feels that he / she / they is/are being sexually harassed directly or indirectly may submit a written and signed complaint of the alleged incident within three (3) months of the date of incident and in case of series of incidents, within a period of three (3) months from the date of last incident. iii. The Complaint may be given directly to any member of the Committee or through the human resource manager who shall forward the Complaint to the Committee. iv. In case of complaints preceding three (3) months from the date of last date of the incident, the Committee, for the reasons to be recorded in writing, may extend the time limit for submitting such complaint not exceeding further three months, if the Commit tee is satisfied that"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_posh"
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A written and signed POSH complaint should be submitted within three months of the incident.",
+        "For a series of incidents, the three-month period runs from the date of the last incident.",
+        "The Committee may extend the filing period by up to a further three months when recorded circumstances prevented timely filing."
+      ]
     },
     {
       "id": "e1a639b009fd20d6",
@@ -886,8 +960,8 @@
         "Is HR the place to report?",
         "Can a committee member receive the complaint?"
       ],
-      "answer": "The complaint can be submitted directly to a committee member or to HR, which then forwards it to the relevant committee.",
-      "answer_mode": "fixed",
+      "answer": "A POSH complaint may be submitted directly to a member of the Internal Committee or through the Human Resources Manager, who forwards it to the Committee.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "posh",
         "complaint",
@@ -906,7 +980,10 @@
         "quote": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_posh"
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A POSH complaint may be submitted directly to a member of the Internal Committee or through the Human Resources Manager, who forwards it to the Committee."
+      ]
     },
     {
       "id": "5a8324cf48092df7",
@@ -948,8 +1025,8 @@
         "Is assistance provided to the complainant?",
         "What if the person cannot draft the complaint?"
       ],
-      "answer": "Yes. If the aggrieved person is unable to write the complaint, the committee may assist them in preparing and filing it.",
-      "answer_mode": "fixed",
+      "answer": "When an aggrieved person cannot prepare a written complaint, the Presiding Officer or a Committee member provides reasonable assistance with the written complaint.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "posh",
         "accessibility",
@@ -968,7 +1045,10 @@
         "quote": "i. Subject to outcome of the Conciliation, the Committee shall immediately proceed with the inquiry under the Act and communicate the same to the Complainant and the Respondent. ii. The Committee shall prepare and hand over the copy of the complaint within 7 days to the person against whom the complaint is made and give an opportunity by issuing a show cause notice to submit a written explanation within seven ( 7) days of receipt of the same. iii. The Committee shall hand over a copy of the written explanation submitted by the Respondent, to the Complainant. iv. If the Complainant or the person against whom the complaint is made desires any witness(es) to be called, they shall communicate in writing to the Committee the names of such witness(es). v. If the Complainant desires to tender any documents by way of evidence before the Committee, he/she/they shall submit such documents in original. Similarly, if the person against whom the complaint is made desires to tender any documents in evidence before the Committee, he/she/they shall submit such documents in original. Both"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_posh"
+      "routing_intent": "policy_posh",
+      "facts": [
+        "When an aggrieved person cannot prepare a written complaint, the Presiding Officer or a Committee member provides reasonable assistance with the written complaint."
+      ]
     },
     {
       "id": "38a864515e5b5054",
@@ -1101,8 +1181,8 @@
         "What are the general leave benefits?",
         "What leave days are available to permanent employees?"
       ],
-      "answer": "Permanent employees and contractors are entitled to 18 Privileged Leaves and 8 Casual Leaves per calendar year. Interns are entitled to 1 leave per month during the internship period.",
-      "answer_mode": "fixed",
+      "answer": "Permanent employees and contractors receive 18 Privilege Leaves and 8 Casual Leaves per calendar year. Interns receive one leave per month during the internship period.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "general leave",
         "entitlement",
@@ -1120,7 +1200,11 @@
         "quote": "➢ Entitled to 18 Privileged Leaves (PL) and 8 Casual Leaves (CL) per calendar year . ➢ The calendar year is considered from January to December."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_general_leave"
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Permanent employees and contractors receive 18 Privilege Leaves and 8 Casual Leaves per calendar year.",
+        "Interns receive one leave per month during the internship period."
+      ]
     },
     {
       "id": "da52b60d468ef595",
@@ -1159,10 +1243,13 @@
       "utterances": [
         "How is leave without pay treated over a weekend?",
         "Does Friday to Monday count as LWP?",
-        "What is the sandwich rule for leave?"
+        "What is the sandwich rule for leave?",
+        "Do weekends increase unpaid leave when absence runs Friday through Monday?",
+        "How many LWP days count from Friday to Monday?",
+        "Are Saturday and Sunday included in a Friday-to-Monday LWP?"
       ],
-      "answer": "If an employee takes leave from Friday through Monday, the weekend days are also treated as leave without pay. This is the sandwich rule for leave without pay.",
-      "answer_mode": "fixed",
+      "answer": "When Leave Without Pay runs from Friday through Monday, Saturday and Sunday are also counted as LWP. The Friday-to-Monday period counts as four days of LWP.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "LWP",
@@ -1171,16 +1258,20 @@
       "enabled": true,
       "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
       "mapped_sections": [
-        "Privilege Leave"
+        "• Sandwich Rule for Leave Without Pay (LWP):"
       ],
       "evidence": {
-        "chunk_id": "9352dbafe1c94664",
-        "page": 1,
-        "section": "• Privilege Leave (PL)",
-        "quote": "➢ May be availed without specific restrictions, subject to approval. ➢ Eligible for carry -forward to the subsequent calendar year. ➢ A maximum of 20 PLs can be carried forward to the subsequent calendar year."
+        "chunk_id": "8dbc1cae97364699",
+        "page": 3,
+        "section": "• Sandwich Rule for Leave Without Pay (LWP):",
+        "quote": "➢ This rule applies to associates taking a LWP i .e. They may not have any leave balanc e. ➢ In this case, if an associate takes leave from Friday through the coming Monday (Friday, Saturday, Sunday, Monday) then, the weekend will also be considered as LWP. It will count to 4 days of LWP. E.g. If an employee is on LWP from 13th May 202 5 to 5th June 202 5, then ALL Saturdays and Sundays i.e. 1 7th , 18th , 24th , 25th and 31st May and 1st June will be considered as Leave without pay. Policy Review This policy may be reviewed and amended periodically to reflect employee needs and organizational priorities. Drafted And Reviewed By, Mugdha Wagh Assistant General Manager - HR and Talent Management"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_general_leave"
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "When Leave Without Pay runs from Friday through Monday, Saturday and Sunday are also counted as LWP.",
+        "The Friday-to-Monday period counts as four days of LWP."
+      ]
     },
     {
       "id": "5eb8e15ef59ee81b",
@@ -1191,26 +1282,29 @@
         "Are weekend days included when leave spans Friday to Monday?",
         "Is there an LWP sandwich rule?"
       ],
-      "answer": "Yes. When leave spans a weekend, the weekend days are also treated as leave without pay under the policy’s sandwich rule.",
-      "answer_mode": "fixed",
+      "answer": "When Leave Without Pay spans a weekend, the intervening weekend days are also counted as LWP.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "weekend",
         "LWP"
       ],
-      "enabled": true,
+      "enabled": false,
       "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
       "mapped_sections": [
-        "Privilege Leave"
+        "• Sandwich Rule for Leave Without Pay (LWP):"
       ],
       "evidence": {
-        "chunk_id": "9352dbafe1c94664",
-        "page": 1,
-        "section": "• Privilege Leave (PL)",
-        "quote": "➢ May be availed without specific restrictions, subject to approval. ➢ Eligible for carry -forward to the subsequent calendar year. ➢ A maximum of 20 PLs can be carried forward to the subsequent calendar year."
+        "chunk_id": "8dbc1cae97364699",
+        "page": 3,
+        "section": "• Sandwich Rule for Leave Without Pay (LWP):",
+        "quote": "➢ This rule applies to associates taking a LWP i .e. They may not have any leave balanc e. ➢ In this case, if an associate takes leave from Friday through the coming Monday (Friday, Saturday, Sunday, Monday) then, the weekend will also be considered as LWP. It will count to 4 days of LWP. E.g. If an employee is on LWP from 13th May 202 5 to 5th June 202 5, then ALL Saturdays and Sundays i.e. 1 7th , 18th , 24th , 25th and 31st May and 1st June will be considered as Leave without pay. Policy Review This policy may be reviewed and amended periodically to reflect employee needs and organizational priorities. Drafted And Reviewed By, Mugdha Wagh Assistant General Manager - HR and Talent Management"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_general_leave"
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "When Leave Without Pay spans a weekend, the intervening weekend days are also counted as LWP."
+      ]
     },
     {
       "id": "ffd6c3eb79f00a44",
@@ -1251,8 +1345,8 @@
         "Is casual leave cumulative?",
         "Is there a carryover rule for casual leave?"
       ],
-      "answer": "No. Casual Leave is non-cumulative and cannot be carried forward to the next year.",
-      "answer_mode": "fixed",
+      "answer": "Casual Leave is non-cumulative and cannot be carried forward to the next year.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "casual leave",
         "carry forward"
@@ -1269,7 +1363,10 @@
         "quote": "➢ They are emergent and incidental in nature. ➢ Limited to a maximum of two (2) consecutive CLs per month. ➢ CLs cannot be combined with other types of leave. ➢ CLs are non -cumulative and cannot be carried forward to the next year."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_general_leave"
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Casual Leave is non-cumulative and cannot be carried forward to the next year."
+      ]
     },
     {
       "id": "a184b5963af90233",
@@ -1398,10 +1495,12 @@
       "utterances": [
         "Who can make an employee referral?",
         "What are the conditions for referral eligibility?",
-        "What candidates can be referred?"
+        "What candidates can be referred?",
+        "Who is eligible to participate in the employee referral program?",
+        "Which employees can participate in the referral program?"
       ],
-      "answer": "An employee may refer any candidate who meets the qualifications for an open position and has not applied to the company in the six months before the referral.",
-      "answer_mode": "fixed",
+      "answer": "Employees may refer candidates who meet the qualifications for an open position. A referred candidate must not have applied to an Emergys Solutions position during the preceding six months. Referral-bonus eligibility is also subject to the policy’s payout and excluded-role conditions.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "eligibility",
@@ -1410,8 +1509,7 @@
       "enabled": true,
       "source": "Referral Bonus Policy_Emergys Solutions.pdf",
       "mapped_sections": [
-        "Scope / Eligibility",
-        "Referral Criteria"
+        "4. Terms and Conditions / 4.1 Referral Criteria"
       ],
       "evidence": {
         "chunk_id": "8b5ef0b05e41630f",
@@ -1420,7 +1518,12 @@
         "quote": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "Employees may refer candidates who meet the qualifications for an open position.",
+        "A referred candidate must not have applied to an Emergys Solutions position during the preceding six months.",
+        "Referral-bonus eligibility is also subject to the policy’s payout and excluded-role conditions."
+      ]
     },
     {
       "id": "915b5ab24abdd676",
@@ -1431,8 +1534,8 @@
         "Is there a cap on referrals?",
         "How many referrals are allowed?"
       ],
-      "answer": "No. There is no restriction on the number of referrals an eligible employee may submit under the policy.",
-      "answer_mode": "fixed",
+      "answer": "The policy places no restriction on the number of referrals an eligible employee may submit.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "limit",
@@ -1451,18 +1554,21 @@
         "quote": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "The policy places no restriction on the number of referrals an eligible employee may submit."
+      ]
     },
     {
       "id": "8aa1250eac9a7991",
       "intent": "policy_referral_submission",
-      "question": "How are employee referrals submitted and paid?",
+      "question": "How are employee referrals submitted?",
       "utterances": [
         "How do employees submit referrals?",
-        "When is referral bonus paid?",
-        "What is the required service period before payout?"
+        "How can I send a candidate referral?",
+        "Where do I submit an employee referral?"
       ],
-      "answer": "The referral bonus is paid after the referred candidate completes six months of continuous employment and successfully completes probation, while still remaining an active employee at payout.",
+      "answer": "Referrals may be submitted by emailing the candidate’s updated CV to the applicable referral email address and clearly identifying it as a referral. The candidate may also email the CV and include the referring employee’s name and employee ID.",
       "answer_mode": "fixed",
       "tags": [
         "referral",
@@ -1610,10 +1716,16 @@
       "utterances": [
         "What if the candidate already applied before referral?",
         "Is the referral invalid if the candidate previously applied?",
-        "Are prior applicants eligible to be referred?"
+        "Are prior applicants eligible to be referred?",
+        "Can I refer someone who applied to Emergys three months ago?",
+        "Can I refer a candidate who applied three months ago?",
+        "Is someone eligible for referral if they applied within the last six months?",
+        "What rule applies to a candidate who submitted an application recently?",
+        "Can a recently applied candidate be referred?",
+        "How does a prior job application affect referral eligibility?"
       ],
-      "answer": "No. If the candidate already applied to the company in the six months before the referral, they would not be eligible to be referred under the policy.",
-      "answer_mode": "fixed",
+      "answer": "You can refer a candidate as long as they have not applied for an Emergys Solutions position in the previous six months.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "prior application",
@@ -1622,16 +1734,19 @@
       "enabled": true,
       "source": "Referral Bonus Policy_Emergys Solutions.pdf",
       "mapped_sections": [
-        "Referral Validity"
+        "4. Terms and Conditions / 4.1 Referral Criteria"
       ],
       "evidence": {
-        "chunk_id": "8de208c4ddc7a5f7",
-        "page": 4,
-        "section": "5. Referral Validity and Evaluation",
-        "quote": "i. All referral entries will remain active in our candidate database for a period of six (6) months from the date of submission. ii. Referrals will be assessed in accordance with the applicable job description and minimum eligibility criteria. iii. Suitable candidates will be contacted by the Recruitment Team for the next stages of the hiring process."
+        "chunk_id": "8b5ef0b05e41630f",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.1 Referral Criteria",
+        "quote": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "A referred candidate must not have applied to an Emergys Solutions position during the preceding six months."
+      ]
     },
     {
       "id": "d8d26dd69c0937a5",
@@ -1640,10 +1755,13 @@
       "utterances": [
         "How much referral bonus is paid?",
         "What amount is given by experience level?",
-        "What is the bonus range?"
+        "What is the bonus range?",
+        "Which bonus bracket covers eight years of experience?",
+        "What referral bonus applies for eight years experience?",
+        "How much is paid for a candidate between six and ten years?"
       ],
-      "answer": "The policy pays INR 60,000 for 10+ years of experience, INR 45,000 for 6 to less than 10 years, INR 30,000 for 6 months to less than 6 years, and INR 15,000 for freshers with less than 6 months of experience.",
-      "answer_mode": "fixed",
+      "answer": "The referral bonus is INR 60,000 for 10 or more years of relevant experience. The referral bonus is INR 45,000 for 6 to less than 10 years of relevant experience. The referral bonus is INR 30,000 for 6 months to less than 6 years of relevant experience. The referral bonus is INR 15,000 for freshers with less than 6 months of relevant experience.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "bonus",
@@ -1661,7 +1779,13 @@
         "quote": "Relevant Exp Referral Bonus (INR) 10 years & above 60,000 6 years to less than 10 years 45,000 6 months to less than 6 years 30,000 Fresher (less than 6 months) 15,000"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "The referral bonus is INR 60,000 for 10 or more years of relevant experience.",
+        "The referral bonus is INR 45,000 for 6 to less than 10 years of relevant experience.",
+        "The referral bonus is INR 30,000 for 6 months to less than 6 years of relevant experience.",
+        "The referral bonus is INR 15,000 for freshers with less than 6 months of relevant experience."
+      ]
     },
     {
       "id": "1a7121e4f25dd468",
@@ -1672,8 +1796,8 @@
         "Are there different bonus bands?",
         "Does seniority change the payout?"
       ],
-      "answer": "Yes. The amount depends on the candidate’s relevant experience, with higher payout levels for more experienced hires and smaller amounts for early-career referrals.",
-      "answer_mode": "fixed",
+      "answer": "Referral bonus amounts are determined by the referred candidate’s relevant-experience band.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "bonus",
@@ -1691,7 +1815,10 @@
         "quote": "Relevant Exp Referral Bonus (INR) 10 years & above 60,000 6 years to less than 10 years 45,000 6 months to less than 6 years 30,000 Fresher (less than 6 months) 15,000"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "Referral bonus amounts are determined by the referred candidate’s relevant-experience band."
+      ]
     },
     {
       "id": "a94f35c699b71459",
@@ -1700,10 +1827,12 @@
       "utterances": [
         "When is the payout made?",
         "After what period is the referral amount paid?",
-        "Is it paid after joining?"
+        "Is it paid after joining?",
+        "When will the referral bonus be paid?",
+        "When is referral bonus paid?"
       ],
-      "answer": "Referral bonus is paid once the referred candidate has successfully completed the assigned probation period and remains employed under the policy conditions.",
-      "answer_mode": "fixed",
+      "answer": "The referral bonus becomes payable after the referred candidate completes six months of continuous employment, successfully completes probation, and receives employment confirmation. The referrer and referred candidate must meet the active-employment conditions stated in the policy at payout.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "payment",
@@ -1721,7 +1850,11 @@
         "quote": "bonus will be included in the Referrer’s regular compensation and shall be subject to applicable statutory deductions , including income tax, as per prevailing regulations. xii. The bonus will be paid in the payroll cycle following the completion of the eligibility period. xiii. All interpretations, decisions, and amendments related to this Referral Program shall be made by Management and will be final, conclusive, and binding on all participants. xiv. xiv. Although referred candidates may be given preferential consideration, referral submission does not guarantee selection . Final hiring decisions will be based on business requirements, candidate qualifications, and organizational priorities."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "The referral bonus becomes payable after the referred candidate completes six months of continuous employment, successfully completes probation, and receives employment confirmation.",
+        "The referrer and referred candidate must meet the active-employment conditions stated in the policy at payout."
+      ]
     },
     {
       "id": "6223f3f6b447830b",
@@ -1824,19 +1957,29 @@
         "What does bereavement leave cover?",
         "Give me an overview of bereavement leave."
       ],
-      "answer": "Bereavement leave provides eligible employees with paid time off following the death of an immediate family member. Eligible active full-time employees and direct contractors may receive up to 5 consecutive working days, subject to the policy and approval process.",
-      "answer_mode": "fixed",
+      "answer": "Eligible employees receive up to five consecutive working days of paid bereavement leave following the death of an immediate family member.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "leave",
         "bereavement",
         "overview"
       ],
       "enabled": true,
-      "source": "HR Policy Manual",
-      "mapped_sections": [],
-      "evidence": {},
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "2688c0ea4597e88b",
+        "page": 3,
+        "section": "4. Leave Entitlement",
+        "quote": "Eligible employees are entitled to up to 5 consecutive working days of paid bereavement leave in the event of the death of an immediate family member."
+      },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "Eligible employees receive up to five consecutive working days of paid bereavement leave following the death of an immediate family member."
+      ]
     },
     {
       "id": "43ace4e77829a424",
@@ -1849,19 +1992,30 @@
         "Tell me about maternity leave.",
         "Give me an overview of maternity leave."
       ],
-      "answer": "Eligible employees can receive paid maternity leave subject to the policy conditions. The policy requires at least 80 days of continuous service in the 12 months before the expected date of delivery; the standard entitlement is up to 26 weeks for the first two surviving children and up to 12 weeks when there are two or more surviving children.",
-      "answer_mode": "fixed",
+      "answer": "Paid maternity leave is up to 26 weeks for the first two surviving children. When an employee has two or more surviving children, paid maternity leave is up to 12 weeks.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "maternity",
         "leave",
         "overview"
       ],
       "enabled": true,
-      "source": "HR Policy Manual",
-      "mapped_sections": [],
-      "evidence": {},
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3.2 Maternity Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "315b7103cc9f5ac3",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.2 Maternity Leave Entitlement:",
+        "quote": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
+      },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_maternity"
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Paid maternity leave is up to 26 weeks for the first two surviving children.",
+        "When an employee has two or more surviving children, paid maternity leave is up to 12 weeks."
+      ]
     },
     {
       "id": "aefa72b9076ee289",
@@ -1874,19 +2028,30 @@
         "Tell me about paternity leave.",
         "Give me an overview of paternity leave."
       ],
-      "answer": "Eligible permanent male employees may receive 10 working days of paternity leave. The policy generally requires the leave to be taken as a continuous block within the applicable time window, typically within six months of the child's birth.",
-      "answer_mode": "fixed",
+      "answer": "Permanent male employees receive 10 working days of paternity leave, exclusive of public holidays and other paid leave.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "paternity",
         "leave",
         "overview"
       ],
       "enabled": true,
-      "source": "HR Policy Manual",
-      "mapped_sections": [],
-      "evidence": {},
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4.1 Eligibility",
+        "4.2 Paternity Leave Entitlement"
+      ],
+      "evidence": {
+        "chunk_id": "4cfded1b889ad9e4",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.2 Paternity Leave Entitlement",
+        "quote": "Eligible employees are entitled to 10 working days of paternity leave, which is exclusive of public holidays and other paid time off."
+      },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_paternity"
+      "routing_intent": "policy_paternity",
+      "facts": [
+        "Permanent male employees receive 10 working days of paternity leave, exclusive of public holidays and other paid leave."
+      ]
     },
     {
       "id": "f2bc50f10c8b0d77",
@@ -1899,19 +2064,30 @@
         "Tell me about POSH.",
         "Give me an overview of the POSH policy."
       ],
-      "answer": "The POSH policy covers prevention and redressal of sexual harassment at the workplace, including the role of the POSH committee, complaint handling, inquiry procedures, confidentiality, and protections for people using the complaint process.",
-      "answer_mode": "fixed",
+      "answer": "Sexual harassment includes unwelcome sexual advances or requests for sexual favours. It also includes unwelcome verbal, non-verbal, electronic, or physical conduct such as sexually coloured remarks, jokes, messages, gestures, pornography, staring, physical contact, molestation, or stalking.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "posh",
         "sexual harassment",
         "overview"
       ],
       "enabled": true,
-      "source": "HR Policy Manual",
-      "mapped_sections": [],
-      "evidence": {},
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Sexual Harassment at the Workplace"
+      ],
+      "evidence": {
+        "chunk_id": "01c1c600e22df6d3",
+        "page": 3,
+        "section": "3. Sexual Harassment at the Workplace",
+        "quote": "“Sexual Harassment” shall mean and include any of the following: i. Unwelcome sexual advances, requests, or demands for sexual favours, either explicitly or implicitly, in return for employment, promotion, examination or evaluation of a person towards any Company activity. ii. Unwelcome sexual advances involving verbal, non -verbal, or physical conduct such as sexually coloured remarks, jokes, letters, electronic messages through mobile phones, phone calls, e -mail, gestures, showing of pornography, lurid stares, physical contact or molestation, stalking, sounds, display of pictures, signs, verbal or non -verbal communication which offends the individual’s sensibilities and affect her/ his performance."
+      },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_posh"
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Sexual harassment includes unwelcome sexual advances or requests for sexual favours.",
+        "It also includes unwelcome verbal, non-verbal, electronic, or physical conduct such as sexually coloured remarks, jokes, messages, gestures, pornography, staring, physical contact, molestation, or stalking."
+      ]
     },
     {
       "id": "dbc016cf1011e3f6",
@@ -1924,19 +2100,30 @@
         "Tell me about general leave.",
         "Give me an overview of the leave policy."
       ],
-      "answer": "Permanent employees and contractors are entitled to 18 Privileged Leaves and 8 Casual Leaves per calendar year. Interns are entitled to 1 leave per month during the internship period. Leave requests are handled through the HRMS and planned leave should be approved in advance.",
-      "answer_mode": "fixed",
+      "answer": "Permanent employees and contractors receive 18 Privilege Leaves and 8 Casual Leaves per calendar year. Interns receive one leave per month during the internship period.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "general leave",
         "leave",
         "overview"
       ],
       "enabled": true,
-      "source": "HR Policy Manual",
-      "mapped_sections": [],
-      "evidence": {},
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Permanent Employees and Contractors:"
+      ],
+      "evidence": {
+        "chunk_id": "fe35925009371210",
+        "page": 1,
+        "section": "• Permanent Employees and Contractors:",
+        "quote": "➢ Entitled to 18 Privileged Leaves (PL) and 8 Casual Leaves (CL) per calendar year . ➢ The calendar year is considered from January to December."
+      },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_general_leave"
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Permanent employees and contractors receive 18 Privilege Leaves and 8 Casual Leaves per calendar year.",
+        "Interns receive one leave per month during the internship period."
+      ]
     },
     {
       "id": "b59f4f2c884d98d1",
@@ -1949,19 +2136,1880 @@
         "Tell me about referrals.",
         "Give me an overview of the referral policy."
       ],
-      "answer": "Employees can refer candidates who meet the policy eligibility conditions, including candidates who have not applied to the company in the six months before the referral. Referral bonuses are subject to the policy's eligibility, employment, probation, and payout conditions.",
-      "answer_mode": "fixed",
+      "answer": "Employees may refer candidates who meet the qualifications for an open position. A referred candidate must not have applied to an Emergys Solutions position during the preceding six months. Referral-bonus eligibility is also subject to the policy’s payout and excluded-role conditions.",
+      "answer_mode": "grounded_answer",
       "tags": [
         "referral",
         "hiring",
         "overview"
       ],
       "enabled": true,
-      "source": "HR Policy Manual",
-      "mapped_sections": [],
-      "evidence": {},
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Terms and Conditions / 4.1 Referral Criteria"
+      ],
+      "evidence": {
+        "chunk_id": "8b5ef0b05e41630f",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.1 Referral Criteria",
+        "quote": "Employees may refer any individual who: a) Meets the qualifications for an open position at Emergys Solutions Private Limited , and b) Has not applied to any position at Emergys Solutions Private Limited in the preceding six (6) months."
+      },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "Employees may refer candidates who meet the qualifications for an open position.",
+        "A referred candidate must not have applied to an Emergys Solutions position during the preceding six months.",
+        "Referral-bonus eligibility is also subject to the policy’s payout and excluded-role conditions."
+      ]
+    },
+    {
+      "id": "99e493c29a373780",
+      "intent": "policy_general_leave_privilege",
+      "question": "How many Privilege Leaves can I carry forward to the next year?",
+      "utterances": [
+        "How many PL can I carry forward to the next year?",
+        "What is the PL carry-forward limit?",
+        "Can unused privileged leave be carried over?",
+        "How many earned leaves can move to next year?",
+        "What is the maximum unused PL balance I can move into January?",
+        "What is the maximum PL balance for next year?",
+        "How much unused privilege leave rolls over?"
+      ],
+      "answer": "A maximum of 20 Privilege Leaves can be carried forward to the subsequent calendar year.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "privilege leave",
+        "carry forward"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Privilege Leave (PL)"
+      ],
+      "evidence": {
+        "chunk_id": "9352dbafe1c94664",
+        "page": 1,
+        "section": "• Privilege Leave (PL)",
+        "quote": "➢ May be availed without specific restrictions, subject to approval. ➢ Eligible for carry -forward to the subsequent calendar year. ➢ A maximum of 20 PLs can be carried forward to the subsequent calendar year."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "A maximum of 20 Privilege Leaves can be carried forward to the subsequent calendar year."
+      ]
+    },
+    {
+      "id": "f1fb1fd67849d66d",
+      "intent": "policy_general_leave_casual",
+      "question": "Can I take three Casual Leaves continuously in a month?",
+      "utterances": [
+        "Can I take 3 CL continuously?",
+        "How many consecutive Casual Leaves can I take?",
+        "What is the monthly consecutive CL limit?",
+        "Can I take more than two Casual Leaves together?",
+        "Are three CL days in a row permitted?",
+        "May I use three casual leave days consecutively?",
+        "What is the consecutive casual leave limit?"
+      ],
+      "answer": "Casual Leave is limited to a maximum of two consecutive CLs per month.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "casual leave",
+        "consecutive"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Casual Leave (CL)"
+      ],
+      "evidence": {
+        "chunk_id": "b8d4feab39007c62",
+        "page": 2,
+        "section": "• Casual Leave (CL)",
+        "quote": "➢ They are emergent and incidental in nature. ➢ Limited to a maximum of two (2) consecutive CLs per month. ➢ CLs cannot be combined with other types of leave. ➢ CLs are non -cumulative and cannot be carried forward to the next year."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Casual Leave is limited to a maximum of two consecutive CLs per month."
+      ]
+    },
+    {
+      "id": "482ce1a2f2b2ff13",
+      "intent": "policy_parental_maternity_return",
+      "question": "Can I work from home during maternity leave?",
+      "utterances": [
+        "Does maternity leave include work from home?",
+        "Can I work remotely while on maternity leave?",
+        "Is WFH allowed during maternity leave?",
+        "Can I work from home after maternity leave?",
+        "What does the policy say about returning after maternity absence?",
+        "When must I resume work after maternity leave?",
+        "Can maternity leave be extended instead of returning?"
+      ],
+      "answer": "Employees are expected to resume duties after approved maternity leave unless additional leave is approved under company leave policies. An extension must be communicated to the Reporting Manager and Attendance Desk and applied for through Darwin after approval. The maternity policy does not state a separate work-from-home entitlement.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "return to work",
+        "work from home"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.7 Return to Work:"
+      ],
+      "evidence": {
+        "chunk_id": "47c3a911b6d66334",
+        "page": 5,
+        "section": "3. Maternity Leave / 3.7 Return to Work:",
+        "quote": "Employees are expected to resume duties upon completion of approved maternity leave unless additional leave is approved in accordance with Company leave policies. In the event of an extension of Maternity Leave, the employee must notify their Reporting Manager and the Attendance Desk via email. Upon appr oval from the Reporting Manager an employee shall apply the extended leave in Darwin using the employee's available leave balance. Any period of absence exceeding the available leave balance shall be treated as Leave Without Pay (LWP). Employees shall notify HR at least one (1) month prior to their scheduled return -to- work date to confirm their return or communicate any approved extension of leave."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Employees are expected to resume duties after approved maternity leave unless additional leave is approved under company leave policies.",
+        "An extension must be communicated to the Reporting Manager and Attendance Desk and applied for through Darwin after approval.",
+        "The maternity policy does not state a separate work-from-home entitlement."
+      ]
+    },
+    {
+      "id": "e03be7d9a6636386",
+      "intent": "policy_referral_validity",
+      "question": "What happens if two employees refer the same candidate?",
+      "utterances": [
+        "Who gets the bonus when the same candidate is referred twice?",
+        "How are duplicate employee referrals handled?",
+        "What if multiple people refer one candidate?",
+        "Which referral counts first for the same candidate?",
+        "Who receives credit when a candidate is submitted twice?",
+        "Who gets the bonus for a duplicate referral?",
+        "How is referral ownership decided for duplicate submissions?"
+      ],
+      "answer": "When multiple employees or external agencies refer the same candidate, the referral bonus is awarded on a first-come, first-served basis using the submission timestamp. The Recruitment Team’s decision on duplicate referrals is final and binding.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "duplicate candidate",
+        "first come"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "7. Employee Referral Business Rules"
+      ],
+      "evidence": {
+        "chunk_id": "a036d41c90484660",
+        "page": 4,
+        "section": "7. Employee Referral Business Rules",
+        "quote": "i. The referring employee (\"Referrer\") shall be eligible to receive a referral bonus upon the successful selection and onboarding of the referred candidate, provided the candidate completes the recruitment process and formally joins Emergys Solutions Private Limited . The bonus amount will correspond to the referred candidate’s relevant experience category. ii. The referral bonus will be paid to the Referrer after the referred candidate has completed six (6) months of continuous employment with the organization and has successfully completed the probation period and received confirmation of employment. iii. If multiple employees or external agencies refer to the same candidate, the referral bonus will be awarded on a first-come, first -served basis , determined by the timestamp of submission. The final decision in such matters will rest solely with the Recruitment Team and shall be binding. iv. There is no restriction on the number of referrals an eligible employee may submit under this program. v. Referral incentive eligibility is subject to both the referrer and the referred candidate successfully completing probation, being confirmed as full -time"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "When multiple employees or external agencies refer the same candidate, the referral bonus is awarded on a first-come, first-served basis using the submission timestamp.",
+        "The Recruitment Team’s decision on duplicate referrals is final and binding."
+      ]
+    },
+    {
+      "id": "608b8fa73426ae8e",
+      "intent": "policy_posh_definition",
+      "question": "What types of behaviour are considered sexual harassment under the policy?",
+      "utterances": [
+        "What behavior counts as sexual harassment?",
+        "What conduct is covered by POSH?",
+        "Give examples of workplace sexual harassment",
+        "What acts constitute sexual harassment?",
+        "What conduct falls within the definition of workplace sexual harassment?",
+        "Which workplace actions count as sexual harassment?",
+        "What is included in sexual harassment conduct?"
+      ],
+      "answer": "Sexual harassment includes unwelcome sexual advances or requests for sexual favours. It also includes unwelcome verbal, non-verbal, electronic, or physical conduct such as sexually coloured remarks, jokes, messages, gestures, pornography, staring, physical contact, molestation, or stalking.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "sexual harassment",
+        "definition"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Sexual Harassment at the Workplace"
+      ],
+      "evidence": {
+        "chunk_id": "01c1c600e22df6d3",
+        "page": 3,
+        "section": "3. Sexual Harassment at the Workplace",
+        "quote": "“Sexual Harassment” shall mean and include any of the following: i. Unwelcome sexual advances, requests, or demands for sexual favours, either explicitly or implicitly, in return for employment, promotion, examination or evaluation of a person towards any Company activity. ii. Unwelcome sexual advances involving verbal, non -verbal, or physical conduct such as sexually coloured remarks, jokes, letters, electronic messages through mobile phones, phone calls, e -mail, gestures, showing of pornography, lurid stares, physical contact or molestation, stalking, sounds, display of pictures, signs, verbal or non -verbal communication which offends the individual’s sensibilities and affect her/ his performance."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Sexual harassment includes unwelcome sexual advances or requests for sexual favours.",
+        "It also includes unwelcome verbal, non-verbal, electronic, or physical conduct such as sexually coloured remarks, jokes, messages, gestures, pornography, staring, physical contact, molestation, or stalking."
+      ]
+    },
+    {
+      "id": "87e2eaac4b19e0b7",
+      "intent": "policy_posh_inquiry",
+      "question": "How long does the Internal Committee have to complete its inquiry?",
+      "utterances": [
+        "What is the deadline for completing a POSH inquiry?",
+        "How many months can an Internal Committee inquiry take?",
+        "When must the POSH investigation be completed?",
+        "What is the IC inquiry time limit?"
+      ],
+      "answer": "The Internal Committee must complete its inquiry within a reasonable period and no later than three months after receiving the original complaint. The Committee must communicate its findings and recommendations to the HR Head within 10 days after completing the inquiry.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "inquiry",
+        "timeline"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "10. Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "f4bbc90d1d59be77",
+        "page": 7,
+        "section": "10. Investigation",
+        "quote": "shall affix his / her / their signature on the respective documents. vi. The Committee shall call upon all witnesses mentioned by both parties. vii. The Committee shall provide every reasonable opportunity to the Complainant and to the person against whom the complaint is made, for putting forward and defending their respective case as per the principle of natural justice. viii. The Committee shall complete the inquiry under the Act within reasonable period but not beyond three (3) months after the date of receipt of the original Complaint and communicate its findings and its recommendations for action to the HR - Head of the Compa ny within 10 days of the completion of the Enquiry. The report of the Committee shall be treated as an enquiry report on the basis of which an erring Employee can be awarded appropriate punishment straightaway. ix. The HR -Head will direct appropriate action in accordance with the recommendation proposed by the Committee within sixty (60) days of submission of the report by the Committee."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The Internal Committee must complete its inquiry within a reasonable period and no later than three months after receiving the original complaint.",
+        "The Committee must communicate its findings and recommendations to the HR Head within 10 days after completing the inquiry."
+      ]
+    },
+    {
+      "id": "1de6843113273062",
+      "intent": "policy_posh_retaliation",
+      "question": "What happens if someone retaliates against an employee for filing a POSH complaint?",
+      "utterances": [
+        "Is retaliation after a POSH complaint allowed?",
+        "How is a complainant protected from retaliation?",
+        "What if someone retaliates against a complainant?",
+        "Is victimisation after reporting harassment prohibited?",
+        "Does the policy forbid action against a witness who helped an investigation?",
+        "Is a witness protected from retaliation?",
+        "Can someone be punished for cooperating with a POSH inquiry?"
+      ],
+      "answer": "Retaliation against an employee who reports sexual or discriminatory harassment is strictly prohibited. Retaliation against anyone who cooperates with a harassment investigation is strictly prohibited.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "retaliation",
+        "protection"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "13. Non-Retaliation Policy"
+      ],
+      "evidence": {
+        "chunk_id": "0c6109886aa5f3e3",
+        "page": 8,
+        "section": "13. Non-Retaliation Policy",
+        "quote": "Retaliation against an Employee who has complained about sexual or other discriminatory harassment or against an individual who has cooperated with an investigation of such harassment is strictly prohibited within the Company."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Retaliation against an employee who reports sexual or discriminatory harassment is strictly prohibited.",
+        "Retaliation against anyone who cooperates with a harassment investigation is strictly prohibited."
+      ]
+    },
+    {
+      "id": "c4ad057e07bec5e5",
+      "intent": "policy_bereavement_hrms",
+      "question": "How should bereavement leave be formally recorded after notifying the manager?",
+      "utterances": [
+        "Where do I submit bereavement leave after informing HR?",
+        "Must a bereavement absence be entered in the HR system?",
+        "How is a verbal bereavement request formalized?"
+      ],
+      "keywords": [
+        "bereavement request",
+        "HRMS",
+        "verbally",
+        "email",
+        "manager notification"
+      ],
+      "answer": "A bereavement request may initially be made verbally or by email. The request should subsequently be entered in the company HRMS.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "bereavement",
+        "application",
+        "hrms"
+      ],
+      "enabled": true,
+      "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "5. Leave Application Process"
+      ],
+      "evidence": {
+        "chunk_id": "cf73c11b03327b81",
+        "page": 3,
+        "section": "5. Leave Application Process",
+        "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_bereavement",
+      "facts": [
+        "A bereavement request may initially be made verbally or by email.",
+        "The request should subsequently be entered in the company HRMS."
+      ]
+    },
+    {
+      "id": "aa1804f51afaf7d0",
+      "intent": "policy_maternity_adoption",
+      "question": "What maternity leave applies when adopting a child below three months old?",
+      "utterances": [
+        "How much adoption leave is available for a young infant?",
+        "Is paid leave provided to a woman adopting a newborn?",
+        "What is the adoption benefit for a baby under three months?"
+      ],
+      "keywords": [
+        "adoption",
+        "adopting child",
+        "below three months",
+        "12 weeks",
+        "paid leave"
+      ],
+      "answer": "A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "adoption",
+        "entitlement"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.2 Maternity Leave Entitlement:"
+      ],
+      "evidence": {
+        "chunk_id": "315b7103cc9f5ac3",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.2 Maternity Leave Entitlement:",
+        "quote": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over."
+      ]
+    },
+    {
+      "id": "29369f17870d778b",
+      "intent": "policy_maternity_medical_bonus",
+      "question": "Is a medical bonus available when the employer does not provide prenatal and postnatal care?",
+      "utterances": [
+        "What maternity medical bonus does the policy provide?",
+        "How much is the medical bonus if care is not provided free?",
+        "Is there a cash medical benefit during maternity leave?"
+      ],
+      "keywords": [
+        "medical bonus",
+        "prenatal care",
+        "postnatal care",
+        "3500",
+        "three thousand five hundred"
+      ],
+      "answer": "An eligible woman receives a medical bonus of INR 3,500 when the employer does not provide prenatal confinement and postnatal care free of charge.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "medical bonus",
+        "benefits"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:"
+      ],
+      "evidence": {
+        "chunk_id": "504a27cb5620e8a4",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:",
+        "quote": "During approved maternity leave – i. Salary shall be paid in accordance with applicable law and company payroll practices; Continuity of service shall be maintained and statutory and eligible employment benefits shall continue as applicable. ii. Medical Bonus: Every woman entitled to maternity benefit under this Act shall also be entitled to receive a medical bonus of three thous and five hundred rupees, if no pre -natal confinement and post -natal care is provided for by the employer free of charge. This is one -time medical bonus. iii. Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses. b. Employees are advised to consult with HR for further information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "An eligible woman receives a medical bonus of INR 3,500 when the employer does not provide prenatal confinement and postnatal care free of charge."
+      ]
+    },
+    {
+      "id": "200eef8412748320",
+      "intent": "policy_maternity_advance_notice",
+      "question": "How much advance notice is expected before maternity leave begins?",
+      "utterances": [
+        "When should maternity leave be notified to HR?",
+        "How early must I submit a maternity request in HRMS?",
+        "What is the notice period for maternity leave?"
+      ],
+      "keywords": [
+        "maternity notice",
+        "60 days",
+        "commencement date",
+        "HRMS",
+        "reporting manager"
+      ],
+      "answer": "Where practicable, the employee should notify HR and the Reporting Manager and submit the HRMS request at least 60 days before the proposed maternity leave commencement date.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "application",
+        "notice"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:"
+      ],
+      "evidence": {
+        "chunk_id": "38e001c7f7e5e85b",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
+        "quote": "i. Notification and Leave Application a) Employees shall notify HR and their Reporting Manager of their intended maternity leave and submit a leave request through the HRMS at least sixty (60) days prior to the proposed commencement date, wherever practicable. b) A medical certificate from a registered medical practitioner indicating the expected date of delivery and proposed leave commencement date must be submitted in support of the application. c) In exceptional circumstances where the employee is unable to submit the leave request, HR may facilitate the application process on her behalf. ii. Communication During and After Leave a) The actual date of childbirth shall be communicated to HR within seven (7) days by the employee or an immediate family member. b) A copy of the birth certificate shall be submitted within sixty (60) days of the child's birth. iii. Compliance a) Maternity benefits under this Policy shall be subject to compliance with applicable laws and regulations. Any employee found to be engaged in employment with another establishment during the maternity leave period may forfeit eligibility for maternity bene fits, as"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Where practicable, the employee should notify HR and the Reporting Manager and submit the HRMS request at least 60 days before the proposed maternity leave commencement date."
+      ]
+    },
+    {
+      "id": "9d89670df6a234a1",
+      "intent": "policy_maternity_resignation",
+      "question": "What happens to unused maternity leave when an employee resigns?",
+      "utterances": [
+        "Is unused maternity entitlement paid in final settlement?",
+        "Does maternity leave balance lapse after resignation?",
+        "Can remaining maternity days be encashed on separation?"
+      ],
+      "keywords": [
+        "resignation",
+        "unused maternity leave",
+        "lapse",
+        "full and final settlement",
+        "separation"
+      ],
+      "answer": "If an employee voluntarily resigns during or upon completion of maternity leave, unused maternity leave lapses. Unused maternity leave does not form part of the full and final settlement.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "resignation",
+        "settlement"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.6 Separation d uring M aternity Leave:"
+      ],
+      "evidence": {
+        "chunk_id": "313a75ce0a3af98c",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.6 Separation d uring M aternity Leave:",
+        "quote": "In case an employee voluntarily resigns during or upon completion of maternity leave, any unutilized maternity leave shall lapse and shall not form part of the full and final settlement."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "If an employee voluntarily resigns during or upon completion of maternity leave, unused maternity leave lapses.",
+        "Unused maternity leave does not form part of the full and final settlement."
+      ]
+    },
+    {
+      "id": "56dd03464d2ccbb0",
+      "intent": "policy_paternity_birth_certificate",
+      "question": "When must a child birth certificate be submitted for paternity leave?",
+      "utterances": [
+        "What is the deadline for giving the birth certificate to HR?",
+        "How many days does a father have to submit proof of birth?",
+        "Which paternity document is due within sixty days?"
+      ],
+      "keywords": [
+        "paternity",
+        "birth certificate",
+        "60 days",
+        "HR",
+        "date of birth"
+      ],
+      "answer": "The child's birth certificate must be submitted to HR within 60 days from the date of birth.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "paternity",
+        "documentation",
+        "deadline"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Paternity Leave: / 4.5 Paternity Leave Application and Documentation:"
+      ],
+      "evidence": {
+        "chunk_id": "f24de44ffd0eb459",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.5 Paternity Leave Application and Documentation:",
+        "quote": "a. Employees shall inform their reporting manager and HR as early as reasonably practicable via email. b. Raise a leave request on HRMS . c. The birth certificate of the child must be submitted to HR within 60 days from the date of birth, if the employee returns to work before completing the full leave period, the remaining days will be forfeited."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity",
+      "facts": [
+        "The child's birth certificate must be submitted to HR within 60 days from the date of birth."
+      ]
+    },
+    {
+      "id": "4f3d9a88d4a5d10c",
+      "intent": "policy_paternity_unused_balance",
+      "question": "What happens to unused paternity leave after an early return to work?",
+      "utterances": [
+        "Are remaining paternity days saved if I return early?",
+        "Does unused father leave expire after resuming work?",
+        "Can the balance of paternity leave be used later?"
+      ],
+      "keywords": [
+        "paternity balance",
+        "return early",
+        "remaining days",
+        "forfeited",
+        "unused leave"
+      ],
+      "answer": "If the employee returns to work before completing the full paternity leave period, the remaining days are forfeited.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "paternity",
+        "usage",
+        "forfeiture"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Paternity Leave: / 4.5 Paternity Leave Application and Documentation:"
+      ],
+      "evidence": {
+        "chunk_id": "f24de44ffd0eb459",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.5 Paternity Leave Application and Documentation:",
+        "quote": "a. Employees shall inform their reporting manager and HR as early as reasonably practicable via email. b. Raise a leave request on HRMS . c. The birth certificate of the child must be submitted to HR within 60 days from the date of birth, if the employee returns to work before completing the full leave period, the remaining days will be forfeited."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity",
+      "facts": [
+        "If the employee returns to work before completing the full paternity leave period, the remaining days are forfeited."
+      ]
+    },
+    {
+      "id": "a6790d334f4e37f7",
+      "intent": "policy_general_contractor_prorata",
+      "question": "How is leave credited when a contractor starts or extends a contract?",
+      "utterances": [
+        "Are contractor leave balances calculated proportionally?",
+        "What is the pro-rata rule for contractual staff?",
+        "How does a contract extension affect leave credit?"
+      ],
+      "keywords": [
+        "contractor",
+        "contractual",
+        "pro-rata",
+        "commencement",
+        "extension",
+        "leave credit"
+      ],
+      "answer": "A contractor receives leave on a pro-rata basis at the commencement of the contractual period. For a contract extension, leave is credited for the extended duration using the same pro-rata principles.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "contractor",
+        "credit"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Contractors:"
+      ],
+      "evidence": {
+        "chunk_id": "dc407692b5030751",
+        "page": 1,
+        "section": "• Contractors:",
+        "quote": "➢ Leave entitlement shall be granted on a pro-rata basis at the commencement of the contractual period. ➢ In the event of an extension of the contract, the leave shall be credited in accordance with the extended duration using the same pro-rata principles. ➢ Unused leaves may be carried forward to the extended period."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "A contractor receives leave on a pro-rata basis at the commencement of the contractual period.",
+        "For a contract extension, leave is credited for the extended duration using the same pro-rata principles."
+      ]
+    },
+    {
+      "id": "fe7e53fcb41fa10d",
+      "intent": "policy_general_intern_carryforward",
+      "question": "Can interns carry unused monthly leave into later internship months?",
+      "utterances": [
+        "Does an intern lose unused leave each month?",
+        "Can internship leave roll over to the following month?",
+        "What happens to an intern unused monthly leave?"
+      ],
+      "keywords": [
+        "intern",
+        "internship",
+        "one leave per month",
+        "unused leave",
+        "subsequent months",
+        "carry forward"
+      ],
+      "answer": "Interns receive one leave per month during the internship. Unused internship leave may be carried forward to subsequent months during the internship period.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "intern",
+        "carry-forward"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Interns:"
+      ],
+      "evidence": {
+        "chunk_id": "5cfad4c40d710d81",
+        "page": 1,
+        "section": "• Interns:",
+        "quote": "➢ Eligible for 1 Leave (OL) per month for the duration of the internship. ➢ Unused leaves may be carried forward to subsequent months during the internship period. ➢ In the event of an extension of the internship , the leave shall be credited in accordance with the extended duration using the same pro-rata principles. ➢ Unused leaves may be carried forward to the extended period."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Interns receive one leave per month during the internship.",
+        "Unused internship leave may be carried forward to subsequent months during the internship period."
+      ]
+    },
+    {
+      "id": "efd7d908fe94579b",
+      "intent": "policy_general_casual_combination",
+      "question": "Can Casual Leave be combined with another type of leave?",
+      "utterances": [
+        "May CL be attached to Privilege Leave?",
+        "Can casual and earned leave be joined?",
+        "Is combining CL with a different leave category allowed?"
+      ],
+      "keywords": [
+        "casual leave",
+        "CL",
+        "combined",
+        "other leave type",
+        "privilege leave"
+      ],
+      "answer": "Casual Leave cannot be combined with other types of leave.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "casual leave",
+        "combination"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Casual Leave (CL)"
+      ],
+      "evidence": {
+        "chunk_id": "b8d4feab39007c62",
+        "page": 2,
+        "section": "• Casual Leave (CL)",
+        "quote": "➢ They are emergent and incidental in nature. ➢ Limited to a maximum of two (2) consecutive CLs per month. ➢ CLs cannot be combined with other types of leave. ➢ CLs are non -cumulative and cannot be carried forward to the next year."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Casual Leave cannot be combined with other types of leave."
+      ]
+    },
+    {
+      "id": "511c3dc168972944",
+      "intent": "policy_general_client_calendar",
+      "question": "Which holiday calendar applies to employees deployed at client sites?",
+      "utterances": [
+        "Do client-site employees follow the company holiday list?",
+        "Whose holidays apply while assigned to a customer?",
+        "What calendar applies during client deployment?"
+      ],
+      "keywords": [
+        "client site",
+        "client holiday calendar",
+        "customer site",
+        "deployment",
+        "holiday"
+      ],
+      "answer": "Employees assigned to client sites follow the client's holiday calendar.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "client site",
+        "holiday"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Client Site Deployment:"
+      ],
+      "evidence": {
+        "chunk_id": "2b31804230e65ab6",
+        "page": 2,
+        "section": "• Client Site Deployment:",
+        "quote": "➢ Employees assigned to client sites will follow the client's holiday calendar. ➢ Discrepancies between the client and company holiday calendars will be reconciled as follows: ➢ If the employee works on a company holiday not recognized by the client, 1 additional leave day will be credited. (Emergys Solutions has a holiday for Holi. If the client doesn't have a holiday for Holi and the employee works on that day, 1 day will be added to the leave balance. ) Employee needs to apply for a comp off in this case. ➢ If the employee takes leave on a client holiday not recognized by the company, 1 leave day will be debited. (The client has a holiday for Easter. If Emergys Solutions does not have a holiday and the employee takes holiday, the leave balance will be reduced by 1. )"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Employees assigned to client sites follow the client's holiday calendar."
+      ]
+    },
+    {
+      "id": "7f7657b46cc99122",
+      "intent": "policy_general_notice_leave",
+      "question": "What happens when leave is approved during the notice period?",
+      "utterances": [
+        "Can approved notice-period leave change my final working day?",
+        "Does taking leave extend a resignation notice?",
+        "What is the rule for leave while serving notice?"
+      ],
+      "keywords": [
+        "notice period",
+        "approved leave",
+        "reporting manager",
+        "extension",
+        "final working day"
+      ],
+      "answer": "Employees are generally not entitled to leave during the notice period. If the reporting manager approves leave during the notice period, the notice period is extended by the corresponding duration.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "notice period",
+        "extension"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Leaves During Notice Period :"
+      ],
+      "evidence": {
+        "chunk_id": "8d3ca7fe3c8a392c",
+        "page": 2,
+        "section": "• Leaves During Notice Period :",
+        "quote": "➢ Employees are not entitled to take a leave during the notice period. ➢ Normally, the leaves may not get approved in such a situation. ➢ However, if approved by the reporting manager, a ny leave taken during the notice period will result in a corresponding extension of the notice period."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Employees are generally not entitled to leave during the notice period.",
+        "If the reporting manager approves leave during the notice period, the notice period is extended by the corresponding duration."
+      ]
+    },
+    {
+      "id": "7173b85d263f488d",
+      "intent": "policy_general_half_day_hrms",
+      "question": "How should a half-day leave request be submitted?",
+      "utterances": [
+        "Where do I apply for 0.5 day leave?",
+        "Must half-day absence be entered in HRMS?",
+        "What system accepts half-day leave applications?"
+      ],
+      "keywords": [
+        "half-day",
+        "half day",
+        "0.5",
+        "HRMS",
+        "leave application"
+      ],
+      "answer": "Half-day leave applications must be submitted through the official HRMS system.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "half-day",
+        "hrms"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Leave Application Process:"
+      ],
+      "evidence": {
+        "chunk_id": "f6584151fcfc3506",
+        "page": 2,
+        "section": "• Leave Application Process:",
+        "quote": "➢ All planned leave requests must be submitted in advance via the official HRMS system. ➢ For emergency situations, the leave application must be submitted promptly upon resuming work. ➢ Half -day leave (0.5) applications must also be submitted through the official HRMS system."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Half-day leave applications must be submitted through the official HRMS system."
+      ]
+    },
+    {
+      "id": "6b909ee32d2efb8c",
+      "intent": "policy_referral_candidate_submission",
+      "question": "Can a candidate email their own CV while naming the referring employee?",
+      "utterances": [
+        "May the referred person send the resume directly?",
+        "How does a candidate identify their employee referrer by email?",
+        "Can an applicant submit a referral CV themselves?"
+      ],
+      "keywords": [
+        "candidate email",
+        "CV",
+        "employee name",
+        "employee ID",
+        "referrer",
+        "referral email"
+      ],
+      "answer": "A referred candidate may email their CV directly to the applicable referral email address. The email must explicitly include the referring employee's name and employee ID.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "submission",
+        "candidate"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Terms and Conditions / 4.2 Referral Submission Process"
+      ],
+      "evidence": {
+        "chunk_id": "d245555dd125ce87",
+        "page": 3,
+        "section": "4. Terms and Conditions / 4.2 Referral Submission Process",
+        "quote": "Referrals may be submitted through either of the following methods: a) Option A: Email the referred candidate’s updated CV to the applicable referral email ID specified in Section 4 .3, clearly marking the submission as a referral. b) Option B: The referred candidate may directly email their CV to the applicable referral email ID specified in Section 4.3, explicitly including the name and employee ID of the referring employee."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "A referred candidate may email their CV directly to the applicable referral email address.",
+        "The email must explicitly include the referring employee's name and employee ID."
+      ]
+    },
+    {
+      "id": "35d1a15d269ab3e8",
+      "intent": "policy_referral_database_validity",
+      "question": "How long does a referral remain active in the candidate database?",
+      "utterances": [
+        "When does a submitted referral expire?",
+        "How long is a referred profile retained as active?",
+        "What is the database validity period for referrals?"
+      ],
+      "keywords": [
+        "referral validity",
+        "candidate database",
+        "active",
+        "six months",
+        "submission date"
+      ],
+      "answer": "A referral entry remains active in the candidate database for six months from its submission date.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "validity",
+        "database"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "5. Referral Validity and Evaluation"
+      ],
+      "evidence": {
+        "chunk_id": "8de208c4ddc7a5f7",
+        "page": 4,
+        "section": "5. Referral Validity and Evaluation",
+        "quote": "i. All referral entries will remain active in our candidate database for a period of six (6) months from the date of submission. ii. Referrals will be assessed in accordance with the applicable job description and minimum eligibility criteria. iii. Suitable candidates will be contacted by the Recruitment Team for the next stages of the hiring process."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "A referral entry remains active in the candidate database for six months from its submission date."
+      ]
+    },
+    {
+      "id": "970a2fccc4550ed7",
+      "intent": "policy_referral_ineligible_hires",
+      "question": "Do trainee, apprentice, or campus hires qualify for a referral bonus?",
+      "utterances": [
+        "Is a campus recruitment hire eligible for referral payout?",
+        "Can I earn a bonus for referring an apprentice?",
+        "Are trainees covered by referral incentives?"
+      ],
+      "keywords": [
+        "trainee",
+        "apprentice",
+        "campus hire",
+        "not eligible",
+        "bonus payout"
+      ],
+      "answer": "Referrals that result in hiring trainees, apprentices, or campus hires are not eligible for a referral bonus payout.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "exclusion",
+        "payout"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "7. Employee Referral Business Rules"
+      ],
+      "evidence": {
+        "chunk_id": "f2c55ecde2b8f60c",
+        "page": 5,
+        "section": "7. Employee Referral Business Rules",
+        "quote": "employees, and remaining active employees on the date of payout. The referred candida te must also meet the 6 month’s continuous employment requirement under this Policy. vi. Referrals re sulting in the hiring trainees, apprentices, hired under campus shall not be eligible for a referral bonus payout. vii. Referral bonus shall be payable only for eligible hires made against positions designated under the Employee Referral Program . viii. The Talent Acquisition personnel managing the requisition/hiring process, the Hiring Manager, Practice Manager, Department/Function Head shall not be eligible for a referral bonus payout, also it will not be payable to a BU Head where the referred candidat e is appointed to a position that falls within the BU Head’s direct or indirect reporting structure. ix. To qualify for the referral bonus, both the Referrer and the referred candidate must be active employees of Emergys Solutions Private Limited at the time of bonus disbursement. x. Referral bonus will not be payable for the rehiring of any former employee who rejoins the Company within one year of separation from employment. xi. The referral"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "Referrals that result in hiring trainees, apprentices, or campus hires are not eligible for a referral bonus payout."
+      ]
+    },
+    {
+      "id": "1c402c7adc073c97",
+      "intent": "policy_referral_deductions",
+      "question": "Are statutory deductions applied to referral bonus payments?",
+      "utterances": [
+        "Is income tax deducted from a referral incentive?",
+        "Is referral bonus taxable compensation?",
+        "What deductions apply to employee referral rewards?"
+      ],
+      "keywords": [
+        "referral bonus",
+        "regular compensation",
+        "statutory deductions",
+        "income tax",
+        "taxable"
+      ],
+      "answer": "The referral bonus is included in the referrer's regular compensation. Applicable statutory deductions, including income tax, apply to the bonus.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "tax",
+        "deductions"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "7. Employee Referral Business Rules"
+      ],
+      "evidence": {
+        "chunk_id": "0252e2c17f327f64",
+        "page": 5,
+        "section": "7. Employee Referral Business Rules",
+        "quote": "bonus will be included in the Referrer’s regular compensation and shall be subject to applicable statutory deductions , including income tax, as per prevailing regulations. xii. The bonus will be paid in the payroll cycle following the completion of the eligibility period. xiii. All interpretations, decisions, and amendments related to this Referral Program shall be made by Management and will be final, conclusive, and binding on all participants. xiv. xiv. Although referred candidates may be given preferential consideration, referral submission does not guarantee selection . Final hiring decisions will be based on business requirements, candidate qualifications, and organizational priorities."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "The referral bonus is included in the referrer's regular compensation.",
+        "Applicable statutory deductions, including income tax, apply to the bonus."
+      ]
+    },
+    {
+      "id": "bead95d5586ee0be",
+      "intent": "policy_referral_payroll_cycle",
+      "question": "In which payroll cycle is an eligible referral bonus paid?",
+      "utterances": [
+        "When does an earned referral payment appear in salary?",
+        "Which payroll includes the referral incentive?",
+        "Is the bonus paid after the eligibility period?"
+      ],
+      "keywords": [
+        "referral bonus",
+        "payroll cycle",
+        "eligibility period",
+        "following",
+        "salary"
+      ],
+      "answer": "The referral bonus is paid in the payroll cycle following completion of the eligibility period.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "payment",
+        "payroll"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "7. Employee Referral Business Rules"
+      ],
+      "evidence": {
+        "chunk_id": "0252e2c17f327f64",
+        "page": 5,
+        "section": "7. Employee Referral Business Rules",
+        "quote": "bonus will be included in the Referrer’s regular compensation and shall be subject to applicable statutory deductions , including income tax, as per prevailing regulations. xii. The bonus will be paid in the payroll cycle following the completion of the eligibility period. xiii. All interpretations, decisions, and amendments related to this Referral Program shall be made by Management and will be final, conclusive, and binding on all participants. xiv. xiv. Although referred candidates may be given preferential consideration, referral submission does not guarantee selection . Final hiring decisions will be based on business requirements, candidate qualifications, and organizational priorities."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "The referral bonus is paid in the payroll cycle following completion of the eligibility period."
+      ]
+    },
+    {
+      "id": "bd22a0fea22ddeb5",
+      "intent": "policy_posh_committee_term",
+      "question": "What is the term of appointment for Internal Committee members?",
+      "utterances": [
+        "How long does a POSH committee member serve?",
+        "What is the tenure of the Internal Committee?",
+        "After how many years does an IC term end?"
+      ],
+      "keywords": [
+        "internal committee",
+        "IC member",
+        "term",
+        "tenure",
+        "three years"
+      ],
+      "answer": "The term of an Internal Committee member is three years from the date of appointment.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "committee",
+        "term"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "5. Term of the Committee Members"
+      ],
+      "evidence": {
+        "chunk_id": "6b3f02f88fd33e65",
+        "page": 5,
+        "section": "5. Term of the Committee Members",
+        "quote": "i. The term of the Committee Members shall be three (3) years from the date of appointment. ii. A person shall be disqualified from being appointed, elected, nominated or designated or continue as a Member, (i) if there is any complaint concerning Sexual Harassment pending against him/ her or if he/she is found guilty of Sexual Harassment or any othe r act of moral turpitude, (ii) if he/ she shows bias towards any party or has abused his/ her position in any manner, (iii) if he/ she discloses any information regarding the Complainant or the inquiry proceedings in violation of section 16 of the Act. iii. If he/ she has been convicted of any offence or an inquiry into any offence, under any law is pending against such person, (iii) if he/ she has been found guilty in any disciplinary proceedings or a disciplinary proceeding is pending against such person and (iv) if he/ she ceases to be an Employee of the Company. iv. Such Presiding Officer or Member, as the case may be, shall be removed from the Committee"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The term of an Internal Committee member is three years from the date of appointment."
+      ]
+    },
+    {
+      "id": "98739d07c20e7035",
+      "intent": "policy_posh_first_meeting",
+      "question": "When must the Committee first meet the complainant?",
+      "utterances": [
+        "How soon after a complaint does the first POSH meeting happen?",
+        "What is the deadline to hear the complainant initially?",
+        "Within how many days does the IC meet a complainant?"
+      ],
+      "keywords": [
+        "committee meeting",
+        "complainant",
+        "seven days",
+        "receipt",
+        "first meeting"
+      ],
+      "answer": "The Committee must hold a meeting with the complainant within seven days after receiving the complaint.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "inquiry",
+        "meeting"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "8. Enquiry Process"
+      ],
+      "evidence": {
+        "chunk_id": "3440844d02c96ecb",
+        "page": 6,
+        "section": "8. Enquiry Process",
+        "quote": "i. The Committee will maintain a register of all complaints received by it and keep the contents confidential, except to use the same for discreet investigation. ii. The Committee will hold a meeting with the Complainant within seven (7) days of the receipt of the complaint. iii. At the first meeting, the Committee members shall hear the Complainant and record the allegations. iv. Thereafter, the person against whom the complaint is made may be called for a deposition before the Committee and an opportunity will be given to the person to give an explanation, whereafter, an “Enquiry” shall be conducted and concluded. v. In the event that the Committee determines, acting reasonably that the complaint does not fall under the purview of Sexual Harassment, or the complaint does not tantamount to an offence of Sexual Harassment, the complaint shall be closed after recording th e reasons thereof. vi. Management and others responsible for implementation of this Policy will respect the confidentiality and privacy of individuals reporting or accused of Sexual Harassment to the extent reasonably possible. Examples of situations where"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The Committee must hold a meeting with the complainant within seven days after receiving the complaint."
+      ]
+    },
+    {
+      "id": "4d937157aeb9e5c3",
+      "intent": "policy_posh_conciliation_money",
+      "question": "Can monetary settlement be the basis of POSH conciliation?",
+      "utterances": [
+        "May a POSH case be settled for money through conciliation?",
+        "Are financial terms permitted in committee conciliation?",
+        "Can cash resolve a harassment complaint informally?"
+      ],
+      "keywords": [
+        "conciliation",
+        "monetary settlement",
+        "money",
+        "not permitted",
+        "complainant"
+      ],
+      "answer": "A monetary settlement cannot be made the basis of conciliation under the POSH process.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "conciliation",
+        "settlement"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "9. Conciliation"
+      ],
+      "evidence": {
+        "chunk_id": "2fe697817724b4b5",
+        "page": 6,
+        "section": "9. Conciliation",
+        "quote": "i. The Committee shall, before initiating an inquiry under the Act as stated below, at the request of the Complainant take steps to settle the matter between the Complainant and the Respondent through conciliation. Provided that no monetary settlement shall b e made as a basis of conciliation. ii. Where a settlement has been arrived at as stated above, the Committee shall record such settlement and forward the same to the HR Head to take action as specified in the recommendation."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A monetary settlement cannot be made the basis of conciliation under the POSH process."
+      ]
+    },
+    {
+      "id": "76732cacfe5ea31b",
+      "intent": "policy_posh_respondent_reply",
+      "question": "How long does a respondent have to submit a written explanation?",
+      "utterances": [
+        "When is the accused response to a POSH complaint due?",
+        "What is the show-cause reply deadline?",
+        "How many days are allowed for the respondent statement?"
+      ],
+      "keywords": [
+        "respondent",
+        "written explanation",
+        "show cause notice",
+        "seven days",
+        "complaint copy"
+      ],
+      "answer": "The respondent is given seven days after receiving the complaint copy and show-cause notice to submit a written explanation.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "investigation",
+        "respondent"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "10. Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "0017a74d46034c7a",
+        "page": 7,
+        "section": "10. Investigation",
+        "quote": "i. Subject to outcome of the Conciliation, the Committee shall immediately proceed with the inquiry under the Act and communicate the same to the Complainant and the Respondent. ii. The Committee shall prepare and hand over the copy of the complaint within 7 days to the person against whom the complaint is made and give an opportunity by issuing a show cause notice to submit a written explanation within seven ( 7) days of receipt of the same. iii. The Committee shall hand over a copy of the written explanation submitted by the Respondent, to the Complainant. iv. If the Complainant or the person against whom the complaint is made desires any witness(es) to be called, they shall communicate in writing to the Committee the names of such witness(es). v. If the Complainant desires to tender any documents by way of evidence before the Committee, he/she/they shall submit such documents in original. Similarly, if the person against whom the complaint is made desires to tender any documents in evidence before the Committee, he/she/they shall submit such documents in original. Both"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The respondent is given seven days after receiving the complaint copy and show-cause notice to submit a written explanation."
+      ]
+    },
+    {
+      "id": "a6d67079592450c3",
+      "intent": "policy_posh_police_referral",
+      "question": "When must a potentially criminal complaint be forwarded to police?",
+      "utterances": [
+        "What is the police referral deadline for a POSH offence?",
+        "How quickly does the committee send a criminal matter to police?",
+        "When is harassment reported to law enforcement?"
+      ],
+      "keywords": [
+        "criminal offence",
+        "police",
+        "seven days",
+        "forward complaint",
+        "law"
+      ],
+      "answer": "When the complaint concerns a specific offence under criminal law, the Committee must forward it to police within seven days after receiving it.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "police",
+        "criminal offence"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "10. Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "8b808fae6ca6186e",
+        "page": 8,
+        "section": "10. Investigation",
+        "quote": "x. Where the subject of a Complaint amounts to a specific offence under the Indian Penal Code, 1860 or under any other law, the Committee shall forward the Complaint to the police, within a period of seven (7) days from receiving such complaint. The victims o f Sexual Harassment should have the option to seek transfer of the perpetrator or their own transfer."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "When the complaint concerns a specific offence under criminal law, the Committee must forward it to police within seven days after receiving it."
+      ]
+    },
+    {
+      "id": "978b2c309aacd78d",
+      "intent": "policy_posh_transfer_option",
+      "question": "Can a sexual-harassment victim request a workplace transfer?",
+      "utterances": [
+        "May the complainant seek their own transfer?",
+        "Can the alleged perpetrator be transferred?",
+        "Is transfer available as protection in a POSH case?",
+        "Is transfer available when sexual harassment may also constitute an offence?"
+      ],
+      "keywords": [
+        "victim transfer",
+        "perpetrator transfer",
+        "sexual harassment",
+        "option",
+        "workplace",
+        "criminal offence",
+        "reported conduct"
+      ],
+      "answer": "A victim of sexual harassment may seek transfer of the alleged perpetrator or request their own transfer.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "relief",
+        "transfer"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "10. Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "8b808fae6ca6186e",
+        "page": 8,
+        "section": "10. Investigation",
+        "quote": "x. Where the subject of a Complaint amounts to a specific offence under the Indian Penal Code, 1860 or under any other law, the Committee shall forward the Complaint to the police, within a period of seven (7) days from receiving such complaint. The victims o f Sexual Harassment should have the option to seek transfer of the perpetrator or their own transfer."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A victim of sexual harassment may seek transfer of the alleged perpetrator or request their own transfer."
+      ]
+    },
+    {
+      "id": "9a2036d42112a68e",
+      "intent": "policy_posh_appeal_deadline",
+      "question": "What is the deadline for appealing a POSH recommendation?",
+      "utterances": [
+        "How long does a party have to appeal an IC outcome?",
+        "Within how many days can committee recommendations be challenged?",
+        "What is the POSH appeal period?"
+      ],
+      "keywords": [
+        "appeal",
+        "recommendation",
+        "appellate authority",
+        "90 days",
+        "implementation"
+      ],
+      "answer": "A dissatisfied or aggrieved party may appeal to the appellate authority within 90 days after the recommendations are communicated.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "appeal",
+        "deadline"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "14. Appeal"
+      ],
+      "evidence": {
+        "chunk_id": "545bf3ef88badb50",
+        "page": 9,
+        "section": "14. Appeal",
+        "quote": "Any party not satisfied or further aggrieved by the implementation or non -implementation of recommendations made, may appeal to the appellate authority in accordance with the Act and rules, within 90 days of the recommendations being communicated."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A dissatisfied or aggrieved party may appeal to the appellate authority within 90 days after the recommendations are communicated."
+      ]
+    },
+    {
+      "id": "078c49ab3330c4a1",
+      "intent": "policy_posh_malicious_complaint",
+      "question": "What happens when a POSH complaint is deliberately false or malicious?",
+      "utterances": [
+        "Is disciplinary action possible for a knowingly false complaint?",
+        "What is the consequence of malicious harassment evidence?",
+        "How does the policy address a complaint intended to harm someone?"
+      ],
+      "keywords": [
+        "false complaint",
+        "malicious complaint",
+        "false evidence",
+        "disciplinary action",
+        "good faith"
+      ],
+      "answer": "A person who makes a false or malicious complaint intending to cause harm, damage reputation, or mislead the Committee is subject to disciplinary action.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "false complaint",
+        "discipline"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "15. Punishment for false or malicious complaint and false evidence"
+      ],
+      "evidence": {
+        "chunk_id": "584b81352ba09b85",
+        "page": 9,
+        "section": "15. Punishment for false or malicious complaint and false evidence",
+        "quote": "It is of utmost importance that all complaints related to sexual harassment are made in good faith and with genuine concern for the welfare of individuals and the organization. Any individual found to be making a false or malicious complaint with the inten tion of causing harm, tarnishing another's reputation, or misleading the Internal Committee shall be subject to disciplinary action."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A person who makes a false or malicious complaint intending to cause harm, damage reputation, or mislead the Committee is subject to disciplinary action."
+      ]
+    },
+    {
+      "id": "7d0ea526992fe289",
+      "intent": "policy_posh_confidentiality_breach",
+      "question": "What happens if a witness breaches POSH confidentiality?",
+      "utterances": [
+        "Can disclosure of inquiry information lead to discipline?",
+        "What is the penalty for revealing confidential complaint details?",
+        "Must witnesses keep committee information private?"
+      ],
+      "keywords": [
+        "confidentiality",
+        "witness",
+        "breach",
+        "disciplinary action",
+        "complaint information"
+      ],
+      "answer": "All information received in the POSH process must remain confidential. A person, including a witness, who breaches confidentiality is subject to disciplinary action.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "confidentiality",
+        "discipline"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "12. Additional Role of the Committee"
+      ],
+      "evidence": {
+        "chunk_id": "67d24c7929a13891",
+        "page": 8,
+        "section": "12. Additional Role of the Committee",
+        "quote": "i. All information received shall be kept confidential. Any person (including witnesses) who breaches confidentiality shall be subject to disciplinary action. ii. The Committee may make recommendations to the HR - Head as deemed fit and appropriate. iii. The management shall provide all necessary assistance for the purpose of ensuring full, effective and speedy implementation of this Policy. iv. Where Sexual Harassment occurs as a result of an act or omission by any third party or outsider, Company shall take all steps necessary and reasonable to assist the affected person in terms of support and preventive action. v. The Committee shall analyse and publish reports on all complaints of this nature at the end of the year for submission to all the authorities as mentioned under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "All information received in the POSH process must remain confidential.",
+        "A person, including a witness, who breaches confidentiality is subject to disciplinary action."
+      ]
+    },
+    {
+      "id": "88d53857bb947fa8",
+      "intent": "policy_maternity_salary_benefits",
+      "question": "Are salary, service continuity, and employment benefits maintained during maternity leave?",
+      "utterances": [
+        "Will I continue receiving salary during approved maternity absence?",
+        "Does maternity leave interrupt my service record?",
+        "Which employment benefits continue during maternity leave?"
+      ],
+      "keywords": [
+        "maternity salary",
+        "continuity of service",
+        "employment benefits",
+        "payroll",
+        "approved leave"
+      ],
+      "answer": "During approved maternity leave, salary is paid according to applicable law and company payroll practices. Continuity of service and applicable statutory and eligible employment benefits are maintained.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "salary",
+        "benefits"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:"
+      ],
+      "evidence": {
+        "chunk_id": "504a27cb5620e8a4",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:",
+        "quote": "During approved maternity leave – i. Salary shall be paid in accordance with applicable law and company payroll practices; Continuity of service shall be maintained and statutory and eligible employment benefits shall continue as applicable. ii. Medical Bonus: Every woman entitled to maternity benefit under this Act shall also be entitled to receive a medical bonus of three thous and five hundred rupees, if no pre -natal confinement and post -natal care is provided for by the employer free of charge. This is one -time medical bonus. iii. Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses. b. Employees are advised to consult with HR for further information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "During approved maternity leave, salary is paid according to applicable law and company payroll practices.",
+        "Continuity of service and applicable statutory and eligible employment benefits are maintained."
+      ]
+    },
+    {
+      "id": "95c6ba27801ccf4f",
+      "intent": "policy_maternity_insurance",
+      "question": "Does company medical insurance cover the newborn and maternity expenses?",
+      "utterances": [
+        "Is a newborn included in Emergys group medical insurance?",
+        "Are maternity-related medical costs covered by company insurance?",
+        "What insurance benefit continues after childbirth?"
+      ],
+      "keywords": [
+        "medical insurance",
+        "newborn child",
+        "maternity expenses",
+        "group insurance"
+      ],
+      "answer": "Emergys' group medical insurance extends to the newborn child and maternity-related expenses.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "insurance",
+        "newborn"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:"
+      ],
+      "evidence": {
+        "chunk_id": "504a27cb5620e8a4",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.4 Benefits d uring Maternity Leave:",
+        "quote": "During approved maternity leave – i. Salary shall be paid in accordance with applicable law and company payroll practices; Continuity of service shall be maintained and statutory and eligible employment benefits shall continue as applicable. ii. Medical Bonus: Every woman entitled to maternity benefit under this Act shall also be entitled to receive a medical bonus of three thous and five hundred rupees, if no pre -natal confinement and post -natal care is provided for by the employer free of charge. This is one -time medical bonus. iii. Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses. b. Employees are advised to consult with HR for further information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "Emergys' group medical insurance extends to the newborn child and maternity-related expenses."
+      ]
+    },
+    {
+      "id": "22d5922f1f35358f",
+      "intent": "policy_maternity_extension_process",
+      "question": "How should an approved maternity leave extension be recorded?",
+      "utterances": [
+        "Who must be emailed about extending maternity leave?",
+        "Where do I apply for approved extended maternity absence?",
+        "Does a maternity extension use my available leave balance?"
+      ],
+      "keywords": [
+        "maternity extension",
+        "reporting manager",
+        "attendance desk",
+        "Darwin",
+        "leave balance"
+      ],
+      "answer": "For a maternity leave extension, the employee must email the Reporting Manager and Attendance Desk. After manager approval, the extended leave must be entered in Darwin using the available leave balance. Absence beyond the available balance is treated as Leave Without Pay.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "extension",
+        "darwin"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.7 Return to Work:"
+      ],
+      "evidence": {
+        "chunk_id": "47c3a911b6d66334",
+        "page": 5,
+        "section": "3. Maternity Leave / 3.7 Return to Work:",
+        "quote": "Employees are expected to resume duties upon completion of approved maternity leave unless additional leave is approved in accordance with Company leave policies. In the event of an extension of Maternity Leave, the employee must notify their Reporting Manager and the Attendance Desk via email. Upon appr oval from the Reporting Manager an employee shall apply the extended leave in Darwin using the employee's available leave balance. Any period of absence exceeding the available leave balance shall be treated as Leave Without Pay (LWP). Employees shall notify HR at least one (1) month prior to their scheduled return -to- work date to confirm their return or communicate any approved extension of leave."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "For a maternity leave extension, the employee must email the Reporting Manager and Attendance Desk.",
+        "After manager approval, the extended leave must be entered in Darwin using the available leave balance.",
+        "Absence beyond the available balance is treated as Leave Without Pay."
+      ]
+    },
+    {
+      "id": "939ce8bb216434ac",
+      "intent": "policy_maternity_return_notice",
+      "question": "When should HR be told about returning from maternity leave?",
+      "utterances": [
+        "How early must I confirm my maternity return date?",
+        "When do I notify HR of a return or approved extension?",
+        "What is the notice period before resuming work after maternity leave?"
+      ],
+      "keywords": [
+        "return to work",
+        "one month",
+        "notify HR",
+        "scheduled return",
+        "approved extension"
+      ],
+      "answer": "The employee must notify HR at least one month before the scheduled return-to-work date to confirm the return or communicate an approved extension.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "return",
+        "notice"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.7 Return to Work:"
+      ],
+      "evidence": {
+        "chunk_id": "47c3a911b6d66334",
+        "page": 5,
+        "section": "3. Maternity Leave / 3.7 Return to Work:",
+        "quote": "Employees are expected to resume duties upon completion of approved maternity leave unless additional leave is approved in accordance with Company leave policies. In the event of an extension of Maternity Leave, the employee must notify their Reporting Manager and the Attendance Desk via email. Upon appr oval from the Reporting Manager an employee shall apply the extended leave in Darwin using the employee's available leave balance. Any period of absence exceeding the available leave balance shall be treated as Leave Without Pay (LWP). Employees shall notify HR at least one (1) month prior to their scheduled return -to- work date to confirm their return or communicate any approved extension of leave."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "The employee must notify HR at least one month before the scheduled return-to-work date to confirm the return or communicate an approved extension."
+      ]
+    },
+    {
+      "id": "c1da225c7cb927ed",
+      "intent": "policy_paternity_insurance",
+      "question": "What medical insurance benefits apply during paternity leave?",
+      "utterances": [
+        "Does company insurance cover a newborn for a male employee?",
+        "Are the wife maternity expenses covered during paternity leave?",
+        "Who can explain paternity medical insurance coverage?"
+      ],
+      "keywords": [
+        "paternity insurance",
+        "newborn",
+        "wife",
+        "maternity expenses",
+        "HR"
+      ],
+      "answer": "Emergys' group medical insurance covers the newborn child and the employee's wife's maternity-related expenses. Employees should consult HR for further information.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "paternity",
+        "insurance",
+        "newborn"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Paternity Leave: / 4.4 Benefits during Paternity Leave:"
+      ],
+      "evidence": {
+        "chunk_id": "513619c21538cfc1",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.4 Benefits during Paternity Leave:",
+        "quote": "Medical Insurance: a. Emergys’ group medical insurance policy extends to cover the newborn child and maternity -related expenses of his wife . b. Employees are advised to consult with HR for further information."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity",
+      "facts": [
+        "Emergys' group medical insurance covers the newborn child and the employee's wife's maternity-related expenses.",
+        "Employees should consult HR for further information."
+      ]
+    },
+    {
+      "id": "33d6476167501b3d",
+      "intent": "policy_posh_third_party_scope",
+      "question": "Does the POSH policy apply to third parties and client locations?",
+      "utterances": [
+        "Are non-employees covered by the harassment policy on company premises?",
+        "Does POSH apply at a customer site controlled by Emergys?",
+        "Can the policy bind a third party suspected of harassment?"
+      ],
+      "keywords": [
+        "POSH scope",
+        "third party",
+        "client site",
+        "company premises",
+        "Emergys control"
+      ],
+      "answer": "The POSH policy binds employees and third parties suspected of sexual harassment on Emergys premises or at locations under Emergys control, including client-occupied sites.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "scope",
+        "third-party"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "2. Applicability & Effective Date"
+      ],
+      "evidence": {
+        "chunk_id": "6af49bb7879d5ab4",
+        "page": 3,
+        "section": "2. Applicability & Effective Date",
+        "quote": "This Policy extends to all employees of Emergys and is deemed to be incorporated in the service conditions of all employees. This Policy shall be binding not only on the employees of Emergys but also on any third parties suspected of Sexual Harassment on t he premises of the Emergys or at any location over which the Emergys has control including sites occupied by clients. This Policy shall be applicable to all the subsidiaries, associates, affiliates, group companies, sister concerns, holding companies (coll ectively “Affiliates” ) of the Emergys."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The POSH policy binds employees and third parties suspected of sexual harassment on Emergys premises or at locations under Emergys control, including client-occupied sites."
+      ]
+    },
+    {
+      "id": "858fc0a144ab16ff",
+      "intent": "policy_posh_affiliates",
+      "question": "Which Emergys entities are covered by the POSH policy?",
+      "utterances": [
+        "Does POSH apply to subsidiaries and group companies?",
+        "Are affiliates and sister concerns included in the harassment policy?",
+        "What related companies fall under the policy?"
+      ],
+      "keywords": [
+        "subsidiaries",
+        "associates",
+        "affiliates",
+        "group companies",
+        "sister concerns",
+        "holding companies"
+      ],
+      "answer": "The POSH policy applies to Emergys subsidiaries, associates, affiliates, group companies, sister concerns, and holding companies.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "scope",
+        "affiliates"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "2. Applicability & Effective Date"
+      ],
+      "evidence": {
+        "chunk_id": "6af49bb7879d5ab4",
+        "page": 3,
+        "section": "2. Applicability & Effective Date",
+        "quote": "This Policy extends to all employees of Emergys and is deemed to be incorporated in the service conditions of all employees. This Policy shall be binding not only on the employees of Emergys but also on any third parties suspected of Sexual Harassment on t he premises of the Emergys or at any location over which the Emergys has control including sites occupied by clients. This Policy shall be applicable to all the subsidiaries, associates, affiliates, group companies, sister concerns, holding companies (coll ectively “Affiliates” ) of the Emergys."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The POSH policy applies to Emergys subsidiaries, associates, affiliates, group companies, sister concerns, and holding companies."
+      ]
+    },
+    {
+      "id": "d8e4f861ba98d8ff",
+      "intent": "policy_posh_stalking",
+      "question": "What forms of stalking are treated as sexual harassment?",
+      "utterances": [
+        "Do repeated private calls outside work count as stalking?",
+        "Is following someone home covered by POSH?",
+        "Does physically pursuing a person at work count as harassment?"
+      ],
+      "keywords": [
+        "stalking",
+        "unsolicited calls",
+        "outside office hours",
+        "following home",
+        "physically pursuing"
+      ],
+      "answer": "Stalking includes unsolicited calls to private numbers outside office hours, following a person home or elsewhere outside work, and physically pursuing a person at the workplace without lawful excuse.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "definition",
+        "stalking"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Sexual Harassment at the Workplace"
+      ],
+      "evidence": {
+        "chunk_id": "6f4cfb34ab4c2a42",
+        "page": 4,
+        "section": "3. Sexual Harassment at the Workplace",
+        "quote": "iii. Stalking which may including unsolicited phone calls, phone calls to a private mobile or land line outside of office hours, following a person to their home or other place outside their workplace, following or physically pursuing a person while at their workplace but without lawful excuse. iv. Eve teasing, innuendos and taunts, physical confinement against one’s will and likely to intrude upon one’s privacy. v. Act or conduct by a person in authority which creates an environment at the workplace which is hostile or intimidating to a person which may be perceived as sexual in nature. vi. Conduct of such an act at the workplace or outside in relation to an Employee of Company, or vice versa during employment which may be perceived as sexual in nature or as harassment; and vii. Any unwelcome gesture by an Employee having sexual overtones. viii. Words and expressions used and not defined in this Policy shall have the same meaning assigned to them under the Act."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Stalking includes unsolicited calls to private numbers outside office hours, following a person home or elsewhere outside work, and physically pursuing a person at the workplace without lawful excuse."
+      ]
+    },
+    {
+      "id": "93a266f97a2f8ff8",
+      "intent": "policy_posh_intrusive_conduct",
+      "question": "Are eve teasing, innuendos, taunts, or forced confinement covered by POSH?",
+      "utterances": [
+        "Does the policy treat sexual taunts as harassment?",
+        "Is confinement against someone’s will prohibited conduct?",
+        "Are innuendos and privacy intrusion included in POSH?"
+      ],
+      "keywords": [
+        "eve teasing",
+        "innuendos",
+        "taunts",
+        "physical confinement",
+        "privacy"
+      ],
+      "answer": "Sexual harassment includes eve teasing, innuendos, taunts, physical confinement against a person's will, and conduct likely to intrude on privacy.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "definition",
+        "conduct"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Sexual Harassment at the Workplace"
+      ],
+      "evidence": {
+        "chunk_id": "6f4cfb34ab4c2a42",
+        "page": 4,
+        "section": "3. Sexual Harassment at the Workplace",
+        "quote": "iii. Stalking which may including unsolicited phone calls, phone calls to a private mobile or land line outside of office hours, following a person to their home or other place outside their workplace, following or physically pursuing a person while at their workplace but without lawful excuse. iv. Eve teasing, innuendos and taunts, physical confinement against one’s will and likely to intrude upon one’s privacy. v. Act or conduct by a person in authority which creates an environment at the workplace which is hostile or intimidating to a person which may be perceived as sexual in nature. vi. Conduct of such an act at the workplace or outside in relation to an Employee of Company, or vice versa during employment which may be perceived as sexual in nature or as harassment; and vii. Any unwelcome gesture by an Employee having sexual overtones. viii. Words and expressions used and not defined in this Policy shall have the same meaning assigned to them under the Act."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Sexual harassment includes eve teasing, innuendos, taunts, physical confinement against a person's will, and conduct likely to intrude on privacy."
+      ]
+    },
+    {
+      "id": "5a91bae7f3bd0e8a",
+      "intent": "policy_posh_disciplinary_actions",
+      "question": "What disciplinary actions may follow a finding of sexual harassment?",
+      "utterances": [
+        "Can a person be suspended or terminated after a POSH finding?",
+        "May an increment, bonus, or promotion be withheld?",
+        "What penalties can the Internal Committee recommend?"
+      ],
+      "keywords": [
+        "disciplinary action",
+        "warning",
+        "reprimand",
+        "transfer",
+        "withholding increment",
+        "suspension",
+        "termination"
+      ],
+      "answer": "Disciplinary action may include a warning or reprimand, transfer, withholding an increment, bonus, or promotion, suspension, termination, or another action considered appropriate by the Committee. These measures are additional to any legal remedy sought by the complainant.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "discipline",
+        "outcome"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "11. Disciplinary Action:"
+      ],
+      "evidence": {
+        "chunk_id": "0640aae878247389",
+        "page": 8,
+        "section": "11. Disciplinary Action:",
+        "quote": "Where any person is found guilty of Sexual Harassment by the Committee, appropriate disciplinary action may include: i. warning or reprimand, ii. transfer, iii. withholding of increment, bonus or promotion, iv. suspension or terminating from employment, or v. any other action as may deem fit to the Committee members. The disciplinary action shall be in addition to any legal recourse that may be sought by the Complainant."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Disciplinary action may include a warning or reprimand, transfer, withholding an increment, bonus, or promotion, suspension, termination, or another action considered appropriate by the Committee.",
+        "These measures are additional to any legal remedy sought by the complainant."
+      ]
+    },
+    {
+      "id": "2f597dbbb7d89e08",
+      "intent": "policy_posh_complaint_assistance",
+      "question": "Who can help when a POSH complaint cannot be put in writing?",
+      "utterances": [
+        "Can the Presiding Officer help draft a complaint?",
+        "What assistance is available for submitting a written harassment complaint?",
+        "Who may complain for a person who is unable to file personally?"
+      ],
+      "keywords": [
+        "written complaint",
+        "presiding officer",
+        "committee member",
+        "reasonable assistance",
+        "legal heir",
+        "relative",
+        "friend",
+        "co-worker"
+      ],
+      "answer": "If a complaint cannot be made in writing, the Presiding Officer or a Committee member must provide reasonable assistance. With written consent, a legal heir, relative, friend, co-worker, or another permitted person may complain for someone unable to do so because of incapacity.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "complaint",
+        "assistance"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "7. Complaint Mechanism"
+      ],
+      "evidence": {
+        "chunk_id": "a23c3ed2de0909d3",
+        "page": 6,
+        "section": "7. Complaint Mechanism",
+        "quote": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "If a complaint cannot be made in writing, the Presiding Officer or a Committee member must provide reasonable assistance.",
+        "With written consent, a legal heir, relative, friend, co-worker, or another permitted person may complain for someone unable to do so because of incapacity."
+      ]
+    },
+    {
+      "id": "c6f63de3130d3bb9",
+      "intent": "policy_posh_documentation",
+      "question": "How are POSH complaints and investigations documented?",
+      "utterances": [
+        "Does the committee retain a complete investigation record?",
+        "Where is the complaints committee report recorded?",
+        "Are both complainant and accused files updated?"
+      ],
+      "keywords": [
+        "documentation",
+        "complaint record",
+        "investigation",
+        "resolution",
+        "complainant file",
+        "accused file"
+      ],
+      "answer": "The Committee keeps complete and accurate documentation of the complaint, investigation, and resolution. The incident and full Committee report are documented in both the complainant and accused files.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "documentation",
+        "records"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "6. Documentation"
+      ],
+      "evidence": {
+        "chunk_id": "f36dd2f4aa1a34f2",
+        "page": 5,
+        "section": "6. Documentation",
+        "quote": "The committee shall keep complete and accurate documentation of the complaint, its investigations, and the resolution thereof. The incident would be documented in both the complainant’s and the accused files with the full report of the Complaints Committee ."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The Committee keeps complete and accurate documentation of the complaint, investigation, and resolution.",
+        "The incident and full Committee report are documented in both the complainant and accused files."
+      ]
     }
   ]
 }
