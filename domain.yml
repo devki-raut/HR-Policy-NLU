@@ -8,6 +8,8 @@ intents:
 - ask_expenses
 - ask_conduct
 - ask_onboarding
+- ask_personal_leave_balance
+- provide_employee_code
 - out_of_scope
 - nlu_fallback
 - policy_bereavement
@@ -39,6 +41,8 @@ responses:
       '
 actions:
 - action_answer_policy
+- action_personal_leave_balance
+- action_remember_employee_code
 session_config:
   session_expiration_time: 30
   carry_over_slots_to_new_session: false

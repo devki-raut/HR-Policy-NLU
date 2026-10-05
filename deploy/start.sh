@@ -14,6 +14,7 @@ case "$mode" in
     exec docker run --rm --name employeeassist --env-file .env \
       -p 8610:8610 \
       -v "$root/data/policies:/app/data/policies" \
+      -v "$root/artifacts:/app/artifacts" \
       employeeassist:local
     ;;
   *)

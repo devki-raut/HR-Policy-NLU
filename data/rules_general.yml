@@ -1,42 +1,50 @@
-version: "3.1"
+version: '3.1'
 rules:
 - rule: Handle greet
   steps:
-    - intent: greet
-    - action: utter_greet
+  - intent: greet
+  - action: utter_greet
 - rule: Handle goodbye
   steps:
-    - intent: goodbye
-    - action: utter_goodbye
+  - intent: goodbye
+  - action: utter_goodbye
 - rule: Handle ask_leave
   steps:
-    - intent: ask_leave
-    - action: action_answer_policy
+  - intent: ask_leave
+  - action: action_answer_policy
 - rule: Handle ask_remote_work
   steps:
-    - intent: ask_remote_work
-    - action: action_answer_policy
+  - intent: ask_remote_work
+  - action: action_answer_policy
 - rule: Handle ask_benefits
   steps:
-    - intent: ask_benefits
-    - action: action_answer_policy
+  - intent: ask_benefits
+  - action: action_answer_policy
 - rule: Handle ask_expenses
   steps:
-    - intent: ask_expenses
-    - action: action_answer_policy
+  - intent: ask_expenses
+  - action: action_answer_policy
 - rule: Handle ask_conduct
   steps:
-    - intent: ask_conduct
-    - action: action_answer_policy
+  - intent: ask_conduct
+  - action: action_answer_policy
 - rule: Handle ask_onboarding
   steps:
-    - intent: ask_onboarding
-    - action: action_answer_policy
+  - intent: ask_onboarding
+  - action: action_answer_policy
 - rule: Handle out_of_scope
   steps:
-    - intent: out_of_scope
-    - action: utter_out_of_scope
+  - intent: out_of_scope
+  - action: utter_out_of_scope
 - rule: Handle nlu_fallback
   steps:
-    - intent: nlu_fallback
-    - action: utter_clarify
+  - intent: nlu_fallback
+  - action: utter_clarify
+- rule: Fetch personal leave balance
+  steps:
+  - intent: ask_personal_leave_balance
+  - action: action_personal_leave_balance
+- rule: Remember verified employee code
+  steps:
+  - intent: provide_employee_code
+  - action: action_remember_employee_code

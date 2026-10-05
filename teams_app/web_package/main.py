@@ -1,5 +1,4 @@
 """Unified API: policy administration and Rasa-backed chat."""
-import hmac
 import json
 import os
 from pathlib import Path
@@ -7,7 +6,7 @@ import sys
 from urllib.parse import quote
 
 import httpx
-from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, Request, Response, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, Response, UploadFile
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -24,15 +23,20 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from actions.policy_store import MAX_BYTES, index_path, update_pdf
 from actions.policy_engine import intent_mapping
+from actions.darwinbox_adapters.store import load_store
 from botbuilder.schema import Activity
 from teams_app.bot_package.adapter import ADAPTER
 from teams_app.bot_package.bot_handler import BOT
 
-app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload company policies and chat through Rasa. Set HR_API_KEY to protect API routes.')
+app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload company policies and chat through Rasa. Jupyter uses separate token authentication.')
 
 
 if load_dotenv is not None:
     load_dotenv(PROJECT_ROOT / '.env', override=False)
+
+from teams_app.web_package.jupyter import router as jupyter_router
+
+app.include_router(jupyter_router)
 
 STATIC = Path(__file__).resolve().parent / 'static'
 APP_PACKAGE = PROJECT_ROOT / 'teams_app' / 'app_package'
@@ -71,11 +75,6 @@ def terms_and_conditions():
     return FileResponse(Path(__file__).resolve().parent / 'html' / 'terms.html')
 
 
-def authorize(x_api_key: str = Header(default='')):
-    expected = os.getenv('HR_API_KEY', '')
-    if expected and not hmac.compare_digest(expected, x_api_key):
-        raise HTTPException(401, 'Invalid API key')
-
 
 class ChatRequest(BaseModel):
     sender: str = Field(min_length=1, max_length=128)
@@ -110,7 +109,7 @@ async def _enrich_policy_chunk(payload, question):
     return payload
 
 
-@app.get('/policies/pdfs/{filename}', dependencies=[Depends(authorize)])
+@app.get('/policies/pdfs/{filename}')
 def download_policy(filename: str):
     path = index_path()
     try:
@@ -157,10 +156,23 @@ async def upload_policy(file, mode):
 
 @app.get('/health')
 def health():
+    try:
+        employee_store = load_store()
+        directory = {
+            'configured': bool(
+                os.getenv('DARWINBOX_BASE_URL', '').strip()
+                or os.getenv('DARWINBOX_EMPLOYEE_URL', '').strip()
+            ),
+            'employee_count': len(employee_store.get('employees') or {}),
+            'last_sync': employee_store.get('synced_at'),
+        }
+    except RuntimeError:
+        directory = {'configured': True, 'status': 'unreadable'}
     return {
         'status': 'ok',
         'service': 'web-and-teams-bot',
         'policy_index_exists': index_path().exists(),
+        'darwinbox_directory': directory,
     }
 
 
@@ -180,7 +192,7 @@ async def bot_messages(request: Request):
 
 
 
-@app.get('/policies', dependencies=[Depends(authorize)])
+@app.get('/policies')
 def policies():
     path = index_path()
     if not path.exists():
@@ -195,18 +207,18 @@ def policies():
         raise HTTPException(503, 'Policy index unavailable') from exc
 
 
-@app.post('/policies/upload', dependencies=[Depends(authorize)])
+@app.post('/policies/upload')
 async def upload(file: UploadFile = File(...), mode: str = Form('upsert', regex='^(upsert|replace)$')):
     return await upload_policy(file, mode)
 
 
-@app.post('/chat', dependencies=[Depends(authorize)])
+@app.post('/chat')
 async def chat(body: ChatRequest):
     result = await rasa_chat(body.sender, body.message)
     return await _enrich_policy_chunk(result, body.message)
 
 
-@app.post('/chat/stream', dependencies=[Depends(authorize)])
+@app.post('/chat/stream')
 async def chat_stream(body: ChatRequest):
     result = await rasa_chat(body.sender, body.message)
     result = await _enrich_policy_chunk(result, body.message)
@@ -220,7 +232,7 @@ async def chat_stream(body: ChatRequest):
     return StreamingResponse(stream(), media_type='text/event-stream', headers={'Cache-Control': 'no-cache', 'X-Accel-Buffering': 'no'})
 
 
-@app.post('/ask', dependencies=[Depends(authorize)])
+@app.post('/ask')
 async def ask(sender: str = Form(..., min_length=1, max_length=128),
               message: str = Form(..., min_length=1, max_length=4000),
               file: UploadFile | None = File(None),
@@ -240,7 +252,7 @@ async def ask(sender: str = Form(..., min_length=1, max_length=128),
     return {**result, 'policy_update': update}
 
 
-@app.get('/policies/intents', dependencies=[Depends(authorize)])
+@app.get('/policies/intents')
 def policy_intents():
     """Reviewed intent -> PDF -> section mappings, not model predictions."""
     return intent_mapping()
@@ -250,7 +262,7 @@ class IntentRequest(BaseModel):
     message: str = Field(min_length=1, max_length=4000)
 
 
-@app.post('/nlu/parse', dependencies=[Depends(authorize)])
+@app.post('/nlu/parse')
 async def parse_intent(body: IntentRequest):
     if not body.message.strip():
         raise HTTPException(422, 'message cannot be blank')

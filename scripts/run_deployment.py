@@ -10,25 +10,41 @@ import subprocess
 import sys
 import time
 
+from dotenv import load_dotenv
+
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON = sys.executable
 LOG_DIR = ROOT / "artifacts" / "logs"
 PORTS_BY_MODE = {
-    "web": (5055, 5005, 8610),
+    "web": (5055, 5005, 8888, 8610),
     "bot": (5055, 5005, 3978),
-    "combined": (5055, 5005, 8610, 3978),
+    "combined": (5055, 5005, 8888, 8610, 3978),
 }
 
 
+def darwinbox_directory_configured():
+    return bool(
+        os.environ.get("DARWINBOX_EMPLOYEE_URL", "").strip()
+        or os.environ.get("DARWINBOX_BASE_URL", "").strip()
+    )
+
+
 def commands(mode):
-    shared = {
+    shared = {}
+    if darwinbox_directory_configured():
+        shared["darwinbox-sync"] = [
+            PYTHON, str(ROOT / "scripts/sync_darwinbox_employees.py"),
+            "--watch", "--incremental-only",
+        ]
+    shared.update({
         "actions": [PYTHON, "-m", "rasa", "run", "actions", "--port", "5055"],
         "rasa": [PYTHON, "-m", "rasa", "run", "--enable-api", "--port", "5005"],
-    }
+    })
     if mode in {"web", "combined"}:
+        shared["jupyter"] = [os.environ.get("JUPYTER_PYTHON", str(ROOT / ".venv-jupyter/bin/python")), "-m", "jupyterlab", "--config", str(ROOT / "scripts/jupyter_server_config.py")]
         shared["web"] = [
             PYTHON, "-m", "uvicorn", "teams_app.web_package.main:app",
-            "--host", "0.0.0.0", "--port", "8610", "--ws", "none",
+            "--host", "0.0.0.0", "--port", "8610", "--ws", "wsproto",
         ]
     if mode in {"bot", "combined"}:
         shared["bot"] = [PYTHON, "-m", "teams_app.bot_package.main"]
@@ -114,7 +130,27 @@ def main():
     )
     args = parser.parse_args()
     os.chdir(ROOT)
+    load_dotenv(ROOT / ".env", override=False)
+    if args.mode in {"web", "combined"} and not os.environ.get("JUPYTER_TOKEN", "").strip():
+        parser.error("JUPYTER_TOKEN must be set before starting Jupyter")
     LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+    if darwinbox_directory_configured():
+        print("[deployment] synchronizing Darwinbox employee directory", flush=True)
+        sync = subprocess.run(
+            [PYTHON, str(ROOT / "scripts/sync_darwinbox_employees.py")],
+            cwd=ROOT,
+            check=False,
+        )
+        if sync.returncode and os.environ.get(
+            "DARWINBOX_EMPLOYEE_SYNC_REQUIRED", "false"
+        ).casefold() in {"1", "true", "yes"}:
+            parser.error("required Darwinbox employee directory sync failed")
+        if sync.returncode:
+            print(
+                "[deployment] Darwinbox sync failed; continuing with the last successful cache",
+                flush=True,
+            )
 
     ports = PORTS_BY_MODE[args.mode]
     busy = [port for port in ports if port_is_busy(port)]

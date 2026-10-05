@@ -9,20 +9,20 @@
 </style>
 </head>
 <body><main class="page">
-<header><img class="logo" src="/app-package/color.png" alt="EmployeeAssist logo"><div><h1>Privacy Policy</h1><p class="updated">EmployeeAssist · Last updated September 29, 2026</p></div></header>
-<div class="notice"><strong>Summary:</strong> EmployeeAssist processes questions to find answers and excerpts from your organization’s HR policy library. It does not access employee records or perform HR transactions.</div>
+<header><img class="logo" src="/app-package/color.png" alt="EmployeeAssist logo"><div><h1>Privacy Policy</h1><p class="updated">EmployeeAssist · Last updated October 1, 2026</p></div></header>
+<div class="notice"><strong>Summary:</strong> EmployeeAssist answers policy questions and can retrieve the signed-in employee’s current leave balance from Darwinbox when that integration is configured. It does not approve or modify leave requests.</div>
 
 <h2>1. Information processed</h2>
 <p>When you use the web application or Microsoft Teams bot, the service may process:</p>
 <ul>
 <li>Your policy question and the conversation identifier needed to maintain the chat session.</li>
 <li>For Teams messages, the Microsoft Teams or Entra user identifier supplied with the activity.</li>
-<li>An optional API key submitted by the web page when API protection is enabled. The page does not save that key in browser storage.</li>
+<li>For a personal leave-balance question, the authenticated Teams/Entra identifier, its mapped Darwinbox employee number, and the leave balances returned by Darwinbox.</li>
 <li>Technical information needed to operate and troubleshoot the service, such as timestamps, request status, and application errors.</li>
 </ul>
 
 <h2>2. How information is used</h2>
-<p>The service uses this information to classify the question with Rasa, match it against reviewed FAQ entries, retrieve relevant policy chunks, maintain short conversation context, and return an answer with source references.</p>
+<p>The service uses this information to classify the question with Rasa, answer from reviewed policy content, or retrieve the signed-in employee’s leave balance from Darwinbox. A verified Entra identity must be mapped to a Darwinbox employee number before personal balances can be retrieved.</p>
 
 <h2>3. HR policy documents</h2>
 <p>Authorized administrators can upload HR policy PDFs. The service extracts text, creates searchable chunks, and stores document metadata and derived embeddings. Answers may include exact excerpts and links to the underlying policy PDF. Access to the application and its PDF links should be limited according to your organization’s access rules.</p>
@@ -33,16 +33,16 @@
 <h2>5. Storage and retention</h2>
 <ul>
 <li>Conversation state is maintained for the Rasa session configured by the service.</li>
-<li>Server and container logs may retain operational events according to the deployment administrator’s logging and retention configuration.</li>
+<li>The durable conversation log may contain timestamps, user identifiers, questions, selected intents, answer text, integration status, and returned personal balance text according to the deployment administrator’s retention configuration.</li>
 <li>Uploaded policies, extracted text, FAQ mappings, and embeddings remain until an authorized administrator replaces or removes them.</li>
 <li>The browser creates a random conversation identifier for the current page session and does not intentionally store chat history in local storage.</li>
 </ul>
 
 <h2>6. Sharing and service providers</h2>
-<p>The service communicates with Microsoft Teams and Azure Bot Service when deployed as a Teams bot. Policy questions are sent to the Rasa service configured by the application. The project does not sell personal information or use policy questions for advertising.</p>
+<p>The service communicates with Microsoft Teams and Azure Bot Service when deployed as a Teams bot. Questions are sent to the configured Rasa service. Personal balance requests send the mapped employee number and authenticated integration fields to the organization’s Darwinbox tenant. The project does not sell personal information or use questions for advertising.</p>
 
 <h2>7. Security and appropriate use</h2>
-<p>The application supports an optional API key, container isolation, and organization-managed Microsoft credentials. No system is completely secure. Do not enter passwords, financial account details, medical records, or other sensitive personal information unless your organization has explicitly approved that use.</p>
+<p>The application uses organization-managed Microsoft credentials for the Teams bot, a token for Jupyter administration, tenant-provided Darwinbox credentials for balance retrieval, and container isolation. No system is completely secure. Do not enter passwords, financial account details, medical records, or other sensitive personal information unless your organization has explicitly approved that use.</p>
 
 <h2>8. Your choices</h2>
 <p>You may stop using the service at any time. Contact your HR team or system administrator to ask about access, correction, deletion, retention, or the policies configured for your organization.</p>

@@ -24,6 +24,11 @@ RUN python -m pip install --no-cache-dir --upgrade pip && \
     python -m pip install --no-cache-dir -r /app/requirements.txt
 
 
+# Keep Jupyter dependencies separate from Rasa.
+COPY requirements-jupyter.txt /app/requirements-jupyter.txt
+RUN python -m venv /app/.venv-jupyter && \
+    /app/.venv-jupyter/bin/pip install --no-cache-dir -r /app/requirements-jupyter.txt
+
 # ==========================================
 # Stage 2: Final Production Deployment
 # ==========================================
@@ -41,6 +46,7 @@ WORKDIR /app
 
 # Copy the pre-built virtual environment from the 'builder' stage
 COPY --from=builder /opt/venv /opt/venv
+COPY --from=builder /app/.venv-jupyter /app/.venv-jupyter
 
 # Copy application source code and assets
 COPY actions /app/actions
@@ -52,12 +58,12 @@ COPY models /app/models
 
 # Setup a secure non-root user
 RUN useradd --create-home --uid 10001 appuser && \
-    mkdir -p /app/.cache /app/data/policies && \
+    mkdir -p /app/.cache /app/data/policies /app/artifacts/logs && \
     chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 8610
 
 FROM base AS deployment
-# The supervisor starts private Rasa + actions and the public FastAPI server.
+# The supervisor starts private Rasa, actions, Jupyter, and public FastAPI.
 CMD ["python", "scripts/run_deployment.py", "web"]

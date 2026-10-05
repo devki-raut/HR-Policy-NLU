@@ -1,4 +1,5 @@
 """Microsoft Teams activity handler backed by the Rasa REST channel."""
+import logging
 import os
 from pathlib import Path
 import sys
@@ -6,12 +7,58 @@ from urllib.parse import quote
 
 import httpx
 from botbuilder.core import ActivityHandler, CardFactory, MessageFactory, TurnContext
+from botbuilder.core.teams import TeamsInfo
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
 from actions.policy_store import index_path
+from actions.darwinbox import awaiting_employee_code, extract_employee_code
+
+
+LOGGER = logging.getLogger(__name__)
+
+
+async def _teams_identity(turn_context: TurnContext) -> dict:
+    """Return identity attributes verified by Teams for the message sender.
+
+    Member lookup can be unavailable in local Bot Framework tests or restricted
+    tenants. In that case the activity's authenticated sender identifiers remain
+    usable, while personal Darwinbox requests fail closed if no mapping exists.
+    """
+    activity = turn_context.activity
+    account = activity.from_property
+    member = None
+    member_id = getattr(account, "id", None)
+
+    if member_id:
+        try:
+            member = await TeamsInfo.get_member(turn_context, member_id)
+        except Exception as exc:  # SDK exposes multiple connector error types.
+            LOGGER.warning("Unable to retrieve Teams member profile: %s", exc)
+
+    identity = member or account
+    aad_object_id = (
+        getattr(identity, "aad_object_id", None)
+        or getattr(account, "aad_object_id", None)
+    )
+    email = getattr(identity, "email", None)
+    user_principal_name = getattr(identity, "user_principal_name", None)
+    display_name = getattr(identity, "name", None) or getattr(account, "name", None)
+
+    channel_data = activity.channel_data or {}
+    tenant = channel_data.get("tenant") if isinstance(channel_data, dict) else None
+    tenant_id = tenant.get("id") if isinstance(tenant, dict) else None
+
+    return {
+        "aad_object_id": aad_object_id,
+        "email": email or user_principal_name,
+        "user_principal_name": user_principal_name,
+        "display_name": display_name,
+        "tenant_id": tenant_id,
+        "teams_user_id": member_id,
+    }
 
 
 def _evidence_card(evidence):
@@ -77,17 +124,32 @@ class TeamsBot(ActivityHandler):
         if not question:
             await turn_context.send_activity("Please enter an HR policy question.")
             return
+        identity = await _teams_identity(turn_context)
+        identity["channel"] = "msteams"
         sender = (
-            getattr(turn_context.activity.from_property, "aad_object_id", None)
-            or turn_context.activity.from_property.id
+            identity.get("aad_object_id")
+            or identity.get("teams_user_id")
             or turn_context.activity.conversation.id
         )
+        original_question = question
+        try:
+            if awaiting_employee_code(sender, identity):
+                candidate = extract_employee_code(question)
+                if candidate:
+                    question = f"My employee code is {candidate}"
+                    identity["original_text"] = original_question
+        except (OSError, RuntimeError, ValueError):
+            LOGGER.warning("Unable to inspect pending Darwinbox identity state", exc_info=True)
         url = os.getenv("RASA_URL", "http://127.0.0.1:5005").rstrip("/")
         try:
             async with httpx.AsyncClient(timeout=60) as client:
                 response = await client.post(
                     f"{url}/webhooks/rest/webhook",
-                    json={"sender": sender, "message": question},
+                    json={
+                        "sender": sender,
+                        "message": question,
+                        "metadata": {**identity, "channel": "msteams"},
+                    },
                 )
                 response.raise_for_status()
             messages = response.json()

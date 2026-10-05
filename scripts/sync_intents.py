@@ -62,7 +62,7 @@ def main():
     domain = yaml.safe_load(domain_path.read_text(encoding="utf-8"))
     general_intents = [
         "greet", "goodbye", "ask_leave", "ask_remote_work", "ask_benefits",
-        "ask_expenses", "ask_conduct", "ask_onboarding", "out_of_scope", "nlu_fallback",
+        "ask_expenses", "ask_conduct", "ask_onboarding", "ask_personal_leave_balance", "provide_employee_code", "out_of_scope", "nlu_fallback",
     ]
     domain["intents"] = general_intents + list(mapping.keys())
     domain_path.write_text(

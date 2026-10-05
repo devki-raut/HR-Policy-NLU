@@ -70,7 +70,7 @@ async function submit() {
   status.textContent = 'Looking up your policy…';
   try {
     const response = await fetch('/chat', {
-      method: 'POST', headers: {'Content-Type': 'application/json', ...(document.querySelector('#api-key').value ? {'X-API-Key': document.querySelector('#api-key').value} : {})},
+      method: 'POST', headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({sender, message}), signal: AbortSignal.timeout(70000)
     });
     const result = await response.json();

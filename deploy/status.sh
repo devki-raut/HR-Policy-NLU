@@ -3,7 +3,7 @@ set -euo pipefail
 mode="${1:-all}"
 
 local_status() {
-  for port in 5055 5005 8610; do
+  for port in 5055 5005 8888 8610; do
     pids="$(fuser -n tcp "$port" 2>/dev/null || true)"
     if [[ -n "$pids" ]]; then
       echo "port $port: running (PIDs:$pids)"

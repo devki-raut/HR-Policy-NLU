@@ -418,6 +418,11 @@ nlu:
     - What is the maximum unused PL balance I can move into January?
     - What is the maximum PL balance for next year?
     - How much unused privilege leave rolls over?
+    - Can I carry forward 20 PL?
+    - Can I carry forward twenty PL?
+    - Can 20 PL be carried forward?
+    - Is twenty the maximum PL carry-forward balance?
+    - Can I roll over 20 privilege leaves?
     - Can I take three Casual Leaves continuously in a month?
     - Can I take 3 CL continuously?
     - How many consecutive Casual Leaves can I take?
@@ -450,6 +455,12 @@ nlu:
     - Where do I apply for 0.5 day leave?
     - Must half-day absence be entered in HRMS?
     - What system accepts half-day leave applications?
+    - Can an employee take Casual Leave while working at a client site?
+    - Can I take CL while working from a client site?
+    - Is casual leave allowed during client-site deployment?
+    - How do I request CL when assigned to a customer location?
+    - Does a client-site employee need client manager approval for casual leave?
+    - What approval is needed for leave at a client location?
 - intent: policy_referral
   examples: |
     - What is the employee referral policy?

@@ -1,6 +1,7 @@
 .venv/
 .venv-model-cpu/
 .venv-runtime/
+.ipynb_checkpoints/
 __pycache__/
 *.pyc
 *.npz
@@ -14,6 +15,7 @@ logs/
 artifacts/
 documents/
 .pytest_cache/
+tests/
 results/
 teams_app/config.local.json
 teams_app/dist/
@@ -24,3 +26,5 @@ policies/mds/
 
 # Keep the reproducible model comparison script.
 !scripts/benchmark_embeddings.py
+
+.venv-jupyter/

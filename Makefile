@@ -14,12 +14,15 @@ export FAQ_EMBEDDING_MARGIN ?= 0.01
 DEPLOYMENT_PID := artifacts/logs/deployment.pid
 DEPLOYMENT_LOG := artifacts/logs/deployment.log
 
-.PHONY: setup install sync-intents validate train test evaluate-final evaluate-unseen evaluate-fact-coverage benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
+.PHONY: setup install sync-darwinbox sync-intents validate train test evaluate-final evaluate-unseen evaluate-fact-coverage benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
 
 setup:
 	python3 setup.py
 
 install: setup
+
+sync-darwinbox:
+	$(PYTHON) scripts/sync_darwinbox_employees.py
 
 sync-intents:
 	$(PYTHON) scripts/sync_intents.py

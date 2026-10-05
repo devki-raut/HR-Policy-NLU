@@ -2173,9 +2173,14 @@
         "How many earned leaves can move to next year?",
         "What is the maximum unused PL balance I can move into January?",
         "What is the maximum PL balance for next year?",
-        "How much unused privilege leave rolls over?"
+        "How much unused privilege leave rolls over?",
+        "Can I carry forward 20 PL?",
+        "Can I carry forward twenty PL?",
+        "Can 20 PL be carried forward?",
+        "Is twenty the maximum PL carry-forward balance?",
+        "Can I roll over 20 privilege leaves?"
       ],
-      "answer": "A maximum of 20 Privilege Leaves can be carried forward to the subsequent calendar year.",
+      "answer": "You can carry forward a maximum of 20 Privilege Leaves to the next calendar year.",
       "answer_mode": "grounded_answer",
       "tags": [
         "leave",
@@ -2197,6 +2202,16 @@
       "routing_intent": "policy_general_leave",
       "facts": [
         "A maximum of 20 Privilege Leaves can be carried forward to the subsequent calendar year."
+      ],
+      "keywords": [
+        "PL",
+        "privilege leave",
+        "20 PL",
+        "twenty PL",
+        "carry forward",
+        "roll over",
+        "maximum balance",
+        "next year"
       ]
     },
     {
@@ -4009,6 +4024,52 @@
       "facts": [
         "The Committee keeps complete and accurate documentation of the complaint, investigation, and resolution.",
         "The incident and full Committee report are documented in both the complainant and accused files."
+      ]
+    },
+    {
+      "id": "23d9b595aa4cd84b",
+      "intent": "policy_general_leave_client_site_casual",
+      "question": "Can an employee take Casual Leave while working at a client site?",
+      "utterances": [
+        "Can I take CL while working from a client site?",
+        "Is casual leave allowed during client-site deployment?",
+        "How do I request CL when assigned to a customer location?",
+        "Does a client-site employee need client manager approval for casual leave?",
+        "What approval is needed for leave at a client location?"
+      ],
+      "keywords": [
+        "casual leave",
+        "CL",
+        "client site",
+        "customer location",
+        "client manager",
+        "written approval",
+        "client deployment"
+      ],
+      "answer": "You may request Casual Leave while working at a client site. Associates deployed at client locations must obtain written approval from the designated Client Manager, and the request remains subject to the normal leave-planning and business-priority approval rules.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "leave",
+        "casual leave",
+        "client site",
+        "approval"
+      ],
+      "enabled": true,
+      "source": "QG-HR-LV-PLCY - Leave Policy - V2.0.pdf",
+      "mapped_sections": [
+        "• Leave Planning and Approval"
+      ],
+      "evidence": {
+        "chunk_id": "ed334e466d9e521e",
+        "page": 2,
+        "section": "• Leave Planning and Approval",
+        "quote": "➢ All leave s must be planned in advance in consultation with the respective Team Lead or Manager. ➢ Unplanned or emergency leave may be subject to rejection based on business requirements. ➢ Leave approval is contingent upon ongoing business priorities. ➢ Associates deployed at client locations must obtain written approval from the designated Client Manager."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "Associates deployed at client locations must obtain written approval from the designated Client Manager for leave.",
+        "Leave approval remains contingent on business priorities and the normal advance-planning process."
       ]
     }
   ]

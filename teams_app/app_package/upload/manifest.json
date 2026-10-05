@@ -1,8 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
   "manifestVersion": "1.19",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "id": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
+  "packageName": "com.emergys.employeeassist",
   "developer": {
     "name": "Emergys Solutions",
     "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
@@ -58,5 +59,9 @@
   ],
   "validDomains": [
     "dockerpoc-webapp01.azurewebsites.net"
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
   ]
 }

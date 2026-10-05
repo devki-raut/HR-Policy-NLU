@@ -168,3 +168,51 @@ nlu:
     - Order lunch
 
     '
+- intent: ask_personal_leave_balance
+  examples: '- What is my leave balance?
+
+    - How much leave do I have left?
+
+    - Show my current leave balance
+
+    - How many PL days do I have remaining?
+
+    - What is my Casual Leave balance?
+
+    - Check my leave balance
+
+    - How much annual leave is left for me?
+
+    - Show my remaining leave days
+
+    - How many leaves have I used?
+
+    - What is my current PL and CL balance?
+
+    - Can you fetch my leave balance from Darwinbox?
+
+    - Tell me my available leave balance
+
+    '
+- intent: provide_employee_code
+  examples: '- My employee code is EMP001
+
+    - My employee number is E12345
+
+    - Employee ID is DBP1
+
+    - The code is ABC-100
+
+    - Use employee number 100982
+
+    - My code is ES/2024/101
+
+    - EMP001
+
+    - E12345
+
+    - DBP1
+
+    - 100982
+
+    '
