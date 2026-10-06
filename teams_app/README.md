@@ -90,8 +90,10 @@ should contain the existing webapp hostname; the Jupyter link opens a browser ta
 EmployeeAssist uses a shared Darwinbox client for SHA-512 authentication and
 separate adapters for each module. Set `DARWINBOX_BASE_URL` to the tenant origin,
 for example `https://tenant.darwinbox.in`. The employee adapter uses
-`/masterapi/employee`; the leave-balance path remains configurable because
-Darwinbox provisions it per tenant.
+`/masterapi/employee`. The Emergys leave adapter uses
+`/leavesactionapi/leavebalance` with `DARWINBOX_LEAVE_API_KEY`, an employee-number
+array, configured leave names, and the rounding flag. SHA-512 authenticated leave
+endpoints remain supported as a fallback.
 
 At deployment startup, `scripts/sync_darwinbox_employees.py` fetches a full
 employee dataset and stores a minimized directory under `artifacts/private`.
@@ -109,12 +111,32 @@ restart. Override this with `DARWINBOX_EMPLOYEE_STORE_PATH` when required.
 For “What is my leave balance?”, the action maps the authenticated Teams email to
 one Darwinbox employee record. On a cache miss it performs an incremental refresh
 and then a full refresh. If no record matches, it asks for an employee code. A
-submitted code is remembered only after its Darwinbox official email matches the
-verified Teams email; browser/anonymous callers cannot create bindings. API
-failures retain and use the last successful cache, while balance failures return a
-retry message without exposing credentials or another employee's data.
+submitted code is checked against the synchronized record and its official email.
+When Employee Core data is unavailable, the code is remembered for the verified
+Teams email only after the leave-balance API accepts it. Browser and anonymous
+callers cannot create bindings. API failures retain the last successful cache and
+do not write an unverified mapping.
 
 Required tenant values are documented in the root `.env.example`. Existing
 absolute `DARWINBOX_LEAVE_BALANCE_URL` values remain supported, while new
 functions should use a dedicated `*_PATH` and adapter under
 `actions/darwinbox_adapters/`.
+
+### Leave-balance test mode
+
+The current test deployment sends every personal leave-balance request to the
+Darwinbox leave API with employee number `Ell0769`. It does not accept an
+employee code from chat and does not use the employee-directory API. Test the
+same path used by the web interface with:
+
+```bash
+curl -X POST http://localhost:8610/chat \
+  -H 'Content-Type: application/json' \
+  -d '{"sender":"leave-api-test","message":"What is my leave balance?"}'
+```
+
+Darwinbox must accept `DARWINBOX_LEAVE_API_KEY` for
+`/leavesactionapi/leavebalance`; otherwise the response reports that the
+integration is temporarily unavailable. When Darwinbox provisions the endpoint
+with HTTP Basic Auth, also configure `DARWINBOX_LEAVE_USERNAME` and
+`DARWINBOX_LEAVE_PASSWORD`; the API key remains in the JSON request body.

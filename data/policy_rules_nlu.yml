@@ -55,23 +55,68 @@ nlu:
     - Can I extend bereavement leave?
     - What if I need more than 5 days?
     - Can I combine leave to cover more time?
-    - Does bereavement leave cover the death of a parent-in-law?
+    - Which worker categories qualify for bereavement benefits?
+    - Explain the eligibility rule under the bereavement policy.
+    - What does the bereavement policy state about eligibility?
+    - I need details about bereavement eligibility.
+    - Please clarify the bereavement policy requirements for eligibility.
     - Is leave available when my spouse's parent dies?
     - Does bereavement cover my spouse's mother or father?
     - Is a parent in law immediate family for bereavement?
+    - Is a brother or sister within the immediate-family definition?
+    - Are adoptive or step-parents included as parents?
+    - Are relatives outside the listed immediate-family categories covered?
+    - Explain the family rule under the bereavement policy.
+    - What does the bereavement policy state about family?
+    - I need details about bereavement family.
+    - Please clarify the bereavement policy requirements for family.
+    - Brother or sister coverage after a death
+    - Which parent categories count as immediate family?
+    - Is a relative included in the defined family list?
+    - Grandparent coverage under the listed family definition
     - How much paid time is allowed after an immediate family death?
     - How many paid working days follow a death in my family?
+    - Explain the entitlement rule under the bereavement policy.
+    - What does the bereavement policy state about entitlement?
+    - I need details about bereavement entitlement.
+    - Please clarify the bereavement policy requirements for entitlement.
+    - Does an approved bereavement absence retain normal pay?
+    - May the initial bereavement request be spoken or emailed?
+    - Which channels may be used to notify HR about bereavement?
+    - Explain the application rule under the bereavement policy.
+    - What does the bereavement policy state about application?
+    - I need details about bereavement application.
+    - Please clarify the bereavement policy requirements for application.
+    - Bereavement notification channels
+    - May I speak to my manager first and submit HRMS later?
+    - Email or verbal request after a family death
     - What proof might HR ask for after a family death?
     - What evidence is needed after bereavement?
     - Will HR ask me for proof of death?
+    - Explain the documentation rule under the bereavement policy.
+    - What does the bereavement policy state about documentation?
+    - I need details about bereavement documentation.
+    - Please clarify the bereavement policy requirements for documentation.
+    - Explain the combination rule under the bereavement policy.
+    - What does the bereavement policy state about combination?
+    - I need details about bereavement combination.
+    - Please clarify the bereavement policy requirements for combination.
     - Tell me about bereavement leave.
     - Can you explain bereavement leave?
     - What does bereavement leave cover?
     - Give me an overview of bereavement leave.
+    - Explain the overview rule under the bereavement policy.
+    - What does the bereavement policy state about overview?
+    - I need details about bereavement overview.
+    - Please clarify the bereavement policy requirements for overview.
     - How should bereavement leave be formally recorded after notifying the manager?
     - Where do I submit bereavement leave after informing HR?
     - Must a bereavement absence be entered in the HR system?
     - How is a verbal bereavement request formalized?
+    - Explain the hrms rule under the bereavement policy.
+    - What does the bereavement policy state about hrms?
+    - I need details about bereavement hrms.
+    - Please clarify the bereavement policy requirements for hrms.
 - intent: policy_maternity
   examples: |
     - What is the maternity leave policy?
@@ -110,13 +155,28 @@ nlu:
     - Does the policy cover miscarriage leave?
     - Is there leave after medical termination?
     - How much leave is available after miscarriage?
-    - How long must an employee have worked to be eligible for maternity leave?
+    - What tenure makes someone eligible for maternity benefits?
+    - Is there a minimum service requirement before maternity benefits apply?
+    - Maternity eligibility service days
+    - What entitlement applies after the first two surviving children?
+    - What is the reduced maternity duration for a later child?
+    - What duration applies after an employee already has two surviving children?
+    - Later-child maternity entitlement
+    - Reduced maternity benefit after the first two children
+    - What benefit applies to a biological mother using a surrogate?
+    - What is the commissioning-parent maternity duration?
+    - Surrogate mother leave entitlement
+    - Benefit duration for a biological mother through surrogacy
+    - Commissioning parent paid absence
+    - Must maternity absence be used as one uninterrupted block?
+    - Must the full maternity period be a single block?
+    - May maternity absence be divided across separate dates?
     - What is maternity leave?
     - Can you explain maternity leave?
     - What are the maternity leave rules?
     - Tell me about maternity leave.
     - Give me an overview of maternity leave.
-    - Can I work from home during maternity leave?
+    - Does the maternity policy create a separate remote-work entitlement?
     - Does maternity leave include work from home?
     - Can I work remotely while on maternity leave?
     - Is WFH allowed during maternity leave?
@@ -136,6 +196,11 @@ nlu:
     - When should maternity leave be notified to HR?
     - How early must I submit a maternity request in HRMS?
     - What is the notice period for maternity leave?
+    - How far ahead should the HRMS maternity request be raised?
+    - What advance application period applies before maternity absence starts?
+    - Maternity application lead time
+    - Advance HRMS notice before maternity absence
+    - When should the intended start date be reported?
     - What happens to unused maternity leave when an employee resigns?
     - Is unused maternity entitlement paid in final settlement?
     - Does maternity leave balance lapse after resignation?
@@ -156,6 +221,9 @@ nlu:
     - How early must I confirm my maternity return date?
     - When do I notify HR of a return or approved extension?
     - What is the notice period before resuming work after maternity leave?
+    - When must HR receive notice of the actual delivery date?
+    - What deadline applies to reporting the birth to HR?
+    - How quickly must the employee or family communicate that childbirth occurred?
 - intent: policy_paternity
   examples: |
     - What is the paternity leave policy?
@@ -191,6 +259,10 @@ nlu:
     - What is the deadline for giving the birth certificate to HR?
     - How many days does a father have to submit proof of birth?
     - Which paternity document is due within sixty days?
+    - When should the birth certificate be submitted?
+    - By when must I provide the child's birth certificate?
+    - What is the deadline for submitting proof of childbirth?
+    - How soon after the birth is the certificate due?
     - What happens to unused paternity leave after an early return to work?
     - Are remaining paternity days saved if I return early?
     - Does unused father leave expire after resuming work?
@@ -199,6 +271,9 @@ nlu:
     - Does company insurance cover a newborn for a male employee?
     - Are the wife maternity expenses covered during paternity leave?
     - Who can explain paternity medical insurance coverage?
+    - What service and employment conditions apply to paternity benefits?
+    - Which employees qualify for fatherhood leave?
+    - What tenure is required for paternity entitlement?
 - intent: policy_posh
   examples: |
     - What is the POSH policy?
@@ -254,17 +329,54 @@ nlu:
     - What is the outcome after the inquiry?
     - What happens after the committee reviews the matter?
     - How are findings handled?
+    - Explain the scope rule under the POSH policy.
+    - What does the POSH policy state about scope?
+    - I need details about POSH scope.
+    - Please clarify the POSH policy requirements for scope.
+    - What does the POSH committee do?
+    - What is the role of the Internal Committee?
+    - Explain the committee rule under the POSH policy.
+    - What does the POSH policy state about committee?
+    - I need details about POSH committee.
+    - Please clarify the POSH policy requirements for committee.
     - Within how many months should a POSH complaint be filed?
-    - What is the deadline for filing a POSH complaint?
     - How long do I have to submit a sexual harassment complaint?
     - Is there a three month time limit for a POSH complaint?
     - When must a POSH complaint be submitted?
+    - Explain the complaint rule under the POSH policy.
+    - What does the POSH policy state about complaint?
+    - I need details about POSH complaint.
+    - Please clarify the POSH policy requirements for complaint.
+    - Time window for lodging a harassment complaint
+    - Complaint limitation period after an incident
+    - Filing deadline after the last incident in a series
+    - Where may a workplace harassment complaint be sent?
+    - Complaint submission through HR or an IC member
+    - Available channels for lodging a POSH complaint
+    - Which person or department receives a harassment report?
+    - May a workplace-harassment filing be sent through Human Resources?
+    - Explain the inquiry rule under the POSH policy.
+    - What does the POSH policy state about inquiry?
+    - I need details about POSH inquiry.
+    - Please clarify the POSH policy requirements for inquiry.
+    - Explain the protection rule under the POSH policy.
+    - What does the POSH policy state about protection?
+    - I need details about POSH protection.
+    - Please clarify the POSH policy requirements for protection.
+    - Explain the appeal rule under the POSH policy.
+    - What does the POSH policy state about appeal?
+    - I need details about POSH appeal.
+    - Please clarify the POSH policy requirements for appeal.
     - What does POSH mean?
     - Can you explain the POSH policy?
     - What is the workplace sexual harassment policy?
     - Tell me about POSH.
     - Give me an overview of the POSH policy.
-    - What types of behaviour are considered sexual harassment under the policy?
+    - Explain the overview rule under the POSH policy.
+    - What does the POSH policy state about overview?
+    - I need details about POSH overview.
+    - Please clarify the POSH policy requirements for overview.
+    - Which forms of conduct fall within the policy definition of sexual harassment?
     - What behavior counts as sexual harassment?
     - What conduct is covered by POSH?
     - Give examples of workplace sexual harassment
@@ -272,12 +384,22 @@ nlu:
     - What conduct falls within the definition of workplace sexual harassment?
     - Which workplace actions count as sexual harassment?
     - What is included in sexual harassment conduct?
-    - How long does the Internal Committee have to complete its inquiry?
+    - Explain the definition rule under the POSH policy.
+    - What does the POSH policy state about definition?
+    - I need details about POSH definition.
+    - Please clarify the POSH policy requirements for definition.
+    - Examples of prohibited sexual conduct
+    - Conduct included in workplace harassment
+    - Verbal physical electronic and non-verbal harassment examples
+    - What time limit governs completion of an Internal Committee investigation?
     - What is the deadline for completing a POSH inquiry?
     - How many months can an Internal Committee inquiry take?
     - When must the POSH investigation be completed?
     - What is the IC inquiry time limit?
-    - What happens if someone retaliates against an employee for filing a POSH complaint?
+    - Maximum duration of the committee investigation
+    - Time allowed to finish a harassment inquiry
+    - Inquiry completion and reporting timelines
+    - What protection applies against adverse action after reporting or assisting a harassment case?
     - Is retaliation after a POSH complaint allowed?
     - How is a complainant protected from retaliation?
     - What if someone retaliates against a complainant?
@@ -285,71 +407,216 @@ nlu:
     - Does the policy forbid action against a witness who helped an investigation?
     - Is a witness protected from retaliation?
     - Can someone be punished for cooperating with a POSH inquiry?
+    - Explain the retaliation rule under the POSH policy.
+    - What does the POSH policy state about retaliation?
+    - I need details about POSH retaliation.
+    - Please clarify the POSH policy requirements for retaliation.
+    - Protection for a complainant or cooperating witness
+    - Adverse treatment after reporting harassment
+    - Policy response to revenge against participants
+    - What protection is available against retaliation?
+    - What safeguards protect people from retaliation?
+    - Am I protected from reprisals after reporting harassment?
+    - Can the company take adverse action against someone who reports harassment?
+    - Protection from retaliation for complainants and witnesses
     - What is the term of appointment for Internal Committee members?
     - How long does a POSH committee member serve?
     - What is the tenure of the Internal Committee?
     - After how many years does an IC term end?
+    - Explain the committee term rule under the POSH policy.
+    - What does the POSH policy state about committee term?
+    - I need details about POSH committee term.
+    - Please clarify the POSH policy requirements for committee term.
     - When must the Committee first meet the complainant?
     - How soon after a complaint does the first POSH meeting happen?
     - What is the deadline to hear the complainant initially?
     - Within how many days does the IC meet a complainant?
+    - Explain the first meeting rule under the POSH policy.
+    - What does the POSH policy state about first meeting?
+    - I need details about POSH first meeting.
+    - Please clarify the POSH policy requirements for first meeting.
     - Can monetary settlement be the basis of POSH conciliation?
     - May a POSH case be settled for money through conciliation?
     - Are financial terms permitted in committee conciliation?
     - Can cash resolve a harassment complaint informally?
+    - Explain the conciliation money rule under the POSH policy.
+    - What does the POSH policy state about conciliation money?
+    - I need details about POSH conciliation money.
+    - Please clarify the POSH policy requirements for conciliation money.
     - How long does a respondent have to submit a written explanation?
     - When is the accused response to a POSH complaint due?
     - What is the show-cause reply deadline?
     - How many days are allowed for the respondent statement?
+    - Explain the respondent reply rule under the POSH policy.
+    - What does the POSH policy state about respondent reply?
+    - I need details about POSH respondent reply.
+    - Please clarify the POSH policy requirements for respondent reply.
     - When must a potentially criminal complaint be forwarded to police?
     - What is the police referral deadline for a POSH offence?
     - How quickly does the committee send a criminal matter to police?
     - When is harassment reported to law enforcement?
+    - Explain the police referral rule under the POSH policy.
+    - What does the POSH policy state about police referral?
+    - I need details about POSH police referral.
+    - Please clarify the POSH policy requirements for police referral.
     - Can a sexual-harassment victim request a workplace transfer?
     - May the complainant seek their own transfer?
     - Can the alleged perpetrator be transferred?
     - Is transfer available as protection in a POSH case?
     - Is transfer available when sexual harassment may also constitute an offence?
+    - Explain the transfer option rule under the POSH policy.
+    - What does the POSH policy state about transfer option?
+    - I need details about POSH transfer option.
+    - Please clarify the POSH policy requirements for transfer option.
     - What is the deadline for appealing a POSH recommendation?
     - How long does a party have to appeal an IC outcome?
     - Within how many days can committee recommendations be challenged?
     - What is the POSH appeal period?
+    - Explain the appeal deadline rule under the POSH policy.
+    - What does the POSH policy state about appeal deadline?
+    - I need details about POSH appeal deadline.
+    - Please clarify the POSH policy requirements for appeal deadline.
     - What happens when a POSH complaint is deliberately false or malicious?
     - Is disciplinary action possible for a knowingly false complaint?
     - What is the consequence of malicious harassment evidence?
     - How does the policy address a complaint intended to harm someone?
+    - Explain the malicious complaint rule under the POSH policy.
+    - What does the POSH policy state about malicious complaint?
+    - I need details about POSH malicious complaint.
+    - Please clarify the POSH policy requirements for malicious complaint.
     - What happens if a witness breaches POSH confidentiality?
     - Can disclosure of inquiry information lead to discipline?
     - What is the penalty for revealing confidential complaint details?
     - Must witnesses keep committee information private?
+    - Explain the confidentiality breach rule under the POSH policy.
+    - What does the POSH policy state about confidentiality breach?
+    - I need details about POSH confidentiality breach.
+    - Please clarify the POSH policy requirements for confidentiality breach.
     - Does the POSH policy apply to third parties and client locations?
     - Are non-employees covered by the harassment policy on company premises?
     - Does POSH apply at a customer site controlled by Emergys?
     - Can the policy bind a third party suspected of harassment?
+    - Explain the third party scope rule under the POSH policy.
+    - What does the POSH policy state about third party scope?
+    - I need details about POSH third party scope.
+    - Please clarify the POSH policy requirements for third party scope.
     - Which Emergys entities are covered by the POSH policy?
     - Does POSH apply to subsidiaries and group companies?
     - Are affiliates and sister concerns included in the harassment policy?
     - What related companies fall under the policy?
+    - Explain the affiliates rule under the POSH policy.
+    - What does the POSH policy state about affiliates?
+    - I need details about POSH affiliates.
+    - Please clarify the POSH policy requirements for affiliates.
     - What forms of stalking are treated as sexual harassment?
     - Do repeated private calls outside work count as stalking?
     - Is following someone home covered by POSH?
     - Does physically pursuing a person at work count as harassment?
+    - Explain the stalking rule under the POSH policy.
+    - What does the POSH policy state about stalking?
+    - I need details about POSH stalking.
+    - Please clarify the POSH policy requirements for stalking.
     - Are eve teasing, innuendos, taunts, or forced confinement covered by POSH?
     - Does the policy treat sexual taunts as harassment?
     - Is confinement against someone’s will prohibited conduct?
     - Are innuendos and privacy intrusion included in POSH?
+    - Explain the intrusive conduct rule under the POSH policy.
+    - What does the POSH policy state about intrusive conduct?
+    - I need details about POSH intrusive conduct.
+    - Please clarify the POSH policy requirements for intrusive conduct.
     - What disciplinary actions may follow a finding of sexual harassment?
     - Can a person be suspended or terminated after a POSH finding?
     - May an increment, bonus, or promotion be withheld?
     - What penalties can the Internal Committee recommend?
+    - Explain the disciplinary actions rule under the POSH policy.
+    - What does the POSH policy state about disciplinary actions?
+    - I need details about POSH disciplinary actions.
+    - Please clarify the POSH policy requirements for disciplinary actions.
     - Who can help when a POSH complaint cannot be put in writing?
     - Can the Presiding Officer help draft a complaint?
     - What assistance is available for submitting a written harassment complaint?
     - Who may complain for a person who is unable to file personally?
+    - Explain the complaint assistance rule under the POSH policy.
+    - What does the POSH policy state about complaint assistance?
+    - I need details about POSH complaint assistance.
+    - Please clarify the POSH policy requirements for complaint assistance.
     - How are POSH complaints and investigations documented?
     - Does the committee retain a complete investigation record?
     - Where is the complaints committee report recorded?
     - Are both complainant and accused files updated?
+    - Explain the documentation rule under the POSH policy.
+    - What does the POSH policy state about documentation?
+    - I need details about POSH documentation.
+    - Please clarify the POSH policy requirements for documentation.
+    - How long can the POSH complaint filing period be extended?
+    - What is the maximum POSH complaint deadline extension?
+    - Can the three-month complaint limit be extended?
+    - How much extra time is allowed to file a harassment complaint?
+    - Explain the complaint extension rule under the POSH policy.
+    - What does the POSH policy state about complaint extension?
+    - I need details about POSH complaint extension.
+    - Please clarify the POSH policy requirements for complaint extension.
+    - Additional filing time when circumstances prevented a complaint
+    - Extension beyond the initial complaint period
+    - Recorded reasons for extending the filing window
+    - Which procedural steps follow receipt of a written harassment complaint?
+    - What is the process after filing a POSH complaint?
+    - What does the Committee do after receiving a complaint?
+    - What happens once the harassment complaint is lodged?
+    - What are the next steps after a POSH complaint?
+    - Explain the post submission rule under the POSH policy.
+    - What does the POSH policy state about post submission?
+    - I need details about POSH post submission.
+    - Please clarify the POSH policy requirements for post submission.
+    - Procedure immediately after receiving a complaint
+    - Steps followed before the formal inquiry
+    - Initial committee actions after complaint receipt
+    - How soon should the respondent receive a copy of the POSH complaint?
+    - When must the respondent get the complaint copy?
+    - How many days does the Committee have to give the complaint to the accused?
+    - What is the deadline for serving the complaint on the respondent?
+    - Within how many days is the complaint copy handed over?
+    - Explain the complaint copy rule under the POSH policy.
+    - What does the POSH policy state about complaint copy?
+    - I need details about POSH complaint copy.
+    - Please clarify the POSH policy requirements for complaint copy.
+    - Is conciliation possible before a POSH inquiry?
+    - Can the parties settle before the Internal Committee starts an inquiry?
+    - Can the complainant request conciliation?
+    - Does POSH allow conciliation before investigation?
+    - When can POSH conciliation happen?
+    - Explain the conciliation rule under the POSH policy.
+    - What does the POSH policy state about conciliation?
+    - I need details about POSH conciliation.
+    - Please clarify the POSH policy requirements for conciliation.
+    - What happens if a POSH conciliation settlement is not followed?
+    - What if the respondent does not comply with the conciliation terms?
+    - Does the inquiry restart if a settlement is breached?
+    - What happens when POSH settlement conditions are ignored?
+    - What if conciliation fails after settlement?
+    - Explain the conciliation breach rule under the POSH policy.
+    - What does the POSH policy state about conciliation breach?
+    - I need details about POSH conciliation breach.
+    - Please clarify the POSH policy requirements for conciliation breach.
+    - Which actions and deadlines follow completion of an Internal Committee investigation?
+    - What does the Committee do after finishing a POSH inquiry?
+    - When are inquiry findings sent to HR?
+    - How soon must HR act on the POSH report?
+    - What happens after the IC investigation ends?
+    - Explain the post inquiry rule under the POSH policy.
+    - What does the POSH policy state about post inquiry?
+    - I need details about POSH post inquiry.
+    - Please clarify the POSH policy requirements for post inquiry.
+    - Who are the members of the POSH Internal Committee?
+    - Can you list the POSH committee members?
+    - Who is the Presiding Officer and external member?
+    - Explain the committee composition rule under the POSH policy.
+    - What does the POSH policy state about committee composition?
+    - I need details about POSH committee composition.
+    - Please clarify the POSH policy requirements for committee composition.
+    - Names and roles of the Internal Committee members
+    - Current IC membership composition
+    - Presiding officer and external committee member
 - intent: policy_general_leave
   examples: |
     - What is the general leave policy?
@@ -402,27 +669,73 @@ nlu:
     - How is emergency leave approved?
     - What if leave is unplanned?
     - Is emergency leave treated differently?
+    - Explain the entitlement rule under the leave policy.
+    - What does the leave policy state about entitlement?
+    - I need details about leave entitlement.
+    - Please clarify the leave policy requirements for entitlement.
     - Do weekends increase unpaid leave when absence runs Friday through Monday?
     - How many LWP days count from Friday to Monday?
     - Are Saturday and Sunday included in a Friday-to-Monday LWP?
+    - Explain the privilege rule under the leave policy.
+    - What does the leave policy state about privilege?
+    - I need details about leave privilege.
+    - Please clarify the leave policy requirements for privilege.
+    - Does unused CL accumulate into another period?
+    - Is the Casual Leave balance non-cumulative?
+    - Explain the casual rule under the leave policy.
+    - What does the leave policy state about casual?
+    - I need details about leave casual.
+    - Please clarify the leave policy requirements for casual.
+    - CL annual allowance and accumulation
+    - Casual leave yearly balance rules
+    - How does unused casual absence accrue?
+    - Does the Casual Leave balance expire instead of accumulating?
+    - Does CL expire at year end?
+    - Can unused CL move into the following year?
+    - Casual-leave accumulation rule
+    - CL carryforward rule
+    - Does unused CL roll over into a new calendar year?
+    - Is the CL balance lost rather than accumulated?
+    - Explain the approval rule under the leave policy.
+    - What does the leave policy state about approval?
+    - I need details about leave approval.
+    - Please clarify the leave policy requirements for approval.
+    - How does HRMS calculate entitlement for someone joining partway through the year?
+    - Is joining-date leave credited proportionally?
+    - Explain the credit rule under the leave policy.
+    - What does the leave policy state about credit?
+    - I need details about leave credit.
+    - Please clarify the leave policy requirements for credit.
+    - Joining-date pro-rata leave credit
+    - HRMS entitlement calculation for midyear joiners
+    - Leave accrual after joining partway through a year
+    - Explain the notice rule under the leave policy.
+    - What does the leave policy state about notice?
+    - I need details about leave notice.
+    - Please clarify the leave policy requirements for notice.
     - What are the general leave rules?
     - Can you explain the leave policy?
     - What leave entitlements do employees have?
     - Tell me about general leave.
     - Give me an overview of the leave policy.
+    - Explain the overview rule under the leave policy.
+    - What does the leave policy state about overview?
+    - I need details about leave overview.
+    - Please clarify the leave policy requirements for overview.
     - How many Privilege Leaves can I carry forward to the next year?
-    - How many PL can I carry forward to the next year?
     - What is the PL carry-forward limit?
     - Can unused privileged leave be carried over?
     - How many earned leaves can move to next year?
     - What is the maximum unused PL balance I can move into January?
     - What is the maximum PL balance for next year?
     - How much unused privilege leave rolls over?
-    - Can I carry forward 20 PL?
     - Can I carry forward twenty PL?
     - Can 20 PL be carried forward?
     - Is twenty the maximum PL carry-forward balance?
     - Can I roll over 20 privilege leaves?
+    - Privilege-leave carryforward ceiling
+    - Maximum unused PL moved to another year
+    - PL rollover limit
     - Can I take three Casual Leaves continuously in a month?
     - Can I take 3 CL continuously?
     - How many consecutive Casual Leaves can I take?
@@ -435,32 +748,64 @@ nlu:
     - Are contractor leave balances calculated proportionally?
     - What is the pro-rata rule for contractual staff?
     - How does a contract extension affect leave credit?
+    - Explain the general contractor prorata rule under the leave policy.
+    - What does the leave policy state about general contractor prorata?
+    - I need details about leave general contractor prorata.
+    - Please clarify the leave policy requirements for general contractor prorata.
     - Can interns carry unused monthly leave into later internship months?
     - Does an intern lose unused leave each month?
     - Can internship leave roll over to the following month?
     - What happens to an intern unused monthly leave?
+    - Explain the general intern carryforward rule under the leave policy.
+    - What does the leave policy state about general intern carryforward?
+    - I need details about leave general intern carryforward.
+    - Please clarify the leave policy requirements for general intern carryforward.
     - Can Casual Leave be combined with another type of leave?
     - May CL be attached to Privilege Leave?
     - Can casual and earned leave be joined?
     - Is combining CL with a different leave category allowed?
+    - Explain the general casual combination rule under the leave policy.
+    - What does the leave policy state about general casual combination?
+    - I need details about leave general casual combination.
+    - Please clarify the leave policy requirements for general casual combination.
     - Which holiday calendar applies to employees deployed at client sites?
     - Do client-site employees follow the company holiday list?
     - Whose holidays apply while assigned to a customer?
     - What calendar applies during client deployment?
+    - Explain the general client calendar rule under the leave policy.
+    - What does the leave policy state about general client calendar?
+    - I need details about leave general client calendar.
+    - Please clarify the leave policy requirements for general client calendar.
     - What happens when leave is approved during the notice period?
     - Can approved notice-period leave change my final working day?
     - Does taking leave extend a resignation notice?
     - What is the rule for leave while serving notice?
+    - Explain the general notice leave rule under the leave policy.
+    - What does the leave policy state about general notice leave?
+    - I need details about leave general notice leave.
+    - Please clarify the leave policy requirements for general notice leave.
     - How should a half-day leave request be submitted?
     - Where do I apply for 0.5 day leave?
     - Must half-day absence be entered in HRMS?
     - What system accepts half-day leave applications?
+    - Explain the general half day hrms rule under the leave policy.
+    - What does the leave policy state about general half day hrms?
+    - I need details about leave general half day hrms.
+    - Please clarify the leave policy requirements for general half day hrms.
     - Can an employee take Casual Leave while working at a client site?
-    - Can I take CL while working from a client site?
     - Is casual leave allowed during client-site deployment?
     - How do I request CL when assigned to a customer location?
     - Does a client-site employee need client manager approval for casual leave?
     - What approval is needed for leave at a client location?
+    - Explain the client site casual rule under the leave policy.
+    - What does the leave policy state about client site casual?
+    - I need details about leave client site casual.
+    - Please clarify the leave policy requirements for client site casual.
+    - Casual absence while deployed to a customer location
+    - Client-manager approval for CL
+    - Leave request from an external customer site
+    - May staff at customer premises request CL?
+    - What approval applies to casual absence during client deployment?
 - intent: policy_referral
   examples: |
     - What is the employee referral policy?
@@ -515,27 +860,48 @@ nlu:
     - What are the payout conditions?
     - What must the candidate achieve before referral bonus?
     - What are the eligibility conditions for payout?
-    - Who is eligible to participate in the employee referral program?
     - Which employees can participate in the referral program?
+    - Which categories of workers may submit candidate profiles?
+    - May people on a direct company contract participate as referrers?
+    - Who is allowed to make a referral?
+    - Who may act as a referrer?
+    - Employee categories allowed to submit a candidate
+    - Referrer participation eligibility
+    - Who is allowed to submit an employee referal?
+    - Which worker can be the person referring a candidate?
     - How are employee referrals submitted?
     - How can I send a candidate referral?
     - Where do I submit an employee referral?
-    - Can I refer someone who applied to Emergys three months ago?
+    - For what period does a submitted referral remain active in the candidate database?
+    - When does a submitted candidate profile expire from the referral database?
+    - What is the database-active period for a referral entry?
+    - Candidate-database referral expiry
+    - Active duration after referral submission
+    - Referral record validity period
     - Can I refer a candidate who applied three months ago?
     - Is someone eligible for referral if they applied within the last six months?
     - What rule applies to a candidate who submitted an application recently?
     - Can a recently applied candidate be referred?
     - How does a prior job application affect referral eligibility?
+    - Candidate applied recently before being referred
+    - Prior job application within the referral lookback period
+    - Applicant recency eligibility rule
     - Which bonus bracket covers eight years of experience?
     - What referral bonus applies for eight years experience?
     - How much is paid for a candidate between six and ten years?
-    - When will the referral bonus be paid?
+    - Is incentive payout possible before the referred hire completes the qualifying period?
+    - What minimum service period must the referred hire complete before payout?
+    - Referral reward qualifying period
+    - Payout eligibility before completion of service
+    - When does the incentive become payable?
+    - Must the new hire complete the qualifying service before incentive disbursement?
+    - Is payout withheld until six months and probation are completed?
     - What is the referral policy?
     - Can you explain employee referrals?
     - How does the employee referral program work?
     - Tell me about referrals.
     - Give me an overview of the referral policy.
-    - What happens if two employees refer the same candidate?
+    - How is ownership decided when the same candidate is submitted by multiple referrers?
     - Who gets the bonus when the same candidate is referred twice?
     - How are duplicate employee referrals handled?
     - What if multiple people refer one candidate?
@@ -563,3 +929,6 @@ nlu:
     - When does an earned referral payment appear in salary?
     - Which payroll includes the referral incentive?
     - Is the bonus paid after the eligibility period?
+    - Which engagement categories can participate in the referral program?
+    - Are direct-contract workers allowed to refer applicants?
+    - Does the program include permanent staff and interns?

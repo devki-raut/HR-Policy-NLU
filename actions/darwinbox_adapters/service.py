@@ -10,12 +10,14 @@ from typing import Any, Mapping
 
 from .client import DarwinboxAPIError, DarwinboxConfigurationError
 from .employee import EmployeeDirectoryAdapter
+from .leave import LeaveBalanceAdapter
 from .store import (
     bind_identity,
     employee_by_code,
     employee_by_identity,
     is_pending,
     mark_pending,
+    store_self_reported_employee,
     verified_email,
 )
 
@@ -86,8 +88,14 @@ async def resolve_employee_id(
             if cached:
                 return EmployeeResolution(cached, "full_refresh")
     except DarwinboxConfigurationError:
+        if verified_email(metadata):
+            mark_pending(sender_id, metadata)
+            return EmployeeResolution(None, "manual_code_required")
         return EmployeeResolution(None, "not_configured")
     except (DarwinboxAPIError, OSError, RuntimeError, ValueError):
+        if verified_email(metadata):
+            mark_pending(sender_id, metadata)
+            return EmployeeResolution(None, "manual_code_required")
         return EmployeeResolution(None, "refresh_failed")
     mark_pending(sender_id, metadata)
     return EmployeeResolution(None, "not_found")
@@ -130,9 +138,21 @@ async def remember_employee_code(
         try:
             employee = await EmployeeDirectoryAdapter().refresh_employee(employee_no)
         except DarwinboxConfigurationError:
-            return EmployeeResolution(None, "not_configured")
+            # Employee Core is optional for this fallback. Confirm that the code
+            # is accepted by the leave API before storing it for the Teams email.
+            try:
+                await LeaveBalanceAdapter().fetch(employee_no)
+            except DarwinboxConfigurationError:
+                return EmployeeResolution(None, "not_configured")
+            except DarwinboxAPIError:
+                return EmployeeResolution(None, "leave_verification_failed")
+            employee = store_self_reported_employee(email, employee_no)
         except (DarwinboxAPIError, OSError, RuntimeError, ValueError):
-            return EmployeeResolution(None, "refresh_failed")
+            try:
+                await LeaveBalanceAdapter().fetch(employee_no)
+            except (DarwinboxConfigurationError, DarwinboxAPIError):
+                return EmployeeResolution(None, "leave_verification_failed")
+            employee = store_self_reported_employee(email, employee_no)
     if not employee:
         return EmployeeResolution(None, "employee_not_found")
     if not _active(employee):

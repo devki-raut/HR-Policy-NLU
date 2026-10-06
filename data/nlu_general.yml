@@ -193,6 +193,46 @@ nlu:
 
     - Tell me my available leave balance
 
+    - Show the leave available in my account
+
+    - How many leave days remain for me?
+
+    - Fetch my PL balance
+
+    - Fetch my CL balance
+
+    - My leaves
+
+    - Check my leaves
+
+    - Show my Darwinbox leaves
+
+    - What leave balance is assigned to me?
+
+    - How much personal leave balance remains?
+
+    - Tell me the balance against my employee code
+
+    - What is my available PL?
+
+    - What is my available CL?
+
+    - How much leave have I consumed?
+
+    - Display my current time-off balance
+
+    - Look up my leave account
+
+    - Remaining leaves for this year
+
+    - My current leave entitlement balance
+
+    - Can you check the leaves in my profile?
+
+    - Balance of my Privilege Leave and Casual Leave
+
+    - Get my live leave balance
+
     '
 - intent: provide_employee_code
   examples: '- My employee code is EMP001
@@ -214,5 +254,15 @@ nlu:
     - DBP1
 
     - 100982
+
+    - Use this employee ID: EMP-204
+
+    - The employee number linked to me is E0098
+
+    - Please use staff code ES1024
+
+    - My Darwinbox ID is DBOX77
+
+    - Employee code E0769
 
     '

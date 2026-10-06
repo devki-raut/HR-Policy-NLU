@@ -23,9 +23,17 @@ PORTS_BY_MODE = {
 
 
 def darwinbox_directory_configured():
-    return bool(
+    endpoint = bool(
         os.environ.get("DARWINBOX_EMPLOYEE_URL", "").strip()
         or os.environ.get("DARWINBOX_BASE_URL", "").strip()
+    )
+    dataset = bool(
+        os.environ.get("DARWINBOX_EMPLOYEE_DATASET_KEY", "").strip()
+        or os.environ.get("DARWINBOX_DATASET_KEY", "").strip()
+    )
+    return endpoint and dataset and all(
+        os.environ.get(name, "").strip()
+        for name in ("DARWINBOX_UID", "DARWINBOX_ADMIN_EMAIL", "DARWINBOX_SECRET_KEY")
     )
 
 

@@ -33,6 +33,12 @@ MARGIN = float(
 MODEL = SentenceTransformer(MODEL_NAME)
 
 
+def _correct_common_typos(value):
+    """Correct a small vocabulary of domain terms before query embedding."""
+    value = str(value)
+    return re.sub(r"\b(?:refferal|referal)\b", "referral", value, flags=re.IGNORECASE)
+
+
 def _load_json(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
@@ -65,6 +71,11 @@ def _build_candidates():
         questions = [
             entry.get("question", ""),
             *entry.get("utterances", []),
+            *entry.get("matching_phrases", []),
+            # Reviewed facts also describe the meaning of an FAQ. Indexing
+            # them helps statement-style and indirect questions match without
+            # requiring every possible question wording in the registry.
+            *entry.get("facts", []),
         ]
 
         for question in questions:
@@ -312,7 +323,7 @@ def find_faq(
 
     # Only the user's query is embedded at runtime.
     query_embedding = MODEL.encode(
-        [question],
+        [_correct_common_typos(question)],
         normalize_embeddings=True,
         show_progress_bar=False,
     )[0]
@@ -338,7 +349,7 @@ def find_faq(
         # Keywords are a small supporting signal. Semantic similarity remains
         # decisive, while policy-specific terms help unseen phrasings clear the
         # confidence boundary and break close matches within one route.
-        combined_score = min(1.0, semantic_score + 0.05 * keyword_score)
+        combined_score = min(1.0, semantic_score + 0.10 * keyword_score)
         current = best_by_entry.get(entry_id)
         candidate = (combined_score, row, semantic_score, keyword_score)
         if current is None or combined_score > current[0]:
@@ -366,7 +377,23 @@ def find_faq(
 
     if best_score < threshold:
         return None
-    if second_score is not None and best_score - second_score < margin:
+    # Several reviewed entries can represent different facets of one detailed
+    # intent. A close runner-up for that same intent is not a classification
+    # conflict; retain the strongest entry. Keep abstaining when two different
+    # detailed intents are genuinely too close.
+    second_intent = ranked[1][1]["intent"] if len(ranked) > 1 else None
+    best_chunk = (best_row["entry"].get("evidence") or {}).get("chunk_id")
+    second_chunk = (
+        (ranked[1][1]["entry"].get("evidence") or {}).get("chunk_id")
+        if len(ranked) > 1
+        else None
+    )
+    if (
+        second_score is not None
+        and best_row["intent"] != second_intent
+        and (not best_chunk or best_chunk != second_chunk)
+        and best_score - second_score < margin
+    ):
         print("[FAQ] ambiguous match; top entries are within the confidence margin")
         return None
 

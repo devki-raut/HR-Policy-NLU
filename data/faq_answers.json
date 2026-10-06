@@ -6,11 +6,15 @@
     {
       "id": "646574df82a728e0",
       "intent": "policy_bereavement_eligibility",
-      "question": "Who is eligible for bereavement leave?",
+      "question": "Which worker categories qualify for bereavement benefits?",
       "utterances": [
         "Who qualifies for bereavement leave?",
         "Who can apply for bereavement leave?",
-        "Are contractors eligible for bereavement leave?"
+        "Are contractors eligible for bereavement leave?",
+        "Explain the eligibility rule under the bereavement policy.",
+        "What does the bereavement policy state about eligibility?",
+        "I need details about bereavement eligibility.",
+        "Please clarify the bereavement policy requirements for eligibility."
       ],
       "answer": "Bereavement leave applies to active full-time employees and direct contractors.",
       "answer_mode": "grounded_answer",
@@ -34,20 +38,27 @@
       "routing_intent": "policy_bereavement",
       "facts": [
         "Bereavement leave applies to active full-time employees and direct contractors."
+      ],
+      "matching_phrases": [
+        "Do active full-time staff qualify for bereavement benefits?",
+        "Permanent staff bereavement eligibility"
       ]
     },
     {
       "id": "4bbd95ef16f5f2e0",
-      "intent": "policy_bereavement_eligibility",
+      "intent": "policy_bereavement_family",
       "question": "Does the policy cover family members beyond parents and spouse?",
       "utterances": [
         "Who counts as immediate family for bereavement leave?",
         "Are in-laws covered?",
         "Does bereavement leave include grandparents?",
-        "Does bereavement leave cover the death of a parent-in-law?",
         "Is leave available when my spouse's parent dies?",
         "Does bereavement cover my spouse's mother or father?",
-        "Is a parent in law immediate family for bereavement?"
+        "Is a parent in law immediate family for bereavement?",
+        "Explain the eligibility rule under the bereavement policy.",
+        "What does the bereavement policy state about eligibility?",
+        "I need details about bereavement eligibility.",
+        "Please clarify the bereavement policy requirements for eligibility."
       ],
       "answer": "Immediate family includes a spouse or domestic partner, children, parents, siblings, and parents-in-law.",
       "answer_mode": "grounded_answer",
@@ -59,13 +70,13 @@
       "enabled": true,
       "source": "Bereavement Leave Policy_Emergys Solutions.pdf",
       "mapped_sections": [
-        "Scope"
+        "3. Definitions"
       ],
       "evidence": {
-        "chunk_id": "aee7f82477c9bb08",
+        "chunk_id": "49d73bbf3be76ef8",
         "page": 3,
-        "section": "1. Scope",
-        "quote": "All active full -time employees and direct contractors are eligible for bereavement leave and benefits under this policy."
+        "section": "3. Definitions",
+        "quote": "i. Immediate family member : For the purposes of this policy, \"immediate family member\" includes: a) Spouse or domestic partner b) Children (biological, adoptive, or stepchildren) c) Parents (biological, adoptive, or stepparents) d) Siblings e) Parents -in-law"
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_bereavement",
@@ -80,7 +91,18 @@
       "utterances": [
         "Who is considered immediate family?",
         "Which family members are covered?",
-        "Are parents-in-law included?"
+        "Are parents-in-law included?",
+        "Is a brother or sister within the immediate-family definition?",
+        "Are adoptive or step-parents included as parents?",
+        "Are relatives outside the listed immediate-family categories covered?",
+        "Explain the family rule under the bereavement policy.",
+        "What does the bereavement policy state about family?",
+        "I need details about bereavement family.",
+        "Please clarify the bereavement policy requirements for family.",
+        "Brother or sister coverage after a death",
+        "Which parent categories count as immediate family?",
+        "Is a relative included in the defined family list?",
+        "Grandparent coverage under the listed family definition"
       ],
       "answer": "Immediate family includes a spouse or domestic partner, biological, adopted, or stepchildren, parents, siblings, and parents-in-law.",
       "answer_mode": "fixed",
@@ -100,7 +122,19 @@
         "quote": "i. Immediate family member : For the purposes of this policy, \"immediate family member\" includes: a) Spouse or domestic partner b) Children (biological, adoptive, or stepchildren) c) Parents (biological, adoptive, or stepparents) d) Siblings e) Parents -in-law"
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "keywords": [
+        "immediate family",
+        "sibling",
+        "grandparent",
+        "adoptive parent"
+      ],
+      "matching_phrases": [
+        "Which people count as immediate family for bereavement benefits?",
+        "Are grandparents included in the immediate-family definition?",
+        "Does bereavement policy include grandparents?",
+        "Immediate family definition after the death of a relative"
+      ]
     },
     {
       "id": "ea387ed4551fc4aa",
@@ -109,7 +143,11 @@
       "utterances": [
         "Is a domestic partner included under bereavement leave?",
         "Does domestic partnership count?",
-        "Is a partner eligible?"
+        "Is a partner eligible?",
+        "Explain the family rule under the bereavement policy.",
+        "What does the bereavement policy state about family?",
+        "I need details about bereavement family.",
+        "Please clarify the bereavement policy requirements for family."
       ],
       "answer": "A domestic partner is included within the policy definition of an immediate family member.",
       "answer_mode": "grounded_answer",
@@ -143,7 +181,11 @@
         "What is the leave duration?",
         "How many consecutive working days are allowed?",
         "How much paid time is allowed after an immediate family death?",
-        "How many paid working days follow a death in my family?"
+        "How many paid working days follow a death in my family?",
+        "Explain the entitlement rule under the bereavement policy.",
+        "What does the bereavement policy state about entitlement?",
+        "I need details about bereavement entitlement.",
+        "Please clarify the bereavement policy requirements for entitlement."
       ],
       "answer": "Eligible employees receive up to five consecutive working days of paid bereavement leave following the death of an immediate family member.",
       "answer_mode": "grounded_answer",
@@ -172,11 +214,15 @@
     {
       "id": "70ab76d98f5706ce",
       "intent": "policy_bereavement_entitlement",
-      "question": "Is bereavement leave paid?",
+      "question": "Does an approved bereavement absence retain normal pay?",
       "utterances": [
         "Is bereavement leave paid leave?",
         "Is it fully paid?",
-        "Are bereavement days compensated?"
+        "Are bereavement days compensated?",
+        "Explain the entitlement rule under the bereavement policy.",
+        "What does the bereavement policy state about entitlement?",
+        "I need details about bereavement entitlement.",
+        "Please clarify the bereavement policy requirements for entitlement."
       ],
       "answer": "Bereavement leave provides paid leave for the approved entitlement period.",
       "answer_mode": "grounded_answer",
@@ -208,7 +254,16 @@
       "question": "How do employees apply for bereavement leave?",
       "utterances": [
         "How do I request bereavement leave?",
-        "Who should be informed when a family member passes away?"
+        "Who should be informed when a family member passes away?",
+        "May the initial bereavement request be spoken or emailed?",
+        "Which channels may be used to notify HR about bereavement?",
+        "Explain the application rule under the bereavement policy.",
+        "What does the bereavement policy state about application?",
+        "I need details about bereavement application.",
+        "Please clarify the bereavement policy requirements for application.",
+        "Bereavement notification channels",
+        "May I speak to my manager first and submit HRMS later?",
+        "Email or verbal request after a family death"
       ],
       "answer": "Employees should inform their immediate manager and HR as soon as possible. Requests may be made verbally or by email and should be recorded in the HRMS.",
       "answer_mode": "fixed",
@@ -229,7 +284,12 @@
         "quote": "i. Employees should inform their immediate manager and the HR department as soon as possible. ii. Bereavement leave requests may be made verbally or via email and should subsequently be applied for through the Company's HRMS in due course. iii. Documentation, such as a copy of the death certificate, may be requested at HR's discretion but is not mandatory unless there is cause for concern."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_bereavement"
+      "routing_intent": "policy_bereavement",
+      "keywords": [
+        "verbal",
+        "email",
+        "bereavement request"
+      ]
     },
     {
       "id": "152d51ecdac40902",
@@ -238,7 +298,11 @@
       "utterances": [
         "What documents are needed for bereavement leave?",
         "Do I need to send proof?",
-        "What should be shared with HR?"
+        "What should be shared with HR?",
+        "Explain the application rule under the bereavement policy.",
+        "What does the bereavement policy state about application?",
+        "I need details about bereavement application.",
+        "Please clarify the bereavement policy requirements for application."
       ],
       "answer": "The employee should notify the manager and HR immediately. The leave can be requested verbally or by email, and the approved leave is then entered in the HRMS. HR may request relevant documentation when needed.",
       "answer_mode": "fixed",
@@ -270,7 +334,11 @@
         "What paperwork is needed?",
         "What proof might HR ask for after a family death?",
         "What evidence is needed after bereavement?",
-        "Will HR ask me for proof of death?"
+        "Will HR ask me for proof of death?",
+        "Explain the documentation rule under the bereavement policy.",
+        "What does the bereavement policy state about documentation?",
+        "I need details about bereavement documentation.",
+        "Please clarify the bereavement policy requirements for documentation."
       ],
       "answer": "HR may request a death certificate or other documentation at its discretion. Documentation is not mandatory unless there is cause for concern.",
       "answer_mode": "grounded_answer",
@@ -311,7 +379,11 @@
       "utterances": [
         "Can bereavement leave be requested by email only?",
         "Is a written form required?",
-        "Can I request verbally?"
+        "Can I request verbally?",
+        "Explain the documentation rule under the bereavement policy.",
+        "What does the bereavement policy state about documentation?",
+        "I need details about bereavement documentation.",
+        "Please clarify the bereavement policy requirements for documentation."
       ],
       "answer": "A bereavement-leave request may be communicated verbally or by email. Final approval and recording are completed in the HRMS.",
       "answer_mode": "grounded_answer",
@@ -345,7 +417,11 @@
       "utterances": [
         "Can bereavement leave be combined with earned leave?",
         "Can it be combined with casual leave?",
-        "Is additional leave allowed with approval?"
+        "Is additional leave allowed with approval?",
+        "Explain the combination rule under the bereavement policy.",
+        "What does the bereavement policy state about combination?",
+        "I need details about bereavement combination.",
+        "Please clarify the bereavement policy requirements for combination."
       ],
       "answer": "Bereavement leave may be combined with earned leave, casual leave, or other leave when additional time is required, subject to approval.",
       "answer_mode": "grounded_answer",
@@ -378,7 +454,11 @@
       "utterances": [
         "Can I extend bereavement leave?",
         "What if I need more than 5 days?",
-        "Can I combine leave to cover more time?"
+        "Can I combine leave to cover more time?",
+        "Explain the combination rule under the bereavement policy.",
+        "What does the bereavement policy state about combination?",
+        "I need details about bereavement combination.",
+        "Please clarify the bereavement policy requirements for combination."
       ],
       "answer": "The policy allows additional leave to be combined with other approved leave types if the employee requires more time and management approves it.",
       "answer_mode": "fixed",
@@ -409,7 +489,9 @@
         "What is required to qualify for maternity leave?",
         "How many days of service are needed?",
         "When can a woman apply for maternity leave?",
-        "How long must an employee have worked to be eligible for maternity leave?"
+        "What tenure makes someone eligible for maternity benefits?",
+        "Is there a minimum service requirement before maternity benefits apply?",
+        "Maternity eligibility service days"
       ],
       "answer": "Maternity-leave eligibility requires at least 80 days of continuous service during the 12 months preceding the expected delivery date.",
       "answer_mode": "grounded_answer",
@@ -433,6 +515,12 @@
       "routing_intent": "policy_maternity",
       "facts": [
         "Maternity-leave eligibility requires at least 80 days of continuous service during the 12 months preceding the expected delivery date."
+      ],
+      "keywords": [
+        "maternity eligibility",
+        "service requirement",
+        "80 days",
+        "qualify"
       ]
     },
     {
@@ -475,7 +563,12 @@
       "utterances": [
         "How many weeks of maternity leave are allowed?",
         "What is the maternity leave entitlement?",
-        "For the first two surviving children, how much paid leave is available?"
+        "For the first two surviving children, how much paid leave is available?",
+        "What entitlement applies after the first two surviving children?",
+        "What is the reduced maternity duration for a later child?",
+        "What duration applies after an employee already has two surviving children?",
+        "Later-child maternity entitlement",
+        "Reduced maternity benefit after the first two children"
       ],
       "answer": "Paid maternity leave is up to 26 weeks for the first two surviving children. When an employee has two or more surviving children, paid maternity leave is up to 12 weeks.",
       "answer_mode": "grounded_answer",
@@ -500,6 +593,11 @@
       "facts": [
         "Paid maternity leave is up to 26 weeks for the first two surviving children.",
         "When an employee has two or more surviving children, paid maternity leave is up to 12 weeks."
+      ],
+      "keywords": [
+        "more than two children",
+        "two or more surviving children",
+        "12 weeks"
       ]
     },
     {
@@ -509,7 +607,12 @@
       "utterances": [
         "Are adoption mothers eligible for maternity leave?",
         "Is maternity leave available for commissioning mothers?",
-        "How much leave is allowed for adopted children?"
+        "How much leave is allowed for adopted children?",
+        "What benefit applies to a biological mother using a surrogate?",
+        "What is the commissioning-parent maternity duration?",
+        "Surrogate mother leave entitlement",
+        "Benefit duration for a biological mother through surrogacy",
+        "Commissioning parent paid absence"
       ],
       "answer": "Adoption and commissioning mothers may be eligible for 12 weeks of paid maternity leave under the policy, subject to the applicable conditions.",
       "answer_mode": "fixed",
@@ -530,7 +633,12 @@
         "quote": "i. Birth of Child: Eligible female employees shall be entitled to: a) Up to 26 weeks of paid maternity leave for the first two surviving children. b) Up to 12 weeks of paid maternity leave where the employee has two or more surviving children. ii. Adoption: A female employee legally adopting a child below three months of age may be eligible for 12 weeks of paid leave from the date the child is handed over. iii. Commissioning Mother: A commissioning mother (biological mother using a surrogate) may be eligible for 12 weeks of paid leave from the date the child is handed over. iv. Miscarriage / M edical Termination of Pregnancy : An employee who experiences a miscarriage or undergoes a medical termination of pregnancy shall be entitled to six (6) weeks of paid leave, immediately following the date of the miscarriage or medical termination, subject to submission of the required medical certification and applicable legal requirements."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_maternity"
+      "routing_intent": "policy_maternity",
+      "keywords": [
+        "commissioning mother",
+        "surrogacy",
+        "12 weeks"
+      ]
     },
     {
       "id": "0d1ad5f3a9ebb15a",
@@ -565,11 +673,13 @@
     {
       "id": "cce86985d6ef8ea7",
       "intent": "policy_parental_maternity_application",
-      "question": "Can maternity leave be taken in parts?",
+      "question": "Must maternity absence be used as one uninterrupted block?",
       "utterances": [
         "Is maternity leave allowed in parts?",
         "Can it be split?",
-        "Can maternity leave be availed in multiple blocks?"
+        "Can maternity leave be availed in multiple blocks?",
+        "Must the full maternity period be a single block?",
+        "May maternity absence be divided across separate dates?"
       ],
       "answer": "Maternity leave is taken in one continuous stretch and is not availed in separate parts.",
       "answer_mode": "grounded_answer",
@@ -581,13 +691,13 @@
       "enabled": true,
       "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
       "mapped_sections": [
-        "3.5 Maternity Leave Application"
+        "3. Maternity Leave / 3.3 Usage:"
       ],
       "evidence": {
-        "chunk_id": "c72a9f012a31c45a",
-        "page": 4,
-        "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
-        "quote": "permitted under applicable law."
+        "chunk_id": "21db0e1c60a17964",
+        "page": 3,
+        "section": "3. Maternity Leave / 3.3 Usage:",
+        "quote": "Maternity leave should be taken in one stretch, and employees cannot avail it in parts. If they resume work within or before their applicable maternity leave(s) duration the remainder will stand expired and cannot be availed at any later point in time."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_maternity",
@@ -800,7 +910,11 @@
       "utterances": [
         "What does the POSH policy cover?",
         "What workplace issues are included?",
-        "What is the scope of sexual harassment prevention?"
+        "What is the scope of sexual harassment prevention?",
+        "Explain the scope rule under the POSH policy.",
+        "What does the POSH policy state about scope?",
+        "I need details about POSH scope.",
+        "Please clarify the POSH policy requirements for scope."
       ],
       "answer": "The POSH policy covers the prevention and redressal of sexual harassment at the workplace, including definitions, committee roles, and complaint handling procedures.",
       "answer_mode": "fixed",
@@ -831,7 +945,11 @@
       "utterances": [
         "Is the POSH policy applicable to all employees?",
         "Does the policy cover interns and contractors?",
-        "Who falls under the policy?"
+        "Who falls under the policy?",
+        "Explain the scope rule under the POSH policy.",
+        "What does the POSH policy state about scope?",
+        "I need details about POSH scope.",
+        "Please clarify the POSH policy requirements for scope."
       ],
       "answer": "The policy applies across the workplace and covers employees, contractors, interns, and other relevant persons as described by the organization’s policy framework.",
       "answer_mode": "fixed",
@@ -860,9 +978,13 @@
       "intent": "policy_posh_committee",
       "question": "What is the role of the POSH committee?",
       "utterances": [
-        "Who makes up the POSH committee?",
-        "What does the committee do?",
-        "What is the internal committee responsible for?"
+        "What does the POSH committee do?",
+        "What is the Internal Committee responsible for?",
+        "What is the role of the Internal Committee?",
+        "Explain the committee rule under the POSH policy.",
+        "What does the POSH policy state about committee?",
+        "I need details about POSH committee.",
+        "Please clarify the POSH policy requirements for committee."
       ],
       "answer": "The POSH committee is responsible for handling complaints, overseeing inquiries, and ensuring the policy is implemented fairly and confidentially.",
       "answer_mode": "fixed",
@@ -892,7 +1014,11 @@
       "utterances": [
         "How long do committee members serve?",
         "What is the term of the committee?",
-        "How long are committee positions valid?"
+        "How long are committee positions valid?",
+        "Explain the committee rule under the POSH policy.",
+        "What does the POSH policy state about committee?",
+        "I need details about POSH committee.",
+        "Please clarify the POSH policy requirements for committee."
       ],
       "answer": "Committee members serve a three-year term from the date of appointment, unless they are disqualified under the policy.",
       "answer_mode": "fixed",
@@ -907,10 +1033,10 @@
         "Composition of the Internal Committee"
       ],
       "evidence": {
-        "chunk_id": "fca117063435db79",
-        "page": 4,
-        "section": "4. Composition of the Internal Committee",
-        "quote": "An internal committee (the ‘Committee’) has been constituted by the management of the Company to consider and redress complaints and allegations of Sexual Harassment. The Presiding Officer and members of the Committee are as follows: For Emergys Solutions Private Limited : # Name Department Role E-mail ID"
+        "chunk_id": "6b3f02f88fd33e65",
+        "page": 5,
+        "section": "5. Term of the Committee Members",
+        "quote": "i. The term of the Committee Members shall be three (3) years from the date of appointment. ii. A person shall be disqualified from being appointed, elected, nominated or designated or continue as a Member, (i) if there is any complaint concerning Sexual Harassment pending against him/ her or if he/she is found guilty of Sexual Harassment or any othe r act of moral turpitude, (ii) if he/ she shows bias towards any party or has abused his/ her position in any manner, (iii) if he/ she discloses any information regarding the Complainant or the inquiry proceedings in violation of section 16 of the Act. iii. If he/ she has been convicted of any offence or an inquiry into any offence, under any law is pending against such person, (iii) if he/ she has been found guilty in any disciplinary proceedings or a disciplinary proceeding is pending against such person and (iv) if he/ she ceases to be an Employee of the Company. iv. Such Presiding Officer or Member, as the case may be, shall be removed from the Committee"
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_posh"
@@ -920,10 +1046,16 @@
       "intent": "policy_posh_complaint",
       "question": "Within how many months should a POSH complaint be filed?",
       "utterances": [
-        "What is the deadline for filing a POSH complaint?",
         "How long do I have to submit a sexual harassment complaint?",
         "Is there a three month time limit for a POSH complaint?",
-        "When must a POSH complaint be submitted?"
+        "When must a POSH complaint be submitted?",
+        "Explain the complaint rule under the POSH policy.",
+        "What does the POSH policy state about complaint?",
+        "I need details about POSH complaint.",
+        "Please clarify the POSH policy requirements for complaint.",
+        "Time window for lodging a harassment complaint",
+        "Complaint limitation period after an incident",
+        "Filing deadline after the last incident in a series"
       ],
       "answer": "A written and signed POSH complaint should be submitted within three months of the incident. For a series of incidents, the three-month period runs from the date of the last incident. The Committee may extend the filing period by up to a further three months when recorded circumstances prevented timely filing.",
       "answer_mode": "grounded_answer",
@@ -953,12 +1085,21 @@
     },
     {
       "id": "e1a639b009fd20d6",
-      "intent": "policy_posh_complaint",
+      "intent": "policy_posh_complaint_destination",
       "question": "Where should a POSH complaint be submitted?",
       "utterances": [
         "Who receives POSH complaints?",
         "Is HR the place to report?",
-        "Can a committee member receive the complaint?"
+        "Can a committee member receive the complaint?",
+        "Explain the complaint rule under the POSH policy.",
+        "What does the POSH policy state about complaint?",
+        "I need details about POSH complaint.",
+        "Please clarify the POSH policy requirements for complaint.",
+        "Where may a workplace harassment complaint be sent?",
+        "Complaint submission through HR or an IC member",
+        "Available channels for lodging a POSH complaint",
+        "Which person or department receives a harassment report?",
+        "May a workplace-harassment filing be sent through Human Resources?"
       ],
       "answer": "A POSH complaint may be submitted directly to a member of the Internal Committee or through the Human Resources Manager, who forwards it to the Committee.",
       "answer_mode": "grounded_answer",
@@ -974,15 +1115,35 @@
         "Documentation"
       ],
       "evidence": {
-        "chunk_id": "a23c3ed2de0909d3",
-        "page": 6,
+        "chunk_id": "82c2dfc98f08098d",
+        "page": 5,
         "section": "7. Complaint Mechanism",
-        "quote": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
+        "quote": "i. The complaint mechanism and reliefs as per the law are for women. With respect to men, complaint mechanism and reliefs as per this policy are non -statutory and at the discretion of Emergys. We extend the same redressal process for employees irrespective of gender. ii. Any aggrieved person who feels that he / she / they is/are being sexually harassed directly or indirectly may submit a written and signed complaint of the alleged incident within three (3) months of the date of incident and in case of series of incidents, within a period of three (3) months from the date of last incident. iii. The Complaint may be given directly to any member of the Committee or through the human resource manager who shall forward the Complaint to the Committee. iv. In case of complaints preceding three (3) months from the date of last date of the incident, the Committee, for the reasons to be recorded in writing, may extend the time limit for submitting such complaint not exceeding further three months, if the Commit tee is satisfied that"
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_posh",
       "facts": [
-        "A POSH complaint may be submitted directly to a member of the Internal Committee or through the Human Resources Manager, who forwards it to the Committee."
+        "A complaint may be given directly to an Internal Committee member.",
+        "A complaint may be submitted through the Human Resources Manager, who forwards it to the Committee."
+      ],
+      "matching_phrases": [
+        "Who receives a POSH filing?",
+        "Contact person for submitting a workplace-harassment complaint",
+        "Who is the contact for filing a harassment complaint?",
+        "Where should an employee lodge a POSH report?",
+        "Whom should I contact about submitting a complaint under POSH?",
+        "Who handles submission of a POSH complaint?"
+      ],
+      "keywords": [
+        "POSH complaint",
+        "contact",
+        "file complaint",
+        "submit complaint",
+        "lodge complaint",
+        "HR",
+        "Human Resources",
+        "Internal Committee member",
+        "complaint destination"
       ]
     },
     {
@@ -992,7 +1153,11 @@
       "utterances": [
         "Who can file on behalf of the complainant?",
         "Can a friend or legal heir submit it?",
-        "Can someone else complain for them?"
+        "Can someone else complain for them?",
+        "Explain the inquiry rule under the POSH policy.",
+        "What does the POSH policy state about inquiry?",
+        "I need details about POSH inquiry.",
+        "Please clarify the POSH policy requirements for inquiry."
       ],
       "answer": "A legal heir, relative, friend, colleague, or any person with knowledge of the incident may file the complaint on behalf of the aggrieved person with the person’s written consent.",
       "answer_mode": "fixed",
@@ -1008,10 +1173,10 @@
         "Investigation"
       ],
       "evidence": {
-        "chunk_id": "98912f434c46daec",
+        "chunk_id": "a23c3ed2de0909d3",
         "page": 6,
-        "section": "8. Enquiry Process",
-        "quote": "confidentiality cannot be maintained include circumstances when the law requires disclosure of information."
+        "section": "7. Complaint Mechanism",
+        "quote": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_posh"
@@ -1023,7 +1188,11 @@
       "utterances": [
         "Can the committee assist someone who cannot write?",
         "Is assistance provided to the complainant?",
-        "What if the person cannot draft the complaint?"
+        "What if the person cannot draft the complaint?",
+        "Explain the inquiry rule under the POSH policy.",
+        "What does the POSH policy state about inquiry?",
+        "I need details about POSH inquiry.",
+        "Please clarify the POSH policy requirements for inquiry."
       ],
       "answer": "When an aggrieved person cannot prepare a written complaint, the Presiding Officer or a Committee member provides reasonable assistance with the written complaint.",
       "answer_mode": "grounded_answer",
@@ -1039,10 +1208,10 @@
         "Investigation"
       ],
       "evidence": {
-        "chunk_id": "0017a74d46034c7a",
-        "page": 7,
-        "section": "10. Investigation",
-        "quote": "i. Subject to outcome of the Conciliation, the Committee shall immediately proceed with the inquiry under the Act and communicate the same to the Complainant and the Respondent. ii. The Committee shall prepare and hand over the copy of the complaint within 7 days to the person against whom the complaint is made and give an opportunity by issuing a show cause notice to submit a written explanation within seven ( 7) days of receipt of the same. iii. The Committee shall hand over a copy of the written explanation submitted by the Respondent, to the Complainant. iv. If the Complainant or the person against whom the complaint is made desires any witness(es) to be called, they shall communicate in writing to the Committee the names of such witness(es). v. If the Complainant desires to tender any documents by way of evidence before the Committee, he/she/they shall submit such documents in original. Similarly, if the person against whom the complaint is made desires to tender any documents in evidence before the Committee, he/she/they shall submit such documents in original. Both"
+        "chunk_id": "a23c3ed2de0909d3",
+        "page": 6,
+        "section": "7. Complaint Mechanism",
+        "quote": "v. Provided, where such complaint can -not be made in writing, the Presiding Officer or any Member of the Committee shall render all the reasonable assistance to the Employee for making the complaint in writing. vi. If the aggrieved person is unable to lodge the complaint in account of his/her/their incapacity, the following may do so on his/her/their behalf, with his/her/their written consent. - Legal heir, relative or friend - Co-worker - Any person having the knowledge of the incident. vii. If the initial complaint is made to a person other than a committee member, upon receiving such a complaint, it will be the responsibility of the complaint receiver to report the same to the committee immediately."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_posh",
@@ -1057,7 +1226,11 @@
       "utterances": [
         "How is the complainant protected?",
         "What safeguards exist?",
-        "Are there confidentiality protections?"
+        "Are there confidentiality protections?",
+        "Explain the protection rule under the POSH policy.",
+        "What does the POSH policy state about protection?",
+        "I need details about POSH protection.",
+        "Please clarify the POSH policy requirements for protection."
       ],
       "answer": "The POSH policy provides workplace protection, a fair inquiry process, confidentiality where required, and the right to a complaint process free from retaliation or bias.",
       "answer_mode": "fixed",
@@ -1087,7 +1260,11 @@
       "utterances": [
         "What happens if a complaint is false?",
         "Is there punishment for malicious complaints?",
-        "Can false allegations trigger action?"
+        "Can false allegations trigger action?",
+        "Explain the protection rule under the POSH policy.",
+        "What does the POSH policy state about protection?",
+        "I need details about POSH protection.",
+        "Please clarify the POSH policy requirements for protection."
       ],
       "answer": "The policy states that false or malicious complaints made with the intent to harm someone may lead to disciplinary action.",
       "answer_mode": "fixed",
@@ -1102,10 +1279,10 @@
         "Non-Retaliation"
       ],
       "evidence": {
-        "chunk_id": "0c6109886aa5f3e3",
-        "page": 8,
-        "section": "13. Non-Retaliation Policy",
-        "quote": "Retaliation against an Employee who has complained about sexual or other discriminatory harassment or against an individual who has cooperated with an investigation of such harassment is strictly prohibited within the Company."
+        "chunk_id": "584b81352ba09b85",
+        "page": 9,
+        "section": "15. Punishment for false or malicious complaint and false evidence",
+        "quote": "It is of utmost importance that all complaints related to sexual harassment are made in good faith and with genuine concern for the welfare of individuals and the organization. Any individual found to be making a false or malicious complaint with the inten tion of causing harm, tarnishing another's reputation, or misleading the Internal Committee shall be subject to disciplinary action."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_posh"
@@ -1117,9 +1294,13 @@
       "utterances": [
         "How can the outcome be challenged?",
         "Is there a grievance mechanism?",
-        "Can the decision be appealed?"
+        "Can the decision be appealed?",
+        "Explain the appeal rule under the POSH policy.",
+        "What does the POSH policy state about appeal?",
+        "I need details about POSH appeal.",
+        "Please clarify the POSH policy requirements for appeal."
       ],
-      "answer": "The policy includes the processes and safeguards needed for fair inquiry and resolution, and any employee may use the relevant company procedures for a proper review.",
+      "answer": "A party dissatisfied or aggrieved by the implementation or non-implementation of the Committee’s recommendations may appeal to the appellate authority within 90 days after the recommendations are communicated.",
       "answer_mode": "fixed",
       "tags": [
         "posh",
@@ -1139,7 +1320,11 @@
         "quote": "Any party not satisfied or further aggrieved by the implementation or non -implementation of recommendations made, may appeal to the appellate authority in accordance with the Act and rules, within 90 days of the recommendations being communicated."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_posh"
+      "routing_intent": "policy_posh",
+      "facts": [
+        "A dissatisfied party may appeal to the appellate authority.",
+        "The appeal must be made within 90 days after the recommendations are communicated."
+      ]
     },
     {
       "id": "6594972bb70e52ec",
@@ -1148,7 +1333,11 @@
       "utterances": [
         "What is the outcome after the inquiry?",
         "What happens after the committee reviews the matter?",
-        "How are findings handled?"
+        "How are findings handled?",
+        "Explain the appeal rule under the POSH policy.",
+        "What does the POSH policy state about appeal?",
+        "I need details about POSH appeal.",
+        "Please clarify the POSH policy requirements for appeal."
       ],
       "answer": "After the investigation, the committee evaluates the matter and takes appropriate action in line with the policy, including remedial and disciplinary steps if warranted.",
       "answer_mode": "fixed",
@@ -1179,7 +1368,11 @@
       "utterances": [
         "How many privileged and casual leaves are employees entitled to?",
         "What are the general leave benefits?",
-        "What leave days are available to permanent employees?"
+        "What leave days are available to permanent employees?",
+        "Explain the entitlement rule under the leave policy.",
+        "What does the leave policy state about entitlement?",
+        "I need details about leave entitlement.",
+        "Please clarify the leave policy requirements for entitlement."
       ],
       "answer": "Permanent employees and contractors receive 18 Privilege Leaves and 8 Casual Leaves per calendar year. Interns receive one leave per month during the internship period.",
       "answer_mode": "grounded_answer",
@@ -1213,7 +1406,11 @@
       "utterances": [
         "What is the annual leave allowance?",
         "How many privileged leave days do employees receive?",
-        "What are the leave days in the year?"
+        "What are the leave days in the year?",
+        "Explain the entitlement rule under the leave policy.",
+        "What does the leave policy state about entitlement?",
+        "I need details about leave entitlement.",
+        "Please clarify the leave policy requirements for entitlement."
       ],
       "answer": "Permanent employees and contractors receive 18 Privileged Leaves and 8 Casual Leaves each calendar year as part of their general leave entitlement.",
       "answer_mode": "fixed",
@@ -1246,7 +1443,11 @@
         "What is the sandwich rule for leave?",
         "Do weekends increase unpaid leave when absence runs Friday through Monday?",
         "How many LWP days count from Friday to Monday?",
-        "Are Saturday and Sunday included in a Friday-to-Monday LWP?"
+        "Are Saturday and Sunday included in a Friday-to-Monday LWP?",
+        "Explain the privilege rule under the leave policy.",
+        "What does the leave policy state about privilege?",
+        "I need details about leave privilege.",
+        "Please clarify the leave policy requirements for privilege."
       ],
       "answer": "When Leave Without Pay runs from Friday through Monday, Saturday and Sunday are also counted as LWP. The Friday-to-Monday period counts as four days of LWP.",
       "answer_mode": "grounded_answer",
@@ -1313,7 +1514,16 @@
       "utterances": [
         "What is the casual leave entitlement?",
         "How many CLs do employees get?",
-        "Are casual leaves cumulative?"
+        "Are casual leaves cumulative?",
+        "Does unused CL accumulate into another period?",
+        "Is the Casual Leave balance non-cumulative?",
+        "Explain the casual rule under the leave policy.",
+        "What does the leave policy state about casual?",
+        "I need details about leave casual.",
+        "Please clarify the leave policy requirements for casual.",
+        "CL annual allowance and accumulation",
+        "Casual leave yearly balance rules",
+        "How does unused casual absence accrue?"
       ],
       "answer": "Permanent employees and contractors are entitled to 8 Casual Leaves per calendar year. Casual leave is non-cumulative and cannot be carried forward.",
       "answer_mode": "fixed",
@@ -1328,10 +1538,10 @@
         "Casual Leave"
       ],
       "evidence": {
-        "chunk_id": "9bbb6d911f1a057b",
-        "page": 1,
+        "chunk_id": "b8d4feab39007c62",
+        "page": 2,
         "section": "• Casual Leave (CL)",
-        "quote": "➢ Intended to meet extraordinary or unforeseen circumstances ."
+        "quote": "➢ They are emergent and incidental in nature. ➢ Limited to a maximum of two (2) consecutive CLs per month. ➢ CLs cannot be combined with other types of leave. ➢ CLs are non -cumulative and cannot be carried forward to the next year."
       },
       "answer_is_exact_quote": false,
       "routing_intent": "policy_general_leave"
@@ -1339,11 +1549,20 @@
     {
       "id": "d380f82495e97929",
       "intent": "policy_general_leave_casual",
-      "question": "Can casual leave be carried forward to the next year?",
+      "question": "Does the Casual Leave balance expire instead of accumulating?",
       "utterances": [
-        "Can CL be carried forward?",
         "Is casual leave cumulative?",
-        "Is there a carryover rule for casual leave?"
+        "Is there a carryover rule for casual leave?",
+        "Explain the casual rule under the leave policy.",
+        "What does the leave policy state about casual?",
+        "I need details about leave casual.",
+        "Please clarify the leave policy requirements for casual.",
+        "Does CL expire at year end?",
+        "Can unused CL move into the following year?",
+        "Casual-leave accumulation rule",
+        "CL carryforward rule",
+        "Does unused CL roll over into a new calendar year?",
+        "Is the CL balance lost rather than accumulated?"
       ],
       "answer": "Casual Leave is non-cumulative and cannot be carried forward to the next year.",
       "answer_mode": "grounded_answer",
@@ -1366,6 +1585,13 @@
       "routing_intent": "policy_general_leave",
       "facts": [
         "Casual Leave is non-cumulative and cannot be carried forward to the next year."
+      ],
+      "keywords": [
+        "casual leave",
+        "CL",
+        "non-cumulative",
+        "unused leave",
+        "end of year"
       ]
     },
     {
@@ -1375,7 +1601,11 @@
       "utterances": [
         "How do employees request leave?",
         "What is the notice requirement for planned leave?",
-        "How is emergency leave handled?"
+        "How is emergency leave handled?",
+        "Explain the approval rule under the leave policy.",
+        "What does the leave policy state about approval?",
+        "I need details about leave approval.",
+        "Please clarify the leave policy requirements for approval."
       ],
       "answer": "Leaves must be requested through the HRMS. Planned leave should be approved in advance, and emergency or unplanned leave is subject to approval based on business requirements.",
       "answer_mode": "fixed",
@@ -1405,7 +1635,11 @@
       "utterances": [
         "How do I get planned leave approved?",
         "What is the approval requirement for annual leave?",
-        "Must leave be approved in advance?"
+        "Must leave be approved in advance?",
+        "Explain the approval rule under the leave policy.",
+        "What does the leave policy state about approval?",
+        "I need details about leave approval.",
+        "Please clarify the leave policy requirements for approval."
       ],
       "answer": "Planned leave should be requested and approved in advance through the HRMS, while emergency and unplanned leave are considered based on business needs.",
       "answer_mode": "fixed",
@@ -1435,9 +1669,18 @@
       "utterances": [
         "Can leave be carried forward?",
         "Is there a credit balance system?",
-        "Can unused leave be retained?"
+        "Can unused leave be retained?",
+        "How does HRMS calculate entitlement for someone joining partway through the year?",
+        "Is joining-date leave credited proportionally?",
+        "Explain the credit rule under the leave policy.",
+        "What does the leave policy state about credit?",
+        "I need details about leave credit.",
+        "Please clarify the leave policy requirements for credit.",
+        "Joining-date pro-rata leave credit",
+        "HRMS entitlement calculation for midyear joiners",
+        "Leave accrual after joining partway through a year"
       ],
-      "answer": "Leave balances are governed by the company policy and specific leave types; casual leave is non-cumulative, while other leave rules may differ based on policy conditions.",
+      "answer": "The official HRMS calculates leave credits on a pro-rata basis according to the employee’s date of joining.",
       "answer_mode": "fixed",
       "tags": [
         "leave",
@@ -1456,7 +1699,10 @@
         "quote": "➢ Official HRMS system ca lculates the leave credit s on pro -rata basis ."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_general_leave"
+      "routing_intent": "policy_general_leave",
+      "facts": [
+        "The official HRMS calculates leave credits on a pro-rata basis according to the employee’s date of joining."
+      ]
     },
     {
       "id": "fe7919106bbffc93",
@@ -1465,7 +1711,11 @@
       "utterances": [
         "How much leave can interns take?",
         "Are interns eligible for leave?",
-        "What is the intern leave rule?"
+        "What is the intern leave rule?",
+        "Explain the credit rule under the leave policy.",
+        "What does the leave policy state about credit?",
+        "I need details about leave credit.",
+        "Please clarify the leave policy requirements for credit."
       ],
       "answer": "Interns are eligible for 1 leave per month during the internship period. Unused leaves may be treated according to the policy’s applicable rules.",
       "answer_mode": "fixed",
@@ -1496,8 +1746,15 @@
         "Who can make an employee referral?",
         "What are the conditions for referral eligibility?",
         "What candidates can be referred?",
-        "Who is eligible to participate in the employee referral program?",
-        "Which employees can participate in the referral program?"
+        "Which employees can participate in the referral program?",
+        "Which categories of workers may submit candidate profiles?",
+        "May people on a direct company contract participate as referrers?",
+        "Who is allowed to make a referral?",
+        "Who may act as a referrer?",
+        "Employee categories allowed to submit a candidate",
+        "Referrer participation eligibility",
+        "Who is allowed to submit an employee referal?",
+        "Which worker can be the person referring a candidate?"
       ],
       "answer": "Employees may refer candidates who meet the qualifications for an open position. A referred candidate must not have applied to an Emergys Solutions position during the preceding six months. Referral-bonus eligibility is also subject to the policy’s payout and excluded-role conditions.",
       "answer_mode": "grounded_answer",
@@ -1523,6 +1780,17 @@
         "Employees may refer candidates who meet the qualifications for an open position.",
         "A referred candidate must not have applied to an Emergys Solutions position during the preceding six months.",
         "Referral-bonus eligibility is also subject to the policy’s payout and excluded-role conditions."
+      ],
+      "keywords": [
+        "who can refer",
+        "referrer eligibility",
+        "employee referral"
+      ],
+      "matching_phrases": [
+        "Which employees may give a refferal?",
+        "Who is permitted to act as employee referrer?",
+        "Who is authorized to make a referral?",
+        "Eligible person submitting an applicant profile"
       ]
     },
     {
@@ -1682,13 +1950,18 @@
     {
       "id": "81a66d61638a3274",
       "intent": "policy_referral_validity",
-      "question": "How long is a referral valid?",
+      "question": "For what period does a submitted referral remain active in the candidate database?",
       "utterances": [
         "Does a referral expire?",
         "Is there a time validity period?",
-        "How long is a candidate referral valid?"
+        "How long is a candidate referral valid?",
+        "When does a submitted candidate profile expire from the referral database?",
+        "What is the database-active period for a referral entry?",
+        "Candidate-database referral expiry",
+        "Active duration after referral submission",
+        "Referral record validity period"
       ],
-      "answer": "The policy requires the referred candidate to meet the qualification criteria and remain eligible at the time of hiring and payout under the policy timeline.",
+      "answer": "A submitted referral entry remains active in the candidate database for six months from its submission date.",
       "answer_mode": "fixed",
       "tags": [
         "referral",
@@ -1707,7 +1980,10 @@
         "quote": "i. All referral entries will remain active in our candidate database for a period of six (6) months from the date of submission. ii. Referrals will be assessed in accordance with the applicable job description and minimum eligibility criteria. iii. Suitable candidates will be contacted by the Recruitment Team for the next stages of the hiring process."
       },
       "answer_is_exact_quote": false,
-      "routing_intent": "policy_referral"
+      "routing_intent": "policy_referral",
+      "facts": [
+        "A submitted referral entry remains active in the candidate database for six months from its submission date."
+      ]
     },
     {
       "id": "685f77540c4cb294",
@@ -1717,12 +1993,14 @@
         "What if the candidate already applied before referral?",
         "Is the referral invalid if the candidate previously applied?",
         "Are prior applicants eligible to be referred?",
-        "Can I refer someone who applied to Emergys three months ago?",
         "Can I refer a candidate who applied three months ago?",
         "Is someone eligible for referral if they applied within the last six months?",
         "What rule applies to a candidate who submitted an application recently?",
         "Can a recently applied candidate be referred?",
-        "How does a prior job application affect referral eligibility?"
+        "How does a prior job application affect referral eligibility?",
+        "Candidate applied recently before being referred",
+        "Prior job application within the referral lookback period",
+        "Applicant recency eligibility rule"
       ],
       "answer": "You can refer a candidate as long as they have not applied for an Emergys Solutions position in the previous six months.",
       "answer_mode": "grounded_answer",
@@ -1746,6 +2024,15 @@
       "routing_intent": "policy_referral",
       "facts": [
         "A referred candidate must not have applied to an Emergys Solutions position during the preceding six months."
+      ],
+      "keywords": [
+        "prior application",
+        "previous six months",
+        "candidate applied"
+      ],
+      "matching_phrases": [
+        "Is a person referable after applying to an Emergys job three months earlier?",
+        "Candidate applied within the six-month lookback window"
       ]
     },
     {
@@ -1828,8 +2115,14 @@
         "When is the payout made?",
         "After what period is the referral amount paid?",
         "Is it paid after joining?",
-        "When will the referral bonus be paid?",
-        "When is referral bonus paid?"
+        "When is referral bonus paid?",
+        "Is incentive payout possible before the referred hire completes the qualifying period?",
+        "What minimum service period must the referred hire complete before payout?",
+        "Referral reward qualifying period",
+        "Payout eligibility before completion of service",
+        "When does the incentive become payable?",
+        "Must the new hire complete the qualifying service before incentive disbursement?",
+        "Is payout withheld until six months and probation are completed?"
       ],
       "answer": "The referral bonus becomes payable after the referred candidate completes six months of continuous employment, successfully completes probation, and receives employment confirmation. The referrer and referred candidate must meet the active-employment conditions stated in the policy at payout.",
       "answer_mode": "grounded_answer",
@@ -1854,6 +2147,12 @@
       "facts": [
         "The referral bonus becomes payable after the referred candidate completes six months of continuous employment, successfully completes probation, and receives employment confirmation.",
         "The referrer and referred candidate must meet the active-employment conditions stated in the policy at payout."
+      ],
+      "keywords": [
+        "referral bonus",
+        "six months",
+        "before payout",
+        "probation"
       ]
     },
     {
@@ -1893,7 +2192,11 @@
       "utterances": [
         "How do employees request leave?",
         "What is the notice requirement for planned leave?",
-        "How is emergency leave handled?"
+        "How is emergency leave handled?",
+        "Explain the notice rule under the leave policy.",
+        "What does the leave policy state about notice?",
+        "I need details about leave notice.",
+        "Please clarify the leave policy requirements for notice."
       ],
       "answer": "Leaves must be requested through the HRMS. Planned leave should be approved in advance, and emergency or unplanned leave is subject to approval based on business requirements.",
       "answer_mode": "fixed",
@@ -1923,7 +2226,11 @@
       "utterances": [
         "How is emergency leave approved?",
         "What if leave is unplanned?",
-        "Is emergency leave treated differently?"
+        "Is emergency leave treated differently?",
+        "Explain the notice rule under the leave policy.",
+        "What does the leave policy state about notice?",
+        "I need details about leave notice.",
+        "Please clarify the leave policy requirements for notice."
       ],
       "answer": "Emergency or unplanned leave is reviewed based on business requirements and the approval process, even when the employee may not have formal notice in advance.",
       "answer_mode": "fixed",
@@ -1955,7 +2262,11 @@
         "Tell me about bereavement leave.",
         "Can you explain bereavement leave?",
         "What does bereavement leave cover?",
-        "Give me an overview of bereavement leave."
+        "Give me an overview of bereavement leave.",
+        "Explain the overview rule under the bereavement policy.",
+        "What does the bereavement policy state about overview?",
+        "I need details about bereavement overview.",
+        "Please clarify the bereavement policy requirements for overview."
       ],
       "answer": "Eligible employees receive up to five consecutive working days of paid bereavement leave following the death of an immediate family member.",
       "answer_mode": "grounded_answer",
@@ -2062,7 +2373,11 @@
         "Can you explain the POSH policy?",
         "What is the workplace sexual harassment policy?",
         "Tell me about POSH.",
-        "Give me an overview of the POSH policy."
+        "Give me an overview of the POSH policy.",
+        "Explain the overview rule under the POSH policy.",
+        "What does the POSH policy state about overview?",
+        "I need details about POSH overview.",
+        "Please clarify the POSH policy requirements for overview."
       ],
       "answer": "Sexual harassment includes unwelcome sexual advances or requests for sexual favours. It also includes unwelcome verbal, non-verbal, electronic, or physical conduct such as sexually coloured remarks, jokes, messages, gestures, pornography, staring, physical contact, molestation, or stalking.",
       "answer_mode": "grounded_answer",
@@ -2098,7 +2413,11 @@
         "Can you explain the leave policy?",
         "What leave entitlements do employees have?",
         "Tell me about general leave.",
-        "Give me an overview of the leave policy."
+        "Give me an overview of the leave policy.",
+        "Explain the overview rule under the leave policy.",
+        "What does the leave policy state about overview?",
+        "I need details about leave overview.",
+        "Please clarify the leave policy requirements for overview."
       ],
       "answer": "Permanent employees and contractors receive 18 Privilege Leaves and 8 Casual Leaves per calendar year. Interns receive one leave per month during the internship period.",
       "answer_mode": "grounded_answer",
@@ -2167,18 +2486,23 @@
       "intent": "policy_general_leave_privilege",
       "question": "How many Privilege Leaves can I carry forward to the next year?",
       "utterances": [
-        "How many PL can I carry forward to the next year?",
         "What is the PL carry-forward limit?",
         "Can unused privileged leave be carried over?",
         "How many earned leaves can move to next year?",
         "What is the maximum unused PL balance I can move into January?",
         "What is the maximum PL balance for next year?",
         "How much unused privilege leave rolls over?",
-        "Can I carry forward 20 PL?",
         "Can I carry forward twenty PL?",
         "Can 20 PL be carried forward?",
         "Is twenty the maximum PL carry-forward balance?",
-        "Can I roll over 20 privilege leaves?"
+        "Can I roll over 20 privilege leaves?",
+        "Explain the privilege rule under the leave policy.",
+        "What does the leave policy state about privilege?",
+        "I need details about leave privilege.",
+        "Please clarify the leave policy requirements for privilege.",
+        "Privilege-leave carryforward ceiling",
+        "Maximum unused PL moved to another year",
+        "PL rollover limit"
       ],
       "answer": "You can carry forward a maximum of 20 Privilege Leaves to the next calendar year.",
       "answer_mode": "grounded_answer",
@@ -2225,7 +2549,11 @@
         "Can I take more than two Casual Leaves together?",
         "Are three CL days in a row permitted?",
         "May I use three casual leave days consecutively?",
-        "What is the consecutive casual leave limit?"
+        "What is the consecutive casual leave limit?",
+        "Explain the casual rule under the leave policy.",
+        "What does the leave policy state about casual?",
+        "I need details about leave casual.",
+        "Please clarify the leave policy requirements for casual."
       ],
       "answer": "Casual Leave is limited to a maximum of two consecutive CLs per month.",
       "answer_mode": "grounded_answer",
@@ -2254,7 +2582,7 @@
     {
       "id": "482ce1a2f2b2ff13",
       "intent": "policy_parental_maternity_return",
-      "question": "Can I work from home during maternity leave?",
+      "question": "Does the maternity policy create a separate remote-work entitlement?",
       "utterances": [
         "Does maternity leave include work from home?",
         "Can I work remotely while on maternity leave?",
@@ -2293,7 +2621,7 @@
     {
       "id": "e03be7d9a6636386",
       "intent": "policy_referral_validity",
-      "question": "What happens if two employees refer the same candidate?",
+      "question": "How is ownership decided when the same candidate is submitted by multiple referrers?",
       "utterances": [
         "Who gets the bonus when the same candidate is referred twice?",
         "How are duplicate employee referrals handled?",
@@ -2331,7 +2659,7 @@
     {
       "id": "608b8fa73426ae8e",
       "intent": "policy_posh_definition",
-      "question": "What types of behaviour are considered sexual harassment under the policy?",
+      "question": "Which forms of conduct fall within the policy definition of sexual harassment?",
       "utterances": [
         "What behavior counts as sexual harassment?",
         "What conduct is covered by POSH?",
@@ -2339,7 +2667,14 @@
         "What acts constitute sexual harassment?",
         "What conduct falls within the definition of workplace sexual harassment?",
         "Which workplace actions count as sexual harassment?",
-        "What is included in sexual harassment conduct?"
+        "What is included in sexual harassment conduct?",
+        "Explain the definition rule under the POSH policy.",
+        "What does the POSH policy state about definition?",
+        "I need details about POSH definition.",
+        "Please clarify the POSH policy requirements for definition.",
+        "Examples of prohibited sexual conduct",
+        "Conduct included in workplace harassment",
+        "Verbal physical electronic and non-verbal harassment examples"
       ],
       "answer": "Sexual harassment includes unwelcome sexual advances or requests for sexual favours. It also includes unwelcome verbal, non-verbal, electronic, or physical conduct such as sexually coloured remarks, jokes, messages, gestures, pornography, staring, physical contact, molestation, or stalking.",
       "answer_mode": "grounded_answer",
@@ -2369,12 +2704,19 @@
     {
       "id": "87e2eaac4b19e0b7",
       "intent": "policy_posh_inquiry",
-      "question": "How long does the Internal Committee have to complete its inquiry?",
+      "question": "What time limit governs completion of an Internal Committee investigation?",
       "utterances": [
         "What is the deadline for completing a POSH inquiry?",
         "How many months can an Internal Committee inquiry take?",
         "When must the POSH investigation be completed?",
-        "What is the IC inquiry time limit?"
+        "What is the IC inquiry time limit?",
+        "Explain the inquiry rule under the POSH policy.",
+        "What does the POSH policy state about inquiry?",
+        "I need details about POSH inquiry.",
+        "Please clarify the POSH policy requirements for inquiry.",
+        "Maximum duration of the committee investigation",
+        "Time allowed to finish a harassment inquiry",
+        "Inquiry completion and reporting timelines"
       ],
       "answer": "The Internal Committee must complete its inquiry within a reasonable period and no later than three months after receiving the original complaint. The Committee must communicate its findings and recommendations to the HR Head within 10 days after completing the inquiry.",
       "answer_mode": "grounded_answer",
@@ -2404,7 +2746,7 @@
     {
       "id": "1de6843113273062",
       "intent": "policy_posh_retaliation",
-      "question": "What happens if someone retaliates against an employee for filing a POSH complaint?",
+      "question": "What protection applies against adverse action after reporting or assisting a harassment case?",
       "utterances": [
         "Is retaliation after a POSH complaint allowed?",
         "How is a complainant protected from retaliation?",
@@ -2412,7 +2754,19 @@
         "Is victimisation after reporting harassment prohibited?",
         "Does the policy forbid action against a witness who helped an investigation?",
         "Is a witness protected from retaliation?",
-        "Can someone be punished for cooperating with a POSH inquiry?"
+        "Can someone be punished for cooperating with a POSH inquiry?",
+        "Explain the retaliation rule under the POSH policy.",
+        "What does the POSH policy state about retaliation?",
+        "I need details about POSH retaliation.",
+        "Please clarify the POSH policy requirements for retaliation.",
+        "Protection for a complainant or cooperating witness",
+        "Adverse treatment after reporting harassment",
+        "Policy response to revenge against participants"
+        ,"What protection is available against retaliation?"
+        ,"What safeguards protect people from retaliation?"
+        ,"Am I protected from reprisals after reporting harassment?"
+        ,"Can the company take adverse action against someone who reports harassment?"
+        ,"Protection from retaliation for complainants and witnesses"
       ],
       "answer": "Retaliation against an employee who reports sexual or discriminatory harassment is strictly prohibited. Retaliation against anyone who cooperates with a harassment investigation is strictly prohibited.",
       "answer_mode": "grounded_answer",
@@ -2446,7 +2800,11 @@
       "utterances": [
         "Where do I submit bereavement leave after informing HR?",
         "Must a bereavement absence be entered in the HR system?",
-        "How is a verbal bereavement request formalized?"
+        "How is a verbal bereavement request formalized?",
+        "Explain the hrms rule under the bereavement policy.",
+        "What does the bereavement policy state about hrms?",
+        "I need details about bereavement hrms.",
+        "Please clarify the bereavement policy requirements for hrms."
       ],
       "keywords": [
         "bereavement request",
@@ -2567,7 +2925,12 @@
       "utterances": [
         "When should maternity leave be notified to HR?",
         "How early must I submit a maternity request in HRMS?",
-        "What is the notice period for maternity leave?"
+        "What is the notice period for maternity leave?",
+        "How far ahead should the HRMS maternity request be raised?",
+        "What advance application period applies before maternity absence starts?",
+        "Maternity application lead time",
+        "Advance HRMS notice before maternity absence",
+        "When should the intended start date be reported?"
       ],
       "keywords": [
         "maternity notice",
@@ -2648,7 +3011,11 @@
       "utterances": [
         "What is the deadline for giving the birth certificate to HR?",
         "How many days does a father have to submit proof of birth?",
-        "Which paternity document is due within sixty days?"
+        "Which paternity document is due within sixty days?",
+        "When should the birth certificate be submitted?",
+        "By when must I provide the child's birth certificate?",
+        "What is the deadline for submitting proof of childbirth?",
+        "How soon after the birth is the certificate due?"
       ],
       "keywords": [
         "paternity",
@@ -2728,7 +3095,11 @@
       "utterances": [
         "Are contractor leave balances calculated proportionally?",
         "What is the pro-rata rule for contractual staff?",
-        "How does a contract extension affect leave credit?"
+        "How does a contract extension affect leave credit?",
+        "Explain the general contractor prorata rule under the leave policy.",
+        "What does the leave policy state about general contractor prorata?",
+        "I need details about leave general contractor prorata.",
+        "Please clarify the leave policy requirements for general contractor prorata."
       ],
       "keywords": [
         "contractor",
@@ -2770,7 +3141,11 @@
       "utterances": [
         "Does an intern lose unused leave each month?",
         "Can internship leave roll over to the following month?",
-        "What happens to an intern unused monthly leave?"
+        "What happens to an intern unused monthly leave?",
+        "Explain the general intern carryforward rule under the leave policy.",
+        "What does the leave policy state about general intern carryforward?",
+        "I need details about leave general intern carryforward.",
+        "Please clarify the leave policy requirements for general intern carryforward."
       ],
       "keywords": [
         "intern",
@@ -2812,7 +3187,11 @@
       "utterances": [
         "May CL be attached to Privilege Leave?",
         "Can casual and earned leave be joined?",
-        "Is combining CL with a different leave category allowed?"
+        "Is combining CL with a different leave category allowed?",
+        "Explain the general casual combination rule under the leave policy.",
+        "What does the leave policy state about general casual combination?",
+        "I need details about leave general casual combination.",
+        "Please clarify the leave policy requirements for general casual combination."
       ],
       "keywords": [
         "casual leave",
@@ -2852,7 +3231,11 @@
       "utterances": [
         "Do client-site employees follow the company holiday list?",
         "Whose holidays apply while assigned to a customer?",
-        "What calendar applies during client deployment?"
+        "What calendar applies during client deployment?",
+        "Explain the general client calendar rule under the leave policy.",
+        "What does the leave policy state about general client calendar?",
+        "I need details about leave general client calendar.",
+        "Please clarify the leave policy requirements for general client calendar."
       ],
       "keywords": [
         "client site",
@@ -2892,7 +3275,11 @@
       "utterances": [
         "Can approved notice-period leave change my final working day?",
         "Does taking leave extend a resignation notice?",
-        "What is the rule for leave while serving notice?"
+        "What is the rule for leave while serving notice?",
+        "Explain the general notice leave rule under the leave policy.",
+        "What does the leave policy state about general notice leave?",
+        "I need details about leave general notice leave.",
+        "Please clarify the leave policy requirements for general notice leave."
       ],
       "keywords": [
         "notice period",
@@ -2933,7 +3320,11 @@
       "utterances": [
         "Where do I apply for 0.5 day leave?",
         "Must half-day absence be entered in HRMS?",
-        "What system accepts half-day leave applications?"
+        "What system accepts half-day leave applications?",
+        "Explain the general half day hrms rule under the leave policy.",
+        "What does the leave policy state about general half day hrms?",
+        "I need details about leave general half day hrms.",
+        "Please clarify the leave policy requirements for general half day hrms."
       ],
       "keywords": [
         "half-day",
@@ -3176,7 +3567,11 @@
       "utterances": [
         "How long does a POSH committee member serve?",
         "What is the tenure of the Internal Committee?",
-        "After how many years does an IC term end?"
+        "After how many years does an IC term end?",
+        "Explain the committee term rule under the POSH policy.",
+        "What does the POSH policy state about committee term?",
+        "I need details about POSH committee term.",
+        "Please clarify the POSH policy requirements for committee term."
       ],
       "keywords": [
         "internal committee",
@@ -3216,7 +3611,11 @@
       "utterances": [
         "How soon after a complaint does the first POSH meeting happen?",
         "What is the deadline to hear the complainant initially?",
-        "Within how many days does the IC meet a complainant?"
+        "Within how many days does the IC meet a complainant?",
+        "Explain the first meeting rule under the POSH policy.",
+        "What does the POSH policy state about first meeting?",
+        "I need details about POSH first meeting.",
+        "Please clarify the POSH policy requirements for first meeting."
       ],
       "keywords": [
         "committee meeting",
@@ -3256,7 +3655,11 @@
       "utterances": [
         "May a POSH case be settled for money through conciliation?",
         "Are financial terms permitted in committee conciliation?",
-        "Can cash resolve a harassment complaint informally?"
+        "Can cash resolve a harassment complaint informally?",
+        "Explain the conciliation money rule under the POSH policy.",
+        "What does the POSH policy state about conciliation money?",
+        "I need details about POSH conciliation money.",
+        "Please clarify the POSH policy requirements for conciliation money."
       ],
       "keywords": [
         "conciliation",
@@ -3296,7 +3699,11 @@
       "utterances": [
         "When is the accused response to a POSH complaint due?",
         "What is the show-cause reply deadline?",
-        "How many days are allowed for the respondent statement?"
+        "How many days are allowed for the respondent statement?",
+        "Explain the respondent reply rule under the POSH policy.",
+        "What does the POSH policy state about respondent reply?",
+        "I need details about POSH respondent reply.",
+        "Please clarify the POSH policy requirements for respondent reply."
       ],
       "keywords": [
         "respondent",
@@ -3336,7 +3743,11 @@
       "utterances": [
         "What is the police referral deadline for a POSH offence?",
         "How quickly does the committee send a criminal matter to police?",
-        "When is harassment reported to law enforcement?"
+        "When is harassment reported to law enforcement?",
+        "Explain the police referral rule under the POSH policy.",
+        "What does the POSH policy state about police referral?",
+        "I need details about POSH police referral.",
+        "Please clarify the POSH policy requirements for police referral."
       ],
       "keywords": [
         "criminal offence",
@@ -3377,7 +3788,11 @@
         "May the complainant seek their own transfer?",
         "Can the alleged perpetrator be transferred?",
         "Is transfer available as protection in a POSH case?",
-        "Is transfer available when sexual harassment may also constitute an offence?"
+        "Is transfer available when sexual harassment may also constitute an offence?",
+        "Explain the transfer option rule under the POSH policy.",
+        "What does the POSH policy state about transfer option?",
+        "I need details about POSH transfer option.",
+        "Please clarify the POSH policy requirements for transfer option."
       ],
       "keywords": [
         "victim transfer",
@@ -3419,7 +3834,11 @@
       "utterances": [
         "How long does a party have to appeal an IC outcome?",
         "Within how many days can committee recommendations be challenged?",
-        "What is the POSH appeal period?"
+        "What is the POSH appeal period?",
+        "Explain the appeal deadline rule under the POSH policy.",
+        "What does the POSH policy state about appeal deadline?",
+        "I need details about POSH appeal deadline.",
+        "Please clarify the POSH policy requirements for appeal deadline."
       ],
       "keywords": [
         "appeal",
@@ -3459,7 +3878,11 @@
       "utterances": [
         "Is disciplinary action possible for a knowingly false complaint?",
         "What is the consequence of malicious harassment evidence?",
-        "How does the policy address a complaint intended to harm someone?"
+        "How does the policy address a complaint intended to harm someone?",
+        "Explain the malicious complaint rule under the POSH policy.",
+        "What does the POSH policy state about malicious complaint?",
+        "I need details about POSH malicious complaint.",
+        "Please clarify the POSH policy requirements for malicious complaint."
       ],
       "keywords": [
         "false complaint",
@@ -3499,7 +3922,11 @@
       "utterances": [
         "Can disclosure of inquiry information lead to discipline?",
         "What is the penalty for revealing confidential complaint details?",
-        "Must witnesses keep committee information private?"
+        "Must witnesses keep committee information private?",
+        "Explain the confidentiality breach rule under the POSH policy.",
+        "What does the POSH policy state about confidentiality breach?",
+        "I need details about POSH confidentiality breach.",
+        "Please clarify the POSH policy requirements for confidentiality breach."
       ],
       "keywords": [
         "confidentiality",
@@ -3743,7 +4170,11 @@
       "utterances": [
         "Are non-employees covered by the harassment policy on company premises?",
         "Does POSH apply at a customer site controlled by Emergys?",
-        "Can the policy bind a third party suspected of harassment?"
+        "Can the policy bind a third party suspected of harassment?",
+        "Explain the third party scope rule under the POSH policy.",
+        "What does the POSH policy state about third party scope?",
+        "I need details about POSH third party scope.",
+        "Please clarify the POSH policy requirements for third party scope."
       ],
       "keywords": [
         "POSH scope",
@@ -3783,7 +4214,11 @@
       "utterances": [
         "Does POSH apply to subsidiaries and group companies?",
         "Are affiliates and sister concerns included in the harassment policy?",
-        "What related companies fall under the policy?"
+        "What related companies fall under the policy?",
+        "Explain the affiliates rule under the POSH policy.",
+        "What does the POSH policy state about affiliates?",
+        "I need details about POSH affiliates.",
+        "Please clarify the POSH policy requirements for affiliates."
       ],
       "keywords": [
         "subsidiaries",
@@ -3824,7 +4259,11 @@
       "utterances": [
         "Do repeated private calls outside work count as stalking?",
         "Is following someone home covered by POSH?",
-        "Does physically pursuing a person at work count as harassment?"
+        "Does physically pursuing a person at work count as harassment?",
+        "Explain the stalking rule under the POSH policy.",
+        "What does the POSH policy state about stalking?",
+        "I need details about POSH stalking.",
+        "Please clarify the POSH policy requirements for stalking."
       ],
       "keywords": [
         "stalking",
@@ -3864,7 +4303,11 @@
       "utterances": [
         "Does the policy treat sexual taunts as harassment?",
         "Is confinement against someone’s will prohibited conduct?",
-        "Are innuendos and privacy intrusion included in POSH?"
+        "Are innuendos and privacy intrusion included in POSH?",
+        "Explain the intrusive conduct rule under the POSH policy.",
+        "What does the POSH policy state about intrusive conduct?",
+        "I need details about POSH intrusive conduct.",
+        "Please clarify the POSH policy requirements for intrusive conduct."
       ],
       "keywords": [
         "eve teasing",
@@ -3904,7 +4347,11 @@
       "utterances": [
         "Can a person be suspended or terminated after a POSH finding?",
         "May an increment, bonus, or promotion be withheld?",
-        "What penalties can the Internal Committee recommend?"
+        "What penalties can the Internal Committee recommend?",
+        "Explain the disciplinary actions rule under the POSH policy.",
+        "What does the POSH policy state about disciplinary actions?",
+        "I need details about POSH disciplinary actions.",
+        "Please clarify the POSH policy requirements for disciplinary actions."
       ],
       "keywords": [
         "disciplinary action",
@@ -3947,7 +4394,11 @@
       "utterances": [
         "Can the Presiding Officer help draft a complaint?",
         "What assistance is available for submitting a written harassment complaint?",
-        "Who may complain for a person who is unable to file personally?"
+        "Who may complain for a person who is unable to file personally?",
+        "Explain the complaint assistance rule under the POSH policy.",
+        "What does the POSH policy state about complaint assistance?",
+        "I need details about POSH complaint assistance.",
+        "Please clarify the POSH policy requirements for complaint assistance."
       ],
       "keywords": [
         "written complaint",
@@ -3991,7 +4442,11 @@
       "utterances": [
         "Does the committee retain a complete investigation record?",
         "Where is the complaints committee report recorded?",
-        "Are both complainant and accused files updated?"
+        "Are both complainant and accused files updated?",
+        "Explain the documentation rule under the POSH policy.",
+        "What does the POSH policy state about documentation?",
+        "I need details about POSH documentation.",
+        "Please clarify the POSH policy requirements for documentation."
       ],
       "keywords": [
         "documentation",
@@ -4031,11 +4486,19 @@
       "intent": "policy_general_leave_client_site_casual",
       "question": "Can an employee take Casual Leave while working at a client site?",
       "utterances": [
-        "Can I take CL while working from a client site?",
         "Is casual leave allowed during client-site deployment?",
         "How do I request CL when assigned to a customer location?",
         "Does a client-site employee need client manager approval for casual leave?",
-        "What approval is needed for leave at a client location?"
+        "What approval is needed for leave at a client location?",
+        "Explain the client site casual rule under the leave policy.",
+        "What does the leave policy state about client site casual?",
+        "I need details about leave client site casual.",
+        "Please clarify the leave policy requirements for client site casual.",
+        "Casual absence while deployed to a customer location",
+        "Client-manager approval for CL",
+        "Leave request from an external customer site",
+        "May staff at customer premises request CL?",
+        "What approval applies to casual absence during client deployment?"
       ],
       "keywords": [
         "casual leave",
@@ -4070,6 +4533,433 @@
       "facts": [
         "Associates deployed at client locations must obtain written approval from the designated Client Manager for leave.",
         "Leave approval remains contingent on business priorities and the normal advance-planning process."
+      ],
+      "matching_phrases": [
+        "Can CL be used during a client-site assignment?",
+        "Casual leave eligibility at a customer worksite"
+      ]
+    },
+    {
+      "id": "41eaee062bbce5d7",
+      "intent": "policy_posh_complaint_extension",
+      "question": "How long can the POSH complaint filing period be extended?",
+      "utterances": [
+        "What is the maximum POSH complaint deadline extension?",
+        "Can the three-month complaint limit be extended?",
+        "How much extra time is allowed to file a harassment complaint?",
+        "Explain the complaint extension rule under the POSH policy.",
+        "What does the POSH policy state about complaint extension?",
+        "I need details about POSH complaint extension.",
+        "Please clarify the POSH policy requirements for complaint extension.",
+        "Additional filing time when circumstances prevented a complaint",
+        "Extension beyond the initial complaint period",
+        "Recorded reasons for extending the filing window"
+      ],
+      "answer": "The Internal Committee may extend the complaint filing deadline by up to a further three months when circumstances prevented the employee from filing within the initial three-month period. The reasons for the extension must be recorded in writing.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "complaint deadline extension",
+        "further three months"
+      ],
+      "keywords": [
+        "complaint deadline extension",
+        "further three months",
+        "reasons in writing"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "7. Complaint Mechanism"
+      ],
+      "evidence": {
+        "chunk_id": "82c2dfc98f08098d",
+        "page": 5,
+        "section": "7. Complaint Mechanism",
+        "quote": "i. The complaint mechanism and reliefs as per the law are for women. With respect to men, complaint mechanism and reliefs as per this policy are non -statutory and at the discretion of Emergys. We extend the same redressal process for employees irrespective of gender. ii. Any aggrieved person who feels that he / she / they is/are being sexually harassed directly or indirectly may submit a written and signed complaint of the alleged incident within three (3) months of the date of incident and in case of series of incidents, within a period of three (3) months from the date of last incident. iii. The Complaint may be given directly to any member of the Committee or through the human resource manager who shall forward the Complaint to the Committee. iv. In case of complaints preceding three (3) months from the date of last date of the incident, the Committee, for the reasons to be recorded in writing, may extend the time limit for submitting such complaint not exceeding further three months, if the Commit tee is satisfied that"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The filing deadline may be extended by no more than a further three months.",
+        "The Committee must record its reasons in writing and be satisfied that circumstances prevented timely filing."
+      ]
+    },
+    {
+      "id": "c34bd35404d3068f",
+      "intent": "policy_posh_post_submission",
+      "question": "Which procedural steps follow receipt of a written harassment complaint?",
+      "utterances": [
+        "What is the process after filing a POSH complaint?",
+        "What does the Committee do after receiving a complaint?",
+        "What happens once the harassment complaint is lodged?",
+        "What are the next steps after a POSH complaint?",
+        "Explain the post submission rule under the POSH policy.",
+        "What does the POSH policy state about post submission?",
+        "I need details about POSH post submission.",
+        "Please clarify the POSH policy requirements for post submission.",
+        "Procedure immediately after receiving a complaint",
+        "Steps followed before the formal inquiry",
+        "Initial committee actions after complaint receipt"
+      ],
+      "answer": "After receiving a complaint, the Committee records it confidentially and meets the complainant within seven days to hear and record the allegations. The respondent may then be called to provide an explanation, after which the Committee conducts and concludes an inquiry.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "after complaint submitted",
+        "seven days"
+      ],
+      "keywords": [
+        "after complaint submitted",
+        "seven days",
+        "record allegations",
+        "respondent explanation"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "8. Enquiry Process"
+      ],
+      "evidence": {
+        "chunk_id": "3440844d02c96ecb",
+        "page": 6,
+        "section": "8. Enquiry Process",
+        "quote": "i. The Committee will maintain a register of all complaints received by it and keep the contents confidential, except to use the same for discreet investigation. ii. The Committee will hold a meeting with the Complainant within seven (7) days of the receipt of the complaint. iii. At the first meeting, the Committee members shall hear the Complainant and record the allegations. iv. Thereafter, the person against whom the complaint is made may be called for a deposition before the Committee and an opportunity will be given to the person to give an explanation, whereafter, an “Enquiry” shall be conducted and concluded. v. In the event that the Committee determines, acting reasonably that the complaint does not fall under the purview of Sexual Harassment, or the complaint does not tantamount to an offence of Sexual Harassment, the complaint shall be closed after recording th e reasons thereof. vi. Management and others responsible for implementation of this Policy will respect the confidentiality and privacy of individuals reporting or accused of Sexual Harassment to the extent reasonably possible. Examples of situations where"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The Committee maintains a confidential register of complaints.",
+        "The Committee meets the complainant within seven days and records the allegations.",
+        "The respondent may be called to provide an explanation before the inquiry is conducted."
+      ]
+    },
+    {
+      "id": "99b7e914d1183035",
+      "intent": "policy_posh_complaint_copy",
+      "question": "How soon should the respondent receive a copy of the POSH complaint?",
+      "utterances": [
+        "When must the respondent get the complaint copy?",
+        "How many days does the Committee have to give the complaint to the accused?",
+        "What is the deadline for serving the complaint on the respondent?",
+        "Within how many days is the complaint copy handed over?",
+        "Explain the complaint copy rule under the POSH policy.",
+        "What does the POSH policy state about complaint copy?",
+        "I need details about POSH complaint copy.",
+        "Please clarify the POSH policy requirements for complaint copy."
+      ],
+      "answer": "The Internal Committee must provide the respondent with a copy of the complaint within seven days. It must also issue a show-cause notice giving the respondent seven days from receipt to submit a written explanation.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "complaint copy",
+        "respondent"
+      ],
+      "keywords": [
+        "complaint copy",
+        "respondent",
+        "within seven days",
+        "show cause"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "10. Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "0017a74d46034c7a",
+        "page": 7,
+        "section": "10. Investigation",
+        "quote": "i. Subject to outcome of the Conciliation, the Committee shall immediately proceed with the inquiry under the Act and communicate the same to the Complainant and the Respondent. ii. The Committee shall prepare and hand over the copy of the complaint within 7 days to the person against whom the complaint is made and give an opportunity by issuing a show cause notice to submit a written explanation within seven ( 7) days of receipt of the same. iii. The Committee shall hand over a copy of the written explanation submitted by the Respondent, to the Complainant. iv. If the Complainant or the person against whom the complaint is made desires any witness(es) to be called, they shall communicate in writing to the Committee the names of such witness(es). v. If the Complainant desires to tender any documents by way of evidence before the Committee, he/she/they shall submit such documents in original. Similarly, if the person against whom the complaint is made desires to tender any documents in evidence before the Committee, he/she/they shall submit such documents in original. Both"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The respondent must receive a copy of the complaint within seven days.",
+        "The respondent has seven days from receipt to submit a written explanation."
+      ]
+    },
+    {
+      "id": "f2530d5ff64fe36a",
+      "intent": "policy_posh_conciliation",
+      "question": "Is conciliation possible before a POSH inquiry?",
+      "utterances": [
+        "Can the parties settle before the Internal Committee starts an inquiry?",
+        "Can the complainant request conciliation?",
+        "Does POSH allow conciliation before investigation?",
+        "When can POSH conciliation happen?",
+        "Explain the conciliation rule under the POSH policy.",
+        "What does the POSH policy state about conciliation?",
+        "I need details about POSH conciliation.",
+        "Please clarify the POSH policy requirements for conciliation."
+      ],
+      "answer": "Before starting an inquiry, the Internal Committee may attempt conciliation at the complainant’s request. A monetary settlement cannot be used as the basis of that conciliation.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "conciliation before inquiry",
+        "complainant request"
+      ],
+      "keywords": [
+        "conciliation before inquiry",
+        "complainant request",
+        "no monetary settlement"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "9. Conciliation"
+      ],
+      "evidence": {
+        "chunk_id": "2fe697817724b4b5",
+        "page": 6,
+        "section": "9. Conciliation",
+        "quote": "i. The Committee shall, before initiating an inquiry under the Act as stated below, at the request of the Complainant take steps to settle the matter between the Complainant and the Respondent through conciliation. Provided that no monetary settlement shall b e made as a basis of conciliation. ii. Where a settlement has been arrived at as stated above, the Committee shall record such settlement and forward the same to the HR Head to take action as specified in the recommendation."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Conciliation may occur before the inquiry at the complainant’s request.",
+        "A monetary settlement cannot be the basis of conciliation."
+      ]
+    },
+    {
+      "id": "e3be85986957bc1d",
+      "intent": "policy_posh_conciliation_breach",
+      "question": "What happens if a POSH conciliation settlement is not followed?",
+      "utterances": [
+        "What if the respondent does not comply with the conciliation terms?",
+        "Does the inquiry restart if a settlement is breached?",
+        "What happens when POSH settlement conditions are ignored?",
+        "What if conciliation fails after settlement?",
+        "Explain the conciliation breach rule under the POSH policy.",
+        "What does the POSH policy state about conciliation breach?",
+        "I need details about POSH conciliation breach.",
+        "Please clarify the POSH policy requirements for conciliation breach."
+      ],
+      "answer": "If the complainant informs the Internal Committee that the respondent has not complied with a conciliation term or condition, the Committee must begin a fresh inquiry into the complaint.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "conciliation settlement not followed",
+        "non-compliance"
+      ],
+      "keywords": [
+        "conciliation settlement not followed",
+        "non-compliance",
+        "fresh inquiry"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "9. Conciliation"
+      ],
+      "evidence": {
+        "chunk_id": "f362aa5103702816",
+        "page": 7,
+        "section": "9. Conciliation",
+        "quote": "iii. The Committee shall provide copies of the settlement to the Complainant and the Respondent. iv. Where a settlement is arrived at as above, no further inquiry shall be conducted by the Committee, and the case shall be closed. Provided that where the Complainant informs the Committee that the term or condition of the settlement has not been complied with by the Respondent, the Committee shall proceed to make an inquiry into the complaint afresh."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "The complainant may report non-compliance with the settlement.",
+        "The Committee must then conduct a fresh inquiry into the complaint."
+      ]
+    },
+    {
+      "id": "9b2fafba4d115e3a",
+      "intent": "policy_posh_post_inquiry",
+      "question": "Which actions and deadlines follow completion of an Internal Committee investigation?",
+      "utterances": [
+        "What does the Committee do after finishing a POSH inquiry?",
+        "When are inquiry findings sent to HR?",
+        "How soon must HR act on the POSH report?",
+        "What happens after the IC investigation ends?",
+        "Explain the post inquiry rule under the POSH policy.",
+        "What does the POSH policy state about post inquiry?",
+        "I need details about POSH post inquiry.",
+        "Please clarify the POSH policy requirements for post inquiry."
+      ],
+      "answer": "Within 10 days after completing the inquiry, the Internal Committee must send its findings and recommendations to the HR Head. The Committee report serves as the inquiry report for appropriate punishment, and the HR Head must direct action on the recommendations within 60 days after the report is submitted.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "after inquiry",
+        "findings recommendations"
+      ],
+      "keywords": [
+        "after inquiry",
+        "findings recommendations",
+        "HR Head",
+        "10 days",
+        "60 days"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "10. Investigation"
+      ],
+      "evidence": {
+        "chunk_id": "f4bbc90d1d59be77",
+        "page": 7,
+        "section": "10. Investigation",
+        "quote": "shall affix his / her / their signature on the respective documents. vi. The Committee shall call upon all witnesses mentioned by both parties. vii. The Committee shall provide every reasonable opportunity to the Complainant and to the person against whom the complaint is made, for putting forward and defending their respective case as per the principle of natural justice. viii. The Committee shall complete the inquiry under the Act within reasonable period but not beyond three (3) months after the date of receipt of the original Complaint and communicate its findings and its recommendations for action to the HR - Head of the Compa ny within 10 days of the completion of the Enquiry. The report of the Committee shall be treated as an enquiry report on the basis of which an erring Employee can be awarded appropriate punishment straightaway. ix. The HR -Head will direct appropriate action in accordance with the recommendation proposed by the Committee within sixty (60) days of submission of the report by the Committee."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Findings and recommendations must be communicated to the HR Head within 10 days after the inquiry.",
+        "The report is treated as the inquiry report for appropriate punishment.",
+        "The HR Head must direct action within 60 days after the report is submitted."
+      ]
+    },
+    {
+      "id": "561cc21914a5307d",
+      "intent": "policy_posh_committee_composition",
+      "question": "Who are the members of the POSH Internal Committee?",
+      "utterances": [
+        "Who makes up the POSH committee?",
+        "Can you list the POSH committee members?",
+        "Who is the Presiding Officer and external member?",
+        "Explain the committee composition rule under the POSH policy.",
+        "What does the POSH policy state about committee composition?",
+        "I need details about POSH committee composition.",
+        "Please clarify the POSH policy requirements for committee composition.",
+        "Names and roles of the Internal Committee members",
+        "Current IC membership composition",
+        "Presiding officer and external committee member"
+      ],
+      "answer": "The policy lists Ms. Mugdha Wagh as Presiding Officer; Mr. Ninad Inamdar, Mr. Saumitra Modak, and Mrs. Kishori Gaikwad as Internal Committee members; and Mrs. Vaishali Sonavane as the external member.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "posh",
+        "committee members",
+        "presiding officer"
+      ],
+      "keywords": [
+        "committee members",
+        "presiding officer",
+        "external member",
+        "Mugdha Wagh",
+        "Vaishali Sonavane"
+      ],
+      "enabled": true,
+      "source": "POSH Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Composition of the Internal Committee"
+      ],
+      "evidence": {
+        "chunk_id": "fca117063435db79",
+        "page": 4,
+        "section": "4. Composition of the Internal Committee",
+        "quote": "An internal committee (the ‘Committee’) has been constituted by the management of the Company to consider and redress complaints and allegations of Sexual Harassment. The Presiding Officer and members of the Committee are as follows: For Emergys Solutions Private Limited : # Name Department Role E-mail ID"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_posh",
+      "facts": [
+        "Ms. Mugdha Wagh is the Presiding Officer.",
+        "Mr. Ninad Inamdar, Mr. Saumitra Modak, and Mrs. Kishori Gaikwad are Internal Committee members.",
+        "Mrs. Vaishali Sonavane is the external member."
+      ]
+    },
+    {
+      "id": "2e2c62a93939d438",
+      "intent": "policy_maternity_childbirth_notification",
+      "question": "When must HR receive notice of the actual delivery date?",
+      "utterances": [
+        "What deadline applies to reporting the birth to HR?",
+        "How quickly must the employee or family communicate that childbirth occurred?"
+      ],
+      "answer": "The employee or an immediate family member must communicate the actual date of childbirth to HR within seven days.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "maternity",
+        "childbirth",
+        "notification"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:"
+      ],
+      "evidence": {
+        "chunk_id": "38e001c7f7e5e85b",
+        "page": 4,
+        "section": "3. Maternity Leave / 3.5 Maternity Leave Application and Documentation:",
+        "quote": "i. Notification and Leave Application a) Employees shall notify HR and their Reporting Manager of their intended maternity leave and submit a leave request through the HRMS at least sixty (60) days prior to the proposed commencement date, wherever practicable. b) A medical certificate from a registered medical practitioner indicating the expected date of delivery and proposed leave commencement date must be submitted in support of the application. c) In exceptional circumstances where the employee is unable to submit the leave request, HR may facilitate the application process on her behalf. ii. Communication During and After Leave a) The actual date of childbirth shall be communicated to HR within seven (7) days by the employee or an immediate family member. b) A copy of the birth certificate shall be submitted within sixty (60) days of the child's birth. iii. Compliance a) Maternity benefits under this Policy shall be subject to compliance with applicable laws and regulations. Any employee found to be engaged in employment with another establishment during the maternity leave period may forfeit eligibility for maternity bene fits, as"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_maternity",
+      "facts": [
+        "The actual date of childbirth must be communicated to HR within seven days."
+      ]
+    },
+    {
+      "id": "ad54e81ffa90fcfc",
+      "intent": "policy_paternity_eligibility",
+      "question": "What service and employment conditions apply to paternity benefits?",
+      "utterances": [
+        "Which employees qualify for fatherhood leave?",
+        "What tenure is required for paternity entitlement?"
+      ],
+      "answer": "Paternity leave applies to a permanent male employee who has completed at least 80 days of continuous service during the preceding 12 months before the applicable birth, legal-adoption placement, or surrogacy handover date.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "paternity",
+        "eligibility",
+        "service"
+      ],
+      "enabled": true,
+      "source": "Maternity and Paternity Leave Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "4. Paternity Leave: / 4.1 Eligibility"
+      ],
+      "evidence": {
+        "chunk_id": "e4d7e0d0006a07d7",
+        "page": 5,
+        "section": "4. Paternity Leave: / 4.1 Eligibility",
+        "quote": "A permanent male employee shall be eligible for paternity leave upon completing a minimum of eighty (80) days of continuous service with the organization during the twelve (12) months immediately preceding: (i) the expected date of delivery of his wife; (ii) the date on which a child is placed with him for legal adoption; or (iii) the date on which a child is handed over to him through surrogacy."
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_paternity",
+      "facts": [
+        "The employee must be a permanent male employee.",
+        "The employee must complete at least 80 days of continuous service in the preceding 12 months."
+      ]
+    },
+    {
+      "id": "b80d13f6b6980f30",
+      "intent": "policy_referral_participant_eligibility",
+      "question": "Which engagement categories can participate in the referral program?",
+      "utterances": [
+        "Are direct-contract workers allowed to refer applicants?",
+        "Does the program include permanent staff and interns?"
+      ],
+      "answer": "Permanent employees, contractual employees on a direct company contract, and interns are eligible to participate in the referral program, subject to its terms.",
+      "answer_mode": "grounded_answer",
+      "tags": [
+        "referral",
+        "referrer",
+        "eligibility"
+      ],
+      "enabled": true,
+      "source": "Referral Bonus Policy_Emergys Solutions.pdf",
+      "mapped_sections": [
+        "2. Scope / Eligibility"
+      ],
+      "evidence": {
+        "chunk_id": "5828e9e396a35da8",
+        "page": 3,
+        "section": "2. Scope / Eligibility",
+        "quote": "This policy applies to all individuals currentl y engaged with Emergys Solutions Private Limited in the following categories:"
+      },
+      "answer_is_exact_quote": false,
+      "routing_intent": "policy_referral",
+      "facts": [
+        "Permanent employees are eligible to participate.",
+        "Contractual employees on a direct company contract are eligible to participate.",
+        "Interns are eligible to participate."
       ]
     }
   ]

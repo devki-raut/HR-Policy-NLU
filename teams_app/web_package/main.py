@@ -104,6 +104,17 @@ async def _enrich_policy_chunk(payload, question):
                 payload['intent'] = custom['intent']
             if custom.get('status'):
                 payload['status'] = custom['status']
+            if custom.get('type') == 'leave_balance_metadata':
+                payload['leave_balance'] = {
+                    'status': custom.get('status'),
+                    'integration_status': custom.get('integration_status'),
+                    'employee_name': custom.get('employee_name'),
+                    'employee_no': custom.get('employee_no'),
+                    'balance_count': custom.get('balance_count', 0),
+                    'requested_leave_names': custom.get('requested_leave_names', []),
+                    'not_returned_leave_names': custom.get('not_returned_leave_names', []),
+                    'balances': custom.get('balances', []),
+                }
     payload['sources'] = sources
     payload['chunk'] = sources[0] if sources else None
     return payload
@@ -160,8 +171,17 @@ def health():
         employee_store = load_store()
         directory = {
             'configured': bool(
-                os.getenv('DARWINBOX_BASE_URL', '').strip()
-                or os.getenv('DARWINBOX_EMPLOYEE_URL', '').strip()
+                (
+                    os.getenv('DARWINBOX_BASE_URL', '').strip()
+                    or os.getenv('DARWINBOX_EMPLOYEE_URL', '').strip()
+                )
+                and (
+                    os.getenv('DARWINBOX_EMPLOYEE_DATASET_KEY', '').strip()
+                    or os.getenv('DARWINBOX_DATASET_KEY', '').strip()
+                )
+                and all(os.getenv(name, '').strip() for name in (
+                    'DARWINBOX_UID', 'DARWINBOX_ADMIN_EMAIL', 'DARWINBOX_SECRET_KEY'
+                ))
             ),
             'employee_count': len(employee_store.get('employees') or {}),
             'last_sync': employee_store.get('synced_at'),
@@ -173,6 +193,12 @@ def health():
         'service': 'web-and-teams-bot',
         'policy_index_exists': index_path().exists(),
         'darwinbox_directory': directory,
+        'darwinbox_leave': {
+            'configured': bool(
+                os.getenv('DARWINBOX_LEAVE_API_KEY', '').strip()
+                and os.getenv('DARWINBOX_BASE_URL', '').strip()
+            )
+        },
     }
 
 

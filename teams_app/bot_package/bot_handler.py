@@ -14,7 +14,6 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
 from actions.policy_store import index_path
-from actions.darwinbox import awaiting_employee_code, extract_employee_code
 
 
 LOGGER = logging.getLogger(__name__)
@@ -131,15 +130,6 @@ class TeamsBot(ActivityHandler):
             or identity.get("teams_user_id")
             or turn_context.activity.conversation.id
         )
-        original_question = question
-        try:
-            if awaiting_employee_code(sender, identity):
-                candidate = extract_employee_code(question)
-                if candidate:
-                    question = f"My employee code is {candidate}"
-                    identity["original_text"] = original_question
-        except (OSError, RuntimeError, ValueError):
-            LOGGER.warning("Unable to inspect pending Darwinbox identity state", exc_info=True)
         url = os.getenv("RASA_URL", "http://127.0.0.1:5005").rstrip("/")
         try:
             async with httpx.AsyncClient(timeout=60) as client:

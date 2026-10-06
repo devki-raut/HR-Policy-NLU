@@ -140,6 +140,25 @@ def upsert_employees(
     return len(employees), changed
 
 
+def store_self_reported_employee(email: str, employee_no: str) -> dict[str, Any]:
+    """Persist a Teams-email mapping after the leave API accepts the code."""
+    store = load_store()
+    employees = dict(store.get("employees") or {})
+    record = {
+        "employee_no": employee_no,
+        "emails": [email.casefold()],
+        "name": None,
+        "status": "Active",
+        "source": "teams_self_reported",
+        "verified_by": "leave_balance_api",
+        "updated_at": utc_now(),
+    }
+    employees[employee_no.casefold()] = record
+    store["employees"] = employees
+    save_store(store)
+    return record
+
+
 def employee_by_code(code: str) -> dict[str, Any] | None:
     return (load_store().get("employees") or {}).get(str(code).strip().casefold())
 

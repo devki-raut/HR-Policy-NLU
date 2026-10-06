@@ -15,7 +15,7 @@ def metric(rows):
  return {'total':n,'correct':tp,'routing_accuracy_percent':round(100*div(sum(x['routing_correct'] for x in rows),n),2),'faq_match_rate_percent':round(100*div(sum(x['faq_matched'] for x in rows),n),2),'fact_answer_accuracy_percent':round(100*div(sum(x['facts_correct'] for x in rows),n),2),'end_to_end_accuracy_percent':round(100*div(tp,n),2),'precision_percent':round(100*p,2),'recall_percent':round(100*r,2),'f1_percent':round(100*div(2*p*r,p+r),2),'false_positive':fp,'false_negative':fn}
 def main():
  cases=json.load(open(ROOT/'tests/unseen_policy_questions.json'))['cases']; faq=json.load(open(ROOT/'data/faq_answers.json'))['entries']
- training=[p for e in faq for p in [e.get('question',''),*e.get('utterances',[])]]
+ training=[p for e in faq for p in [e.get('question',''),*e.get('utterances',[]),*e.get('matching_phrases',[])]]
  leaks=[]
  for c in cases:
   ratios=[SequenceMatcher(None,norm(c['question']),norm(p)).ratio() for p in training]

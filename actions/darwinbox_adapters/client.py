@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import time
 from typing import Any
@@ -71,17 +72,32 @@ class DarwinboxClient:
         url: str,
         method: str = "POST",
         payload: dict[str, Any] | None = None,
+        body_mode: str = "json",
+        basic_auth: tuple[str, str] | None = None,
     ) -> Any:
         method = method.upper().strip()
         if method not in {"GET", "POST"}:
             raise DarwinboxConfigurationError("Darwinbox method must be POST or GET")
         try:
             async with httpx.AsyncClient(timeout=self.timeout) as http:
+                request_kwargs: dict[str, Any] = {}
+                if method == "GET":
+                    request_kwargs["params"] = payload
+                elif body_mode == "raw_json":
+                    # Matches Darwinbox curl examples that use --data without a
+                    # JSON content-type header.
+                    request_kwargs["content"] = json.dumps(payload or {})
+                    request_kwargs["headers"] = {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                elif body_mode == "json":
+                    request_kwargs["json"] = payload
+                else:
+                    raise DarwinboxConfigurationError(
+                        "Darwinbox body_mode must be json or raw_json"
+                    )
                 response = await http.request(
-                    method,
-                    url,
-                    json=payload if method == "POST" else None,
-                    params=payload if method == "GET" else None,
+                    method, url, auth=basic_auth, **request_kwargs
                 )
                 response.raise_for_status()
                 result = response.json()
