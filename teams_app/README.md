@@ -140,3 +140,19 @@ Darwinbox must accept `DARWINBOX_LEAVE_API_KEY` for
 integration is temporarily unavailable. When Darwinbox provisions the endpoint
 with HTTP Basic Auth, also configure `DARWINBOX_LEAVE_USERNAME` and
 `DARWINBOX_LEAVE_PASSWORD`; the API key remains in the JSON request body.
+
+### Holiday-list API
+
+Holiday requests use `POST /leavesactionapi/holidaylist` with the separately
+provisioned holiday `api_key`, the documented `employee_no`, and an automatically
+selected year. They reuse the leave-balance HTTP Basic Auth credentials. An
+explicit year in the user's question overrides the current year:
+
+```dotenv
+DARWINBOX_HOLIDAY_URL=https://emergys.darwinbox.in/leavesactionapi/holidaylist
+DARWINBOX_HOLIDAY_API_KEY=<holiday-api-key>
+```
+
+The current test deployment requests holidays for employee `Ell0769`. The bot
+returns the next five holidays by default, accepts a requested count, and can
+return the complete calendar for a year.

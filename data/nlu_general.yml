@@ -14,6 +14,86 @@ nlu:
     - hi assistant
 
     '
+- intent: help
+  examples: '- help
+
+    - what can you do
+
+    - show available actions
+
+    - show me the help menu
+
+    - how can EmployeeAssist help me
+
+    - what questions can I ask
+
+    - show quick actions
+
+    '
+- intent: ask_upcoming_holidays
+  examples: '- What are the next holidays?
+
+    - Show the next five holidays
+
+    - Show upcoming holidays
+
+    - When is the next company holiday?
+
+    - What holidays are coming up?
+
+    - List the next 4 holidays
+
+    - List the next 5 holidays
+
+    - Which holidays are left this year?
+
+    - Upcoming office holidays
+
+    - What is our next holiday?
+
+    - When is the next day off?
+
+    - Show my upcoming holiday calendar
+
+    - Are there any holidays this month?
+
+    - What are the upcoming public holidays?
+
+    - Give me the next few holidays
+
+    '
+- intent: ask_holiday_list
+  examples: '- Show the full holiday list
+
+    - Show all holidays for this year
+
+    - What is the 2026 holiday calendar?
+
+    - List every company holiday this year
+
+    - Display the annual holiday list
+
+    - Give me the complete holiday calendar
+
+    - What holidays do we have this year?
+
+    - Show the yearly holiday calendar
+
+    - Full holiday list for the current year
+
+    - List all office holidays
+
+    - Can I see the company holiday calendar?
+
+    - Show my holiday list for the year
+
+    - What are all the holidays in 2026?
+
+    - Complete list of holidays
+
+    - Annual holidays
+
+    '
 - intent: goodbye
   examples: '- bye
 

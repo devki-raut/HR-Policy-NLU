@@ -37,8 +37,25 @@ def darwinbox_directory_configured():
     )
 
 
+def darwinbox_report_configured():
+    endpoint = bool(
+        os.environ.get("DARWINBOX_REPORT_URL", "").strip()
+        or os.environ.get("DARWINBOX_BASE_URL", "").strip()
+    )
+    username = os.environ.get("DARWINBOX_LEAVE_USERNAME", "").strip()
+    password = os.environ.get("DARWINBOX_LEAVE_PASSWORD", "").strip()
+    return endpoint and bool(username and password) and all(
+        os.environ.get(name, "").strip()
+        for name in ("DARWINBOX_REPORT_API_KEY", "DARWINBOX_REPORT_ID")
+    )
+
+
 def commands(mode):
     shared = {}
+    if darwinbox_report_configured():
+        shared["employee-report-sync"] = [
+            PYTHON, str(ROOT / "scripts/sync_employee_report.py"), "--watch",
+        ]
     if darwinbox_directory_configured():
         shared["darwinbox-sync"] = [
             PYTHON, str(ROOT / "scripts/sync_darwinbox_employees.py"),

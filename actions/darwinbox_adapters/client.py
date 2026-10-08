@@ -74,22 +74,23 @@ class DarwinboxClient:
         payload: dict[str, Any] | None = None,
         body_mode: str = "json",
         basic_auth: tuple[str, str] | None = None,
+        headers: dict[str, str] | None = None,
     ) -> Any:
         method = method.upper().strip()
         if method not in {"GET", "POST"}:
             raise DarwinboxConfigurationError("Darwinbox method must be POST or GET")
         try:
             async with httpx.AsyncClient(timeout=self.timeout) as http:
-                request_kwargs: dict[str, Any] = {}
+                request_kwargs: dict[str, Any] = {"headers": dict(headers or {})}
                 if method == "GET":
                     request_kwargs["params"] = payload
                 elif body_mode == "raw_json":
                     # Matches Darwinbox curl examples that use --data without a
                     # JSON content-type header.
                     request_kwargs["content"] = json.dumps(payload or {})
-                    request_kwargs["headers"] = {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    }
+                    request_kwargs["headers"]["Content-Type"] = (
+                        "application/x-www-form-urlencoded"
+                    )
                 elif body_mode == "json":
                     request_kwargs["json"] = payload
                 else:

@@ -6,23 +6,37 @@
 <link rel="icon" type="image/png" href="/app-package/color.png">
 <link rel="stylesheet" href="/static/style.css">
 <script defer src="https://res.cdn.office.net/teams-js/2.19.0/js/MicrosoftTeams.min.js"></script>
+<script defer src="/static/msal-browser.min.js"></script>
 <script defer src="/static/app.js"></script>
 </head>
 <body>
 <main>
-<header><img class="app-logo" src="/app-package/color.png" alt="EmployeeAssist logo"><div><h1>EmployeeAssist</h1><p>Find answers in your organization’s policy library.</p></div></header>
+<header><img class="app-logo" src="/app-package/color.png" alt="EmployeeAssist logo"><div><h1>EmployeeAssist</h1><p>Your HR assistant for grounded policy answers, live leave balances, and company holidays.</p></div></header>
 <p id="status" role="status">Connecting to Teams…</p>
-<section id="messages" aria-label="Conversation" aria-live="polite"><article class="assistant">Hello! Ask about leave, remote work, benefits, expenses, conduct or onboarding. Answers include policy references.</article></section>
+<section id="auth-panel" class="auth-panel" aria-live="polite">
+  <strong>Sign in to EmployeeAssist</strong>
+  <p>Use your Emergys Microsoft account so EmployeeAssist can securely identify your email address.</p>
+  <button id="sign-in" type="button">Sign in with Microsoft</button>
+  <button id="continue-guest" type="button">Continue as guest</button>
+</section>
+<div id="chat-ui" hidden>
+<div class="session-controls">
+  <span id="session-label">Guest session</span>
+  <button id="sign-in-from-guest" type="button">Sign in with Microsoft</button>
+  <button id="sign-out" type="button" hidden>Sign out</button>
+</div>
+<section id="messages" aria-label="Conversation" aria-live="polite"><article class="assistant">Hello! I can answer HR policy questions with sources, show your live leave balance, and list upcoming or annual holidays. Choose a quick action or type a question.</article></section>
 <div class="suggestions" aria-label="Quick policy questions">
-  <button type="button" data-question="How many days of bereavement leave do I get?">Bereavement leave</button>
-  <button type="button" data-question="How many weeks of maternity leave are available?">Maternity leave</button>
-  <button type="button" data-question="How long is paternity leave?">Paternity leave</button>
-  <button type="button" data-question="How do I file a POSH complaint?">POSH complaint</button>
-  <button type="button" data-question="How many casual leaves do I get?">Casual leave</button>
-  <button type="button" data-question="When is the referral bonus paid?">Referral bonus</button>
+  <button type="button" data-question="help">Help</button>
+  <button type="button" data-question="Show my leaves">My leave balance</button>
+  <button type="button" data-question="Show the next 5 holidays">Next holidays</button>
+  <button type="button" data-question="Show the full holiday list for this year">Holiday calendar</button>
+  <button type="button" data-question="How many casual leaves are allowed?">Leave policy</button>
+  <button type="button" data-question="How do I file a POSH complaint?">POSH</button>
 </div>
 <form id="chat-form"><label for="question">Your policy question</label><div class="compose"><textarea id="question" maxlength="4000" rows="2" required placeholder="How do I request annual leave?"></textarea><button id="send" type="submit">Send</button></div></form>
 <footer>Answers quote available policies. Contact HR for individual eligibility. <button id="reset" type="button">New conversation</button></footer>
+</div>
 </main>
 <dialog id="evidence-dialog" aria-labelledby="evidence-title">
   <header class="dialog-header">

@@ -1,6 +1,9 @@
 version: '3.1'
 intents:
 - greet
+- help
+- ask_upcoming_holidays
+- ask_holiday_list
 - goodbye
 - ask_leave
 - ask_remote_work
@@ -25,6 +28,10 @@ responses:
       I answer from the policy library with source references.
 
       '
+  utter_help:
+  - text: EmployeeAssist can answer grounded HR policy questions, show your live Darwinbox
+      leave balance, list upcoming holidays, and display the full holiday calendar.
+      Try “Show my leaves”, “Show the next five holidays”, or ask a policy question.
   utter_goodbye:
   - text: Goodbye! Contact HR if you need help with your individual circumstances.
   utter_out_of_scope:
@@ -42,6 +49,7 @@ responses:
 actions:
 - action_answer_policy
 - action_personal_leave_balance
+- action_holiday_list
 - action_remember_employee_code
 session_config:
   session_expiration_time: 30

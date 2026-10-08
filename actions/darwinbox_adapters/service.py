@@ -37,7 +37,10 @@ def _static_mapping() -> dict[str, str]:
             mapping.update(parsed)
     except json.JSONDecodeError as exc:
         raise DarwinboxConfigurationError("DARWINBOX_EMPLOYEE_MAP_JSON is invalid JSON") from exc
+    default_path = Path(__file__).resolve().parents[2] / "data" / "employee_directory.json"
     path = os.getenv("DARWINBOX_EMPLOYEE_MAP_FILE", "").strip()
+    if not path and default_path.exists():
+        path = str(default_path)
     if path:
         try:
             parsed = json.loads(Path(path).expanduser().read_text(encoding="utf-8"))
@@ -48,7 +51,11 @@ def _static_mapping() -> dict[str, str]:
     result = {}
     for key, value in mapping.items():
         if isinstance(value, dict):
-            value = value.get("employee_no") or value.get("employee_id")
+            value = (
+                value.get("darwinbox_code") or value.get("api_code")
+                or value.get("code") or value.get("employee_no")
+                or value.get("employee_id")
+            )
         if value not in (None, ""):
             result[str(key).strip().casefold()] = str(value).strip()
     return result

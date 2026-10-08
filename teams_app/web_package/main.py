@@ -27,6 +27,7 @@ from actions.darwinbox_adapters.store import load_store
 from botbuilder.schema import Activity
 from teams_app.bot_package.adapter import ADAPTER
 from teams_app.bot_package.bot_handler import BOT
+from teams_app.web_package.auth import auth_required, client_id, request_identity, tenant_id
 
 app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload company policies and chat through Rasa. Jupyter uses separate token authentication.')
 
@@ -57,7 +58,7 @@ async def ui_headers(request, call_next):
     response.headers['Cache-Control'] = 'no-store'
     # Scope the tab CSP to UI assets so Swagger/ReDoc retain their own scripts.
     if request.url.path == '/' or request.url.path.startswith(('/static/', '/app-package/', '/policy-documents/')):
-        response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' https://res.cdn.office.net; style-src 'self'; connect-src 'self'; img-src 'self'; frame-ancestors https://teams.microsoft.com https://*.teams.microsoft.com https://*.cloud.microsoft; base-uri 'self'; form-action 'self'"
+        response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' https://res.cdn.office.net; style-src 'self'; connect-src 'self' https://login.microsoftonline.com; frame-src https://login.microsoftonline.com; img-src 'self'; frame-ancestors https://teams.microsoft.com https://*.teams.microsoft.com https://*.cloud.microsoft; base-uri 'self'; form-action 'self'"
     return response
 
 @app.get('/', include_in_schema=False)
@@ -79,6 +80,40 @@ def terms_and_conditions():
 class ChatRequest(BaseModel):
     sender: str = Field(min_length=1, max_length=128)
     message: str = Field(min_length=1, max_length=4000)
+
+
+def _guest_identity():
+    return {
+        'email': os.getenv('GUEST_EMPLOYEE_EMAIL', 'guest'),
+        'display_name': 'Guest',
+        'channel': 'web_guest',
+        'is_guest': True,
+    }
+
+
+async def _chat_context(request: Request, requested_sender: str):
+    identity = await request_identity(request) or _guest_identity()
+    return identity, identity.get('aad_object_id') or requested_sender
+
+
+@app.get('/auth/config', include_in_schema=False)
+def auth_config():
+    app_id = client_id()
+    return {
+        'enabled': bool(app_id),
+        'required': auth_required(),
+        'client_id': app_id,
+        'tenant_id': tenant_id(),
+        'scope': f'api://dockerpoc-webapp01.azurewebsites.net/{app_id}/access_as_user' if app_id else None,
+    }
+
+
+@app.get('/auth/me', include_in_schema=False)
+async def auth_me(request: Request):
+    identity = await request_identity(request)
+    if not identity:
+        raise HTTPException(401, 'Microsoft sign-in is required')
+    return identity
 
 
 async def _enrich_policy_chunk(payload, question):
@@ -108,12 +143,26 @@ async def _enrich_policy_chunk(payload, question):
                 payload['leave_balance'] = {
                     'status': custom.get('status'),
                     'integration_status': custom.get('integration_status'),
+                    'employee_no_requested': custom.get('employee_no_requested'),
+                    'employee_mapping_fallback': custom.get('employee_mapping_fallback', False),
                     'employee_name': custom.get('employee_name'),
                     'employee_no': custom.get('employee_no'),
                     'balance_count': custom.get('balance_count', 0),
                     'requested_leave_names': custom.get('requested_leave_names', []),
                     'not_returned_leave_names': custom.get('not_returned_leave_names', []),
                     'balances': custom.get('balances', []),
+                }
+            if custom.get('type') == 'holiday_list_metadata':
+                payload['holiday_list'] = {
+                    'status': custom.get('status'),
+                    'integration_status': custom.get('integration_status'),
+                    'employee_no_requested': custom.get('employee_no_requested'),
+                    'employee_mapping_fallback': custom.get('employee_mapping_fallback', False),
+                    'year': custom.get('year'),
+                    'mode': custom.get('mode'),
+                    'requested_count': custom.get('requested_count'),
+                    'returned_count': custom.get('returned_count'),
+                    'holidays': custom.get('holidays', []),
                 }
     payload['sources'] = sources
     payload['chunk'] = sources[0] if sources else None
@@ -135,13 +184,17 @@ def download_policy(filename: str):
         raise HTTPException(503, 'Policy document unavailable') from exc
 
 
-async def rasa_chat(sender, message):
+async def rasa_chat(sender, message, metadata=None):
     if not sender.strip() or not message.strip():
         raise HTTPException(422, 'sender and message cannot be blank')
     url = os.getenv('RASA_URL', 'http://127.0.0.1:5005').rstrip('/')
     try:
         async with httpx.AsyncClient(timeout=60) as client:
-            response = await client.post(f'{url}/webhooks/rest/webhook', json={'sender': sender, 'message': message})
+            response = await client.post(f'{url}/webhooks/rest/webhook', json={
+                'sender': sender,
+                'message': message,
+                'metadata': metadata or {},
+            })
             response.raise_for_status()
             messages = response.json()
         if not isinstance(messages, list) or any(not isinstance(m, dict) for m in messages):
@@ -188,16 +241,43 @@ def health():
         }
     except RuntimeError:
         directory = {'configured': True, 'status': 'unreadable'}
+    report_username = os.getenv('DARWINBOX_LEAVE_USERNAME', '').strip()
+    report_password = os.getenv('DARWINBOX_LEAVE_PASSWORD', '').strip()
     return {
         'status': 'ok',
         'service': 'web-and-teams-bot',
         'policy_index_exists': index_path().exists(),
         'darwinbox_directory': directory,
+        'darwinbox_employee_report': {
+            'configured': bool(
+                (
+                    os.getenv('DARWINBOX_REPORT_URL', '').strip()
+                    or os.getenv('DARWINBOX_BASE_URL', '').strip()
+                )
+                and os.getenv('DARWINBOX_REPORT_API_KEY', '').strip()
+                and os.getenv('DARWINBOX_REPORT_ID', '').strip()
+                and report_username and report_password
+            ),
+            'schedule': (
+                f"{os.getenv('DARWINBOX_REPORT_SYNC_HOUR', '16')}:"
+                f"{int(os.getenv('DARWINBOX_REPORT_SYNC_MINUTE', '30')):02d} Asia/Kolkata"
+            ),
+            'authorization': 'basic_auth_and_api_key',
+        },
         'darwinbox_leave': {
             'configured': bool(
                 os.getenv('DARWINBOX_LEAVE_API_KEY', '').strip()
                 and os.getenv('DARWINBOX_BASE_URL', '').strip()
             )
+        },
+        'darwinbox_holidays': {
+            'configured': bool(
+                os.getenv('DARWINBOX_BASE_URL', '').strip()
+                and os.getenv('DARWINBOX_HOLIDAY_API_KEY', '').strip()
+                and os.getenv('DARWINBOX_LEAVE_USERNAME', '').strip()
+                and os.getenv('DARWINBOX_LEAVE_PASSWORD', '').strip()
+            ),
+            'authorization': 'basic_auth_and_api_key',
         },
     }
 
@@ -239,14 +319,17 @@ async def upload(file: UploadFile = File(...), mode: str = Form('upsert', regex=
 
 
 @app.post('/chat')
-async def chat(body: ChatRequest):
-    result = await rasa_chat(body.sender, body.message)
+async def chat(body: ChatRequest, request: Request):
+    identity, sender = await _chat_context(request, body.sender)
+    result = await rasa_chat(sender, body.message, identity)
+    result['user'] = identity
     return await _enrich_policy_chunk(result, body.message)
 
 
 @app.post('/chat/stream')
-async def chat_stream(body: ChatRequest):
-    result = await rasa_chat(body.sender, body.message)
+async def chat_stream(body: ChatRequest, request: Request):
+    identity, sender = await _chat_context(request, body.sender)
+    result = await rasa_chat(sender, body.message, identity)
     result = await _enrich_policy_chunk(result, body.message)
     answer = result['answer']
 

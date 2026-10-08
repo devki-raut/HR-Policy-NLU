@@ -14,9 +14,135 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
 from actions.policy_store import index_path
+from actions.identity_store import save_verified_identity
 
 
 LOGGER = logging.getLogger(__name__)
+
+
+def _message_action(title: str, text: str) -> dict:
+    return {
+        "type": "Action.Submit",
+        "title": title,
+        "data": {
+            "msteams": {
+                "type": "messageBack",
+                "displayText": title,
+                "text": text,
+            }
+        },
+    }
+
+
+def _welcome_card(display_name: str | None = None) -> dict:
+    greeting = f"Hi {display_name}!" if display_name else "Hi!"
+    return {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+            {"type": "TextBlock", "text": greeting, "size": "Large", "weight": "Bolder"},
+            {
+                "type": "TextBlock",
+                "text": (
+                    "I’m EmployeeAssist. I can answer HR policy questions with sources, "
+                    "show your live leave balance, list upcoming holidays, and display "
+                    "the full annual holiday calendar."
+                ),
+                "wrap": True,
+            },
+            {"type": "TextBlock", "text": "Choose a quick action:", "weight": "Bolder", "wrap": True},
+        ],
+        "actions": [
+            _message_action("Help", "help"),
+            _message_action("My leave balance", "Show my leaves"),
+            _message_action("Next holidays", "Show the next 5 holidays"),
+            _message_action("Holiday calendar", "Show the full holiday list for this year"),
+            _message_action("Leave policy", "How many casual leaves are allowed?"),
+            _message_action("POSH", "How do I file a POSH complaint?"),
+        ],
+    }
+
+
+def _leave_balance_card(metadata: dict) -> dict:
+    facts = []
+    for item in metadata.get("balances") or []:
+        balance = item.get("available_balance")
+        if balance is None:
+            continue
+        name = str(item.get("leave_name") or "Leave")
+        for prefix in ("ESOL_ ", "Emergys_"):
+            if name.startswith(prefix):
+                name = name[len(prefix):]
+        facts.append({"title": name, "value": f"{balance} {item.get('unit') or 'days'}"})
+    body = [
+        {"type": "TextBlock", "text": "Your current leave balances", "size": "Medium", "weight": "Bolder"},
+        {"type": "FactSet", "facts": facts},
+    ]
+    if metadata.get("employee_mapping_fallback"):
+        body.append({
+            "type": "TextBlock",
+            "text": "Your email was not found in the employee directory, so the configured default employee profile was used.",
+            "wrap": True,
+            "isSubtle": True,
+        })
+    return {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": body,
+        "actions": [_message_action("Refresh", "Show my leaves")],
+    }
+
+
+def _holiday_card(metadata: dict) -> dict:
+    holidays = metadata.get("holidays") or []
+    requested = metadata.get("requested_count")
+    title = "Holiday calendar"
+    if metadata.get("mode") == "upcoming":
+        title = f"Next {len(holidays)} holidays"
+        if requested and len(holidays) < requested:
+            title = f"Last {len(holidays)} holidays of {metadata.get('year')}"
+    rows = [{
+        "type": "ColumnSet",
+        "separator": True,
+        "columns": [
+            {"type": "Column", "width": "auto", "items": [{"type": "TextBlock", "text": "Date", "weight": "Bolder"}]},
+            {"type": "Column", "width": "auto", "items": [{"type": "TextBlock", "text": "Day", "weight": "Bolder"}]},
+            {"type": "Column", "width": "stretch", "items": [{"type": "TextBlock", "text": "Holiday", "weight": "Bolder"}]},
+        ],
+    }]
+    for item in holidays:
+        rows.append({
+            "type": "ColumnSet",
+            "separator": True,
+            "columns": [
+                {"type": "Column", "width": "auto", "items": [{"type": "TextBlock", "text": str(item.get("date") or ""), "wrap": True}]},
+                {"type": "Column", "width": "auto", "items": [{"type": "TextBlock", "text": str(item.get("day") or ""), "wrap": True}]},
+                {"type": "Column", "width": "stretch", "items": [{"type": "TextBlock", "text": str(item.get("name") or ""), "wrap": True}]},
+            ],
+        })
+    body = [
+        {"type": "TextBlock", "text": title, "size": "Medium", "weight": "Bolder", "wrap": True},
+        *rows,
+    ]
+    if metadata.get("employee_mapping_fallback"):
+        body.append({
+            "type": "TextBlock",
+            "text": "Your email was not found in the employee directory, so the configured default employee profile was used.",
+            "wrap": True,
+            "isSubtle": True,
+        })
+    return {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": body,
+        "actions": [
+            _message_action("Next 5", "Show the next 5 holidays"),
+            _message_action("Full year", "Show the full holiday list for this year"),
+        ],
+    }
 
 
 async def _teams_identity(turn_context: TurnContext) -> dict:
@@ -50,7 +176,7 @@ async def _teams_identity(turn_context: TurnContext) -> dict:
     tenant = channel_data.get("tenant") if isinstance(channel_data, dict) else None
     tenant_id = tenant.get("id") if isinstance(tenant, dict) else None
 
-    return {
+    result = {
         "aad_object_id": aad_object_id,
         "email": email or user_principal_name,
         "user_principal_name": user_principal_name,
@@ -58,6 +184,9 @@ async def _teams_identity(turn_context: TurnContext) -> dict:
         "tenant_id": tenant_id,
         "teams_user_id": member_id,
     }
+    if aad_object_id and tenant_id:
+        save_verified_identity(result, "teams_bot_member")
+    return result
 
 
 def _evidence_card(evidence):
@@ -118,6 +247,17 @@ def _evidence_card(evidence):
 
 
 class TeamsBot(ActivityHandler):
+    async def on_members_added_activity(self, members_added, turn_context: TurnContext):
+        recipient_id = getattr(turn_context.activity.recipient, "id", None)
+        for member in members_added:
+            if getattr(member, "id", None) == recipient_id:
+                continue
+            identity = await _teams_identity(turn_context)
+            activity = MessageFactory.attachment(
+                CardFactory.adaptive_card(_welcome_card(identity.get("display_name")))
+            )
+            await turn_context.send_activity(activity)
+
     async def on_message_activity(self, turn_context: TurnContext):
         question = (turn_context.activity.text or "").strip()
         if not question:
@@ -125,6 +265,12 @@ class TeamsBot(ActivityHandler):
             return
         identity = await _teams_identity(turn_context)
         identity["channel"] = "msteams"
+        if question.casefold() in {"hi", "hello", "hey", "help", "what can you do"}:
+            activity = MessageFactory.attachment(
+                CardFactory.adaptive_card(_welcome_card(identity.get("display_name")))
+            )
+            await turn_context.send_activity(activity)
+            return
         sender = (
             identity.get("aad_object_id")
             or identity.get("teams_user_id")
@@ -155,13 +301,34 @@ class TeamsBot(ActivityHandler):
                 and isinstance(item.get("custom"), dict)
                 and item["custom"].get("type") == "policy_evidence"
             ]
+            leave_metadata = next((
+                item["custom"] for item in messages
+                if isinstance(item, dict)
+                and isinstance(item.get("custom"), dict)
+                and item["custom"].get("type") == "leave_balance_metadata"
+            ), None)
+            holiday_metadata = next((
+                item["custom"] for item in messages
+                if isinstance(item, dict)
+                and isinstance(item.get("custom"), dict)
+                and item["custom"].get("type") == "holiday_list_metadata"
+            ), None)
             if not texts and not evidence:
                 await turn_context.send_activity(
                     "I couldn't find a policy answer. Please rephrase your question."
                 )
                 return
-            for text in texts:
-                await turn_context.send_activity(text)
+            if leave_metadata and leave_metadata.get("status") == "answered":
+                await turn_context.send_activity(MessageFactory.attachment(
+                    CardFactory.adaptive_card(_leave_balance_card(leave_metadata))
+                ))
+            elif holiday_metadata and holiday_metadata.get("status") == "answered":
+                await turn_context.send_activity(MessageFactory.attachment(
+                    CardFactory.adaptive_card(_holiday_card(holiday_metadata))
+                ))
+            else:
+                for text in texts:
+                    await turn_context.send_activity(text)
             if evidence:
                 activity = MessageFactory.attachment(
                     CardFactory.adaptive_card(_evidence_card(evidence))

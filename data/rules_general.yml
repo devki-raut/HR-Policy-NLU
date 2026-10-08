@@ -4,6 +4,18 @@ rules:
   steps:
   - intent: greet
   - action: utter_greet
+- rule: Handle help
+  steps:
+  - intent: help
+  - action: utter_help
+- rule: Fetch upcoming holidays
+  steps:
+  - intent: ask_upcoming_holidays
+  - action: action_holiday_list
+- rule: Fetch full holiday list
+  steps:
+  - intent: ask_holiday_list
+  - action: action_holiday_list
 - rule: Handle goodbye
   steps:
   - intent: goodbye

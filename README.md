@@ -81,3 +81,31 @@ make run_deployment
 ```
 
 See `teams_app/README.md` for separate local and Docker commands.
+
+## Darwinbox employee report sync
+
+EmployeeAssist can rebuild `data/employee_directory.json` from a Darwinbox
+Report Builder report. Configure `DARWINBOX_REPORT_API_KEY`,
+`DARWINBOX_REPORT_ID`. It uses the shared Darwinbox Basic Auth credentials in
+`DARWINBOX_LEAVE_USERNAME` and `DARWINBOX_LEAVE_PASSWORD`, just like the leave
+and holiday APIs. The report must include an employee ID/code,
+an official/work email, and preferably an employee name. The directory report
+fields `Employee Id`, `First Name`, `Full Name`, `Last Name`, and
+`Official Email Id` are supported: the email becomes the lowercase directory key
+and `email`, the employee ID becomes `code` and `darwinbox_code`, and `Full Name`
+becomes `name` (falling back to first and last name). Company is included only
+when returned by the report. Rows without an employee ID or email are skipped.
+
+Run a manual refresh with:
+
+```bash
+make sync-employee-report
+```
+
+The normal local and Docker deployment starts a scheduler when these variables
+are configured. It refreshes at 16:30 Asia/Kolkata by default. Each successful
+refresh atomically replaces the active employee snapshot, so employees absent
+from the report are removed. The configured report is treated as the active
+employee dataset; generic report status fields are not interpreted as employment
+status. The guest profile is retained. Adjust the minute
+within the 4–5 PM window with `DARWINBOX_REPORT_SYNC_MINUTE`.

@@ -5,7 +5,11 @@ import os
 from dataclasses import dataclass
 from typing import Any, Mapping
 
-from .client import DarwinboxAPIError, DarwinboxClient, required
+from .client import (
+    DarwinboxAPIError,
+    DarwinboxClient,
+    DarwinboxConfigurationError,
+)
 
 
 @dataclass(frozen=True)

@@ -1,6 +1,8 @@
 import os
 import re
+from datetime import datetime
 from typing import Any, Dict, List, Text
+from zoneinfo import ZoneInfo
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -9,11 +11,39 @@ from .conversation_log import append_conversation
 from .darwinbox import (
     DarwinboxAPIError,
     DarwinboxConfigurationError,
+    fetch_holidays,
     fetch_leave_balance,
+    resolve_employee_id,
 )
 from .faq_matcher import find_faq, retrieve_policy_chunks
 
 FAQ_THRESHOLD = float(os.getenv("FAQ_EMBEDDING_THRESHOLD", "0.75"))
+
+
+def _employee_for_tracker(tracker):
+    metadata = tracker.latest_message.get("metadata") or {}
+    if not isinstance(metadata, dict):
+        metadata = {}
+    employee_no = resolve_employee_id(tracker.sender_id, metadata)
+    fallback = False
+    if not employee_no:
+        default_email = os.getenv("DEFAULT_EMPLOYEE_EMAIL", "guest").strip() or "guest"
+        employee_no = resolve_employee_id("guest", {"email": default_email})
+        employee_no = employee_no or (
+            os.getenv("DEFAULT_EMPLOYEE_CODE", "Ell0769").strip() or "Ell0769"
+        )
+        fallback = True
+    return employee_no, metadata, fallback
+
+
+def _fallback_notice(metadata, fallback):
+    if not fallback:
+        return ""
+    email = str(metadata.get("email") or metadata.get("user_principal_name") or "this account")
+    return (
+        f"\n\nNo employee-code mapping was found for {email}; "
+        "the configured default employee profile was used."
+    )
 
 
 def _requested_leave_names():
@@ -223,7 +253,10 @@ async def _personal_balance_answer(employee_id):
     return answer, balances
 
 
-def _personal_log(dispatcher, tracker, question, answer, status, integration_status, balances):
+def _personal_log(
+    dispatcher, tracker, question, answer, status, integration_status, balances,
+    employee_no=None, mapping_fallback=False,
+):
     intent_data = tracker.latest_message.get("intent", {})
     event_id = append_conversation({
         "user_id": tracker.sender_id,
@@ -238,6 +271,8 @@ def _personal_log(dispatcher, tracker, question, answer, status, integration_sta
         "status": status,
         "integration": "darwinbox",
         "integration_status": integration_status,
+        "employee_no_requested": employee_no,
+        "employee_mapping_fallback": mapping_fallback,
         "output": answer,
         "final_answer": answer,
         "source": "Darwinbox Leave Management API" if balances else None,
@@ -250,6 +285,8 @@ def _personal_log(dispatcher, tracker, question, answer, status, integration_sta
         "status": status,
         "integration": "darwinbox",
         "integration_status": integration_status,
+        "employee_no_requested": employee_no,
+        "employee_mapping_fallback": mapping_fallback,
         "balance_count": len(balances),
         "requested_leave_names": _requested_leave_names(),
         "not_returned_leave_names": _missing_leave_names(balances),
@@ -260,10 +297,6 @@ def _personal_log(dispatcher, tracker, question, answer, status, integration_sta
 
 
 class ActionPersonalLeaveBalance(Action):
-    # Temporary test identity requested for the leave-balance integration.
-    # Do not derive this value from chat input.
-    EMPLOYEE_NO = "Ell0769"
-
     def name(self) -> Text:
         return "action_personal_leave_balance"
 
@@ -282,8 +315,13 @@ class ActionPersonalLeaveBalance(Action):
                 "request_incomplete", [],
             )
             return []
+        employee_no = os.getenv("DEFAULT_EMPLOYEE_CODE", "Ell0769")
+        identity_metadata = {}
+        mapping_fallback = True
         try:
-            answer, balances = await _personal_balance_answer(self.EMPLOYEE_NO)
+            employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker)
+            answer, balances = await _personal_balance_answer(employee_no)
+            answer += _fallback_notice(identity_metadata, mapping_fallback)
             integration_status = "success"
         except DarwinboxConfigurationError:
             answer = "The Darwinbox leave-balance adapter is not configured yet. Please contact the application administrator."
@@ -295,7 +333,133 @@ class ActionPersonalLeaveBalance(Action):
             integration_status = "api_error"
 
         dispatcher.utter_message(text=answer)
-        _personal_log(dispatcher, tracker, question, answer, status, integration_status, balances)
+        _personal_log(
+            dispatcher, tracker, question, answer, status, integration_status,
+            balances, employee_no, mapping_fallback,
+        )
+        return []
+
+
+class ActionHolidayList(Action):
+    def name(self) -> Text:
+        return "action_holiday_list"
+
+    async def run(self, dispatcher, tracker, domain):
+        question = tracker.latest_message.get("text", "").strip()
+        intent_data = tracker.latest_message.get("intent", {})
+        intent = intent_data.get("name")
+        today = datetime.now(ZoneInfo("Asia/Kolkata")).date()
+        year_match = re.search(r"\b(20\d{2})\b", question)
+        explicit_year = year_match is not None
+        year = int(year_match.group(1)) if year_match else today.year
+        full_year = intent == "ask_holiday_list" or bool(re.search(
+            r"\b(all|full|complete|entire|annual|yearly|every)\b", question.casefold()
+        ))
+        count_match = re.search(r"\b(?:next|upcoming)\s+(\d+)\b", question.casefold())
+        limit = max(1, min(int(count_match.group(1)), 20)) if count_match else 5
+        holidays = []
+        status = "answered"
+        integration_status = "success"
+        employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker)
+        try:
+            holidays, _raw = await fetch_holidays(employee_no, year)
+            selected = (
+                [item for item in holidays if item.date.year == year]
+                if full_year
+                else [item for item in holidays if item.date >= today][:limit]
+            )
+            # An unqualified "next N" request can cross the calendar-year
+            # boundary. Fetch the following year only when the current year
+            # does not contain enough remaining holidays.
+            if not full_year and not explicit_year and len(selected) < limit:
+                try:
+                    next_year_holidays, _next_raw = await fetch_holidays(
+                        employee_no, year + 1
+                    )
+                except (DarwinboxConfigurationError, DarwinboxAPIError):
+                    next_year_holidays = []
+                seen = {(item.date, item.name.casefold()) for item in selected}
+                for item in next_year_holidays:
+                    key = (item.date, item.name.casefold())
+                    if key not in seen:
+                        selected.append(item)
+                        seen.add(key)
+                    if len(selected) >= limit:
+                        break
+            if selected:
+                if full_year:
+                    heading = f"Holiday list for {year}:"
+                elif len(selected) < limit:
+                    heading = (
+                        f"Last {len(selected)} holidays of {year}:"
+                    )
+                else:
+                    heading = f"Next {limit} holidays:"
+                rows = [
+                    f"| {item.date.strftime('%d %b %Y')} | "
+                    f"{item.day or item.date.strftime('%A')} | {item.name} |"
+                    for item in selected
+                ]
+                answer = "\n".join([
+                    heading,
+                    "",
+                    "| Date | Day | Holiday |",
+                    "|---|---|---|",
+                    *rows,
+                ]) + _fallback_notice(identity_metadata, mapping_fallback)
+            else:
+                status = "no_holidays_found"
+                answer = (
+                    f"Darwinbox did not return any {'holidays for ' + str(year) if full_year else 'upcoming holidays'}."
+                )
+        except DarwinboxConfigurationError:
+            status = "integration_unavailable"
+            integration_status = "not_configured"
+            answer = "The Darwinbox holiday-list API is not configured yet. Please contact the application administrator."
+            selected = []
+        except DarwinboxAPIError:
+            status = "integration_unavailable"
+            integration_status = "not_authorized_or_api_error"
+            answer = (
+                "The Darwinbox holiday-list API is not enabled for this application yet. "
+                "Please contact the application administrator."
+            )
+            selected = []
+
+        dispatcher.utter_message(text=answer)
+        event_id = append_conversation({
+            "user_id": tracker.sender_id,
+            "channel": tracker.get_latest_input_channel(),
+            "question": question,
+            "routing_intent": intent,
+            "routing_confidence": intent_data.get("confidence"),
+            "detailed_intent": "holiday_list",
+            "answer_mode": "darwinbox_api",
+            "status": status,
+            "integration": "darwinbox",
+            "integration_status": integration_status,
+            "employee_no_requested": employee_no,
+            "employee_mapping_fallback": mapping_fallback,
+            "output": answer,
+            "final_answer": answer,
+            "source": "Darwinbox Holiday List API" if selected else None,
+            "context_ids": [],
+            "contexts": [item.as_dict() for item in selected],
+        })
+        dispatcher.utter_message(json_message={
+            "type": "holiday_list_metadata",
+            "event_id": event_id,
+            "status": status,
+            "integration": "darwinbox",
+            "integration_status": integration_status,
+            "employee_no_requested": employee_no,
+            "employee_mapping_fallback": mapping_fallback,
+            "year": year,
+            "mode": "full_year" if full_year else "upcoming",
+            "requested_count": None if full_year else limit,
+            "returned_count": len(selected),
+            "holidays": [item.as_dict() for item in selected],
+        })
         return []
 
 

@@ -10,9 +10,14 @@ from .darwinbox_adapters import (
     DarwinboxClient,
     DarwinboxConfigurationError,
     EmployeeDirectoryAdapter,
+    EmployeeReportAdapter,
+    Holiday,
+    HolidayListAdapter,
     LeaveBalance,
     LeaveBalanceAdapter,
     parse_employee_records,
+    parse_employee_report,
+    parse_holidays,
     parse_leave_balances,
 )
 from .darwinbox_adapters.service import (
@@ -47,10 +52,15 @@ async def fetch_leave_balance(employee_id: str) -> tuple[list[LeaveBalance], Any
     return await LeaveBalanceAdapter().fetch(employee_id)
 
 
+async def fetch_holidays(employee_id: str, year: int) -> tuple[list[Holiday], Any]:
+    return await HolidayListAdapter().fetch(employee_id, year)
+
+
 __all__ = [
-    "DarwinboxAPIError", "DarwinboxConfigurationError", "EmployeeDirectoryAdapter",
+    "DarwinboxAPIError", "DarwinboxConfigurationError", "EmployeeDirectoryAdapter", "EmployeeReportAdapter",
     "EmployeeResolution", "LeaveBalance", "awaiting_employee_code",
-    "extract_employee_code", "fetch_leave_balance", "parse_employee_records",
+    "extract_employee_code", "fetch_holidays", "fetch_leave_balance", "parse_employee_records",
+    "parse_holidays", "parse_employee_report",
     "parse_leave_balances", "remember_employee_code", "resolve_employee",
     "resolve_employee_id",
 ]

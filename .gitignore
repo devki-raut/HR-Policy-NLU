@@ -19,6 +19,7 @@ tests/
 results/
 teams_app/config.local.json
 teams_app/dist/
+data/employee_directory.json
 
 .venv-runtime/
 policies/pdfs/

@@ -63,5 +63,9 @@
   "permissions": [
     "identity",
     "messageTeamMembers"
-  ]
+  ],
+  "webApplicationInfo": {
+    "id": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
+    "resource": "api://dockerpoc-webapp01.azurewebsites.net/9e65e729-0e91-4a00-a03d-e8b9d3e9e841"
+  }
 }
