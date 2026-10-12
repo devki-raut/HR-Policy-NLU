@@ -1,0 +1,162 @@
+version: '3.1'
+nlu:
+- intent: contact_support
+  examples: '- contact support
+
+    - contact helpdesk
+
+    - email IT
+
+    - raise a ticket
+
+    - create IT ticket
+
+    - report an IT issue
+
+    - I need technical assistance
+
+    - connect me with support
+
+    - send a mail to helpdesk
+
+    - Outlook is not working please raise a ticket
+
+    - contct suport
+
+    - rase a tiket
+
+    - creat it tickt
+
+    - contact the IT team
+
+    - prepare a helpdesk email
+
+    - send support an email
+
+    - please get me in touch with the help desk
+
+    - get me in touch with IT
+
+    - put me in contact with support
+
+    - I want to email the help desk
+
+    - open a support request
+
+    - log a technical ticket
+
+    - please create a service request
+
+    - can you draft a mail to IT
+
+    - I need to reach the helpdesk team
+
+    - please contact support for me
+
+    - help desk ticket please
+
+    - conact suport
+
+    - emal it suport
+
+    - raise an IT support ticket
+
+    - reach out to technical support
+
+    '
+- intent: report_it_issue
+  examples: '- Outlook is not working
+
+    - outlok not wrking
+
+    - I cannot sign in to Outlook
+
+    - cant login to outlook
+
+    - my laptop will not start
+
+    - VPN connection failed
+
+    - my internet keeps disconnecting
+
+    - Teams crashes when I open it
+
+    - the printer is broken
+
+    - Darwinbox shows an error when I log in
+
+    - my computer freezes
+
+    - my password is not accepted
+
+    - wifi isnt working
+
+    - I am unable to access my email
+
+    - screen is blank on my laptop
+
+    - my keyboard stopped working
+
+    '
+- intent: ask_support_contact
+  examples: '- what is the support email
+
+    - what is the helpdesk address
+
+    - how do I contact IT
+
+    - who can help with technical problems
+
+    - what is IT support phone number
+
+    '
+- intent: ticket_cancel
+  examples: '- cancel
+
+    - never mind
+
+    - stop this ticket
+
+    - discard the draft
+
+    - dont create ticket
+
+    - no
+
+    - no thanks
+
+    '
+- intent: ticket_edit_subject
+  examples: '- edit subject
+
+    - change the email subject
+
+    '
+- intent: ticket_edit_body
+  examples: '- edit body
+
+    - change the email body
+
+    - let me write the email
+
+    '
+- intent: ticket_opened
+  examples: '- draft opened
+
+    - I opened Outlook
+
+    '
+- intent: ticket_confirm
+  examples: '- yes
+
+    - yes please
+
+    - sure
+
+    - go ahead
+
+    - okay prepare it
+
+    - please do
+
+    '

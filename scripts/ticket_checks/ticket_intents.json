@@ -1,0 +1,54 @@
+[
+  {
+    "text": "contact support",
+    "intent": "contact_support"
+  },
+  {
+    "text": "creat it tickt",
+    "intent": "contact_support"
+  },
+  {
+    "text": "Outlook is not working",
+    "intent": "report_it_issue"
+  },
+  {
+    "text": "outlok not wrking",
+    "intent": "report_it_issue"
+  },
+  {
+    "text": "my laptop will not start",
+    "intent": "report_it_issue"
+  },
+  {
+    "text": "what is the support email",
+    "intent": "ask_support_contact"
+  },
+  {
+    "text": "Show my leaves",
+    "intent": "ask_personal_leave_balance"
+  },
+  {
+    "text": "Show the next five holidays",
+    "intent": "ask_upcoming_holidays"
+  },
+  {
+    "text": "How many casual leaves are allowed?",
+    "intent": "policy_general_leave"
+  },
+  {
+    "text": "zqxv ??? 9834",
+    "intent": "out_of_scope"
+  },
+  {
+    "text": "please get me in touch with the help desk",
+    "intent": "contact_support"
+  },
+  {
+    "text": "my VPN won't connect anymore",
+    "intent": "report_it_issue"
+  },
+  {
+    "text": "what are the rules for remote working",
+    "intent": "ask_remote_work"
+  }
+]

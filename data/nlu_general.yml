@@ -247,6 +247,38 @@ nlu:
 
     - Order lunch
 
+    - zqxv ??? 9834
+
+    - asdf qwer
+
+    - zxqv
+
+    - jklq zxmn 7733
+
+    - ????
+
+    - 12345 ???
+
+    - qwertyuiop
+
+    - blah blah random nonsense
+
+    - zxcvb asdfg
+
+    - qzxw 8726
+
+    - akjsdhaksjdh
+
+    - %%%% ###
+
+    - aaaa bbbb cccc
+
+    - lksdjf 4523
+
+    - qwzxjkl
+
+    - asdfghjkl 9999
+
     '
 - intent: ask_personal_leave_balance
   examples: '- What is my leave balance?

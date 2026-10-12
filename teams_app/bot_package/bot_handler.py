@@ -8,6 +8,8 @@ from urllib.parse import quote
 import httpx
 from botbuilder.core import ActivityHandler, CardFactory, MessageFactory, TurnContext
 from botbuilder.core.teams import TeamsInfo
+from botbuilder.schema import OAuthCard, CardAction, ActionTypes
+from teams_app.bot_package.ticket_mail import MailError, owner as mail_owner, create_draft, update_draft, send_draft, cancel_draft
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
@@ -47,7 +49,7 @@ def _welcome_card(display_name: str | None = None) -> dict:
                 "text": (
                     "I’m EmployeeAssist. I can answer HR policy questions with sources, "
                     "show your live leave balance, list upcoming holidays, and display "
-                    "the full annual holiday calendar."
+                    "the full annual holiday calendar, and prepare IT helpdesk emails."
                 ),
                 "wrap": True,
             },
@@ -55,6 +57,7 @@ def _welcome_card(display_name: str | None = None) -> dict:
         ],
         "actions": [
             _message_action("Help", "help"),
+            _message_action("Create IT ticket", "Create IT ticket"),
             _message_action("My leave balance", "Show my leaves"),
             _message_action("Next holidays", "Show the next 5 holidays"),
             _message_action("Holiday calendar", "Show the full holiday list for this year"),
@@ -143,6 +146,43 @@ def _holiday_card(metadata: dict) -> dict:
             _message_action("Full year", "Show the full holiday list for this year"),
         ],
     }
+
+
+def _ticket_card(draft, request_id=None):
+    card = {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json", "type": "AdaptiveCard", "version": "1.4",
+        "body": [
+            {"type": "TextBlock", "text": "IT helpdesk draft", "weight": "Bolder"},
+            {"type": "TextBlock", "text": "To: " + draft['to'], "wrap": True},
+            {"type": "TextBlock", "text": "Subject: " + draft['subject'], "wrap": True},
+            {"type": "TextBlock", "text": draft['body'], "wrap": True},
+            {"type": "TextBlock", "text": "Review the draft and send it from Outlook. Outlook uses its selected sending account.", "wrap": True},
+        ],
+        "actions": [
+            {"type": "Action.OpenUrl", "title": "Open in Outlook", "url": draft.get('outlook_url', '')},
+            _message_action("Edit subject", "edit subject"),
+            _message_action("Edit body", "edit body"),
+            _message_action("Cancel", "cancel"),
+        ],
+    }
+
+    if request_id:
+        card['body'] = [
+            {'type': 'TextBlock', 'text': 'To: helpdesk@emergys.com', 'weight': 'Bolder'},
+            {'type': 'Input.Text', 'id': 'ticket_subject', 'label': 'Subject', 'value': draft['subject'], 'maxLength': 180, 'isRequired': True, 'errorMessage': 'Enter a subject.'},
+            {'type': 'Input.Text', 'id': 'ticket_body', 'label': 'Body', 'value': draft['body'], 'isMultiline': True, 'maxLength': 6000, 'isRequired': True, 'errorMessage': 'Enter a message.'},
+            {'type': 'TextBlock', 'text': 'Raise a request sends the edited email from your authorized Microsoft account. Open in Outlook opens the prepared draft for review and manual sending; edits made here are not included in that link.', 'wrap': True},
+        ]
+        cancel = {'type': 'Action.Submit', 'title': 'Cancel', 'associatedInputs': 'none', 'data': {'command': 'ticket_cancel_send', 'request_id': request_id}}
+        card['actions'] = [
+            {'type': 'Action.Submit', 'title': 'Raise a request', 'data': {'command': 'ticket_send', 'request_id': request_id}},
+            cancel,
+        ]
+        if draft.get('outlook_url'):
+            card['actions'].insert(1, {
+                'type': 'Action.OpenUrl', 'title': 'Open in Outlook', 'url': draft['outlook_url'],
+            })
+    return card
 
 
 async def _teams_identity(turn_context: TurnContext) -> dict:
@@ -258,8 +298,58 @@ class TeamsBot(ActivityHandler):
             )
             await turn_context.send_activity(activity)
 
+    async def on_token_response_event(self, turn_context):
+        connection = os.getenv('TEAMS_MAIL_OAUTH_CONNECTION', '').strip()
+        token = await turn_context.adapter.get_user_token(turn_context, connection) if connection else None
+        await turn_context.send_activity('Outlook authorization completed. Return to your draft and click Raise a request.' if token and token.token else 'Outlook authorization is not complete. Please sign in before raising the request.')
+
+    async def on_sign_in_invoke(self, turn_context):
+        connection = os.getenv('TEAMS_MAIL_OAUTH_CONNECTION', '').strip()
+        state = (turn_context.activity.value or {}).get('state')
+        token = await turn_context.adapter.get_user_token(turn_context, connection, magic_code=state) if connection else None
+        await turn_context.send_activity('Outlook authorization completed. Click Raise a request on your draft.' if token and token.token else 'Authorization is not complete. Sign in and try Raise a request again.')
+
+    async def _raise_ticket(self, turn_context, values):
+        try:
+            identity = await _teams_identity(turn_context)
+            identity_owner = mail_owner(identity, turn_context.activity.conversation.id)
+            update_draft(str(values.get('request_id') or ''), identity_owner, values.get('ticket_subject'), values.get('ticket_body'))
+            connection = os.getenv('TEAMS_MAIL_OAUTH_CONNECTION', '').strip()
+            if not connection:
+                raise MailError('Direct sending is not configured. An administrator must configure TEAMS_MAIL_OAUTH_CONNECTION with delegated Microsoft Graph Mail.Send permission.')
+            token = await turn_context.adapter.get_user_token(turn_context, connection)
+            if not token or not token.token:
+                resource = await turn_context.adapter.get_sign_in_resource_from_user(turn_context, connection, turn_context.activity.from_property.id)
+                await turn_context.send_activity(MessageFactory.attachment(CardFactory.oauth_card(OAuthCard(
+                    connection_name=connection, title='Authorize Outlook',
+                    text='Sign in to authorize sending from your mailbox, then click Raise a request again on the draft.',
+                    buttons=[CardAction(type=ActionTypes.signin, title='Sign in', value=resource.sign_in_link)],
+                ))))
+                return
+            await send_draft(str(values['request_id']), identity_owner, token.token, identity['aad_object_id'])
+            await turn_context.send_activity('Outlook accepted your email to helpdesk@emergys.com for sending. A copy is saved in Sent Items.')
+        except MailError as exc:
+            await turn_context.send_activity(str(exc))
+        except Exception:
+            LOGGER.error('Teams ticket authorization or send failed')
+            await turn_context.send_activity('Could not complete the request. Your draft is retained. Check Sent Items before retrying.')
+
     async def on_message_activity(self, turn_context: TurnContext):
+        values = turn_context.activity.value
+        if isinstance(values, dict) and values.get('command') == 'ticket_cancel_send':
+            try:
+                identity = await _teams_identity(turn_context)
+                cancel_draft(str(values.get('request_id') or ''), mail_owner(identity, turn_context.activity.conversation.id))
+                await turn_context.send_activity('IT draft cancelled.')
+            except MailError as exc:
+                await turn_context.send_activity(str(exc))
+            return
+        if isinstance(values, dict) and values.get('command') == 'ticket_send':
+            await self._raise_ticket(turn_context, values)
+            return
         question = (turn_context.activity.text or "").strip()
+        if not question and isinstance(turn_context.activity.value, dict):
+            question = str(turn_context.activity.value.get("command") or "").strip()
         if not question:
             await turn_context.send_activity("Please enter an HR policy question.")
             return
@@ -313,6 +403,17 @@ class TeamsBot(ActivityHandler):
                 and isinstance(item.get("custom"), dict)
                 and item["custom"].get("type") == "holiday_list_metadata"
             ), None)
+            ticket = next((item.get('custom') for item in messages if isinstance(item.get('custom'), dict) and item['custom'].get('type') == 'ticket_draft'), None)
+            if ticket:
+                await turn_context.send_activity(MessageFactory.attachment(CardFactory.adaptive_card(_ticket_card(ticket, create_draft(mail_owner(identity, turn_context.activity.conversation.id), ticket['subject'], ticket['body'])))))
+                return
+            choices = [choice for item in messages for choice in item.get('buttons', [])]
+            if choices:
+                card = {"type": "AdaptiveCard", "version": "1.4", "body": [{"type": "TextBlock", "text": text, "wrap": True} for text in texts], "actions": [_message_action(choice['title'], choice['payload']) for choice in choices]}
+                await turn_context.send_activity(MessageFactory.attachment(CardFactory.adaptive_card(card)))
+                return
+            if not texts and any(item.get('custom', {}).get('type') == 'ticket_state' for item in messages if isinstance(item.get('custom'), dict)):
+                return
             if not texts and not evidence:
                 await turn_context.send_activity(
                     "I couldn't find a policy answer. Please rephrase your question."

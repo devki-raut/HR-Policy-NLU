@@ -480,3 +480,6 @@ class ActionRememberEmployeeCode(Action):
             "fixed_test_employee", [],
         )
         return []
+
+# Register the IT draft actions with the action server.
+from .tickets import (ActionStartTicket, ActionOfferTicket, ValidateTicketForm, ActionDraftTicket, ActionEditTicket, ActionSaveTicketEdit, ActionCloseTicket)

@@ -109,3 +109,44 @@ from the report are removed. The configured report is treated as the active
 employee dataset; generic report status fields are not interpreted as employment
 status. The guest profile is retained. Adjust the minute
 within the 4–5 PM window with `DARWINBOX_REPORT_SYNC_MINUTE`.
+
+## IT helpdesk drafts
+
+Use **Create IT ticket** in the web app or Teams welcome card, or ask to
+contact support. An issue report offers confirmation before starting a Rasa
+form. The form collects the problem, error or behaviour, and start
+time; “not sure” is accepted. The preview contains separate subject and body
+fields, addressed to `helpdesk@emergys.com`, with edit and cancel controls.
+Templates retain supplied facts and add no generation model.
+A small routing guard distinguishes support-address questions and clear
+application failures; policy-marked messages retain policy routing or clarify. Long messages
+remain editable. No mail is sent by the application.
+
+Web quick actions send ordinary chat text. When the final details arrive, the
+web app opens the prepared Outlook draft in a tab reserved during the user
+gesture, without adding a draft-opened acknowledgement to chat. If popups are blocked, an in-app
+preview dialog offers an explicit Open in Outlook button. Teams users open Outlook,
+and use the draft card’s Open in Outlook, Edit subject, Edit body, and Cancel
+buttons. The form has already ended when the preview is produced. Outlook's selected mailbox determines the sender.
+Signatures use verified Microsoft identity; guests default to Ojas Kulkarni
+and `ojas.kulkarni@emergys.com`. No Graph scopes are needed for compose links.
+
+Run draft logic checks with:
+
+```bash
+.venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p test_tickets.py
+```
+
+`scripts/ticket_checks/ticket_intents.json` includes routing probes for support, policies,
+leave balances, holidays, typo examples and gibberish. Retrain Rasa after
+changing `data/nlu_tickets.yml` or `data/rules_tickets.yml`.
+
+With the local services running and guest chat enabled, run the routing and
+conversation checks with:
+
+```bash
+.venv-runtime/bin/python scripts/ticket_checks/check_live.py
+```
+
+These tests prepare and discard local conversation drafts. They do not open
+Outlook, send mail, or query the employee directory.

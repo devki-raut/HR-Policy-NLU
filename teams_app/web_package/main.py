@@ -38,6 +38,8 @@ if load_dotenv is not None:
 from teams_app.web_package.jupyter import router as jupyter_router
 
 app.include_router(jupyter_router)
+from teams_app.web_package.ticket_mail import router as ticket_mail_router
+app.include_router(ticket_mail_router)
 
 STATIC = Path(__file__).resolve().parent / 'static'
 APP_PACKAGE = PROJECT_ROOT / 'teams_app' / 'app_package'
@@ -84,8 +86,8 @@ class ChatRequest(BaseModel):
 
 def _guest_identity():
     return {
-        'email': os.getenv('GUEST_EMPLOYEE_EMAIL', 'guest'),
-        'display_name': 'Guest',
+        'email': os.getenv('GUEST_EMPLOYEE_EMAIL', 'ojas.kulkarni@emergys.com'),
+        'display_name': 'Ojas Kulkarni',
         'channel': 'web_guest',
         'is_guest': True,
     }

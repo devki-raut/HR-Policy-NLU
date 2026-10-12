@@ -6,3 +6,11 @@
 .result-card strong{display:block;margin-bottom:10px}.result-card table{width:100%;border-collapse:collapse}.result-card th,.result-card td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}.result-card th{font-size:13px;opacity:.8}
 .auth-panel{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--surface);margin:18px 0}.auth-panel p{margin:8px 0 16px}.auth-panel button{background:var(--accent);color:#fff}.auth-panel[hidden],#chat-ui[hidden]{display:none}
 .session-controls{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:8px 0 12px}.session-controls span{font-size:13px;opacity:.8}.session-controls button{padding:6px 10px;font-size:13px}
+
+#ticket-preview-dialog {
+  width: min(760px, 90vw);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+#ticket-preview-dialog::backdrop { background: rgb(0 0 0 / 35%); }
+#ticket-preview-dialog .result-card { margin-top: 16px; }

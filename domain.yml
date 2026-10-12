@@ -21,6 +21,14 @@ intents:
 - policy_posh
 - policy_general_leave
 - policy_referral
+- contact_support
+- report_it_issue
+- ask_support_contact
+- ticket_cancel
+- ticket_edit_subject
+- ticket_edit_body
+- ticket_opened
+- ticket_confirm
 responses:
   utter_greet:
   - text: 'Hi! Ask me about leave, remote work, benefits, expenses, conduct or onboarding.
@@ -32,25 +40,122 @@ responses:
   - text: EmployeeAssist can answer grounded HR policy questions, show your live Darwinbox
       leave balance, list upcoming holidays, and display the full holiday calendar.
       Try “Show my leaves”, “Show the next five holidays”, or ask a policy question.
+      Say “Create IT ticket” to prepare a helpdesk email.
   utter_goodbye:
   - text: Goodbye! Contact HR if you need help with your individual circumstances.
   utter_out_of_scope:
-  - text: 'I can explain HR policies, but cannot access employee records or perform
-
-      HR transactions. Please ask a policy question or contact HR.
-
-      '
+  - text: I could not identify an HR policy question or IT issue. Please rephrase,
+      or choose Create IT ticket to prepare a helpdesk email.
   utter_clarify:
-  - text: 'Could you rephrase with a specific topic: leave, remote work, benefits,
-
-      expenses, conduct or onboarding?
-
-      '
+  - text: Could you clarify? I can help with HR policies, leave balances, holidays,
+      or preparing an IT support email.
+  utter_ask_ticket_details:
+  - text: Describe the IT issue or request, including the application or device. For
+      example, request GitHub organization access. You can cancel at any time.
+  utter_ask_ticket_started:
+  - text: When did this start? You can say “not sure”.
+  utter_ask_ticket_edit_value:
+  - text: Enter the replacement subject or complete body. For long issues, write your
+      full message here. You can cancel.
+  utter_support_contact:
+  - text: For IT support, email helpdesk@emergys.com. Say “Create IT ticket” to prepare
+      a draft.
+  utter_ask_ticket_error:
+  - text: What error appears, or what happens when you try? You can say “no error”
+      or “not sure”.
 actions:
 - action_answer_policy
 - action_personal_leave_balance
 - action_holiday_list
 - action_remember_employee_code
+- action_offer_ticket
+- validate_ticket_form
+- action_draft_ticket
+- action_edit_ticket
+- action_save_ticket_edit
+- action_close_ticket
+- action_start_ticket
 session_config:
   session_expiration_time: 30
   carry_over_slots_to_new_session: false
+forms:
+  ticket_form:
+    required_slots:
+    - ticket_details
+    - ticket_error
+    - ticket_started
+  ticket_edit_form:
+    required_slots:
+    - ticket_edit_value
+slots:
+  ticket_details:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      not_intent:
+      - ticket_cancel
+      - ticket_edit_subject
+      - ticket_edit_body
+      - ticket_opened
+      conditions:
+      - active_loop: ticket_form
+        requested_slot: ticket_details
+  ticket_started:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      not_intent:
+      - ticket_cancel
+      - ticket_edit_subject
+      - ticket_edit_body
+      - ticket_opened
+      conditions:
+      - active_loop: ticket_form
+        requested_slot: ticket_started
+  ticket_edit_value:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      not_intent:
+      - ticket_cancel
+      - ticket_edit_subject
+      - ticket_edit_body
+      - ticket_opened
+      conditions:
+      - active_loop: ticket_edit_form
+        requested_slot: ticket_edit_value
+  ticket_subject:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  ticket_body:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  ticket_edit_target:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  ticket_pending:
+    type: bool
+    initial_value: false
+    influence_conversation: true
+    mappings:
+    - type: custom
+  ticket_error:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      not_intent:
+      - ticket_cancel
+      - ticket_opened
+      conditions:
+      - active_loop: ticket_form
+        requested_slot: ticket_error

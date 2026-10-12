@@ -65,7 +65,7 @@ def main():
         "goodbye", "ask_leave", "ask_remote_work", "ask_benefits",
         "ask_expenses", "ask_conduct", "ask_onboarding", "ask_personal_leave_balance", "provide_employee_code", "out_of_scope", "nlu_fallback",
     ]
-    domain["intents"] = general_intents + list(mapping.keys())
+    domain["intents"] = list(dict.fromkeys(general_intents + list(mapping.keys()) + domain.get("intents", [])))
     domain_path.write_text(
         yaml.safe_dump(domain, sort_keys=False, allow_unicode=True),
         encoding="utf-8",

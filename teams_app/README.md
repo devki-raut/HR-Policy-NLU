@@ -156,3 +156,59 @@ DARWINBOX_HOLIDAY_API_KEY=<holiday-api-key>
 The current test deployment requests holidays for employee `Ell0769`. The bot
 returns the next five holidays by default, accepts a requested count, and can
 return the complete calendar for a year.
+
+## Send IT requests directly from Teams
+
+Teams ticket previews now contain editable **Subject** and **Body** fields and
+**Raise a request** / **Cancel** buttons. Raise sends the submitted text to the
+fixed `helpdesk@emergys.com` recipient through Microsoft Graph `/me/sendMail`.
+The web app shows the email preview with **Raise a request** and **Open in
+Outlook**. Raise sends through Graph after Microsoft sign-in and delegated
+mailbox consent; Open in Outlook opens the prepared draft for manual sending.
+For web sending, grant the web Entra app delegated **User.Read** and
+**Mail.Send** permissions and the required consent. Register the web app URL as
+a **Single-page application** redirect URI. The existing `ENTRA_CLIENT_ID`
+and `ENTRA_TENANT_ID` identify this app; the Teams OAuth connection alone does
+not configure browser authorization. No client secret belongs in browser code.
+Guest users can open Outlook but cannot send through the direct-send API.
+No LLM or Copilot is required.
+
+An Azure administrator must configure mailbox authorization before direct
+sending is available:
+
+1. Create or use a single-tenant Microsoft Entra app registration for mailbox
+   authorization. Copy its actual Application (client) ID and Directory
+   (tenant) ID; do not use placeholders or invent IDs.
+2. Register the **Web** redirect URI shown in the Azure Bot OAuth setup
+   (normally `https://token.botframework.com/.auth/web/redirect`). Use the
+   portal-provided URI for the deployment region.
+3. Add delegated Microsoft Graph **User.Read** and **Mail.Send** permissions.
+   Obtain consent according to your organization's policy. Create a client
+   secret and store it in the Azure OAuth connection, not in a chat message.
+4. In **Azure Bot → Settings → Configuration → OAuth Connection Settings**,
+   add a connection named `EmployeeAssistMail` using **Azure Active Directory
+   v2**. Supply the app's actual client ID, client secret and tenant ID. Set
+   scopes to `User.Read Mail.Send offline_access`. Test the connection.
+5. Set `TEAMS_MAIL_OAUTH_CONNECTION=EmployeeAssistMail` in the deployment's
+   environment and restart the app.
+6. In Teams, prepare a ticket and click Raise a request. On first use, authorize
+   Outlook with the same account used in Teams, then click Raise a request
+   again on the retained draft. Subsequent authorized clicks send directly.
+
+Authorization alone never sends an email. The sender comes from the delegated
+Graph token and is checked against the authenticated Teams Microsoft object
+ID. Guest sessions cannot send as Ojas. Draft records are bound to the user,
+tenant and Teams conversation; tokens are not stored by this feature. Draft
+records expire after seven days when new drafts are created. Duplicate clicks
+are blocked. An ambiguous network failure is not automatically retried: check
+Sent Items first. Graph `202 Accepted` means accepted for sending, not confirmed
+delivery or creation of a downstream helpdesk ticket.
+
+Run local tests (Graph calls are mocked; no email is sent):
+
+```bash
+.venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p 'test*.py'
+```
+
+References: [Graph sendMail](https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0)
+and [Bot authentication setup](https://learn.microsoft.com/en-us/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0).

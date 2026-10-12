@@ -14,6 +14,8 @@ const signOut = document.querySelector('#sign-out');
 const sessionLabel = document.querySelector('#session-label');
 let sender = crypto.randomUUID();
 let busy = false;
+let ticketConversation = false;
+let ticketStep = null;
 let microsoftToken = null;
 let authConfig = null;
 let msalClient = null;
@@ -156,6 +158,79 @@ function appendEvidenceButton(chunks) {
   messages.append(wrapper);
   wrapper.scrollIntoView({behavior: 'smooth', block: 'nearest'});
 }
+function ticketCommand(command) {
+  if (!busy) { question.value = command; submit(); }
+}
+function appendTicket(result) {
+  const draft = (result.messages || []).find(item => item.custom?.type === 'ticket_draft')?.custom;
+  if (!draft) return false;
+  const card = document.createElement('article');
+  card.className = 'assistant result-card';
+  const heading = document.createElement('strong'); heading.textContent = `To: ${draft.to}`;
+  const subject = document.createElement('p'); subject.textContent = `Subject: ${draft.subject}`;
+  const body = document.createElement('pre'); body.textContent = draft.body; body.style.whiteSpace = 'pre-wrap';
+  const note = document.createElement('p'); note.textContent = 'Raise a request sends from your authorized Microsoft mailbox. Open in Outlook lets you review and send manually.';
+  card.append(heading, subject, body, note);
+  if (draft.manual_edit_recommended) {
+    const tip = document.createElement('p'); tip.textContent = 'You can review the complete message in Outlook before sending.'; card.append(tip);
+  }
+  const open = document.createElement('a'); open.textContent = 'Open in Outlook'; open.href = draft.outlook_url; open.target = '_blank'; open.rel = 'noopener noreferrer';
+  open.addEventListener('click', event => {
+    if (busy) {event.preventDefault(); return;}
+    ticketConversation = false;
+  });
+  const raise = document.createElement('button'); raise.type = 'button'; raise.textContent = 'Raise a request';
+  let requestId = null;
+  raise.onclick = async () => {
+    if (!microsoftToken) { note.textContent = 'Sign in with Microsoft before raising a request. You can also open Outlook to send manually.'; return; }
+    raise.disabled = true;
+    try {
+      if (!msalClient) {
+        msalClient = new msal.PublicClientApplication({auth: {
+          clientId: authConfig.client_id,
+          authority: `https://login.microsoftonline.com/${authConfig.tenant_id}`,
+          redirectUri: window.location.origin + window.location.pathname,
+        }, cache: {cacheLocation: 'sessionStorage'}});
+      }
+      const scopes = ['https://graph.microsoft.com/User.Read', 'https://graph.microsoft.com/Mail.Send'];
+      let mailToken;
+      if (activeAccount) {
+        try { mailToken = await msalClient.acquireTokenSilent({account: activeAccount, scopes}); }
+        catch (_) { mailToken = await msalClient.acquireTokenPopup({account: activeAccount, scopes}); }
+      } else {
+        mailToken = await msalClient.acquireTokenPopup({scopes, loginHint: sessionLabel.textContent});
+      }
+      const headers = {'Content-Type': 'application/json', Authorization: `Bearer ${microsoftToken}`};
+      if (!requestId) {
+        const response = await fetch('/tickets/drafts', {method: 'POST', headers, body: JSON.stringify({subject: draft.subject, body: draft.body})});
+        const payload = await response.json();
+        if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not prepare the request.');
+        requestId = payload.request_id;
+      }
+      const response = await fetch(`/tickets/drafts/${requestId}/send`, {method: 'POST', headers, body: JSON.stringify({graph_token: mailToken.accessToken})});
+      const payload = await response.json();
+      if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not send the request.');
+      note.textContent = payload.message;
+      raise.textContent = 'Request submitted';
+      open.removeAttribute('href');
+    } catch (error) {
+      note.textContent = `${error.message} If sending may have started, check Sent Items before retrying.`;
+      raise.disabled = false;
+    }
+  };
+  card.append(raise, open);
+  messages.append(card);
+  card.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+  return true;
+}
+function appendReplyButtons(result) {
+  for (const item of result.messages || []) {
+    for (const choice of item.buttons || []) {
+      const button = document.createElement('button'); button.type = 'button'; button.textContent = choice.title;
+      button.onclick = () => {ticketCommand(choice.payload); button.disabled = true;}; messages.append(button);
+    }
+  }
+}
 async function submit() {
   const message = question.value.trim();
   if (!message || busy) return;
@@ -163,7 +238,7 @@ async function submit() {
   send.disabled = true;
   append(message, 'user');
   question.value = '';
-  status.textContent = 'Looking up your policy…';
+  status.textContent = 'Preparing a response…';
   try {
     const headers = {'Content-Type': 'application/json'};
     if (microsoftToken) headers.Authorization = `Bearer ${microsoftToken}`;
@@ -173,16 +248,23 @@ async function submit() {
     });
     const result = await response.json();
     if (!response.ok) throw new Error(typeof result.detail === 'string' ? result.detail : 'Unable to answer. Please try again.');
+    for (const item of result.messages || []) {
+      if (item.custom?.type === 'ticket_state') {
+        ticketConversation = item.custom.active;
+        ticketStep = item.custom.requested_slot || null;
+      }
+    }
     const botMessages = Array.isArray(result.messages)
       ? result.messages.filter(item => typeof item.text === 'string' && item.text.trim())
       : [];
-    if (appendStructuredResult(result)) {
+    if (appendTicket(result) || appendStructuredResult(result)) {
       // Structured results are rendered as accessible tables.
     } else if (botMessages.length) {
       botMessages.forEach(item => append(item.text, 'assistant'));
-    } else {
+    } else if (!(result.messages || []).some(item => item.custom?.type === 'ticket_state')) {
       append(result.answer || 'No response was returned. Please rephrase your question.', 'assistant');
     }
+    appendReplyButtons(result);
     const chunks = Array.isArray(result.sources) ? result.sources : [];
     appendEvidenceButton(chunks);
     status.textContent = 'Ready';

@@ -1,0 +1,137 @@
+version: '3.1'
+rules:
+- rule: Offer support for an issue
+  steps:
+  - intent: report_it_issue
+  - action: action_offer_ticket
+  - slot_was_set:
+    - ticket_pending: true
+  condition:
+  - active_loop: null
+- rule: Support address
+  steps:
+  - intent: ask_support_contact
+  - action: utter_support_contact
+- rule: Start ticket
+  steps:
+  - intent: contact_support
+  - action: action_start_ticket
+  - slot_was_set:
+    - ticket_pending: false
+  - action: ticket_form
+  - active_loop: ticket_form
+  condition:
+  - active_loop: null
+- rule: Finish ticket details
+  steps:
+  - action: ticket_form
+  - active_loop: null
+  - action: action_draft_ticket
+  condition:
+  - active_loop: ticket_form
+- rule: Close ticket ticket_cancel
+  steps:
+  - intent: ticket_cancel
+  - action: action_close_ticket
+  - slot_was_set:
+    - ticket_pending: false
+- rule: Close ticket ticket_opened
+  steps:
+  - intent: ticket_opened
+  - action: action_close_ticket
+  - slot_was_set:
+    - ticket_pending: false
+- rule: Edit ticket_edit_subject
+  steps:
+  - intent: ticket_edit_subject
+  - action: action_edit_ticket
+  - action: ticket_edit_form
+  - active_loop: ticket_edit_form
+- rule: Edit ticket_edit_body
+  steps:
+  - intent: ticket_edit_body
+  - action: action_edit_ticket
+  - action: ticket_edit_form
+  - active_loop: ticket_edit_form
+- rule: Finish ticket editing
+  steps:
+  - action: ticket_edit_form
+  - active_loop: null
+  - action: action_save_ticket_edit
+  condition:
+  - active_loop: ticket_edit_form
+- rule: Confirm offered ticket
+  condition:
+  - slot_was_set:
+    - ticket_pending: true
+  steps:
+  - intent: ticket_confirm
+  - action: action_start_ticket
+  - slot_was_set:
+    - ticket_pending: false
+  - action: ticket_form
+  - active_loop: ticket_form
+- rule: Confirmation without offered ticket
+  condition:
+  - slot_was_set:
+    - ticket_pending: false
+  - active_loop: null
+  steps:
+  - intent: ticket_confirm
+  - action: utter_clarify
+- rule: Collect nlu_fallback text in ticket_form
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: nlu_fallback
+  - action: ticket_form
+  - active_loop: ticket_form
+- rule: Collect out_of_scope text in ticket_form
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: out_of_scope
+  - action: ticket_form
+  - active_loop: ticket_form
+- rule: Collect ticket_confirm text in ticket_form
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: ticket_confirm
+  - action: ticket_form
+  - active_loop: ticket_form
+- rule: Collect nlu_fallback text in ticket_edit_form
+  condition:
+  - active_loop: ticket_edit_form
+  steps:
+  - intent: nlu_fallback
+  - action: ticket_edit_form
+  - active_loop: ticket_edit_form
+- rule: Collect out_of_scope text in ticket_edit_form
+  condition:
+  - active_loop: ticket_edit_form
+  steps:
+  - intent: out_of_scope
+  - action: ticket_edit_form
+  - active_loop: ticket_edit_form
+- rule: Collect ticket_confirm text in ticket_edit_form
+  condition:
+  - active_loop: ticket_edit_form
+  steps:
+  - intent: ticket_confirm
+  - action: ticket_edit_form
+  - active_loop: ticket_edit_form
+- rule: Collect support request text in ticket_form
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: contact_support
+  - action: ticket_form
+  - active_loop: ticket_form
+- rule: Collect support request text in ticket_edit_form
+  condition:
+  - active_loop: ticket_edit_form
+  steps:
+  - intent: contact_support
+  - action: ticket_edit_form
+  - active_loop: ticket_edit_form
