@@ -135,3 +135,71 @@ rules:
   - intent: contact_support
   - action: ticket_edit_form
   - active_loop: ticket_edit_form
+
+# Any recognized HR command interrupts ticket collection before the message is
+# consumed as a ticket field. The action clears the form and follows up with
+# the requested command.
+- rule: Interrupt ticket for leave balance
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: ask_personal_leave_balance
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for holidays
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: ask_upcoming_holidays
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for holiday calendar
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: ask_holiday_list
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for help
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: help
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for policy question
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: ask_leave
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for policy categories
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: policy_bereavement
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for maternity policy
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: policy_maternity
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket
+- rule: Interrupt ticket for POSH policy
+  condition:
+  - active_loop: ticket_form
+  steps:
+  - intent: policy_posh
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: action_interrupt_ticket

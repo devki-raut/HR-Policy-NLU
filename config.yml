@@ -9,7 +9,7 @@ pipeline:
   min_ngram: 3
   max_ngram: 5
 - name: DIETClassifier
-  epochs: 200
+  epochs: 20
   learning_rate: 0.001
   random_seed: 42
   constrain_similarities: true

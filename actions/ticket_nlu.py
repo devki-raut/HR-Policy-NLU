@@ -13,6 +13,10 @@ CONTACT_INFO = re.compile(r'\b(?:what|which|where|how)\b.*\b(?:support|help\s*de
 APPLICATION = re.compile(r'\b(outlook|outlok|vpn|wi[ -]?fi|laptop|computer|keyboard|printer|teams|darwinbox|internet|network|email)\b', re.I)
 FAILURE = re.compile(r"\b(?:not\s+(?:working|connecting|starting)|won['’]?t\s+(?:connect|work|start|open|load|boot|turn|let|sign|log)|cannot|can['’]?t|cant|failed|fails|broken|crash(?:es|ing)?|unable|errors?|locked|freezes?|disconnecting)\b", re.I)
 REQUEST = re.compile(r'\b(?:raise|create|open|log|prepare|draft)\b.*\b(?:ticket|support request|helpdesk email)\b|\bcontact\s+(?:IT|support|help\s*desk)\b', re.I)
+# A user can describe a problem without saying “ticket”.  Keep this
+# deliberately tied to a known work application/device or failure signal so
+# ordinary HR questions do not enter the support flow.
+ISSUE_REPORT = re.compile(r"\b(?:i\s+am|i'm|im|we\s+are|we're|my|the)\b.*\b(?:facing|experiencing|have|has|issue|problem|not\s+working|error|unable|failed|broken)\b", re.I)
 
 
 def support_route(text: str, predicted: str | None) -> str | None:
@@ -20,6 +24,12 @@ def support_route(text: str, predicted: str | None) -> str | None:
         return 'nlu_fallback' if predicted in {'contact_support', 'report_it_issue'} else None
     if CONTACT_INFO.search(text):
         return 'ask_support_contact'
+    # Explicit ticket/support requests should not fall through to the generic
+    # clarification intent merely because the issue wording is unfamiliar.
+    if REQUEST.search(text):
+        return 'contact_support'
+    if ISSUE_REPORT.search(text) and (APPLICATION.search(text) or FAILURE.search(text)):
+        return 'report_it_issue'
     if APPLICATION.search(text) and FAILURE.search(text):
         return 'contact_support' if REQUEST.search(text) else 'report_it_issue'
     return None

@@ -61,8 +61,8 @@ responses:
   - text: For IT support, email helpdesk@emergys.com. Say “Create IT ticket” to prepare
       a draft.
   utter_ask_ticket_error:
-  - text: What error appears, or what happens when you try? You can say “no error”
-      or “not sure”.
+  - text: What issue or requirement should IT know about? Include the device, impact,
+      or relevant details. You can say “no error” or “not sure”.
 actions:
 - action_answer_policy
 - action_personal_leave_balance
@@ -75,6 +75,7 @@ actions:
 - action_save_ticket_edit
 - action_close_ticket
 - action_start_ticket
+- action_interrupt_ticket
 session_config:
   session_expiration_time: 30
   carry_over_slots_to_new_session: false

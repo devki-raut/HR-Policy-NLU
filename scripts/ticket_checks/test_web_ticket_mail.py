@@ -17,7 +17,7 @@ class WebMailTests(unittest.IsolatedAsyncioTestCase):
         identity = {'tenant_id': 'tenant', 'aad_object_id': 'user'}
         with patch.object(web, 'request_identity', AsyncMock(return_value=identity)), patch.object(web, 'send_draft', AsyncMock()) as send:
             result = await web.send('draft', web.SendRequest(graph_token='token'), SimpleNamespace())
-            send.assert_awaited_once_with('draft', 'tenant:user:web', 'token', 'user')
+            send.assert_awaited_once_with('draft', 'tenant:user:web', 'token', 'user', recipient=web.recipient())
             self.assertEqual(result['status'], 'accepted')
 
     async def test_mail_failure_is_reported(self):

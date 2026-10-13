@@ -11,6 +11,15 @@ def clear_ticket():
     return [ActiveLoop(None), SlotSet('ticket_pending', False), SlotSet('requested_slot', None), *[SlotSet(name, None) for name in TICKET_SLOTS]]
 
 
+def _described_request(text):
+    """Return true when a support command also contains an issue/request."""
+    remainder = re.sub(
+        r"\b(create|raise|open|prepare|draft|submit|an?|the|it|IT|support|service|technical|helpdesk|help desk|ticket|request|for|on|to)\b",
+        " ", str(text or ""), flags=re.I,
+    )
+    return len(re.findall(r"[A-Za-z0-9][A-Za-z0-9'_-]*", remainder)) >= 2
+
+
 def draft(details, started, identity, error=None):
     name = identity.get('display_name') or ('Ojas Kulkarni' if identity.get('is_guest') else identity.get('email') or 'Employee')
     name = ' '.join(str(name).split())
@@ -45,7 +54,10 @@ class ActionStartTicket(Action):
     def name(self): return 'action_start_ticket'
     async def run(self, dispatcher, tracker, domain):
         dispatcher.utter_message(json_message={'type': 'ticket_state', 'active': True})
-        details = tracker.get_slot('ticket_details') if tracker.get_slot('ticket_pending') else None
+        current = tracker.latest_message.get('text', '')
+        details = tracker.get_slot('ticket_details') if tracker.get_slot('ticket_pending') else (
+            current if _described_request(current) else None
+        )
         return [SlotSet('ticket_pending', False), SlotSet('ticket_details', details), *[SlotSet(name, None) for name in TICKET_SLOTS if name != 'ticket_details']]
 
 
@@ -55,6 +67,8 @@ class ValidateTicketForm(FormValidationAction):
         details = tracker.get_slot('ticket_details') or ''
         request = re.search(r'\b(access|permission|license|install|enable|grant|provision)\b', details, re.I)
         failure = re.search(r"cannot|can't|cant|unable|not working|failed|error|locked", details, re.I)
+        # Access requests can be drafted from the initial description; other
+        # requests collect the normal issue, error, and timing details.
         required = ['ticket_details'] if request and not failure else domain_slots
         if dispatcher is not None:
             next_slot = next((slot for slot in required if not tracker.get_slot(slot)), None)
@@ -67,7 +81,7 @@ class ValidateTicketForm(FormValidationAction):
             return {}
         text = tracker.latest_message.get('text', '')
         intent = (tracker.latest_message.get('intent') or {}).get('name')
-        if intent == 'contact_support' and re.search(r"not working|cannot|can't|cant|failed|fails|error|broken|locked|crash|access|permission|license|install|enable|grant|provision", text, re.I):
+        if intent in {'contact_support', 'report_it_issue'} and _described_request(text):
             return {'ticket_details': text}
         if tracker.get_slot('requested_slot') == 'ticket_details' and intent not in {'ticket_cancel', 'ticket_opened'}:
             return {'ticket_details': text}
@@ -100,7 +114,7 @@ class ValidateTicketForm(FormValidationAction):
             return {'ticket_details': None}
         value = str(slot_value).strip()
         if len(re.findall(r'[A-Za-z]{2,}', value)) < 2 or value.startswith('/'):
-            dispatcher.utter_message(text='Please describe what is failing, for example “Outlook says account locked”. You can also cancel.')
+            dispatcher.utter_message(text='Please describe the IT issue or request, including the device, impact, or replacement need. You can also cancel.')
             return {'ticket_details': None}
         return {'ticket_details': value[:4000]}
 
@@ -149,3 +163,39 @@ class ActionCloseTicket(Action):
             return [ActiveLoop(None), SlotSet('requested_slot', None), SlotSet('ticket_pending', False)]
         dispatcher.utter_message(text='IT draft cancelled. You can ask another question.')
         return clear_ticket()
+
+
+class ActionInterruptTicket(Action):
+    """Pause ticket collection when the user asks for another bot action."""
+    def name(self): return 'action_interrupt_ticket'
+
+    async def run(self, dispatcher, tracker, domain):
+        intent = (tracker.latest_message.get('intent') or {}).get('name')
+        followups = {
+            'ask_personal_leave_balance': 'action_personal_leave_balance',
+            'ask_upcoming_holidays': 'action_holiday_list',
+            'ask_holiday_list': 'action_holiday_list',
+            'help': 'utter_help',
+            'greet': 'utter_greet',
+            'goodbye': 'utter_goodbye',
+            'ask_leave': 'action_answer_policy',
+            'ask_remote_work': 'action_answer_policy',
+            'ask_benefits': 'action_answer_policy',
+            'ask_expenses': 'action_answer_policy',
+            'ask_conduct': 'action_answer_policy',
+            'ask_onboarding': 'action_answer_policy',
+            'policy_bereavement': 'action_answer_policy',
+            'policy_maternity': 'action_answer_policy',
+            'policy_paternity': 'action_answer_policy',
+            'policy_posh': 'action_answer_policy',
+            'policy_general_leave': 'action_answer_policy',
+            'policy_referral': 'action_answer_policy',
+        }
+        dispatcher.utter_message(json_message={
+            'type': 'ticket_state', 'active': False, 'interrupted_by': intent,
+        })
+        events = clear_ticket()
+        action = followups.get(intent)
+        if action:
+            events.append(FollowupAction(action))
+        return events

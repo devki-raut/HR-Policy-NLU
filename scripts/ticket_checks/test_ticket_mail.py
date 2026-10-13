@@ -49,6 +49,15 @@ class SendTests(unittest.IsolatedAsyncioTestCase):
             await mail.send_draft(self.key, 'another-owner', 'mock-token', 'user')
         self.assertFalse(self.posts)
 
+    async def test_temporary_test_recipient(self):
+        with self.client(self.success):
+            await mail.send_draft(self.key, self.owner, 'mock-token', 'user', recipient='ojask354@gmail.com')
+        self.assertEqual(self.posts[0]['message']['toRecipients'][0]['emailAddress']['address'], 'ojask354@gmail.com')
+        events = [json.loads(line) for line in (Path(self.temp.name) / 'artifacts/logs/ticket_mail.log').read_text().splitlines()]
+        self.assertEqual([event['event'] for event in events], ['send_attempt', 'send_accepted'])
+        self.assertEqual(events[-1]['http_status'], 202)
+        self.assertNotIn('mock-token', json.dumps(events))
+
     async def test_wrong_graph_account(self):
         with self.client(lambda request: httpx.Response(200, json={'id': 'someone-else'})), self.assertRaises(mail.MailError):
             await mail.send_draft(self.key, self.owner, 'mock-token', 'user')

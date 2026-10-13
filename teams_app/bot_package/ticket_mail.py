@@ -1,5 +1,8 @@
 """Owned Teams drafts and duplicate-resistant delegated Graph sends."""
 import os
+import json
+import logging
+from datetime import datetime, timezone
 from pathlib import Path
 import sqlite3
 import time
@@ -51,7 +54,32 @@ def update_draft(key, identity_owner, subject, body):
         db.execute('UPDATE drafts SET subject=?, body=? WHERE id=? AND owner=?', (subject.strip(), body.strip(), key, identity_owner))
 
 
-async def send_draft(key, identity_owner, token, aad_object_id):
+def mail_event(event, key, recipient, **details):
+    """Append structured audit events without tokens or email content."""
+    try:
+        path = ROOT / 'artifacts/logs/ticket_mail.log'
+        path.parent.mkdir(parents=True, exist_ok=True)
+        record = {'timestamp': datetime.now(timezone.utc).isoformat(), 'event': event,
+                  'request_id': key, 'recipient': recipient, **details}
+        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+        with os.fdopen(descriptor, 'a') as handle:
+            handle.write(json.dumps(record) + '\n')
+    except OSError:
+        logging.getLogger(__name__).exception('Could not write ticket mail audit log')
+
+
+async def send_draft(key, identity_owner, token, aad_object_id, *, recipient='helpdesk@emergys.com'):
+    mail_event('send_attempt', key, recipient, channel='web' if identity_owner.endswith(':web') else 'teams')
+    try:
+        await _send_draft(key, identity_owner, token, aad_object_id, recipient=recipient)
+    except Exception as exc:
+        mail_event('send_failed', key, recipient, error_type=type(exc).__name__,
+                   reason=str(exc) if isinstance(exc, MailError) else 'Internal error; check service logs')
+        raise
+    mail_event('send_accepted', key, recipient, http_status=202)
+
+
+async def _send_draft(key, identity_owner, token, aad_object_id, *, recipient):
     # Check the Graph account before claiming the draft. Never accept a client-supplied sender.
     async with httpx.AsyncClient(timeout=20) as http:
         try:
@@ -70,17 +98,20 @@ async def send_draft(key, identity_owner, token, aad_object_id):
         try:
             response = await http.post('https://graph.microsoft.com/v1.0/me/sendMail', headers={'Authorization': 'Bearer ' + token}, json={
                 'message': {'subject': row['subject'], 'body': {'contentType': 'Text', 'content': row['body']},
-                            'toRecipients': [{'emailAddress': {'address': 'helpdesk@emergys.com'}}]},
+                            'toRecipients': [{'emailAddress': {'address': recipient}}]},
                 'saveToSentItems': True,
             })
         except httpx.HTTPError as exc:
             with _db() as db:
                 db.execute('UPDATE drafts SET status=? WHERE id=?', ('unknown', key))
+            mail_event('send_outcome_unknown', key, recipient, error_type=type(exc).__name__)
             raise MailError('The send outcome is uncertain. Check Outlook Sent Items before creating another request; this click will not be retried automatically.') from exc
         with _db() as db:
             status = 'accepted' if response.status_code == 202 else 'draft' if response.status_code in {400, 401, 403, 429} else 'unknown'
             db.execute('UPDATE drafts SET status=? WHERE id=?', (status, key))
         if response.status_code != 202:
+            mail_event('graph_rejected', key, recipient, http_status=response.status_code,
+                       graph_request_id=response.headers.get('request-id'))
             raise MailError('Outlook did not accept the email. Check mailbox permissions and Sent Items before retrying.')
 
 

@@ -10,13 +10,28 @@ import tempfile
 from actions.policy_processing import MAX_BYTES, process_pdf
 
 ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_POLICY_ROOT = ROOT / 'data/policies'
+
+
+def _local_path(env_name, default):
+    value = os.getenv(env_name, '').strip()
+    path = Path(value).expanduser() if value else Path(default)
+    return path if path.is_absolute() else ROOT / path
+
+
+def policy_pdf_dir():
+    return _local_path('POLICY_PDF_DIR', DEFAULT_POLICY_ROOT / 'pdfs')
+
+
+def policy_markdown_dir():
+    return _local_path('POLICY_MARKDOWN_DIR', DEFAULT_POLICY_ROOT / 'mds')
+
+
 DEFAULT_INDEX = ROOT / 'data/policies/policies.json'
-POLICY_PDF_DIR = ROOT / 'data/policies/pdfs'
-MARKDOWN_DIR = ROOT / 'data/policies/mds'
 
 
 def index_path():
-    return Path(os.getenv('POLICY_INDEX', str(DEFAULT_INDEX))).resolve()
+    return _local_path('POLICY_INDEX', DEFAULT_INDEX).resolve()
 
 
 def atomic_write(path, content):
@@ -44,11 +59,11 @@ def validate_filename(filename):
 
 def pdf_storage_path(filename):
     validate_filename(filename)
-    return POLICY_PDF_DIR / filename
+    return policy_pdf_dir() / filename
 
 
 def markdown_output_path(filename):
-    return MARKDOWN_DIR / Path(filename).with_suffix('.md').name
+    return policy_markdown_dir() / Path(filename).with_suffix('.md').name
 
 
 def chunk_markdown(markdown_text, filename, max_words=180):
@@ -160,6 +175,8 @@ def publish(prepared, target, mode):
             chunks.extend(item['chunks'])
         payload = {'version': 1, 'library': 'company', 'pipeline_version': 2, 'documents': documents, 'chunks': chunks}
         atomic_write(target, json.dumps(payload, indent=2, ensure_ascii=False).encode())
+    from actions.storage import sync_to_cloud
+    sync_to_cloud()
     return {'demo_removed': demo, 'total_chunks': len(chunks)}
 
 

@@ -63,6 +63,28 @@ nlu:
 
     - reach out to technical support
 
+    - create an IT ticket for an issue
+
+    - create an IT ticket for this problem
+
+    - create an IT ticket about a device problem
+
+    - create an IT ticket about an application problem
+
+    - create an IT support request for my issue
+
+    - raise an IT ticket describing this problem
+
+    - open a support ticket for this issue
+
+    - log an IT ticket for a system problem
+
+    - prepare a helpdesk ticket for an access issue
+
+    - draft an IT ticket because something is not working
+
+    - create a ticket and I will describe the issue
+
     '
 - intent: report_it_issue
   examples: '- Outlook is not working
@@ -96,6 +118,22 @@ nlu:
     - screen is blank on my laptop
 
     - my keyboard stopped working
+
+    - I am facing an issue with VPN
+
+    - I am experiencing a problem with Teams
+
+    - I have an issue with my work laptop
+
+    - my work application has an error
+
+    - I am unable to use the company network
+
+    - something is wrong with my computer
+
+    - I am facing an IT issue with email
+
+    - my device is broken and I need help
 
     '
 - intent: ask_support_contact

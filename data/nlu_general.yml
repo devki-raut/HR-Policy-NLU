@@ -61,6 +61,10 @@ nlu:
 
     - Give me the next few holidays
 
+    - Show the next 5 holidays
+
+    - Next holidays
+
     '
 - intent: ask_holiday_list
   examples: '- Show the full holiday list
@@ -84,6 +88,10 @@ nlu:
     - List all office holidays
 
     - Can I see the company holiday calendar?
+
+    - Show the full holiday list for this year
+
+    - Holiday calendar
 
     - Show my holiday list for the year
 
@@ -332,6 +340,10 @@ nlu:
     - How much leave have I consumed?
 
     - Display my current time-off balance
+
+    - Show my leaves
+
+    - Show my leave balance
 
     - Look up my leave account
 

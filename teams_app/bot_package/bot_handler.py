@@ -1,4 +1,4 @@
-"""Microsoft Teams activity handler backed by the Rasa REST channel."""
+"""Microsoft Teams activity handler backed by the EmployeeAssist API."""
 import logging
 import os
 from pathlib import Path
@@ -366,11 +366,15 @@ class TeamsBot(ActivityHandler):
             or identity.get("teams_user_id")
             or turn_context.activity.conversation.id
         )
-        url = os.getenv("RASA_URL", "http://127.0.0.1:5005").rstrip("/")
+        # Use the combined API so Teams receives the same quick-action
+        # normalization, ticket interruption, identity mapping, leave and
+        # holiday handling as the web client. RASA_URL remains an optional
+        # fallback for older deployments.
+        api_url = os.getenv("EMPLOYEEASSIST_API_URL", "http://127.0.0.1:8610").rstrip("/")
         try:
             async with httpx.AsyncClient(timeout=60) as client:
                 response = await client.post(
-                    f"{url}/webhooks/rest/webhook",
+                    f"{api_url}/chat",
                     json={
                         "sender": sender,
                         "message": question,
@@ -378,7 +382,8 @@ class TeamsBot(ActivityHandler):
                     },
                 )
                 response.raise_for_status()
-            messages = response.json()
+            payload = response.json()
+            messages = payload.get("messages") if isinstance(payload, dict) else payload
             if not isinstance(messages, list):
                 raise ValueError("Invalid Rasa response")
             texts = [

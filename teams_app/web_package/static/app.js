@@ -164,6 +164,10 @@ function ticketCommand(command) {
 function appendTicket(result) {
   const draft = (result.messages || []).find(item => item.custom?.type === 'ticket_draft')?.custom;
   if (!draft) return false;
+  draft.to = authConfig?.ticket_recipient || draft.to;
+  const outlookUrl = new URL(draft.outlook_url);
+  outlookUrl.searchParams.set('to', draft.to);
+  draft.outlook_url = outlookUrl.toString();
   const card = document.createElement('article');
   card.className = 'assistant result-card';
   const heading = document.createElement('strong'); heading.textContent = `To: ${draft.to}`;

@@ -482,4 +482,4 @@ class ActionRememberEmployeeCode(Action):
         return []
 
 # Register the IT draft actions with the action server.
-from .tickets import (ActionStartTicket, ActionOfferTicket, ValidateTicketForm, ActionDraftTicket, ActionEditTicket, ActionSaveTicketEdit, ActionCloseTicket)
+from .tickets import (ActionStartTicket, ActionOfferTicket, ValidateTicketForm, ActionDraftTicket, ActionEditTicket, ActionSaveTicketEdit, ActionCloseTicket, ActionInterruptTicket)

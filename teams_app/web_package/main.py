@@ -1,6 +1,7 @@
 """Unified API: policy administration and Rasa-backed chat."""
 import json
 import os
+import re
 from pathlib import Path
 import sys
 from urllib.parse import quote
@@ -21,7 +22,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from actions.policy_store import MAX_BYTES, index_path, update_pdf
+from actions.policy_store import MAX_BYTES, index_path, policy_pdf_dir, update_pdf
+from actions.storage import sync_from_cloud
 from actions.policy_engine import intent_mapping
 from actions.darwinbox_adapters.store import load_store
 from botbuilder.schema import Activity
@@ -35,6 +37,12 @@ app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload c
 if load_dotenv is not None:
     load_dotenv(PROJECT_ROOT / '.env', override=False)
 
+try:
+    sync_from_cloud()
+except Exception as exc:
+    if os.getenv('STORAGE_BACKEND', 'local').strip().casefold() not in {'local', ''}:
+        raise RuntimeError(f'Policy cloud storage could not be initialized: {exc}') from exc
+
 from teams_app.web_package.jupyter import router as jupyter_router
 
 app.include_router(jupyter_router)
@@ -43,7 +51,10 @@ app.include_router(ticket_mail_router)
 
 STATIC = Path(__file__).resolve().parent / 'static'
 APP_PACKAGE = PROJECT_ROOT / 'teams_app' / 'app_package'
-POLICY_DOCUMENTS = PROJECT_ROOT / 'data' / 'policies' / 'documents'
+POLICY_DOCUMENTS = Path(os.getenv('POLICY_DOCUMENTS_DIR', str(policy_pdf_dir()))).expanduser()
+if not POLICY_DOCUMENTS.is_absolute():
+    POLICY_DOCUMENTS = PROJECT_ROOT / POLICY_DOCUMENTS
+POLICY_DOCUMENTS.mkdir(parents=True, exist_ok=True)
 app.mount('/static', StaticFiles(directory=STATIC), name='static')
 app.mount('/app-package', StaticFiles(directory=APP_PACKAGE), name='app-package')
 app.mount(
@@ -82,6 +93,7 @@ def terms_and_conditions():
 class ChatRequest(BaseModel):
     sender: str = Field(min_length=1, max_length=128)
     message: str = Field(min_length=1, max_length=4000)
+    metadata: dict = Field(default_factory=dict)
 
 
 def _guest_identity():
@@ -93,8 +105,10 @@ def _guest_identity():
     }
 
 
-async def _chat_context(request: Request, requested_sender: str):
-    identity = await request_identity(request) or _guest_identity()
+async def _chat_context(request: Request, requested_sender: str, metadata: dict | None = None):
+    # The Teams bot calls this internal API and supplies the verified Teams
+    # identity in metadata. Browser requests still use the Entra bearer token.
+    identity = await request_identity(request) or (metadata or None) or _guest_identity()
     return identity, identity.get('aad_object_id') or requested_sender
 
 
@@ -103,6 +117,7 @@ def auth_config():
     app_id = client_id()
     return {
         'enabled': bool(app_id),
+        'ticket_recipient': os.getenv('TICKET_WEB_TEST_RECIPIENT', '').strip() or 'helpdesk@emergys.com',
         'required': auth_required(),
         'client_id': app_id,
         'tenant_id': tenant_id(),
@@ -189,12 +204,49 @@ def download_policy(filename: str):
 async def rasa_chat(sender, message, metadata=None):
     if not sender.strip() or not message.strip():
         raise HTTPException(422, 'sender and message cannot be blank')
+    # The web quick-action labels are intentionally short and can be scored as
+    # generic policy questions by DIET. Map only these exact UI commands to
+    # canonical training phrases; ordinary user text remains untouched.
+    quick_actions = {
+        'show my leaves': 'What is my leave balance?',
+        'show my leave balance': 'What is my leave balance?',
+        'show the next 5 holidays': 'What are the next holidays?',
+        'show the full holiday list for this year': 'Show the full holiday list',
+    }
+    normalized_message = quick_actions.get(message.strip().casefold(), message)
     url = os.getenv('RASA_URL', 'http://127.0.0.1:5005').rstrip('/')
     try:
         async with httpx.AsyncClient(timeout=60) as client:
+            # Forms otherwise consume every next message as a slot value. For
+            # recognized non-ticket commands, inspect and clear an active IT
+            # form before submitting the new message. The cancellation event
+            # is deliberately not returned to the web client.
+            lower = normalized_message.casefold()
+            interrupt = (
+                lower in quick_actions.values()
+                or bool(re.search(
+                    r"\b(leave balance|my leaves|holiday|holidays|help|remote work|benefits|expenses|bereavement|maternity|paternity|posh|referral|onboarding)\b",
+                    lower,
+                ))
+            )
+            if interrupt:
+                tracker_response = await client.get(f'{url}/conversations/{quote(sender, safe="")}/tracker')
+                if tracker_response.is_success:
+                    tracker = tracker_response.json()
+                    active_loop = (tracker.get('active_loop') or {}).get('name')
+                    if active_loop in {'ticket_form', 'ticket_edit_form'}:
+                        # Reset the conversation before forwarding the other
+                        # command. Merely triggering ``ticket_cancel`` (or
+                        # executing an action) can leave Rasa's form stack
+                        # active, causing the next leave/holiday message to be
+                        # captured as a ticket field.
+                        await client.post(
+                            f'{url}/conversations/{quote(sender, safe="")}/tracker/events',
+                            json=[{'event': 'restart'}],
+                        )
             response = await client.post(f'{url}/webhooks/rest/webhook', json={
                 'sender': sender,
-                'message': message,
+                'message': normalized_message,
                 'metadata': metadata or {},
             })
             response.raise_for_status()
@@ -322,7 +374,7 @@ async def upload(file: UploadFile = File(...), mode: str = Form('upsert', regex=
 
 @app.post('/chat')
 async def chat(body: ChatRequest, request: Request):
-    identity, sender = await _chat_context(request, body.sender)
+    identity, sender = await _chat_context(request, body.sender, body.metadata)
     result = await rasa_chat(sender, body.message, identity)
     result['user'] = identity
     return await _enrich_policy_chunk(result, body.message)
@@ -330,7 +382,7 @@ async def chat(body: ChatRequest, request: Request):
 
 @app.post('/chat/stream')
 async def chat_stream(body: ChatRequest, request: Request):
-    identity, sender = await _chat_context(request, body.sender)
+    identity, sender = await _chat_context(request, body.sender, body.metadata)
     result = await rasa_chat(sender, body.message, identity)
     result = await _enrich_policy_chunk(result, body.message)
     answer = result['answer']

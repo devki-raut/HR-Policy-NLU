@@ -1,4 +1,5 @@
 """Authenticated web ticket drafts and delegated mailbox sending."""
+import os
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field
 
@@ -6,6 +7,10 @@ from teams_app.web_package.auth import request_identity
 from teams_app.bot_package.ticket_mail import MailError, owner, create_draft, send_draft
 
 router = APIRouter(prefix='/tickets')
+
+
+def recipient():
+    return os.getenv('TICKET_WEB_TEST_RECIPIENT', '').strip() or 'helpdesk@emergys.com'
 
 
 class DraftRequest(BaseModel):
@@ -36,7 +41,7 @@ async def new_draft(body: DraftRequest, request: Request):
 async def send(request_id: str, body: SendRequest, request: Request):
     identity, identity_owner = await signed_in(request)
     try:
-        await send_draft(request_id, identity_owner, body.graph_token, identity['aad_object_id'])
+        await send_draft(request_id, identity_owner, body.graph_token, identity['aad_object_id'], recipient=recipient())
     except MailError as exc:
         raise HTTPException(409, str(exc)) from exc
-    return {'status': 'accepted', 'message': 'Outlook accepted your email to helpdesk@emergys.com for sending. Check Sent Items.'}
+    return {'status': 'accepted', 'message': f'Outlook accepted your email to {recipient()} for sending. Check Sent Items.'}
