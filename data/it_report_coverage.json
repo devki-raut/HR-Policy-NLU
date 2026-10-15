@@ -1,0 +1,1654 @@
+{
+  "source": "Report_15_Oct_26_092938.xls",
+  "source_rows": 230,
+  "incident_faqs": 230,
+  "resolution_faqs": 29,
+  "guidance_faqs": 10,
+  "resolution_quality": {
+    "missing": 52,
+    "port": 1,
+    "utilisation": 13,
+    "bts": 11,
+    "fiber": 32,
+    "mac": 10,
+    "adapter": 1,
+    "device_stuck": 5,
+    "unspecified": 23,
+    "observation": 10,
+    "alignment": 15,
+    "traffic_failover": 2,
+    "closure_only": 11,
+    "mailbox_missing": 1,
+    "power": 1,
+    "new_access": 1,
+    "upgrade": 4,
+    "load_balance": 5,
+    "no_logs": 2,
+    "dns": 1,
+    "ad_auth": 1,
+    "ad_policy": 11,
+    "onedrive_access": 1,
+    "archive": 1,
+    "dc_outage": 2,
+    "cloud_station": 4,
+    "salesforce": 1,
+    "sdwan": 2,
+    "local_it": 2,
+    "sessions": 1,
+    "poe": 1,
+    "m365_group": 1,
+    "geo": 1
+  },
+  "incidents": [
+    {
+      "incident_id": "348394",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "In-Progress",
+      "id": "it_incident_348394"
+    },
+    {
+      "incident_id": "348393",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_348393"
+    },
+    {
+      "incident_id": "348383",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "port",
+      "status": "Resolved",
+      "id": "it_incident_348383"
+    },
+    {
+      "incident_id": "348381",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "In-Progress",
+      "id": "it_incident_348381"
+    },
+    {
+      "incident_id": "348379",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348379"
+    },
+    {
+      "incident_id": "348377",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348377"
+    },
+    {
+      "incident_id": "348328",
+      "routing_intent": "it_email_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348328"
+    },
+    {
+      "incident_id": "348313",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "utilisation",
+      "status": "Resolved",
+      "id": "it_incident_348313"
+    },
+    {
+      "incident_id": "348300",
+      "routing_intent": "it_application_access",
+      "resolution_key": "bts",
+      "status": "Resolved",
+      "id": "it_incident_348300"
+    },
+    {
+      "incident_id": "348296",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Resolved",
+      "id": "it_incident_348296"
+    },
+    {
+      "incident_id": "348283",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348283"
+    },
+    {
+      "incident_id": "348282",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Resolved",
+      "id": "it_incident_348282"
+    },
+    {
+      "incident_id": "348272",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "adapter",
+      "status": "Resolved",
+      "id": "it_incident_348272"
+    },
+    {
+      "incident_id": "348266",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348266"
+    },
+    {
+      "incident_id": "348265",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Resolved",
+      "id": "it_incident_348265"
+    },
+    {
+      "incident_id": "348264",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348264"
+    },
+    {
+      "incident_id": "348258",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "device_stuck",
+      "status": "Resolved",
+      "id": "it_incident_348258"
+    },
+    {
+      "incident_id": "348254",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_348254"
+    },
+    {
+      "incident_id": "348206",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Resolved",
+      "id": "it_incident_348206"
+    },
+    {
+      "incident_id": "348203",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Resolved",
+      "id": "it_incident_348203"
+    },
+    {
+      "incident_id": "348202",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "unspecified",
+      "status": "Resolved",
+      "id": "it_incident_348202"
+    },
+    {
+      "incident_id": "348189",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "utilisation",
+      "status": "Resolved",
+      "id": "it_incident_348189"
+    },
+    {
+      "incident_id": "348179",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348179"
+    },
+    {
+      "incident_id": "348174",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348174"
+    },
+    {
+      "incident_id": "348172",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348172"
+    },
+    {
+      "incident_id": "348170",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "observation",
+      "status": "Resolved",
+      "id": "it_incident_348170"
+    },
+    {
+      "incident_id": "348168",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348168"
+    },
+    {
+      "incident_id": "348166",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Resolved",
+      "id": "it_incident_348166"
+    },
+    {
+      "incident_id": "348165",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "unspecified",
+      "status": "Resolved",
+      "id": "it_incident_348165"
+    },
+    {
+      "incident_id": "348163",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_348163"
+    },
+    {
+      "incident_id": "348111",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_348111"
+    },
+    {
+      "incident_id": "348106",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348106"
+    },
+    {
+      "incident_id": "348081",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_348081"
+    },
+    {
+      "incident_id": "348073",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "unspecified",
+      "status": "Resolved",
+      "id": "it_incident_348073"
+    },
+    {
+      "incident_id": "348068",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_348068"
+    },
+    {
+      "incident_id": "348067",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "observation",
+      "status": "Resolved",
+      "id": "it_incident_348067"
+    },
+    {
+      "incident_id": "348056",
+      "routing_intent": "it_application_access",
+      "resolution_key": "utilisation",
+      "status": "Resolved",
+      "id": "it_incident_348056"
+    },
+    {
+      "incident_id": "348007",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_348007"
+    },
+    {
+      "incident_id": "347875",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_347875"
+    },
+    {
+      "incident_id": "347857",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347857"
+    },
+    {
+      "incident_id": "347849",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347849"
+    },
+    {
+      "incident_id": "347838",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347838"
+    },
+    {
+      "incident_id": "347835",
+      "routing_intent": "it_application_access",
+      "resolution_key": "alignment",
+      "status": "Resolved",
+      "id": "it_incident_347835"
+    },
+    {
+      "incident_id": "347801",
+      "routing_intent": "it_application_access",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347801"
+    },
+    {
+      "incident_id": "347790",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_347790"
+    },
+    {
+      "incident_id": "347777",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_347777"
+    },
+    {
+      "incident_id": "347773",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347773"
+    },
+    {
+      "incident_id": "347761",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347761"
+    },
+    {
+      "incident_id": "347670",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347670"
+    },
+    {
+      "incident_id": "347627",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_347627"
+    },
+    {
+      "incident_id": "347617",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_347617"
+    },
+    {
+      "incident_id": "347607",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "traffic_failover",
+      "status": "Closed",
+      "id": "it_incident_347607"
+    },
+    {
+      "incident_id": "347595",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_347595"
+    },
+    {
+      "incident_id": "347588",
+      "routing_intent": "it_application_access",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_347588"
+    },
+    {
+      "incident_id": "347578",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347578"
+    },
+    {
+      "incident_id": "347544",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347544"
+    },
+    {
+      "incident_id": "347532",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_347532"
+    },
+    {
+      "incident_id": "347504",
+      "routing_intent": "it_application_access",
+      "resolution_key": "closure_only",
+      "status": "Resolved",
+      "id": "it_incident_347504"
+    },
+    {
+      "incident_id": "347495",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "traffic_failover",
+      "status": "Closed",
+      "id": "it_incident_347495"
+    },
+    {
+      "incident_id": "347489",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347489"
+    },
+    {
+      "incident_id": "347443",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347443"
+    },
+    {
+      "incident_id": "347388",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347388"
+    },
+    {
+      "incident_id": "347375",
+      "routing_intent": "it_application_access",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347375"
+    },
+    {
+      "incident_id": "347333",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_347333"
+    },
+    {
+      "incident_id": "347313",
+      "routing_intent": "it_application_access",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_347313"
+    },
+    {
+      "incident_id": "347310",
+      "routing_intent": "it_application_access",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_347310"
+    },
+    {
+      "incident_id": "347287",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347287"
+    },
+    {
+      "incident_id": "347285",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347285"
+    },
+    {
+      "incident_id": "347278",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347278"
+    },
+    {
+      "incident_id": "347208",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_347208"
+    },
+    {
+      "incident_id": "347197",
+      "routing_intent": "it_email_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_347197"
+    },
+    {
+      "incident_id": "347193",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347193"
+    },
+    {
+      "incident_id": "347192",
+      "routing_intent": "it_storage_collaboration",
+      "resolution_key": "closure_only",
+      "status": "Resolved",
+      "id": "it_incident_347192"
+    },
+    {
+      "incident_id": "347189",
+      "routing_intent": "it_application_access",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_347189"
+    },
+    {
+      "incident_id": "347165",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347165"
+    },
+    {
+      "incident_id": "347161",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_347161"
+    },
+    {
+      "incident_id": "347155",
+      "routing_intent": "it_application_access",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_347155"
+    },
+    {
+      "incident_id": "347152",
+      "routing_intent": "it_email_access",
+      "resolution_key": "mailbox_missing",
+      "status": "Closed",
+      "id": "it_incident_347152"
+    },
+    {
+      "incident_id": "347147",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_347147"
+    },
+    {
+      "incident_id": "347085",
+      "routing_intent": "it_application_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_347085"
+    },
+    {
+      "incident_id": "347003",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_347003"
+    },
+    {
+      "incident_id": "346978",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346978"
+    },
+    {
+      "incident_id": "346918",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "power",
+      "status": "Closed",
+      "id": "it_incident_346918"
+    },
+    {
+      "incident_id": "346917",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346917"
+    },
+    {
+      "incident_id": "346816",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "new_access",
+      "status": "Closed",
+      "id": "it_incident_346816"
+    },
+    {
+      "incident_id": "346814",
+      "routing_intent": "it_application_access",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_346814"
+    },
+    {
+      "incident_id": "346808",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_346808"
+    },
+    {
+      "incident_id": "346775",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "upgrade",
+      "status": "Closed",
+      "id": "it_incident_346775"
+    },
+    {
+      "incident_id": "346768",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346768"
+    },
+    {
+      "incident_id": "346767",
+      "routing_intent": "it_application_access",
+      "resolution_key": "load_balance",
+      "status": "Closed",
+      "id": "it_incident_346767"
+    },
+    {
+      "incident_id": "346715",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "load_balance",
+      "status": "Closed",
+      "id": "it_incident_346715"
+    },
+    {
+      "incident_id": "346661",
+      "routing_intent": "it_device_support",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346661"
+    },
+    {
+      "incident_id": "346641",
+      "routing_intent": "it_application_access",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_346641"
+    },
+    {
+      "incident_id": "346635",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Resolved",
+      "id": "it_incident_346635"
+    },
+    {
+      "incident_id": "346613",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_346613"
+    },
+    {
+      "incident_id": "346589",
+      "routing_intent": "it_email_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346589"
+    },
+    {
+      "incident_id": "346580",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346580"
+    },
+    {
+      "incident_id": "346565",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "upgrade",
+      "status": "Closed",
+      "id": "it_incident_346565"
+    },
+    {
+      "incident_id": "346552",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_346552"
+    },
+    {
+      "incident_id": "346515",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "no_logs",
+      "status": "Closed",
+      "id": "it_incident_346515"
+    },
+    {
+      "incident_id": "346514",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "no_logs",
+      "status": "Closed",
+      "id": "it_incident_346514"
+    },
+    {
+      "incident_id": "346506",
+      "routing_intent": "it_email_access",
+      "resolution_key": "dns",
+      "status": "Closed",
+      "id": "it_incident_346506"
+    },
+    {
+      "incident_id": "346494",
+      "routing_intent": "it_email_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_346494"
+    },
+    {
+      "incident_id": "346484",
+      "routing_intent": "it_email_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346484"
+    },
+    {
+      "incident_id": "346472",
+      "routing_intent": "it_application_access",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_346472"
+    },
+    {
+      "incident_id": "346465",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_346465"
+    },
+    {
+      "incident_id": "346460",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "device_stuck",
+      "status": "Closed",
+      "id": "it_incident_346460"
+    },
+    {
+      "incident_id": "346382",
+      "routing_intent": "it_security",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_346382"
+    },
+    {
+      "incident_id": "346365",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_346365"
+    },
+    {
+      "incident_id": "346360",
+      "routing_intent": "it_email_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_346360"
+    },
+    {
+      "incident_id": "346359",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_346359"
+    },
+    {
+      "incident_id": "346350",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_346350"
+    },
+    {
+      "incident_id": "346312",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_346312"
+    },
+    {
+      "incident_id": "346293",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_346293"
+    },
+    {
+      "incident_id": "346273",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_346273"
+    },
+    {
+      "incident_id": "346259",
+      "routing_intent": "it_application_access",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_346259"
+    },
+    {
+      "incident_id": "346205",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "ad_auth",
+      "status": "Closed",
+      "id": "it_incident_346205"
+    },
+    {
+      "incident_id": "346197",
+      "routing_intent": "it_device_support",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346197"
+    },
+    {
+      "incident_id": "346195",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_346195"
+    },
+    {
+      "incident_id": "346194",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_346194"
+    },
+    {
+      "incident_id": "346189",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346189"
+    },
+    {
+      "incident_id": "346182",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346182"
+    },
+    {
+      "incident_id": "346179",
+      "routing_intent": "it_device_support",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346179"
+    },
+    {
+      "incident_id": "346177",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346177"
+    },
+    {
+      "incident_id": "346173",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346173"
+    },
+    {
+      "incident_id": "346172",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346172"
+    },
+    {
+      "incident_id": "346159",
+      "routing_intent": "it_application_access",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_346159"
+    },
+    {
+      "incident_id": "346114",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346114"
+    },
+    {
+      "incident_id": "346097",
+      "routing_intent": "it_application_access",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346097"
+    },
+    {
+      "incident_id": "346083",
+      "routing_intent": "it_device_support",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346083"
+    },
+    {
+      "incident_id": "346080",
+      "routing_intent": "it_device_support",
+      "resolution_key": "ad_policy",
+      "status": "Closed",
+      "id": "it_incident_346080"
+    },
+    {
+      "incident_id": "346055",
+      "routing_intent": "it_application_access",
+      "resolution_key": "device_stuck",
+      "status": "Closed",
+      "id": "it_incident_346055"
+    },
+    {
+      "incident_id": "346014",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_346014"
+    },
+    {
+      "incident_id": "345986",
+      "routing_intent": "it_security",
+      "resolution_key": "load_balance",
+      "status": "Closed",
+      "id": "it_incident_345986"
+    },
+    {
+      "incident_id": "345976",
+      "routing_intent": "it_storage_collaboration",
+      "resolution_key": "onedrive_access",
+      "status": "Closed",
+      "id": "it_incident_345976"
+    },
+    {
+      "incident_id": "345973",
+      "routing_intent": "it_email_access",
+      "resolution_key": "archive",
+      "status": "Closed",
+      "id": "it_incident_345973"
+    },
+    {
+      "incident_id": "345965",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "device_stuck",
+      "status": "Closed",
+      "id": "it_incident_345965"
+    },
+    {
+      "incident_id": "345947",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "load_balance",
+      "status": "Closed",
+      "id": "it_incident_345947"
+    },
+    {
+      "incident_id": "345870",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_345870"
+    },
+    {
+      "incident_id": "345849",
+      "routing_intent": "it_email_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_345849"
+    },
+    {
+      "incident_id": "345808",
+      "routing_intent": "it_email_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345808"
+    },
+    {
+      "incident_id": "345784",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_345784"
+    },
+    {
+      "incident_id": "345744",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345744"
+    },
+    {
+      "incident_id": "345742",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_345742"
+    },
+    {
+      "incident_id": "345739",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_345739"
+    },
+    {
+      "incident_id": "345708",
+      "routing_intent": "it_application_access",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_345708"
+    },
+    {
+      "incident_id": "345694",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "load_balance",
+      "status": "Closed",
+      "id": "it_incident_345694"
+    },
+    {
+      "incident_id": "345693",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_345693"
+    },
+    {
+      "incident_id": "345692",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_345692"
+    },
+    {
+      "incident_id": "345648",
+      "routing_intent": "it_application_access",
+      "resolution_key": "dc_outage",
+      "status": "Closed",
+      "id": "it_incident_345648"
+    },
+    {
+      "incident_id": "345647",
+      "routing_intent": "it_application_access",
+      "resolution_key": "dc_outage",
+      "status": "Closed",
+      "id": "it_incident_345647"
+    },
+    {
+      "incident_id": "345644",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_345644"
+    },
+    {
+      "incident_id": "345637",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_345637"
+    },
+    {
+      "incident_id": "345625",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_345625"
+    },
+    {
+      "incident_id": "345623",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345623"
+    },
+    {
+      "incident_id": "345619",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_345619"
+    },
+    {
+      "incident_id": "345609",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_345609"
+    },
+    {
+      "incident_id": "345566",
+      "routing_intent": "it_application_access",
+      "resolution_key": "cloud_station",
+      "status": "Closed",
+      "id": "it_incident_345566"
+    },
+    {
+      "incident_id": "345564",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "mac",
+      "status": "Closed",
+      "id": "it_incident_345564"
+    },
+    {
+      "incident_id": "345563",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345563"
+    },
+    {
+      "incident_id": "345556",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "cloud_station",
+      "status": "Closed",
+      "id": "it_incident_345556"
+    },
+    {
+      "incident_id": "345554",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "upgrade",
+      "status": "Closed",
+      "id": "it_incident_345554"
+    },
+    {
+      "incident_id": "345550",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "cloud_station",
+      "status": "Closed",
+      "id": "it_incident_345550"
+    },
+    {
+      "incident_id": "345493",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "cloud_station",
+      "status": "Closed",
+      "id": "it_incident_345493"
+    },
+    {
+      "incident_id": "345490",
+      "routing_intent": "it_email_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_345490"
+    },
+    {
+      "incident_id": "345482",
+      "routing_intent": "it_application_access",
+      "resolution_key": "device_stuck",
+      "status": "Closed",
+      "id": "it_incident_345482"
+    },
+    {
+      "incident_id": "345477",
+      "routing_intent": "it_application_access",
+      "resolution_key": "salesforce",
+      "status": "Closed",
+      "id": "it_incident_345477"
+    },
+    {
+      "incident_id": "345471",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345471"
+    },
+    {
+      "incident_id": "345470",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345470"
+    },
+    {
+      "incident_id": "345467",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_345467"
+    },
+    {
+      "incident_id": "345461",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_345461"
+    },
+    {
+      "incident_id": "345452",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_345452"
+    },
+    {
+      "incident_id": "345332",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_345332"
+    },
+    {
+      "incident_id": "345317",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_345317"
+    },
+    {
+      "incident_id": "345289",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "sdwan",
+      "status": "Closed",
+      "id": "it_incident_345289"
+    },
+    {
+      "incident_id": "345256",
+      "routing_intent": "it_account_access",
+      "resolution_key": "local_it",
+      "status": "Closed",
+      "id": "it_incident_345256"
+    },
+    {
+      "incident_id": "345152",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_345152"
+    },
+    {
+      "incident_id": "345082",
+      "routing_intent": "it_email_access",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_345082"
+    },
+    {
+      "incident_id": "345031",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_345031"
+    },
+    {
+      "incident_id": "345028",
+      "routing_intent": "it_device_support",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_345028"
+    },
+    {
+      "incident_id": "345020",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_345020"
+    },
+    {
+      "incident_id": "344999",
+      "routing_intent": "it_application_access",
+      "resolution_key": "bts",
+      "status": "Closed",
+      "id": "it_incident_344999"
+    },
+    {
+      "incident_id": "344963",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344963"
+    },
+    {
+      "incident_id": "344961",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_344961"
+    },
+    {
+      "incident_id": "344959",
+      "routing_intent": "it_application_access",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_344959"
+    },
+    {
+      "incident_id": "344950",
+      "routing_intent": "it_email_access",
+      "resolution_key": "local_it",
+      "status": "Closed",
+      "id": "it_incident_344950"
+    },
+    {
+      "incident_id": "344945",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_344945"
+    },
+    {
+      "incident_id": "344938",
+      "routing_intent": "it_email_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344938"
+    },
+    {
+      "incident_id": "344936",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_344936"
+    },
+    {
+      "incident_id": "344907",
+      "routing_intent": "it_email_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_344907"
+    },
+    {
+      "incident_id": "344882",
+      "routing_intent": "it_device_support",
+      "resolution_key": "sdwan",
+      "status": "Closed",
+      "id": "it_incident_344882"
+    },
+    {
+      "incident_id": "344838",
+      "routing_intent": "it_application_access",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344838"
+    },
+    {
+      "incident_id": "344807",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_344807"
+    },
+    {
+      "incident_id": "344788",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "sessions",
+      "status": "Closed",
+      "id": "it_incident_344788"
+    },
+    {
+      "incident_id": "344776",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344776"
+    },
+    {
+      "incident_id": "344775",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344775"
+    },
+    {
+      "incident_id": "344766",
+      "routing_intent": "it_application_access",
+      "resolution_key": "unspecified",
+      "status": "Resolved",
+      "id": "it_incident_344766"
+    },
+    {
+      "incident_id": "344746",
+      "routing_intent": "it_application_access",
+      "resolution_key": "utilisation",
+      "status": "Closed",
+      "id": "it_incident_344746"
+    },
+    {
+      "incident_id": "344744",
+      "routing_intent": "it_application_access",
+      "resolution_key": "poe",
+      "status": "Closed",
+      "id": "it_incident_344744"
+    },
+    {
+      "incident_id": "344739",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344739"
+    },
+    {
+      "incident_id": "344738",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344738"
+    },
+    {
+      "incident_id": "344736",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344736"
+    },
+    {
+      "incident_id": "344667",
+      "routing_intent": "it_application_access",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344667"
+    },
+    {
+      "incident_id": "344657",
+      "routing_intent": "it_security",
+      "resolution_key": "closure_only",
+      "status": "Closed",
+      "id": "it_incident_344657"
+    },
+    {
+      "incident_id": "344556",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344556"
+    },
+    {
+      "incident_id": "344555",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344555"
+    },
+    {
+      "incident_id": "344541",
+      "routing_intent": "it_email_access",
+      "resolution_key": "m365_group",
+      "status": "Closed",
+      "id": "it_incident_344541"
+    },
+    {
+      "incident_id": "344521",
+      "routing_intent": "it_application_access",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_344521"
+    },
+    {
+      "incident_id": "344514",
+      "routing_intent": "it_meeting_equipment",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344514"
+    },
+    {
+      "incident_id": "344513",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_344513"
+    },
+    {
+      "incident_id": "344502",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344502"
+    },
+    {
+      "incident_id": "344501",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344501"
+    },
+    {
+      "incident_id": "344499",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344499"
+    },
+    {
+      "incident_id": "344498",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "geo",
+      "status": "Closed",
+      "id": "it_incident_344498"
+    },
+    {
+      "incident_id": "344496",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344496"
+    },
+    {
+      "incident_id": "344490",
+      "routing_intent": "it_remote_access",
+      "resolution_key": "unspecified",
+      "status": "Closed",
+      "id": "it_incident_344490"
+    },
+    {
+      "incident_id": "344414",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "alignment",
+      "status": "Closed",
+      "id": "it_incident_344414"
+    },
+    {
+      "incident_id": "344407",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "upgrade",
+      "status": "Closed",
+      "id": "it_incident_344407"
+    },
+    {
+      "incident_id": "344401",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344401"
+    },
+    {
+      "incident_id": "344378",
+      "routing_intent": "it_application_access",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_344378"
+    },
+    {
+      "incident_id": "344377",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344377"
+    },
+    {
+      "incident_id": "344338",
+      "routing_intent": "it_email_access",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_344338"
+    },
+    {
+      "incident_id": "344335",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "missing",
+      "status": "Pending",
+      "id": "it_incident_344335"
+    },
+    {
+      "incident_id": "344319",
+      "routing_intent": "it_application_access",
+      "resolution_key": "observation",
+      "status": "Closed",
+      "id": "it_incident_344319"
+    },
+    {
+      "incident_id": "344313",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344313"
+    },
+    {
+      "incident_id": "344309",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344309"
+    },
+    {
+      "incident_id": "344307",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344307"
+    },
+    {
+      "incident_id": "344306",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344306"
+    },
+    {
+      "incident_id": "344303",
+      "routing_intent": "it_network_outage",
+      "resolution_key": "missing",
+      "status": "Cancelled",
+      "id": "it_incident_344303"
+    },
+    {
+      "incident_id": "344295",
+      "routing_intent": "it_network_slowness",
+      "resolution_key": "fiber",
+      "status": "Closed",
+      "id": "it_incident_344295"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# Add these as Azure App Service application settings; replace placeholders.
+PUBLIC_BASE_URL=https://dockerpoc-webapp01.azurewebsites.net/employeeassist/
+DATA_ROOT=/tmp
+WEB_PORT=8608
+ENTRA_AUTH_REQUIRED=true
+ENTRA_TENANT_ID=<directory-tenant-uuid>
+MICROSOFT_TENANT_ID=<same-directory-tenant-uuid>
+ENTRA_CLIENT_ID=9e65e729-0e91-4a00-a03d-e8b9d3e9e841
+MICROSOFT_APP_ID=9e65e729-0e91-4a00-a03d-e8b9d3e9e841
+MICROSOFT_APP_PASSWORD=<client-secret-value>
+ENTRA_API_RESOURCE=api://dockerpoc-webapp01.azurewebsites.net/botid-9e65e729-0e91-4a00-a03d-e8b9d3e9e841
+ENTRA_REDIRECT_URI=https://dockerpoc-webapp01.azurewebsites.net/employeeassist
+TEAMS_MAIL_OAUTH_CONNECTION=<azure-bot-oauth-connection-name>
+TEAMS_SUPERADMIN_EMAILS=admin@example.com
+TEAMS_SUPERADMIN_OBJECT_IDS=
+TEAMS_BROADCAST_DB=teams/broadcast.sqlite3
+JUPYTER_TOKEN=<generate-a-long-random-token>
+# Retain the existing tenant-specific Darwinbox and cloud-storage settings.
+# Set the Azure container target port to 8608 as well.

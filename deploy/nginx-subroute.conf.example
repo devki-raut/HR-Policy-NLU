@@ -1,0 +1,40 @@
+# Dedicated local proxy to reproduce Azure's shared-host application mount.
+# Render with scripts/render_subroute_nginx.py; do not replace the host nginx.
+worker_processes 1;
+pid "__RUNTIME_DIR__/nginx.pid";
+error_log "__RUNTIME_DIR__/nginx-error.log";
+events { worker_connections 256; }
+http {
+    access_log "__RUNTIME_DIR__/nginx-access.log";
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+    }
+    map $http_x_forwarded_proto $employeeassist_public_scheme {
+        default $scheme;
+        https https;
+        http http;
+    }
+    server {
+        listen 127.0.0.1:__PROXY_PORT__;
+        server_name _;
+        absolute_redirect off;
+        location = /employeeassist { return 308 /employeeassist/; }
+        location /employeeassist/ {
+            # Strip /employeeassist/ like the Azure front-end proxy.
+            proxy_pass http://127.0.0.1:__WEB_PORT__/;
+            proxy_redirect off;
+            proxy_http_version 1.1;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-Prefix /employeeassist;
+            proxy_set_header X-Forwarded-Proto $employeeassist_public_scheme;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            proxy_buffering off;
+            proxy_read_timeout 3600s;
+        }
+        # Represents the other application on the shared Azure hostname.
+        location / { return 404; }
+    }
+}

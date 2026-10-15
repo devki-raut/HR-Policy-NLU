@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 mode="${1:-all}"
+source "$(dirname "${BASH_SOURCE[0]}")/runtime.sh"
 
 stop_local() {
-  for port in 5055 5005 8888 8610; do
+  for port in 5055 5005 8888 "$employeeassist_web_port"; do
     pids="$(fuser -n tcp "$port" 2>/dev/null || true)"
     if [[ -n "$pids" ]]; then
       echo "Stopping port $port (PIDs:$pids)"

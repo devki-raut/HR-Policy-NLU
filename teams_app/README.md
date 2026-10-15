@@ -64,7 +64,7 @@ tunnel during development and put that public domain in the Teams manifest.
 ## JupyterLab on the same domain
 
 The web and combined deployments start Jupyter privately on `127.0.0.1:8888`.
-Open `/jupyter/lab` directly on the same HTTPS domain as the webapp. Enter `JUPYTER_TOKEN` from the root `.env` in Jupyter's login form. The token protects only Jupyter and grants code execution access; application APIs do not require it.
+Open `/employeeassist/jupyter` directly on the Azure hostname. The whole Jupyter server, including login, Lab, static assets, APIs and WebSockets, uses `/employeeassist/jupyter/`. Root-hosted ngrok uses `/jupyter/`. Keep `PUBLIC_BASE_URL` or `APP_PUBLIC_URL` at the application root, restart both API and Jupyter after changes, and enter `JUPYTER_TOKEN` in Jupyter's login form. There is no Jupyter link in the chat UI. See [Jupyter subroute verification](../deploy/jupyter-subroute.md), [Azure setup](../deploy/azure-paths-auth.md) and [superadmin/broadcast setup](../deploy/broadcast-superadmins.md).
 Do not put it in the Teams manifest or browser source.
 
 Install Jupyter in a separate environment (Rasa requires older shared libraries):
@@ -105,17 +105,17 @@ with `make sync-darwinbox`.
 The stored directory contains employee number, official email, display name,
 status, timestamps, verified Teams identity bindings, and pending enrollment
 state. In Azure App Service it defaults to
-`/home/data/EmployeeAssist/darwinbox/employees.json`, which survives a container
-restart. Override this with `DARWINBOX_EMPLOYEE_STORE_PATH` when required.
+`/tmp/employeeassist/darwinbox/employees.json`. Temporary data can be cleared on
+restart and is not shared across instances. Set `DATA_ROOT` to a writable mounted
+parent directory for persistent storage, or override `DARWINBOX_EMPLOYEE_STORE_PATH`.
+See [Azure paths and authentication](../deploy/azure-paths-auth.md) for configuration.
 
-For “What is my leave balance?”, the action maps the authenticated Teams email to
-one Darwinbox employee record. On a cache miss it performs an incremental refresh
-and then a full refresh. If no record matches, it asks for an employee code. A
-submitted code is checked against the synchronized record and its official email.
-When Employee Core data is unavailable, the code is remembered for the verified
-Teams email only after the leave-balance API accepts it. Browser and anonymous
-callers cannot create bindings. API failures retain the last successful cache and
-do not write an unverified mapping.
+For “What is my leave balance?”, the action maps the authenticated account to
+one Darwinbox employee record. If no record matches, it asks the user to contact
+HR or the application administrator to link their account. Personal balances
+never fall back to a sample/default employee. Guest users must sign in, and
+employee codes typed into chat cannot change account mappings. The optional
+default employee remains available for the company holiday calendar.
 
 Required tenant values are documented in the root `.env.example`. Existing
 absolute `DARWINBOX_LEAVE_BALANCE_URL` values remain supported, while new
@@ -159,56 +159,56 @@ return the complete calendar for a year.
 
 ## Send IT requests directly from Teams
 
-Teams ticket previews now contain editable **Subject** and **Body** fields and
-**Raise a request** / **Cancel** buttons. Raise sends the submitted text to the
-fixed `helpdesk@emergys.com` recipient through Microsoft Graph `/me/sendMail`.
-The web app shows the email preview with **Raise a request** and **Open in
-Outlook**. Raise sends through Graph after Microsoft sign-in and delegated
-mailbox consent; Open in Outlook opens the prepared draft for manual sending.
-For web sending, grant the web Entra app delegated **User.Read** and
-**Mail.Send** permissions and the required consent. Register the web app URL as
-a **Single-page application** redirect URI. The existing `ENTRA_CLIENT_ID`
-and `ENTRA_TENANT_ID` identify this app; the Teams OAuth connection alone does
-not configure browser authorization. No client secret belongs in browser code.
-Guest users can open Outlook but cannot send through the direct-send API.
-No LLM or Copilot is required.
+Teams and web ticket composers have editable **To**, **CC**, **Subject** and
+**Body** fields. Raise a request sends the submitted fields from the verified
+user's mailbox through delegated Microsoft Graph `/me/sendMail`. The default To
+is `helpdesk@emergys.com`; users may edit it and add CC recipients.
 
-An Azure administrator must configure mailbox authorization before direct
-sending is available:
+Native Teams chat uses Bot Framework SSO with `signin/tokenExchange`. The Teams
+web tab uses its existing SSO token in a server-side on-behalf-of exchange.
+Normal browser users authorize delegated mailbox access with Microsoft sign-in.
+Guest users may open Outlook for manual sending but cannot call the send API.
 
-1. Create or use a single-tenant Microsoft Entra app registration for mailbox
-   authorization. Copy its actual Application (client) ID and Directory
-   (tenant) ID; do not use placeholders or invent IDs.
-2. Register the **Web** redirect URI shown in the Azure Bot OAuth setup
-   (normally `https://token.botframework.com/.auth/web/redirect`). Use the
-   portal-provided URI for the deployment region.
-3. Add delegated Microsoft Graph **User.Read** and **Mail.Send** permissions.
-   Obtain consent according to your organization's policy. Create a client
-   secret and store it in the Azure OAuth connection, not in a chat message.
-4. In **Azure Bot → Settings → Configuration → OAuth Connection Settings**,
-   add a connection named `EmployeeAssistMail` using **Azure Active Directory
-   v2**. Supply the app's actual client ID, client secret and tenant ID. Set
-   scopes to `User.Read Mail.Send offline_access`. Test the connection.
-5. Set `TEAMS_MAIL_OAUTH_CONNECTION=EmployeeAssistMail` in the deployment's
-   environment and restart the app.
-6. In Teams, prepare a ticket and click Raise a request. On first use, authorize
-   Outlook with the same account used in Teams, then click Raise a request
-   again on the retained draft. Subsequent authorized clicks send directly.
+[Configure Entra, the Azure Bot OAuth connection and deployment environment](../deploy/teams-mail-sso.md)
+before testing live SSO. First-time consent can resume a request that the same
+user already approved by clicking Raise a request. Unsolicited sign-in events
+never send mail. Pending approvals expire after ten minutes and are invalidated
+by edits or cancellation. A completed approval cannot be replayed.
 
-Authorization alone never sends an email. The sender comes from the delegated
-Graph token and is checked against the authenticated Teams Microsoft object
-ID. Guest sessions cannot send as Ojas. Draft records are bound to the user,
-tenant and Teams conversation; tokens are not stored by this feature. Draft
-records expire after seven days when new drafts are created. Duplicate clicks
-are blocked. An ambiguous network failure is not automatically retried: check
-Sent Items first. Graph `202 Accepted` means accepted for sending, not confirmed
-delivery or creation of a downstream helpdesk ticket.
+The Graph account is checked against the verified sender. Drafts are bound to
+the tenant/user/conversation and persisted for up to seven days. Duplicate sends
+are blocked. Ambiguous network outcomes require Sent Items review and are not
+retried automatically. `202 Accepted` means Outlook accepted the message for
+sending, not confirmed delivery or helpdesk ticket creation.
 
-Run local tests (Graph calls are mocked; no email is sent):
+Open in Outlook uses the current edits and does not call Graph sendMail. For
+native cards, it first submits the fields and returns an updated Outlook link.
 
 ```bash
-.venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p 'test*.py'
+PYTHON_DOTENV_DISABLED=1 .venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p 'test_*.py'
 ```
 
-References: [Graph sendMail](https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0)
-and [Bot authentication setup](https://learn.microsoft.com/en-us/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0).
+## Teams prompt suggestions
+
+The welcome/help card includes a **Prompt suggestions** button. Users can also
+send `Prompt suggestions`, `show suggestions`, or `show prompt suggestions` in
+the same bot chat. The handler returns **Prompt Suggestions from EmployeeAssist**
+with grouped HR questions, all ten IT topics, and source-backed incident examples.
+Selecting a question sends it through the normal conversation flow. The list
+also includes Create IT ticket.
+
+The personal Teams command menu has ten entries, including Prompt suggestions.
+The prepared update is `app_package/upload/EmployeeAssist-1.0.3.zip`; update the
+installed Teams app package using this archive to refresh the native menu.
+The handler changes require restarting the application deployment. Existing
+chat cards remain unchanged; send `help` to obtain a new welcome card.
+
+
+## Editable mail and Teams SSO
+
+Create IT ticket now opens a single editable To/CC/Subject/Body form. Existing
+issue text is retained; there are no separate error/start-time questions.
+Raise a request uses Teams SSO and automatically resumes the approved send after
+consent. Open in Outlook creates a link from the current edited card fields.
+See [SSO setup and deployment](../deploy/teams-mail-sso.md) for the matching Entra
+API resource, Azure Bot token-exchange URL, delegated consent and app package.

@@ -1,5 +1,8 @@
 # EmployeeAssist
 
+Deployment configuration and the release procedure are documented in
+[deploy/RELEASE.md](deploy/RELEASE.md).
+
 ## Architecture
 
 User question
@@ -9,6 +12,10 @@ User question
 -> SentenceTransformer semantic similarity
 -> confident match: fixed FAQ answer + source
 -> low confidence: PDF RAG fallback
+
+IT questions use ten separate routing intents and `action_answer_it`, with
+source-backed incident/resolution FAQs and clarification for ambiguous symptoms.
+They are excluded from HR policy evidence retrieval.
 
 ## Source of truth
 
@@ -110,43 +117,131 @@ employee dataset; generic report status fields are not interpreted as employment
 status. The guest profile is retained. Adjust the minute
 within the 4–5 PM window with `DARWINBOX_REPORT_SYNC_MINUTE`.
 
-## IT helpdesk drafts
+## IT support request composer
 
-Use **Create IT ticket** in the web app or Teams welcome card, or ask to
-contact support. An issue report offers confirmation before starting a Rasa
-form. The form collects the problem, error or behaviour, and start
-time; “not sure” is accepted. The preview contains separate subject and body
-fields, addressed to `helpdesk@emergys.com`, with edit and cancel controls.
-Templates retain supplied facts and add no generation model.
-A small routing guard distinguishes support-address questions and clear
-application failures; policy-marked messages retain policy routing or clarify. Long messages
-remain editable. No mail is sent by the application.
+Choose **Create IT ticket** to open one editable mail form with To, optional CC,
+Subject and Body. A supplied issue such as `internet issue` prepopulates the
+message without asking separate error or start-time chat questions. Outside a
+ticket flow, ordinary IT questions continue to receive FAQ guidance. Older
+conversations waiting for the issue description move straight to a mail preview.
 
-Web quick actions send ordinary chat text. When the final details arrive, the
-web app opens the prepared Outlook draft in a tab reserved during the user
-gesture, without adding a draft-opened acknowledgement to chat. If popups are blocked, an in-app
-preview dialog offers an explicit Open in Outlook button. Teams users open Outlook,
-and use the draft card’s Open in Outlook, Edit subject, Edit body, and Cancel
-buttons. The form has already ended when the preview is produced. Outlook's selected mailbox determines the sender.
-Signatures use verified Microsoft identity; guests default to Ojas Kulkarni
-and `ojas.kulkarni@emergys.com`. No Graph scopes are needed for compose links.
+Raise a request sends the edited fields from the verified user's Microsoft
+mailbox. Teams uses Bot Framework SSO/token exchange; the web tab uses Teams
+SSO with a delegated on-behalf-of Graph exchange. Successful first-time consent
+resumes the approved Teams send automatically. Normal browser users use Microsoft
+mail authorization. To and CC accept comma- or semicolon-separated addresses.
 
-Run draft logic checks with:
+Open in Outlook uses the current edited fields for manual review/sending. Native
+Teams cards request a fresh Outlook link from the server so it includes card
+edits. The web composer submits on Enter in a single-line field or Ctrl+Enter in
+Body; Enter in Body adds a line. Native Teams card submissions use Raise a request.
 
-```bash
-.venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p test_tickets.py
-```
+Sending checks the Graph account against the verified sender, binds drafts to
+the owner and conversation, and atomically prevents duplicate sends. Unknown
+send outcomes are retained for Sent Items review and never automatically retried.
 
-`scripts/ticket_checks/ticket_intents.json` includes routing probes for support, policies,
-leave balances, holidays, typo examples and gibberish. Retrain Rasa after
-changing `data/nlu_tickets.yml` or `data/rules_tickets.yml`.
-
-With the local services running and guest chat enabled, run the routing and
-conversation checks with:
+See [deployment and SSO configuration](deploy/teams-mail-sso.md) before enabling
+live sending. The package is `teams_app/app_package/upload/EmployeeAssist-1.0.3.zip`.
 
 ```bash
-.venv-runtime/bin/python scripts/ticket_checks/check_live.py
+PYTHON_DOTENV_DISABLED=1 .venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p 'test_*.py'
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHON_DOTENV_DISABLED=1 .venv-runtime/bin/python scripts/evaluate_mail_flow.py
 ```
 
-These tests prepare and discard local conversation drafts. They do not open
-Outlook, send mail, or query the employee directory.
+## IT incident FAQs and routing
+
+`data/Report_15_Oct_26_092938.xls` is a UTF-16 HTML incident export.
+Run `.venv-runtime/bin/python scripts/import_it_report.py` to regenerate six
+IT intents in `data/nlu_it.yml`, their rules, and six grouped FAQs in the
+existing `data/faq_answers.json`. The importer is idempotent. It omits caller
+columns, email addresses and IP addresses from training examples. Historical
+resolutions are not presented as diagnoses. IT FAQs use `action_answer_it`;
+HR FAQs retain policy evidence validation and semantic matching. Run
+`make train` after importing. Rasa training reads only `data/*.yml` so that
+employee-directory records are never scanned as training data.
+
+## Superadmin broadcast in Teams personal chat
+
+Configure these **deployment environment variables** (no roles are accepted
+from user messages or web chat metadata):
+
+```text
+TEAMS_BROADCAST_TENANT_ID=<Microsoft Entra tenant UUID>
+TEAMS_SUPERADMIN_OBJECT_IDS=<admin Entra object UUID>,<another admin UUID>
+TEAMS_BROADCAST_DB=artifacts/teams/broadcast.sqlite3
+```
+
+`TEAMS_BROADCAST_TENANT_ID` defaults to `MICROSOFT_TENANT_ID`. The object ID
+allowlist defaults to empty, disabling privileged access. The normal authenticated
+Bot Framework setup (`MICROSOFT_APP_ID`, `MICROSOFT_APP_PASSWORD`, tenant) is
+required. Set variables in the hosting environment and restart the deployment.
+The database defaults to `artifacts/teams/broadcast.sqlite3`; preserve it on a
+persistent volume and restrict filesystem access to the service account.
+Relative database paths resolve from the project directory automatically; absolute
+paths are also supported. Omitting the variable uses the same default path.
+
+In the same personal Teams chat used for HR/IT questions:
+
+1. `/broadcast <message>` prepares a preview and snapshots the recipient count.
+2. `/broadcast-confirm <id>` sends the preview within ten minutes.
+3. `/broadcast-cancel <id>` cancels a draft.
+4. `/broadcast-status <id>` reports accepted and failed/unknown deliveries.
+
+Only the owning superadmin in the original chat can confirm, cancel or inspect
+that broadcast. Other users and group/channel chats cannot use these commands.
+Recipients are unique users in the configured tenant whose **personal Teams
+conversation references** have been captured after this feature is deployed
+(on messages or installation events). Employee codes, email addresses or Entra
+object IDs alone do not supply a deliverable conversation reference. Install
+this Teams app for intended users and have them open/message the bot first.
+Organisation-wide app installation requires separate Teams/Graph administration.
+
+Sends are paced and recorded per recipient. Confirmation is claimed atomically
+and cannot resend the same broadcast. `accepted` means the Teams connector
+accepted the message, not that the user read it. Failed/ambiguous sends are not
+automatically retried. If the process restarts mid-send, `sending` records require
+operator review; there is no automatic resume that could duplicate messages.
+No broadcast is sent by tests or during setup.
+
+## Full incident-report FAQ coverage and evaluation
+
+Run the importer after replacing the report:
+
+```bash
+.venv-runtime/bin/python scripts/import_it_report.py
+make train
+PYTHON_DOTENV_DISABLED=1 .venv-runtime/bin/python scripts/evaluate_xls_faqs.py
+```
+
+The importer keeps the existing HR FAQs and generates ten IT routing topics,
+230 individually cited incident FAQs and 29 reusable resolution FAQs. It writes
+`data/it_faqs.csv`, `data/it_faqs.md`, and `data/it_report_coverage.json` for review.
+`data/nlu_it.yml` contains the sanitised symptoms, question forms and reviewed
+training paraphrases. The runtime uses the same IT FAQ registry for exact
+incident lookup, distinguishing symptom checks and TF-IDF similarity; it asks
+for clarification when the description cannot support one historical answer.
+IT cases remain separate from policy evidence retrieval.
+
+Historical report notes describe work by IT, not a diagnosis or authorisation
+for new infrastructure changes. Missing solution fields and administrative
+closure notes are explicitly labelled. Ask `What happened in incident 346506?`
+for a specific historical record. A question such as `GEMS unavailable while
+Outlook worked` can retrieve the DNS case; `Citrix is not working` can match
+multiple incompatible incidents and should request clarification.
+
+The evaluation writes `artifacts/evaluations/xls/report.md`, `results.json`,
+and `responses.csv`, with the actual question, answer, selected source IDs,
+expected result, and routing result. Results are split into:
+
+- Source incident-ID reconstruction (230): an integrity check, not unseen accuracy.
+- Source symptom replay (230): report wording, including ambiguous duplicates.
+- Development paraphrases (58): excluded from training but used during development.
+- Validation questions (36): excluded from NLU and retrieval candidates. The first results are preserved as baseline files; after inspection, reruns are regression checks rather than fresh unseen estimates.
+- HR/ticket regression and contrast controls (19).
+- Fresh final holdout (20): added after development and excluded from training. The first run found one contrast-wording bug; `fresh_baseline_*` preserves that result and subsequent runs are regression checks.
+
+The test fixtures are in `scripts/ticket_checks/xls_test_set.json` and
+`xls_validation_set.json`, plus `xls_fresh_validation.json`. Keep frozen validation questions out of training;
+add fresh validation questions after using any existing validation failures to
+tune behaviour. Report exact response matches separately from clarifications.
+These automated checks do not replace human review of incident resolution notes.

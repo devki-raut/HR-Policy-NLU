@@ -7,6 +7,13 @@
 *.pyc
 *.log
 teams_app/**/.env
+.env
+.env.*
+**/.env
+**/.env.*
+data/employee_directory.json
+data/Report_*.xls
+data/Report_*.xlsx
 artifacts
 logs
 results

@@ -21,10 +21,14 @@ let authConfig = null;
 let msalClient = null;
 let activeAccount = null;
 let signedInWithTeams = false;
+let teamsContextAvailable = false;
 
 async function verifiedIdentity(token) {
-  const response = await fetch('/auth/me', {headers: {Authorization: `Bearer ${token}`}});
-  if (!response.ok) throw new Error('Microsoft sign-in could not be verified.');
+  const response = await fetch('auth/me', {headers: {Authorization: `Bearer ${token}`}});
+  if (!response.ok) {
+    const payload = await response.json().catch(() => ({}));
+    throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Microsoft sign-in could not be verified.');
+  }
   return response.json();
 }
 
@@ -39,12 +43,18 @@ function enableChat(identity, inTeams) {
   sessionLabel.textContent = identity.email || identity.display_name || 'Signed in';
   const welcome = messages.querySelector('.assistant');
   if (identity.display_name && welcome) {
-    welcome.textContent = `Hi ${identity.display_name}! I can answer HR policy questions with sources, show your live leave balance, and list upcoming or annual holidays.`;
+    welcome.textContent = `Hi ${identity.display_name}! I can answer HR policy questions with sources, show your live leave balance, list upcoming or annual holidays, help with IT issues, and prepare IT requests.`;
   }
   status.textContent = `${inTeams ? 'Connected to Teams' : 'Signed in'}${identity.email ? ` as ${identity.email}` : ''}`;
 }
 
 function enableGuestChat() {
+  if (authConfig?.required) {
+    microsoftToken = null; activeAccount = null; signedInWithTeams = false;
+    authPanel.hidden = false; chatUi.hidden = true; signIn.disabled = false;
+    status.textContent = 'Sign in with Microsoft to continue.';
+    return;
+  }
   microsoftToken = null;
   signedInWithTeams = false;
   activeAccount = null;
@@ -57,6 +67,10 @@ function enableGuestChat() {
 }
 
 async function completeSignIn(token, inTeams) {
+  if (!token) {
+    if (authConfig?.required) throw new Error('Microsoft sign-in is required.');
+    enableGuestChat(); return;
+  }
   const identity = await verifiedIdentity(token);
   enableChat({...identity, token}, inTeams);
 }
@@ -164,67 +178,103 @@ function ticketCommand(command) {
 function appendTicket(result) {
   const draft = (result.messages || []).find(item => item.custom?.type === 'ticket_draft')?.custom;
   if (!draft) return false;
-  draft.to = authConfig?.ticket_recipient || draft.to;
-  const outlookUrl = new URL(draft.outlook_url);
-  outlookUrl.searchParams.set('to', draft.to);
-  draft.outlook_url = outlookUrl.toString();
+  ticketConversation = false;
+  ticketStep = null;
   const card = document.createElement('article');
   card.className = 'assistant result-card';
-  const heading = document.createElement('strong'); heading.textContent = `To: ${draft.to}`;
-  const subject = document.createElement('p'); subject.textContent = `Subject: ${draft.subject}`;
-  const body = document.createElement('pre'); body.textContent = draft.body; body.style.whiteSpace = 'pre-wrap';
-  const note = document.createElement('p'); note.textContent = 'Raise a request sends from your authorized Microsoft mailbox. Open in Outlook lets you review and send manually.';
-  card.append(heading, subject, body, note);
-  if (draft.manual_edit_recommended) {
-    const tip = document.createElement('p'); tip.textContent = 'You can review the complete message in Outlook before sending.'; card.append(tip);
+  const form = document.createElement('form'); form.className = 'ticket-mail-form';
+  const heading = document.createElement('strong'); heading.textContent = 'IT support request';
+  const tip = document.createElement('p'); tip.textContent = 'Describe your issue here, including the application/device, error and start time if known.';
+  form.append(heading, tip);
+  const inputs = {};
+  for (const [key, label, value, limit, placeholder] of [
+    ['to', 'To', authConfig?.ticket_recipient || draft.to || 'helpdesk@emergys.com', 2000, 'helpdesk@example.com'],
+    ['cc', 'CC (optional)', draft.cc || '', 2000, 'name@example.com; another@example.com'],
+    ['subject', 'Subject', draft.subject || '', 180, 'Internet connectivity issue'],
+    ['body', 'Body', draft.body || '', 6000, 'Describe the issue or access request, affected application/device, error and start time.'],
+  ]) {
+    const field = document.createElement('label'); field.textContent = label;
+    const input = document.createElement(key === 'body' ? 'textarea' : 'input');
+    if (key !== 'body') input.type = 'text'; else input.rows = 8;
+    input.name = key; input.value = value; input.maxLength = limit;
+    input.placeholder = placeholder; input.required = key !== 'cc';
+    inputs[key] = input; field.append(input); form.append(field);
   }
-  const open = document.createElement('a'); open.textContent = 'Open in Outlook'; open.href = draft.outlook_url; open.target = '_blank'; open.rel = 'noopener noreferrer';
+  const note = document.createElement('p'); note.className = 'ticket-mail-status'; note.setAttribute('aria-live', 'polite');
+  note.textContent = 'Raise a request sends these fields from your Microsoft mailbox. Enter submits from a single-line field; Ctrl+Enter submits from the body. Enter in the body adds a new line.';
+  const raise = document.createElement('button'); raise.type = 'submit'; raise.textContent = 'Raise a request';
+  const open = document.createElement('a'); open.textContent = 'Open in Outlook'; open.target = '_blank'; open.rel = 'noopener noreferrer';
+  const cancel = document.createElement('button'); cancel.type = 'button'; cancel.textContent = 'Cancel';
+  let requestId = null; let sending = false; let finished = false;
+  function values() { return Object.fromEntries(Object.entries(inputs).map(([key, input]) => [key, input.value.trim()])); }
+  function refreshOutlook() {
+    open.href = 'https://outlook.office.com/mail/deeplink/compose?' + Object.entries(values()).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  }
+  form.addEventListener('input', refreshOutlook); refreshOutlook();
   open.addEventListener('click', event => {
-    if (busy) {event.preventDefault(); return;}
-    ticketConversation = false;
+    if (sending || finished || !form.reportValidity()) { event.preventDefault(); return; }
+    refreshOutlook();
   });
-  const raise = document.createElement('button'); raise.type = 'button'; raise.textContent = 'Raise a request';
-  let requestId = null;
-  raise.onclick = async () => {
-    if (!microsoftToken) { note.textContent = 'Sign in with Microsoft before raising a request. You can also open Outlook to send manually.'; return; }
-    raise.disabled = true;
+  function lock(value) {
+    sending = value;
+    raise.disabled = value || finished; cancel.disabled = value || finished;
+    Object.values(inputs).forEach(input => {input.disabled = value || finished;});
+    open.setAttribute('aria-disabled', String(value || finished));
+  }
+  inputs.body.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {event.preventDefault(); form.requestSubmit(raise);}
+  });
+  cancel.onclick = async () => {
+    if (sending || finished) return;
+    lock(true);
     try {
-      if (!msalClient) {
-        msalClient = new msal.PublicClientApplication({auth: {
-          clientId: authConfig.client_id,
-          authority: `https://login.microsoftonline.com/${authConfig.tenant_id}`,
-          redirectUri: window.location.origin + window.location.pathname,
-        }, cache: {cacheLocation: 'sessionStorage'}});
+      if (requestId) {
+        const response = await fetch(`tickets/drafts/${requestId}`, {method: 'DELETE', headers: {Authorization: `Bearer ${microsoftToken}`}});
+        if (!response.ok) {const payload = await response.json(); throw new Error(payload.detail || 'Could not cancel the draft.');}
       }
-      const scopes = ['https://graph.microsoft.com/User.Read', 'https://graph.microsoft.com/Mail.Send'];
-      let mailToken;
-      if (activeAccount) {
-        try { mailToken = await msalClient.acquireTokenSilent({account: activeAccount, scopes}); }
-        catch (_) { mailToken = await msalClient.acquireTokenPopup({account: activeAccount, scopes}); }
+      finished = true; note.textContent = 'IT request cancelled.'; open.removeAttribute('href');
+    } catch (error) {note.textContent = error.message;}
+    finally {lock(false);}
+  };
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (sending || finished || !form.reportValidity()) return;
+    if (!microsoftToken) {note.textContent = 'Sign in with Microsoft to send, or use Open in Outlook for manual sending.'; return;}
+    const edited = values(); lock(true);
+    try {
+      let authorization;
+      if (signedInWithTeams) {
+        note.textContent = 'Using Teams single sign-on…';
+        microsoftToken = await microsoftTeams.authentication.getAuthToken();
+        authorization = {use_teams_sso: true};
       } else {
-        mailToken = await msalClient.acquireTokenPopup({scopes, loginHint: sessionLabel.textContent});
+        await initializeMsalClient();
+        const scopes = ['https://graph.microsoft.com/User.Read', 'https://graph.microsoft.com/Mail.Send'];
+        let mailToken;
+        if (activeAccount) {
+          try {mailToken = await msalClient.acquireTokenSilent({account: activeAccount, scopes});}
+          catch (_) {mailToken = await msalClient.acquireTokenPopup({account: activeAccount, scopes});}
+        } else {mailToken = await msalClient.acquireTokenPopup({scopes, loginHint: sessionLabel.textContent});}
+        authorization = {graph_token: mailToken.accessToken};
       }
       const headers = {'Content-Type': 'application/json', Authorization: `Bearer ${microsoftToken}`};
-      if (!requestId) {
-        const response = await fetch('/tickets/drafts', {method: 'POST', headers, body: JSON.stringify({subject: draft.subject, body: draft.body})});
-        const payload = await response.json();
-        if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not prepare the request.');
-        requestId = payload.request_id;
-      }
-      const response = await fetch(`/tickets/drafts/${requestId}/send`, {method: 'POST', headers, body: JSON.stringify({graph_token: mailToken.accessToken})});
-      const payload = await response.json();
-      if (!response.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not send the request.');
-      note.textContent = payload.message;
-      raise.textContent = 'Request submitted';
-      open.removeAttribute('href');
+      const response = await fetch(requestId ? `tickets/drafts/${requestId}` : 'tickets/drafts', {
+        method: requestId ? 'PUT' : 'POST', headers, body: JSON.stringify(edited),
+      });
+      const prepared = await response.json();
+      if (!response.ok) throw new Error(typeof prepared.detail === 'string' ? prepared.detail : 'Could not prepare the request.');
+      requestId = prepared.request_id;
+      note.textContent = 'Submitting your request…';
+      const sent = await fetch(`tickets/drafts/${requestId}/send`, {method: 'POST', headers, body: JSON.stringify(authorization)});
+      const payload = await sent.json();
+      if (!sent.ok) throw new Error(typeof payload.detail === 'string' ? payload.detail : 'Could not send the request.');
+      finished = true; note.textContent = payload.message; raise.textContent = 'Request submitted'; open.removeAttribute('href');
     } catch (error) {
       note.textContent = `${error.message} If sending may have started, check Sent Items before retrying.`;
-      raise.disabled = false;
-    }
-  };
-  card.append(raise, open);
-  messages.append(card);
-  card.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+    } finally {lock(false);}
+  });
+  form.append(note, raise, open, cancel); card.append(form); messages.append(card);
+  card.scrollIntoView({behavior: 'smooth', block: 'nearest'}); inputs.subject.focus();
   return true;
 }
 function appendReplyButtons(result) {
@@ -246,7 +296,7 @@ async function submit() {
   try {
     const headers = {'Content-Type': 'application/json'};
     if (microsoftToken) headers.Authorization = `Bearer ${microsoftToken}`;
-    const response = await fetch('/chat', {
+    const response = await fetch('chat', {
       method: 'POST', headers,
       body: JSON.stringify({sender, message}), signal: AbortSignal.timeout(70000)
     });
@@ -291,36 +341,64 @@ document.querySelector('#reset').addEventListener('click', () => {
   messages.replaceChildren();
   append('New conversation. How can I help with HR policies?', 'assistant');
 });
+function authRedirectUri() {
+  if (authConfig?.redirect_uri) return authConfig.redirect_uri;
+  const base = new URL(document.baseURI);
+  return (window.location.origin + base.pathname).replace(/\/+$/, '');
+}
+
+async function initializeMsalClient() {
+  if (!window.msal) throw new Error('Microsoft sign-in library is unavailable.');
+  if (!msalClient) {
+    msalClient = new msal.PublicClientApplication({auth: {
+      clientId: authConfig.client_id,
+      authority: `https://login.microsoftonline.com/${authConfig.tenant_id}`,
+      redirectUri: authRedirectUri(),
+    }, cache: {cacheLocation: 'sessionStorage'}});
+    if (msalClient.initialize) await msalClient.initialize();
+  }
+  return msalClient;
+}
+
 (async function initializeAuthentication() {
+  // The opener processes mailbox popup responses; do not consume their hash here.
+  if (window.opener && /(?:code|error)=/.test(window.location.hash)) return;
   try {
-    authConfig = await fetch('/auth/config').then(response => response.json());
+    const configResponse = await fetch('auth/config');
+    if (!configResponse.ok) throw new Error('Microsoft authentication configuration is unavailable.');
+    authConfig = await configResponse.json();
+    continueGuest.hidden = Boolean(authConfig.required);
+    continueGuest.disabled = Boolean(authConfig.required);
     if (!authConfig.enabled) throw new Error('Microsoft authentication is not configured.');
     try {
       if (!window.microsoftTeams) throw new Error('SDK unavailable');
       await Promise.race([microsoftTeams.app.initialize(), new Promise((_, reject) => setTimeout(() => reject(new Error('Not in Teams')), 5000))]);
       const context = await microsoftTeams.app.getContext();
+      teamsContextAvailable = true;
       document.documentElement.dataset.theme = context.app.theme;
       microsoftTeams.app.registerOnThemeChangeHandler(theme => {document.documentElement.dataset.theme = theme;});
       status.textContent = 'Signing in with Teams…';
-      const token = await microsoftTeams.authentication.getAuthToken();
-      await completeSignIn(token, true);
+      await completeSignIn(await microsoftTeams.authentication.getAuthToken(), true);
       return;
     } catch (_) {
       status.textContent = 'Sign in with your Microsoft account to continue';
     }
-    if (!window.msal) throw new Error('Microsoft sign-in library is unavailable.');
-    msalClient = new msal.PublicClientApplication({auth: {
-      clientId: authConfig.client_id,
-      authority: `https://login.microsoftonline.com/${authConfig.tenant_id}`,
-      redirectUri: window.location.origin + window.location.pathname,
-    }, cache: {cacheLocation: 'sessionStorage'}});
+    await initializeMsalClient();
+    const redirected = await msalClient.handleRedirectPromise();
+    if (redirected) {
+      activeAccount = redirected.account;
+      msalClient.setActiveAccount(activeAccount);
+      await completeSignIn(redirected.idToken, false);
+      return;
+    }
     const existing = msalClient.getAllAccounts()[0];
     if (existing) {
       try {
-        const result = await msalClient.acquireTokenSilent({account: existing, scopes: [authConfig.scope]});
+        const result = await msalClient.acquireTokenSilent({account: existing, scopes: ['openid', 'profile', 'email']});
         activeAccount = result.account;
-        await completeSignIn(result.accessToken, false);
-      } catch (_) { /* Require an explicit user gesture for popup fallback. */ }
+        msalClient.setActiveAccount(activeAccount);
+        await completeSignIn(result.idToken, false);
+      } catch (_) { /* Wait for an explicit sign-in action. */ }
     }
   } catch (error) {
     status.textContent = error.message;
@@ -329,18 +407,19 @@ document.querySelector('#reset').addEventListener('click', () => {
 })();
 
 async function microsoftSignIn() {
-  if (!msalClient || !authConfig) return;
+  if (!authConfig) return;
   signIn.disabled = true;
   status.textContent = 'Opening Microsoft sign-in…';
   try {
-    const result = await msalClient.loginPopup({scopes: [authConfig.scope, 'openid', 'profile', 'email']});
-    const tokenResult = result.accessToken
-      ? result
-      : await msalClient.acquireTokenSilent({account: result.account, scopes: [authConfig.scope]});
-    activeAccount = tokenResult.account || result.account;
-    await completeSignIn(tokenResult.accessToken, false);
+    if (teamsContextAvailable) {
+      await completeSignIn(await microsoftTeams.authentication.getAuthToken(), true);
+      signIn.disabled = false;
+      return;
+    }
+    await initializeMsalClient();
+    await msalClient.loginRedirect({scopes: ['openid', 'profile', 'email']});
   } catch (error) {
-    status.textContent = 'Microsoft sign-in failed. Please try again.';
+    status.textContent = `Microsoft sign-in failed: ${error.errorCode || error.message || 'Please try again.'}`;
     signIn.disabled = false;
   }
 }
@@ -352,7 +431,7 @@ signOut.addEventListener('click', async () => {
   signOut.disabled = true;
   try {
     if (msalClient && activeAccount && !signedInWithTeams) {
-      await msalClient.logoutPopup({account: activeAccount, mainWindowRedirectUri: window.location.href});
+      await msalClient.logoutRedirect({account: activeAccount, postLogoutRedirectUri: authRedirectUri()});
     }
   } catch (_) {
     // Local guest transition still clears EmployeeAssist's active token.

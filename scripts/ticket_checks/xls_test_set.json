@@ -1,0 +1,2886 @@
+{
+  "source": "Report_15_Oct_26_092938.xls",
+  "note": "Source reconstruction is not unseen accuracy. Development paraphrases are excluded from NLU and retrieval text.",
+  "tests": [
+    {
+      "id": "heldout_dns_0",
+      "split": "development_paraphrase",
+      "question": "Outlook remains accessible whereas GEMS cannot be opened",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_dns"
+      ],
+      "expected_resolution_key": "dns"
+    },
+    {
+      "id": "heldout_dns_1",
+      "split": "development_paraphrase",
+      "question": "Email is fine; the GEMS intranet is inaccessible",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_dns"
+      ],
+      "expected_resolution_key": "dns"
+    },
+    {
+      "id": "heldout_geo_2",
+      "split": "development_paraphrase",
+      "question": "Citrix refuses access because the ISP makes me appear overseas",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_geo"
+      ],
+      "expected_resolution_key": "geo"
+    },
+    {
+      "id": "heldout_geo_3",
+      "split": "development_paraphrase",
+      "question": "My Citrix connection is denied and my location appears as Switzerland",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_geo"
+      ],
+      "expected_resolution_key": "geo"
+    },
+    {
+      "id": "heldout_mac_4",
+      "split": "development_paraphrase",
+      "question": "I replaced my PC and now Citrix refuses to connect",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_mac"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "heldout_mac_5",
+      "split": "development_paraphrase",
+      "question": "Remote applications stopped opening after a device change",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_mac"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "heldout_fiber_6",
+      "split": "development_paraphrase",
+      "question": "The circuit failed after a confirmed optical cable break",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_fiber"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "heldout_fiber_7",
+      "split": "development_paraphrase",
+      "question": "A severed fibre cable has taken the provider connection offline",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_fiber"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "heldout_alignment_8",
+      "split": "development_paraphrase",
+      "question": "The provider says the radio alignment needs correcting",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_alignment"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "heldout_alignment_9",
+      "split": "development_paraphrase",
+      "question": "The wireless circuit is unstable because of antenna alignment",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_alignment"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "heldout_utilisation_10",
+      "split": "development_paraphrase",
+      "question": "Traffic has consumed the entire WAN capacity",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_resolution_utilisation"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "heldout_utilisation_11",
+      "split": "development_paraphrase",
+      "question": "Network monitoring confirms sustained bandwidth saturation",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_resolution_utilisation"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "heldout_load_balance_12",
+      "split": "development_paraphrase",
+      "question": "Traffic is not being distributed across the WAN circuits",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_load_balance"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "heldout_load_balance_13",
+      "split": "development_paraphrase",
+      "question": "The network team identified an incorrect load balancing configuration",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_load_balance"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "heldout_bts_14",
+      "split": "development_paraphrase",
+      "question": "The circuit failure was traced to the provider base station",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_bts"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "heldout_bts_15",
+      "split": "development_paraphrase",
+      "question": "Provider tower equipment is offline",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_bts"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "heldout_device_stuck_16",
+      "split": "development_paraphrase",
+      "question": "The Lavelle appliance has stopped responding to traffic",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_device_stuck"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "heldout_device_stuck_17",
+      "split": "development_paraphrase",
+      "question": "The network team found the Lavelle box hung",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_device_stuck"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "heldout_cloud_station_18",
+      "split": "development_paraphrase",
+      "question": "The Lavelle management station cannot reach its cloud server",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_cloud_station"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "heldout_cloud_station_19",
+      "split": "development_paraphrase",
+      "question": "Lavelle cloud station went offline after a server error",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_cloud_station"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "heldout_port_20",
+      "split": "development_paraphrase",
+      "question": "The network team diagnosed a damaged LAN connector on the device",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_port"
+      ],
+      "expected_resolution_key": "port"
+    },
+    {
+      "id": "heldout_port_21",
+      "split": "development_paraphrase",
+      "question": "A failed LAN port is stopping local connectivity",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_port"
+      ],
+      "expected_resolution_key": "port"
+    },
+    {
+      "id": "heldout_adapter_22",
+      "split": "development_paraphrase",
+      "question": "The network appliance has lost power through a defective adaptor",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_adapter"
+      ],
+      "expected_resolution_key": "adapter"
+    },
+    {
+      "id": "heldout_adapter_23",
+      "split": "development_paraphrase",
+      "question": "A defective power supply is keeping the site link offline",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_adapter"
+      ],
+      "expected_resolution_key": "adapter"
+    },
+    {
+      "id": "heldout_sdwan_24",
+      "split": "development_paraphrase",
+      "question": "The branch SDWAN unit has failed and needs replacement",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_sdwan"
+      ],
+      "expected_resolution_key": "sdwan"
+    },
+    {
+      "id": "heldout_sdwan_25",
+      "split": "development_paraphrase",
+      "question": "The SD WAN box is dead at the office",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_sdwan"
+      ],
+      "expected_resolution_key": "sdwan"
+    },
+    {
+      "id": "heldout_ad_policy_26",
+      "split": "development_paraphrase",
+      "question": "Active Directory policy changes are failing to synchronise",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_ad_policy"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "heldout_ad_policy_27",
+      "split": "development_paraphrase",
+      "question": "The domain policy has stopped syncing to the machine",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_ad_policy"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "heldout_ad_auth_28",
+      "split": "development_paraphrase",
+      "question": "My directory authentication is failing",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_ad_auth"
+      ],
+      "expected_resolution_key": "ad_auth"
+    },
+    {
+      "id": "heldout_ad_auth_29",
+      "split": "development_paraphrase",
+      "question": "The domain sign in is being rejected by AD",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_ad_auth"
+      ],
+      "expected_resolution_key": "ad_auth"
+    },
+    {
+      "id": "heldout_mailbox_missing_30",
+      "split": "development_paraphrase",
+      "question": "My user ID exists but a mailbox has not been provisioned",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_resolution_mailbox_missing"
+      ],
+      "expected_resolution_key": "mailbox_missing"
+    },
+    {
+      "id": "heldout_mailbox_missing_31",
+      "split": "development_paraphrase",
+      "question": "The helpdesk found that my work mailbox does not exist",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_resolution_mailbox_missing"
+      ],
+      "expected_resolution_key": "mailbox_missing"
+    },
+    {
+      "id": "heldout_archive_32",
+      "split": "development_paraphrase",
+      "question": "I need the helpdesk to activate mailbox archiving",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_resolution_archive"
+      ],
+      "expected_resolution_key": "archive"
+    },
+    {
+      "id": "heldout_archive_33",
+      "split": "development_paraphrase",
+      "question": "Can IT enable the archive feature on my mailbox?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_resolution_archive"
+      ],
+      "expected_resolution_key": "archive"
+    },
+    {
+      "id": "heldout_onedrive_access_34",
+      "split": "development_paraphrase",
+      "question": "How do I obtain approved access to another employee files in OneDrive?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_resolution_onedrive_access"
+      ],
+      "expected_resolution_key": "onedrive_access"
+    },
+    {
+      "id": "heldout_onedrive_access_35",
+      "split": "development_paraphrase",
+      "question": "A colleague OneDrive and mailbox need an authorised access handover",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_resolution_onedrive_access"
+      ],
+      "expected_resolution_key": "onedrive_access"
+    },
+    {
+      "id": "heldout_m365_group_36",
+      "split": "development_paraphrase",
+      "question": "I need a Microsoft 365 group but users cannot create one",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_resolution_m365_group"
+      ],
+      "expected_resolution_key": "m365_group"
+    },
+    {
+      "id": "heldout_m365_group_37",
+      "split": "development_paraphrase",
+      "question": "What details should I give IT for a new M365 collaboration group?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_resolution_m365_group"
+      ],
+      "expected_resolution_key": "m365_group"
+    },
+    {
+      "id": "heldout_dc_outage_38",
+      "split": "development_paraphrase",
+      "question": "Every location has lost several critical business systems at once",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_dc_outage"
+      ],
+      "expected_resolution_key": "dc_outage"
+    },
+    {
+      "id": "heldout_dc_outage_39",
+      "split": "development_paraphrase",
+      "question": "GEMS IntelliHub and booking systems are unavailable company wide",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_dc_outage"
+      ],
+      "expected_resolution_key": "dc_outage"
+    },
+    {
+      "id": "heldout_new_access_40",
+      "split": "development_paraphrase",
+      "question": "A new joiner needs Citrix provisioned",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_new_access"
+      ],
+      "expected_resolution_key": "new_access"
+    },
+    {
+      "id": "heldout_new_access_41",
+      "split": "development_paraphrase",
+      "question": "What process is recorded for a new remote application access requirement?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_new_access"
+      ],
+      "expected_resolution_key": "new_access"
+    },
+    {
+      "id": "heldout_local_it_42",
+      "split": "development_paraphrase",
+      "question": "The incident was closed because a different IT team owns the service",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_local_it"
+      ],
+      "expected_resolution_key": "local_it"
+    },
+    {
+      "id": "heldout_local_it_43",
+      "split": "development_paraphrase",
+      "question": "The assigned analyst asked me to contact the concerned local support team",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_local_it"
+      ],
+      "expected_resolution_key": "local_it"
+    },
+    {
+      "id": "heldout_no_logs_44",
+      "split": "development_paraphrase",
+      "question": "A failed Citrix sign in has no corresponding user logs",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_no_logs"
+      ],
+      "expected_resolution_key": "no_logs"
+    },
+    {
+      "id": "heldout_no_logs_45",
+      "split": "development_paraphrase",
+      "question": "No authentication logs appear for my attempted remote access",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_no_logs"
+      ],
+      "expected_resolution_key": "no_logs"
+    },
+    {
+      "id": "heldout_traffic_failover_46",
+      "split": "development_paraphrase",
+      "question": "Conferencing breaks when the primary provider circuit loses packets",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_resolution_traffic_failover"
+      ],
+      "expected_resolution_key": "traffic_failover"
+    },
+    {
+      "id": "heldout_traffic_failover_47",
+      "split": "development_paraphrase",
+      "question": "The voice fault follows one unstable WAN provider",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_resolution_traffic_failover"
+      ],
+      "expected_resolution_key": "traffic_failover"
+    },
+    {
+      "id": "heldout_upgrade_48",
+      "split": "development_paraphrase",
+      "question": "The network team proposes circuit and appliance upgrades",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_upgrade"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "heldout_upgrade_49",
+      "split": "development_paraphrase",
+      "question": "How were the recorded branch link upgrade requests handled?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_upgrade"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "heldout_power_50",
+      "split": "development_paraphrase",
+      "question": "Two ISP circuits failed and returned at the same instant",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_power"
+      ],
+      "expected_resolution_key": "power"
+    },
+    {
+      "id": "heldout_power_51",
+      "split": "development_paraphrase",
+      "question": "Both internet links recover together after a site power interruption",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_power"
+      ],
+      "expected_resolution_key": "power"
+    },
+    {
+      "id": "heldout_poe_52",
+      "split": "development_paraphrase",
+      "question": "The network engineer diagnosed a hung power over Ethernet unit",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_poe"
+      ],
+      "expected_resolution_key": "poe"
+    },
+    {
+      "id": "heldout_poe_53",
+      "split": "development_paraphrase",
+      "question": "The provider connection stopped after its PoE equipment froze",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_poe"
+      ],
+      "expected_resolution_key": "poe"
+    },
+    {
+      "id": "heldout_sessions_54",
+      "split": "development_paraphrase",
+      "question": "The network team suspects a stale provider session",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_sessions"
+      ],
+      "expected_resolution_key": "sessions"
+    },
+    {
+      "id": "heldout_sessions_55",
+      "split": "development_paraphrase",
+      "question": "The circuit carries no load until its sessions are reset",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_sessions"
+      ],
+      "expected_resolution_key": "sessions"
+    },
+    {
+      "id": "heldout_salesforce_56",
+      "split": "development_paraphrase",
+      "question": "Salesforce is failing on the secondary circuit but works on the primary",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_salesforce"
+      ],
+      "expected_resolution_key": "salesforce"
+    },
+    {
+      "id": "heldout_salesforce_57",
+      "split": "development_paraphrase",
+      "question": "The network team moved Salesforce traffic to the primary connection",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_salesforce"
+      ],
+      "expected_resolution_key": "salesforce"
+    },
+    {
+      "id": "source_348394",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348394?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348394"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348393",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348393?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_348393"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348383",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348383?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348383"
+      ],
+      "expected_resolution_key": "port"
+    },
+    {
+      "id": "source_348381",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348381?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348381"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348379",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348379?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_348379"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348377",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348377?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348377"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348328",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348328?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_348328"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348313",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348313?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348313"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_348300",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348300?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_348300"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_348296",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348296?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348296"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_348283",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348283?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_348283"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348282",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348282?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_348282"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_348272",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348272?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348272"
+      ],
+      "expected_resolution_key": "adapter"
+    },
+    {
+      "id": "source_348266",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348266?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348266"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348265",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348265?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348265"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_348264",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348264?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348264"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348258",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348258?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348258"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "source_348254",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348254?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348254"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348206",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348206?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348206"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_348203",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348203?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348203"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_348202",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348202?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348202"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_348189",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348189?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348189"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_348179",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348179?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348179"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348174",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348174?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_348174"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348172",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348172?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_348172"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348170",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348170?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348170"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_348168",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348168?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_348168"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348166",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348166?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348166"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_348165",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348165?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348165"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_348163",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348163?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348163"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_348111",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348111?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348111"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_348106",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348106?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348106"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_348081",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348081?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348081"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_348073",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348073?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348073"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_348068",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348068?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348068"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_348067",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348067?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_348067"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_348056",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348056?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_348056"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_348007",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 348007?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_348007"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347875",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347875?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347875"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_347857",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347857?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347857"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347849",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347849?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_347849"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347838",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347838?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347838"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347835",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347835?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347835"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_347801",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347801?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347801"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347790",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347790?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347790"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347777",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347777?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_347777"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347773",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347773?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_347773"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347761",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347761?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347761"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347670",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347670?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_347670"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347627",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347627?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_347627"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347617",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347617?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_347617"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347607",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347607?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_347607"
+      ],
+      "expected_resolution_key": "traffic_failover"
+    },
+    {
+      "id": "source_347595",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347595?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347595"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347588",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347588?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347588"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_347578",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347578?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347578"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347544",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347544?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_347544"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347532",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347532?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347532"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_347504",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347504?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347504"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_347495",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347495?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_347495"
+      ],
+      "expected_resolution_key": "traffic_failover"
+    },
+    {
+      "id": "source_347489",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347489?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347489"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347443",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347443?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347443"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347388",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347388?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347388"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347375",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347375?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347375"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347333",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347333?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347333"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_347313",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347313?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347313"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_347310",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347310?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347310"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_347287",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347287?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_347287"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347285",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347285?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_347285"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347278",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347278?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347278"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347208",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347208?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_347208"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_347197",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347197?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_347197"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_347193",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347193?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_347193"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347192",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347192?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_incident_347192"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_347189",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347189?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347189"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_347165",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347165?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_347165"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_347161",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347161?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_347161"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_347155",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347155?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347155"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_347152",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347152?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_347152"
+      ],
+      "expected_resolution_key": "mailbox_missing"
+    },
+    {
+      "id": "source_347147",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347147?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_347147"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_347085",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347085?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_347085"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_347003",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 347003?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_347003"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_346978",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346978?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346978"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346918",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346918?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346918"
+      ],
+      "expected_resolution_key": "power"
+    },
+    {
+      "id": "source_346917",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346917?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_346917"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346816",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346816?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346816"
+      ],
+      "expected_resolution_key": "new_access"
+    },
+    {
+      "id": "source_346814",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346814?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346814"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_346808",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346808?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346808"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_346775",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346775?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346775"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "source_346768",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346768?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346768"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346767",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346767?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346767"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "source_346715",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346715?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346715"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "source_346661",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346661?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_346661"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346641",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346641?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346641"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_346635",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346635?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346635"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_346613",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346613?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346613"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_346589",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346589?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_346589"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346580",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346580?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346580"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346565",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346565?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_346565"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "source_346552",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346552?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346552"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_346515",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346515?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346515"
+      ],
+      "expected_resolution_key": "no_logs"
+    },
+    {
+      "id": "source_346514",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346514?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346514"
+      ],
+      "expected_resolution_key": "no_logs"
+    },
+    {
+      "id": "source_346506",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346506?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_346506"
+      ],
+      "expected_resolution_key": "dns"
+    },
+    {
+      "id": "source_346494",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346494?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_346494"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_346484",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346484?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_346484"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346472",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346472?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346472"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_346465",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346465?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346465"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_346460",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346460?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_346460"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "source_346382",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346382?",
+      "expected_intent": "it_security",
+      "expected_faq_ids": [
+        "it_incident_346382"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_346365",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346365?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346365"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_346360",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346360?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_346360"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_346359",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346359?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346359"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_346350",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346350?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346350"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_346312",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346312?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346312"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_346293",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346293?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346293"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_346273",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346273?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346273"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_346259",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346259?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346259"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_346205",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346205?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_346205"
+      ],
+      "expected_resolution_key": "ad_auth"
+    },
+    {
+      "id": "source_346197",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346197?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_346197"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346195",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346195?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346195"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_346194",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346194?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346194"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_346189",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346189?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346189"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346182",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346182?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346182"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346179",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346179?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_346179"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346177",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346177?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346177"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346173",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346173?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346173"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346172",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346172?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346172"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346159",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346159?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346159"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_346114",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346114?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346114"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346097",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346097?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346097"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346083",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346083?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_346083"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346080",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346080?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_346080"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "source_346055",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346055?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_346055"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "source_346014",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 346014?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_346014"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_345986",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345986?",
+      "expected_intent": "it_security",
+      "expected_faq_ids": [
+        "it_incident_345986"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "source_345976",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345976?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_incident_345976"
+      ],
+      "expected_resolution_key": "onedrive_access"
+    },
+    {
+      "id": "source_345973",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345973?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_345973"
+      ],
+      "expected_resolution_key": "archive"
+    },
+    {
+      "id": "source_345965",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345965?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345965"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "source_345947",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345947?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345947"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "source_345870",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345870?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345870"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_345849",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345849?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_345849"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_345808",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345808?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_345808"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345784",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345784?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_345784"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_345744",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345744?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345744"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345742",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345742?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345742"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_345739",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345739?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345739"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_345708",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345708?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345708"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_345694",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345694?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345694"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "source_345693",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345693?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345693"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_345692",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345692?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345692"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_345648",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345648?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345648"
+      ],
+      "expected_resolution_key": "dc_outage"
+    },
+    {
+      "id": "source_345647",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345647?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345647"
+      ],
+      "expected_resolution_key": "dc_outage"
+    },
+    {
+      "id": "source_345644",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345644?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345644"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_345637",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345637?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345637"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_345625",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345625?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345625"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_345623",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345623?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345623"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345619",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345619?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345619"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_345609",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345609?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345609"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_345566",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345566?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345566"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "source_345564",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345564?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_345564"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "source_345563",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345563?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345563"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345556",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345556?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345556"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "source_345554",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345554?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345554"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "source_345550",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345550?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345550"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "source_345493",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345493?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345493"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "source_345490",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345490?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_345490"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_345482",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345482?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345482"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "source_345477",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345477?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345477"
+      ],
+      "expected_resolution_key": "salesforce"
+    },
+    {
+      "id": "source_345471",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345471?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345471"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345470",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345470?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_345470"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345467",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345467?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345467"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_345461",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345461?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345461"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_345452",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345452?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_345452"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345332",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345332?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345332"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_345317",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345317?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345317"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_345289",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345289?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345289"
+      ],
+      "expected_resolution_key": "sdwan"
+    },
+    {
+      "id": "source_345256",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345256?",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_incident_345256"
+      ],
+      "expected_resolution_key": "local_it"
+    },
+    {
+      "id": "source_345152",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345152?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345152"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_345082",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345082?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_345082"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_345031",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345031?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_345031"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_345028",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345028?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_345028"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_345020",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 345020?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_345020"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_344999",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344999?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344999"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "source_344963",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344963?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344963"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344961",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344961?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_344961"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_344959",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344959?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344959"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_344950",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344950?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_344950"
+      ],
+      "expected_resolution_key": "local_it"
+    },
+    {
+      "id": "source_344945",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344945?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_344945"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_344938",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344938?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_344938"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344936",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344936?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344936"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_344907",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344907?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_344907"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_344882",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344882?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_incident_344882"
+      ],
+      "expected_resolution_key": "sdwan"
+    },
+    {
+      "id": "source_344838",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344838?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344838"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344807",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344807?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344807"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_344788",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344788?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344788"
+      ],
+      "expected_resolution_key": "sessions"
+    },
+    {
+      "id": "source_344776",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344776?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344776"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344775",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344775?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344775"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344766",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344766?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344766"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_344746",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344746?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344746"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "source_344744",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344744?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344744"
+      ],
+      "expected_resolution_key": "poe"
+    },
+    {
+      "id": "source_344739",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344739?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344739"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344738",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344738?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344738"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344736",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344736?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344736"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344667",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344667?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344667"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344657",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344657?",
+      "expected_intent": "it_security",
+      "expected_faq_ids": [
+        "it_incident_344657"
+      ],
+      "expected_resolution_key": "closure_only"
+    },
+    {
+      "id": "source_344556",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344556?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_344556"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344555",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344555?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344555"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344541",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344541?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_344541"
+      ],
+      "expected_resolution_key": "m365_group"
+    },
+    {
+      "id": "source_344521",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344521?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344521"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_344514",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344514?",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_incident_344514"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344513",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344513?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344513"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_344502",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344502?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344502"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344501",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344501?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344501"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344499",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344499?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344499"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344498",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344498?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_344498"
+      ],
+      "expected_resolution_key": "geo"
+    },
+    {
+      "id": "source_344496",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344496?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344496"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344490",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344490?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_incident_344490"
+      ],
+      "expected_resolution_key": "unspecified"
+    },
+    {
+      "id": "source_344414",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344414?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344414"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "source_344407",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344407?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344407"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "source_344401",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344401?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344401"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344378",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344378?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344378"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_344377",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344377?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344377"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344338",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344338?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_incident_344338"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344335",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344335?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_344335"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344319",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344319?",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_incident_344319"
+      ],
+      "expected_resolution_key": "observation"
+    },
+    {
+      "id": "source_344313",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344313?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_344313"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344309",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344309?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344309"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "source_344307",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344307?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344307"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344306",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344306?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344306"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344303",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344303?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_incident_344303"
+      ],
+      "expected_resolution_key": "missing"
+    },
+    {
+      "id": "source_344295",
+      "split": "source_reconstruction",
+      "question": "What happened in incident 344295?",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_incident_344295"
+      ],
+      "expected_resolution_key": "fiber"
+    }
+  ]
+}

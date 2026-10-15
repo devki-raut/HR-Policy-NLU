@@ -4,6 +4,8 @@ import math
 import os
 import re
 from pathlib import Path
+from actions.runtime_paths import runtime_path
+from actions.policy_store import index_path
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -13,8 +15,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 
 FAQ_PATH = DATA_DIR / "faq_answers.json"
-EMBEDDINGS_PATH = DATA_DIR / "faq_embeddings.npz"
-POLICY_PATH = DATA_DIR / "policies" / "policies.json"
+EMBEDDINGS_PATH = runtime_path("cache/faq_embeddings.npz", DATA_DIR/"faq_embeddings.npz", "FAQ_EMBEDDINGS_PATH")
+POLICY_PATH = index_path()
 
 MODEL_NAME = os.getenv(
     "FAQ_EMBEDDING_MODEL",
@@ -59,7 +61,7 @@ def _build_candidates():
     rows = []
 
     for entry in faq.get("entries", []):
-        if not entry.get("enabled", True):
+        if not entry.get("enabled", True) or entry.get("category", "").startswith("it_"):
             continue
 
         detailed_intent = entry.get("intent")
@@ -149,6 +151,7 @@ def _compute_embeddings(rows):
 def _save_embedding_store(rows, embeddings, fingerprint):
     """Save FAQ rows and embeddings to NPZ and JSON files."""
 
+    EMBEDDINGS_PATH.parent.mkdir(parents=True, exist_ok=True)
     # 1. Save the efficient runtime embedding store
     np.savez_compressed(
         EMBEDDINGS_PATH,
@@ -194,12 +197,13 @@ def _save_embedding_store(rows, embeddings, fingerprint):
 def _load_embedding_store():
     """Load the local embedding store."""
 
-    if not EMBEDDINGS_PATH.exists():
+    cache_path = EMBEDDINGS_PATH if EMBEDDINGS_PATH.exists() else DATA_DIR/"faq_embeddings.npz"
+    if not cache_path.exists():
         return None
 
     try:
         store = np.load(
-            EMBEDDINGS_PATH,
+            cache_path,
             allow_pickle=True,
         )
 

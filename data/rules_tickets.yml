@@ -18,8 +18,6 @@ rules:
   - action: action_start_ticket
   - slot_was_set:
     - ticket_pending: false
-  - action: ticket_form
-  - active_loop: ticket_form
   condition:
   - active_loop: null
 - rule: Finish ticket details
@@ -135,10 +133,6 @@ rules:
   - intent: contact_support
   - action: ticket_edit_form
   - active_loop: ticket_edit_form
-
-# Any recognized HR command interrupts ticket collection before the message is
-# consumed as a ticket field. The action clears the form and follows up with
-# the requested command.
 - rule: Interrupt ticket for leave balance
   condition:
   - active_loop: ticket_form

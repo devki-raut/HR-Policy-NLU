@@ -20,13 +20,13 @@ from .faq_matcher import find_faq, retrieve_policy_chunks
 FAQ_THRESHOLD = float(os.getenv("FAQ_EMBEDDING_THRESHOLD", "0.75"))
 
 
-def _employee_for_tracker(tracker):
+def _employee_for_tracker(tracker, allow_default=True):
     metadata = tracker.latest_message.get("metadata") or {}
     if not isinstance(metadata, dict):
         metadata = {}
     employee_no = resolve_employee_id(tracker.sender_id, metadata)
     fallback = False
-    if not employee_no:
+    if not employee_no and allow_default:
         default_email = os.getenv("DEFAULT_EMPLOYEE_EMAIL", "guest").strip() or "guest"
         employee_no = resolve_employee_id("guest", {"email": default_email})
         employee_no = employee_no or (
@@ -301,6 +301,10 @@ class ActionPersonalLeaveBalance(Action):
         return "action_personal_leave_balance"
 
     async def run(self, dispatcher, tracker, domain):
+        metadata = tracker.latest_message.get('metadata') or {}
+        if metadata.get('is_guest'):
+            dispatcher.utter_message(text='Sign in with Microsoft to check your personal leave balance.')
+            return []
         question = tracker.latest_message.get("text", "").strip()
         balances = []
         status = "answered"
@@ -315,11 +319,16 @@ class ActionPersonalLeaveBalance(Action):
                 "request_incomplete", [],
             )
             return []
-        employee_no = os.getenv("DEFAULT_EMPLOYEE_CODE", "Ell0769")
+        employee_no = None
         identity_metadata = {}
         mapping_fallback = True
         try:
-            employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker)
+            employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker, allow_default=False)
+            if not employee_no:
+                answer = 'I could not map your signed-in account to an employee record. Contact HR or the application administrator to link your account before checking your personal leave balance.'
+                dispatcher.utter_message(text=answer)
+                _personal_log(dispatcher, tracker, question, answer, 'identity_mapping_required', 'employee_not_mapped', [])
+                return []
             answer, balances = await _personal_balance_answer(employee_no)
             answer += _fallback_notice(identity_metadata, mapping_fallback)
             integration_status = "success"
@@ -470,8 +479,8 @@ class ActionRememberEmployeeCode(Action):
     async def run(self, dispatcher, tracker, domain):
         original = str(tracker.latest_message.get("text") or "").strip()
         answer = (
-            "Employee-code entry is disabled in this test deployment. "
-            "Ask ‘What is my leave balance?’ to test the configured leave account."
+            "Contact HR or the application administrator to link your Microsoft account "
+            "to the correct employee record. Employee codes sent in chat cannot change your account mapping."
         )
 
         dispatcher.utter_message(text=answer)
@@ -483,3 +492,16 @@ class ActionRememberEmployeeCode(Action):
 
 # Register the IT draft actions with the action server.
 from .tickets import (ActionStartTicket, ActionOfferTicket, ValidateTicketForm, ActionDraftTicket, ActionEditTicket, ActionSaveTicketEdit, ActionCloseTicket, ActionInterruptTicket)
+
+
+class ActionAnswerIT(Action):
+    def name(self):
+        return "action_answer_it"
+
+    def run(self, dispatcher, tracker, domain):
+        from .it_support import match_it_faq
+        intent = (tracker.latest_message.get("intent") or {}).get("name")
+        result = match_it_faq(tracker.latest_message.get("text", ""), intent)
+        dispatcher.utter_message(text=result["answer"])
+        dispatcher.utter_message(json_message={"type": "it_answer_metadata", **{k:v for k,v in result.items() if k != "answer"}})
+        return []

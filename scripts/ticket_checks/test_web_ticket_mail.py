@@ -15,9 +15,9 @@ class WebMailTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_send_binds_verified_identity(self):
         identity = {'tenant_id': 'tenant', 'aad_object_id': 'user'}
-        with patch.object(web, 'request_identity', AsyncMock(return_value=identity)), patch.object(web, 'send_draft', AsyncMock()) as send:
+        with patch.object(web, 'request_identity', AsyncMock(return_value=identity)), patch.object(web, 'get_draft', return_value={'to_list':'support@example.com'}), patch.object(web, 'send_draft', AsyncMock()) as send:
             result = await web.send('draft', web.SendRequest(graph_token='token'), SimpleNamespace())
-            send.assert_awaited_once_with('draft', 'tenant:user:web', 'token', 'user', recipient=web.recipient())
+            send.assert_awaited_once_with('draft', 'tenant:user:web', 'token', 'user')
             self.assertEqual(result['status'], 'accepted')
 
     async def test_mail_failure_is_reported(self):
@@ -29,7 +29,7 @@ class WebMailTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_draft_is_owned_by_signed_in_user(self):
         identity = {'tenant_id': 'tenant', 'aad_object_id': 'user'}
-        with patch.object(web, 'request_identity', AsyncMock(return_value=identity)), patch.object(web, 'create_draft', return_value='draft') as create:
+        with patch.object(web, 'request_identity', AsyncMock(return_value=identity)), patch.object(web, 'create_draft', return_value='draft') as create, patch.object(web, 'update_draft'):
             result = await web.new_draft(web.DraftRequest(subject='VPN', body='Please help'), SimpleNamespace())
-            create.assert_called_once_with('tenant:user:web', 'VPN', 'Please help')
+            create.assert_called_once_with('tenant:user:web', 'VPN', 'Please help', web.recipient(), '')
             self.assertEqual(result['request_id'], 'draft')

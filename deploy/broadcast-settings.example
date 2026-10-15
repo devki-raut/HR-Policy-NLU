@@ -1,0 +1,6 @@
+
+# Mail SSO: name of the Microsoft Entra v2 OAuth connection on the Azure Bot.
+# TEAMS_MAIL_OAUTH_CONNECTION=EmployeeAssistMail
+# ENTRA_API_RESOURCE=api://your-host/botid-your-app-client-id
+# If web authentication uses a separate client ID, set its client secret:
+# ENTRA_CLIENT_SECRET=<secret-value>

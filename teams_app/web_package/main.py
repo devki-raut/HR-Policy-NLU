@@ -5,13 +5,15 @@ import re
 from pathlib import Path
 import sys
 from urllib.parse import quote
+from html import escape
 
 import httpx
 from fastapi import FastAPI, File, Form, HTTPException, Request, Response, UploadFile
-from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.concurrency import run_in_threadpool
+from starlette.datastructures import MutableHeaders
 
 try:
     from dotenv import load_dotenv
@@ -22,20 +24,24 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
+if load_dotenv is not None:
+    load_dotenv(PROJECT_ROOT / '.env', override=False)
+
 from actions.policy_store import MAX_BYTES, index_path, policy_pdf_dir, update_pdf
+from actions.runtime_paths import runtime_path
 from actions.storage import sync_from_cloud
 from actions.policy_engine import intent_mapping
 from actions.darwinbox_adapters.store import load_store
 from botbuilder.schema import Activity
 from teams_app.bot_package.adapter import ADAPTER
 from teams_app.bot_package.bot_handler import BOT
-from teams_app.web_package.auth import auth_required, client_id, request_identity, tenant_id
+from teams_app.web_package.auth import auth_required, client_id, request_identity, tenant_id, require_policy_admin
+from teams_app.chat_service import rasa_chat, _enrich_policy_chunk, chat_sender
+from teams_app.web_paths import PublicPrefixMiddleware, base_path, public_path
 
-app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload company policies and chat through Rasa. Jupyter uses separate token authentication.')
-
-
-if load_dotenv is not None:
-    load_dotenv(PROJECT_ROOT / '.env', override=False)
+BASE_PATH = base_path()
+app = FastAPI(title='EmployeeAssist API', version='1.0.0', description='Upload company policies and chat through Rasa. Jupyter uses separate token authentication.', root_path=BASE_PATH)
+app.add_middleware(PublicPrefixMiddleware)
 
 try:
     sync_from_cloud()
@@ -51,9 +57,9 @@ app.include_router(ticket_mail_router)
 
 STATIC = Path(__file__).resolve().parent / 'static'
 APP_PACKAGE = PROJECT_ROOT / 'teams_app' / 'app_package'
-POLICY_DOCUMENTS = Path(os.getenv('POLICY_DOCUMENTS_DIR', str(policy_pdf_dir()))).expanduser()
-if not POLICY_DOCUMENTS.is_absolute():
-    POLICY_DOCUMENTS = PROJECT_ROOT / POLICY_DOCUMENTS
+POLICY_DOCUMENTS = policy_pdf_dir()
+if os.getenv('POLICY_DOCUMENTS_DIR', '').strip():
+    POLICY_DOCUMENTS = runtime_path('policies/pdfs', POLICY_DOCUMENTS, 'POLICY_DOCUMENTS_DIR')
 POLICY_DOCUMENTS.mkdir(parents=True, exist_ok=True)
 app.mount('/static', StaticFiles(directory=STATIC), name='static')
 app.mount('/app-package', StaticFiles(directory=APP_PACKAGE), name='app-package')
@@ -64,29 +70,58 @@ app.mount(
 )
 
 
-@app.middleware('http')
-async def ui_headers(request, call_next):
-    response = await call_next(request)
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['Cache-Control'] = 'no-store'
-    # Scope the tab CSP to UI assets so Swagger/ReDoc retain their own scripts.
-    if request.url.path == '/' or request.url.path.startswith(('/static/', '/app-package/', '/policy-documents/')):
-        response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' https://res.cdn.office.net; style-src 'self'; connect-src 'self' https://login.microsoftonline.com; frame-src https://login.microsoftonline.com; img-src 'self'; frame-ancestors https://teams.microsoft.com https://*.teams.microsoft.com https://*.cloud.microsoft; base-uri 'self'; form-action 'self'"
-    return response
+class UIHeadersMiddleware:
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope['type'] != 'http':
+            await self.app(scope, receive, send)
+            return
+        path = scope.get('path', '/')
+        if BASE_PATH and path.startswith(BASE_PATH + '/'):
+            path = path[len(BASE_PATH):]
+        is_ui = path in {'/', '/privacy-policy', '/terms-n-conditions'} or path.startswith(('/static/', '/app-package/', '/policy-documents/'))
+
+        async def send_with_headers(message):
+            if message['type'] == 'http.response.start':
+                headers = MutableHeaders(scope=message)
+                headers['X-Content-Type-Options'] = 'nosniff'
+                headers['Cache-Control'] = 'no-store'
+                if is_ui:
+                    headers['Content-Security-Policy'] = (
+                        "default-src 'self'; script-src 'self' https://res.cdn.office.net https://alcdn.msauth.net; "
+                        "style-src 'self' 'unsafe-inline'; connect-src 'self' https://login.microsoftonline.com https://*.login.microsoftonline.com https://*.msauth.net https://graph.microsoft.com https://res.cdn.office.net; "
+                        "frame-src 'self' https://login.microsoftonline.com https://*.login.microsoftonline.com; "
+                        "img-src 'self' data: blob:; frame-ancestors https://teams.microsoft.com https://*.teams.microsoft.com https://*.cloud.microsoft; "
+                        "base-uri 'self'; form-action 'self' https://login.microsoftonline.com"
+                    )
+                    headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
+            await send(message)
+
+        await self.app(scope, receive, send_with_headers)
+
+
+app.add_middleware(UIHeadersMiddleware)
+
+def render_page(path):
+    template = path.read_text(encoding='utf-8')
+    return HTMLResponse(template.replace('<!-- APP_BASE -->', f'<base href="{escape(BASE_PATH + chr(47), quote=True)}">'))
+
 
 @app.get('/', include_in_schema=False)
 def home():
-    return FileResponse(STATIC / 'index.html')
+    return render_page(STATIC / 'index.html')
 
 
 @app.get('/privacy-policy', include_in_schema=False)
 def privacy_policy():
-    return FileResponse(Path(__file__).resolve().parent / 'html' / 'privacy.html')
+    return render_page(Path(__file__).resolve().parent / 'html' / 'privacy.html')
 
 
 @app.get('/terms-n-conditions', include_in_schema=False)
 def terms_and_conditions():
-    return FileResponse(Path(__file__).resolve().parent / 'html' / 'terms.html')
+    return render_page(Path(__file__).resolve().parent / 'html' / 'terms.html')
 
 
 
@@ -98,18 +133,17 @@ class ChatRequest(BaseModel):
 
 def _guest_identity():
     return {
-        'email': os.getenv('GUEST_EMPLOYEE_EMAIL', 'ojas.kulkarni@emergys.com'),
-        'display_name': 'Ojas Kulkarni',
+        'display_name': 'Guest',
         'channel': 'web_guest',
         'is_guest': True,
     }
 
 
 async def _chat_context(request: Request, requested_sender: str, metadata: dict | None = None):
-    # The Teams bot calls this internal API and supplies the verified Teams
-    # identity in metadata. Browser requests still use the Entra bearer token.
-    identity = await request_identity(request) or (metadata or None) or _guest_identity()
-    return identity, identity.get('aad_object_id') or requested_sender
+    # Public callers cannot assert Teams identities through JSON metadata.
+    identity = await request_identity(request)
+    identity = {**identity, 'channel': 'web_microsoft', 'is_guest': False} if identity else _guest_identity()
+    return identity, chat_sender(identity, requested_sender)
 
 
 @app.get('/auth/config', include_in_schema=False)
@@ -121,7 +155,8 @@ def auth_config():
         'required': auth_required(),
         'client_id': app_id,
         'tenant_id': tenant_id(),
-        'scope': f'api://dockerpoc-webapp01.azurewebsites.net/{app_id}/access_as_user' if app_id else None,
+        'redirect_uri': os.getenv('ENTRA_REDIRECT_URI', '').strip() or None,
+        'scope': (os.getenv('ENTRA_API_RESOURCE', f'api://dockerpoc-webapp01.azurewebsites.net/botid-{app_id}').rstrip('/') + '/access_as_user') if app_id else None,
     }
 
 
@@ -131,59 +166,6 @@ async def auth_me(request: Request):
     if not identity:
         raise HTTPException(401, 'Microsoft sign-in is required')
     return identity
-
-
-async def _enrich_policy_chunk(payload, question):
-    # Only expose evidence actually selected by the Rasa action. Never retrieve again.
-    sources = []
-    for message in payload.get('messages', []):
-        custom = message.get('custom', {})
-        if isinstance(custom, dict):
-            sources.extend(custom.get('sources', []))
-            if custom.get('type') == 'policy_evidence':
-                chunk = custom.get('chunk')
-                if isinstance(chunk, dict):
-                    chunk = dict(chunk)
-                    source = chunk.get('source')
-                    if source:
-                        page = chunk.get('page')
-                        suffix = f'#page={page}' if page else ''
-                        chunk['pdf_url'] = (
-                            f'/policy-documents/pdfs/{quote(str(source), safe="")}{suffix}'
-                        )
-                    sources.append(chunk)
-            if custom.get('intent'):
-                payload['intent'] = custom['intent']
-            if custom.get('status'):
-                payload['status'] = custom['status']
-            if custom.get('type') == 'leave_balance_metadata':
-                payload['leave_balance'] = {
-                    'status': custom.get('status'),
-                    'integration_status': custom.get('integration_status'),
-                    'employee_no_requested': custom.get('employee_no_requested'),
-                    'employee_mapping_fallback': custom.get('employee_mapping_fallback', False),
-                    'employee_name': custom.get('employee_name'),
-                    'employee_no': custom.get('employee_no'),
-                    'balance_count': custom.get('balance_count', 0),
-                    'requested_leave_names': custom.get('requested_leave_names', []),
-                    'not_returned_leave_names': custom.get('not_returned_leave_names', []),
-                    'balances': custom.get('balances', []),
-                }
-            if custom.get('type') == 'holiday_list_metadata':
-                payload['holiday_list'] = {
-                    'status': custom.get('status'),
-                    'integration_status': custom.get('integration_status'),
-                    'employee_no_requested': custom.get('employee_no_requested'),
-                    'employee_mapping_fallback': custom.get('employee_mapping_fallback', False),
-                    'year': custom.get('year'),
-                    'mode': custom.get('mode'),
-                    'requested_count': custom.get('requested_count'),
-                    'returned_count': custom.get('returned_count'),
-                    'holidays': custom.get('holidays', []),
-                }
-    payload['sources'] = sources
-    payload['chunk'] = sources[0] if sources else None
-    return payload
 
 
 @app.get('/policies/pdfs/{filename}')
@@ -199,65 +181,6 @@ def download_policy(filename: str):
         return FileResponse(target, media_type='application/pdf', filename=filename)
     except (OSError, ValueError, KeyError) as exc:
         raise HTTPException(503, 'Policy document unavailable') from exc
-
-
-async def rasa_chat(sender, message, metadata=None):
-    if not sender.strip() or not message.strip():
-        raise HTTPException(422, 'sender and message cannot be blank')
-    # The web quick-action labels are intentionally short and can be scored as
-    # generic policy questions by DIET. Map only these exact UI commands to
-    # canonical training phrases; ordinary user text remains untouched.
-    quick_actions = {
-        'show my leaves': 'What is my leave balance?',
-        'show my leave balance': 'What is my leave balance?',
-        'show the next 5 holidays': 'What are the next holidays?',
-        'show the full holiday list for this year': 'Show the full holiday list',
-    }
-    normalized_message = quick_actions.get(message.strip().casefold(), message)
-    url = os.getenv('RASA_URL', 'http://127.0.0.1:5005').rstrip('/')
-    try:
-        async with httpx.AsyncClient(timeout=60) as client:
-            # Forms otherwise consume every next message as a slot value. For
-            # recognized non-ticket commands, inspect and clear an active IT
-            # form before submitting the new message. The cancellation event
-            # is deliberately not returned to the web client.
-            lower = normalized_message.casefold()
-            interrupt = (
-                lower in quick_actions.values()
-                or bool(re.search(
-                    r"\b(leave balance|my leaves|holiday|holidays|help|remote work|benefits|expenses|bereavement|maternity|paternity|posh|referral|onboarding)\b",
-                    lower,
-                ))
-            )
-            if interrupt:
-                tracker_response = await client.get(f'{url}/conversations/{quote(sender, safe="")}/tracker')
-                if tracker_response.is_success:
-                    tracker = tracker_response.json()
-                    active_loop = (tracker.get('active_loop') or {}).get('name')
-                    if active_loop in {'ticket_form', 'ticket_edit_form'}:
-                        # Reset the conversation before forwarding the other
-                        # command. Merely triggering ``ticket_cancel`` (or
-                        # executing an action) can leave Rasa's form stack
-                        # active, causing the next leave/holiday message to be
-                        # captured as a ticket field.
-                        await client.post(
-                            f'{url}/conversations/{quote(sender, safe="")}/tracker/events',
-                            json=[{'event': 'restart'}],
-                        )
-            response = await client.post(f'{url}/webhooks/rest/webhook', json={
-                'sender': sender,
-                'message': normalized_message,
-                'metadata': metadata or {},
-            })
-            response.raise_for_status()
-            messages = response.json()
-        if not isinstance(messages, list) or any(not isinstance(m, dict) for m in messages):
-            raise ValueError('Invalid Rasa response')
-        return {'sender': sender, 'answer': '\n\n'.join(m['text'] for m in messages if isinstance(m.get('text'), str)), 'messages': messages}
-    except httpx.TimeoutException as exc:
-        raise HTTPException(504, 'Rasa response timed out') from exc
-    except (httpx.HTTPError, ValueError) as exc:
-        raise HTTPException(502, 'Rasa is unavailable or returned an invalid response. Start make serve and make actions.') from exc
 
 
 async def upload_policy(file, mode):
@@ -368,7 +291,8 @@ def policies():
 
 
 @app.post('/policies/upload')
-async def upload(file: UploadFile = File(...), mode: str = Form('upsert', regex='^(upsert|replace)$')):
+async def upload(request: Request, file: UploadFile = File(...), mode: str = Form('upsert', pattern='^(upsert|replace)$')):
+    await require_policy_admin(request)
     return await upload_policy(file, mode)
 
 
@@ -396,19 +320,22 @@ async def chat_stream(body: ChatRequest, request: Request):
 
 
 @app.post('/ask')
-async def ask(sender: str = Form(..., min_length=1, max_length=128),
+async def ask(request: Request, sender: str = Form(..., min_length=1, max_length=128),
               message: str = Form(..., min_length=1, max_length=4000),
               file: UploadFile | None = File(None),
-              mode: str = Form('upsert', regex='^(upsert|replace)$')):
+              mode: str = Form('upsert', pattern='^(upsert|replace)$')):
     """Optionally publish a PDF, then ask Rasa in one multipart request.
 
     Upload commits before chat. A downstream chat failure does not undo publication.
     """
     if not sender.strip() or not message.strip():
         raise HTTPException(422, 'sender and message cannot be blank')
+    identity, sender = await _chat_context(request, sender)
+    if file is not None:
+        await require_policy_admin(request)
     update = await upload_policy(file, mode) if file is not None else None
     try:
-        result = await rasa_chat(sender, message)
+        result = await rasa_chat(sender, message, identity)
         result = await _enrich_policy_chunk(result, message)
     except HTTPException as exc:
         raise HTTPException(exc.status_code, {'error': exc.detail, 'policy_update': update}) from exc
@@ -426,7 +353,8 @@ class IntentRequest(BaseModel):
 
 
 @app.post('/nlu/parse')
-async def parse_intent(body: IntentRequest):
+async def parse_intent(body: IntentRequest, request: Request):
+    await request_identity(request)
     if not body.message.strip():
         raise HTTPException(422, 'message cannot be blank')
     try:

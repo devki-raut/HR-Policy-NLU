@@ -29,6 +29,16 @@ intents:
 - ticket_edit_body
 - ticket_opened
 - ticket_confirm
+- it_network_outage
+- it_network_slowness
+- it_remote_access
+- it_email_access
+- it_meeting_equipment
+- it_application_access
+- it_storage_collaboration
+- it_device_support
+- it_security
+- it_account_access
 responses:
   utter_greet:
   - text: 'Hi! Ask me about leave, remote work, benefits, expenses, conduct or onboarding.
@@ -76,6 +86,7 @@ actions:
 - action_close_ticket
 - action_start_ticket
 - action_interrupt_ticket
+- action_answer_it
 session_config:
   session_expiration_time: 30
   carry_over_slots_to_new_session: false
@@ -83,8 +94,6 @@ forms:
   ticket_form:
     required_slots:
     - ticket_details
-    - ticket_error
-    - ticket_started
   ticket_edit_form:
     required_slots:
     - ticket_edit_value
@@ -106,15 +115,7 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_text
-      not_intent:
-      - ticket_cancel
-      - ticket_edit_subject
-      - ticket_edit_body
-      - ticket_opened
-      conditions:
-      - active_loop: ticket_form
-        requested_slot: ticket_started
+    - type: custom
   ticket_edit_value:
     type: text
     influence_conversation: false
@@ -153,10 +154,4 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_text
-      not_intent:
-      - ticket_cancel
-      - ticket_opened
-      conditions:
-      - active_loop: ticket_form
-        requested_slot: ticket_error
+    - type: custom

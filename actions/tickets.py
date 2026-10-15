@@ -36,7 +36,7 @@ def preview(dispatcher, subject, body):
         quote_via=quote,
     )
     dispatcher.utter_message(text='Review your draft. Outlook uses its selected account as the sender. Opening a draft does not send it.', json_message={
-        'type': 'ticket_draft', 'to': 'helpdesk@emergys.com', 'subject': subject, 'body': body,
+        'type': 'ticket_draft', 'cc': '', 'to': 'helpdesk@emergys.com', 'subject': subject, 'body': body,
         'outlook_url': url, 'manual_edit_recommended': len(body.split()) > 200,
     })
 
@@ -58,18 +58,18 @@ class ActionStartTicket(Action):
         details = tracker.get_slot('ticket_details') if tracker.get_slot('ticket_pending') else (
             current if _described_request(current) else None
         )
-        return [SlotSet('ticket_pending', False), SlotSet('ticket_details', details), *[SlotSet(name, None) for name in TICKET_SLOTS if name != 'ticket_details']]
+        identity = tracker.latest_message.get('metadata') or {}
+        subject, body = draft(details, None, identity) if details else ('', '')
+        preview(dispatcher, subject, body)
+        return [ActiveLoop(None), SlotSet('requested_slot', None), SlotSet('ticket_pending', False), SlotSet('ticket_details', details),
+                SlotSet('ticket_subject', subject), SlotSet('ticket_body', body),
+                *[SlotSet(name, None) for name in TICKET_SLOTS if name not in {'ticket_details','ticket_subject','ticket_body'}]]
 
 
 class ValidateTicketForm(FormValidationAction):
     def name(self): return 'validate_ticket_form'
     async def required_slots(self, domain_slots, dispatcher, tracker, domain):
-        details = tracker.get_slot('ticket_details') or ''
-        request = re.search(r'\b(access|permission|license|install|enable|grant|provision)\b', details, re.I)
-        failure = re.search(r"cannot|can't|cant|unable|not working|failed|error|locked", details, re.I)
-        # Access requests can be drafted from the initial description; other
-        # requests collect the normal issue, error, and timing details.
-        required = ['ticket_details'] if request and not failure else domain_slots
+        required = ['ticket_details']
         if dispatcher is not None:
             next_slot = next((slot for slot in required if not tracker.get_slot(slot)), None)
             dispatcher.utter_message(json_message={'type': 'ticket_state', 'active': True, 'requested_slot': next_slot})

@@ -13,8 +13,13 @@ import time
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from actions.runtime_paths import runtime_path, runtime_root
+from teams_app.web_paths import web_port, jupyter_base_path
+
 PYTHON = sys.executable
-LOG_DIR = ROOT / "artifacts" / "logs"
+LOG_DIR = runtime_path("logs", ROOT/"artifacts/logs")
 PORTS_BY_MODE = {
     "web": (5055, 5005, 8888, 8610),
     "bot": (5055, 5005, 3978),
@@ -63,13 +68,18 @@ def commands(mode):
         ]
     shared.update({
         "actions": [PYTHON, "-m", "rasa", "run", "actions", "--port", "5055"],
-        "rasa": [PYTHON, "-m", "rasa", "run", "--enable-api", "--port", "5005"],
+        "rasa": [PYTHON, "-m", "rasa", "run", "--enable-api", "--connector", "rest", "--interface", "127.0.0.1", "--port", "5005"],
     })
     if mode in {"web", "combined"}:
-        shared["jupyter"] = [os.environ.get("JUPYTER_PYTHON", str(ROOT / ".venv-jupyter/bin/python")), "-m", "jupyterlab", "--config", str(ROOT / "scripts/jupyter_server_config.py")]
+        shared["jupyter"] = [
+            os.environ.get("JUPYTER_PYTHON", str(ROOT / ".venv-jupyter/bin/python")),
+            "-m", "jupyterlab", "--config", str(ROOT / "scripts/jupyter_server_config.py"),
+            "--ServerApp.base_url=" + jupyter_base_path(),
+            "--ServerApp.default_url=" + jupyter_base_path() + "lab",
+        ]
         shared["web"] = [
             PYTHON, "-m", "uvicorn", "teams_app.web_package.main:app",
-            "--host", "0.0.0.0", "--port", "8610", "--ws", "wsproto",
+            "--host", "0.0.0.0", "--port", str(web_port()), "--ws", "wsproto",
         ]
     if mode in {"bot", "combined"}:
         shared["bot"] = [PYTHON, "-m", "teams_app.bot_package.main"]
@@ -156,9 +166,15 @@ def main():
     args = parser.parse_args()
     os.chdir(ROOT)
     load_dotenv(ROOT / ".env", override=False)
+    if runtime_root():
+        for name, relative in {
+            'JUPYTER_CONFIG_DIR': 'jupyter/config', 'JUPYTER_DATA_DIR': 'jupyter/data',
+            'JUPYTER_RUNTIME_DIR': 'jupyter/runtime', 'IPYTHONDIR': 'jupyter/ipython',
+        }.items():
+            os.environ.setdefault(name, str(runtime_path(relative, ROOT/'artifacts'/relative)))
     if args.mode in {"web", "combined"} and not os.environ.get("JUPYTER_TOKEN", "").strip():
         parser.error("JUPYTER_TOKEN must be set before starting Jupyter")
-    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    runtime_path("logs", ROOT/"artifacts/logs").mkdir(parents=True, exist_ok=True)
 
     if darwinbox_directory_configured():
         print("[deployment] synchronizing Darwinbox employee directory", flush=True)
@@ -177,7 +193,7 @@ def main():
                 flush=True,
             )
 
-    ports = PORTS_BY_MODE[args.mode]
+    ports = tuple(web_port() if p == 8610 else p for p in PORTS_BY_MODE[args.mode])
     busy = [port for port in ports if port_is_busy(port)]
     if busy and args.no_restart:
         parser.error(f"deployment ports are already in use: {busy}")

@@ -15,7 +15,7 @@ class TicketTests(unittest.TestCase):
 
     def test_support_guard_separates_policy_and_issue(self):
         from actions.ticket_nlu import support_route
-        self.assertEqual(support_route("my VPN won't connect anymore", 'nlu_fallback'), 'report_it_issue')
+        self.assertEqual(support_route("my VPN won't connect anymore", 'nlu_fallback'), 'it_remote_access')
         self.assertEqual(support_route('what is the support email', 'contact_support'), 'ask_support_contact')
         self.assertEqual(support_route('Outlook failed please raise a ticket', 'report_it_issue'), 'contact_support')
         self.assertEqual(support_route('What is the policy when my laptop breaks?', 'report_it_issue'), 'nlu_fallback')
@@ -76,6 +76,7 @@ class TicketTests(unittest.TestCase):
 
     def test_start_preserves_only_confirmed_issue(self):
         class Tracker:
+            latest_message = {'text': 'Create IT ticket', 'intent': {'name': 'contact_support'}}
             def __init__(self, pending): self.pending = pending
             def get_slot(self, name):
                 return self.pending if name == 'ticket_pending' else 'Outlook fails'
@@ -106,7 +107,21 @@ class TicketTests(unittest.TestCase):
     def test_teams_card_has_mail_buttons_without_done(self):
         from teams_app.bot_package.bot_handler import _ticket_card
         card = _ticket_card({'to': 'helpdesk@emergys.com', 'subject': 'Access request', 'body': 'Dear Team,', 'outlook_url': 'https://outlook.office.com/mail/deeplink/compose'})
-        self.assertEqual([action['title'] for action in card['actions']], ['Open in Outlook', 'Edit subject', 'Edit body', 'Cancel'])
+        self.assertEqual([action['title'] for action in card['actions']], ['Raise a request', 'Open in Outlook', 'Cancel'])
+
+
+    def test_internet_issue_goes_to_editable_draft_without_more_questions(self):
+        class Tracker:
+            latest_message={'text':'internet issue','metadata':{'display_name':'Employee'}}
+            def get_slot(self,name):
+                return {'ticket_pending':True,'ticket_details':'internet issue'}.get(name)
+        dispatcher=CollectingDispatcher()
+        events=asyncio.run(ActionStartTicket().run(dispatcher,Tracker(),{}))
+        preview=next(m['custom'] for m in dispatcher.messages if m.get('custom',{}).get('type')=='ticket_draft')
+        self.assertIn('internet issue',preview['body'])
+        self.assertIn('internet issue',preview['subject'])
+        self.assertNotIn('When did this start',str(dispatcher.messages))
+        self.assertTrue(any(e.get('event')=='active_loop' and e.get('name') is None for e in events))
 
     def test_close_clears_form(self):
         events = clear_ticket()

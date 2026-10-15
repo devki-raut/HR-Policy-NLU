@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- APP_BASE -->
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>EmployeeAssist</title>
-<link rel="icon" type="image/png" href="/app-package/color.png">
-<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" type="image/png" href="app-package/color.png">
+<link rel="stylesheet" href="static/style.css">
 <script defer src="https://res.cdn.office.net/teams-js/2.19.0/js/MicrosoftTeams.min.js"></script>
-<script defer src="/static/msal-browser.min.js"></script>
-<script defer src="/static/app.js"></script>
+<script defer src="static/msal-browser.min.js"></script>
+<script defer src="static/app.js"></script>
 </head>
 <body>
 <main>
-<header><img class="app-logo" src="/app-package/color.png" alt="EmployeeAssist logo"><div><h1>EmployeeAssist</h1><p>Your HR assistant for grounded policy answers, live leave balances, company holidays, and IT helpdesk drafts.</p></div></header>
+<header><img class="app-logo" src="app-package/color.png" alt="EmployeeAssist logo"><div><h1>EmployeeAssist</h1><p>Your HR assistant for grounded policy answers, live leave balances, company holidays, and IT helpdesk drafts.</p></div></header>
 <p id="status" role="status">Connecting to Teams…</p>
 <section id="auth-panel" class="auth-panel" aria-live="polite">
   <strong>Sign in to EmployeeAssist</strong>
@@ -25,8 +26,8 @@
   <button id="sign-in-from-guest" type="button">Sign in with Microsoft</button>
   <button id="sign-out" type="button" hidden>Sign out</button>
 </div>
-<section id="messages" aria-label="Conversation" aria-live="polite"><article class="assistant">Hello! I can answer HR policy questions with sources, show your live leave balance, and list upcoming or annual holidays. Choose a quick action or type a question.</article></section>
-<div class="suggestions" aria-label="Quick policy questions">
+<section id="messages" aria-label="Conversation" aria-live="polite"><article class="assistant">Hello! I can answer HR policy questions with sources, show your live leave balance, list upcoming or annual holidays, help with IT issues, and prepare IT helpdesk requests. Choose a quick action or type a question.</article></section>
+<div class="suggestions" aria-label="HR and general quick actions">
   <button type="button" data-question="help">Help</button>
   <button type="button" data-question="Create IT ticket">Create IT ticket</button>
   <button type="button" data-question="Show my leaves">My leave balance</button>
@@ -35,8 +36,19 @@
   <button type="button" data-question="How many casual leaves are allowed?">Leave policy</button>
   <button type="button" data-question="How do I file a POSH complaint?">POSH</button>
 </div>
-<form id="chat-form"><label for="question">Your policy question</label><div class="compose"><textarea id="question" maxlength="4000" rows="2" required placeholder="How do I request annual leave?"></textarea><button id="send" type="submit">Send</button></div></form>
-<footer>Answers quote available policies. Contact HR for individual eligibility. <button id="reset" type="button">New conversation</button></footer>
+<details class="it-questions">
+  <summary>IT support questions</summary>
+  <div class="suggestions" aria-label="IT support quick questions">
+    <button type="button" data-question="The office internet link is down">Internet down</button>
+    <button type="button" data-question="Internet is very slow over Wi-Fi and LAN">Slow internet</button>
+    <button type="button" data-question="Citrix access is denied">VPN / Citrix</button>
+    <button type="button" data-question="Outlook on the web is rejecting my login">Outlook / email</button>
+    <button type="button" data-question="Teams calls keep going on hold">Teams / meeting room</button>
+    <button type="button" data-question="GEMS application is not working">Application issue</button>
+  </div>
+</details>
+<form id="chat-form"><label for="question">Your HR or IT question</label><div class="compose"><textarea id="question" maxlength="4000" rows="2" required placeholder="Ask about leave, an IT issue, or creating an IT ticket"></textarea><button id="send" type="submit">Send</button></div></form>
+<footer>HR answers use available policies. IT guidance can help you prepare a helpdesk request. <button id="reset" type="button">New conversation</button></footer>
 </div>
 </main>
 <dialog id="evidence-dialog" aria-labelledby="evidence-title">

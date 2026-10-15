@@ -1,22 +1,22 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
   "manifestVersion": "1.19",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "id": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
   "packageName": "com.emergys.employeeassist",
   "developer": {
     "name": "Emergys Solutions",
-    "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
-    "privacyUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/privacy-policy",
-    "termsOfUseUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/terms-n-conditions"
+    "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/employeeassist/",
+    "privacyUrl": "https://dockerpoc-webapp01.azurewebsites.net/employeeassist/privacy-policy",
+    "termsOfUseUrl": "https://dockerpoc-webapp01.azurewebsites.net/employeeassist/terms-n-conditions"
   },
   "name": {
     "short": "EmployeeAssist",
     "full": "EmployeeAssist"
   },
   "description": {
-    "short": "Ask HR policy questions with source references.",
-    "full": "Find policy excerpts about leave, remote work, benefits, expenses, conduct and onboarding. Contact HR for individual eligibility."
+    "short": "HR policies, IT support and source-backed incident guidance.",
+    "full": "Ask about HR policies, leave balances, holidays and IT support. Browse EmployeeAssist prompt suggestions, explore historical IT incident resolutions and prepare helpdesk requests."
   },
   "icons": {
     "color": "color.png",
@@ -27,8 +27,8 @@
     {
       "entityId": "employee-assist",
       "name": "EmployeeAssist",
-      "contentUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
-      "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/EmployeeAssist/",
+      "contentUrl": "https://dockerpoc-webapp01.azurewebsites.net/employeeassist/",
+      "websiteUrl": "https://dockerpoc-webapp01.azurewebsites.net/employeeassist/",
       "scopes": [
         "personal"
       ]
@@ -50,7 +50,43 @@
           "commands": [
             {
               "title": "help",
-              "description": "Show how to ask EmployeeAssist about HR policies"
+              "description": "Show EmployeeAssist help and quick actions"
+            },
+            {
+              "title": "Prompt suggestions",
+              "description": "Browse HR questions, IT support questions and recorded incident fixes"
+            },
+            {
+              "title": "Create IT ticket",
+              "description": "Prepare a helpdesk request describing your IT issue"
+            },
+            {
+              "title": "Show my leaves",
+              "description": "Fetch your current personal leave balance"
+            },
+            {
+              "title": "Show the next 5 holidays",
+              "description": "Show upcoming holidays"
+            },
+            {
+              "title": "IT network help",
+              "description": "Ask about an office internet or network outage"
+            },
+            {
+              "title": "Citrix access is denied",
+              "description": "Ask about Citrix access errors and similar recorded incidents"
+            },
+            {
+              "title": "Outlook login issue",
+              "description": "Ask about Outlook sign-in problems"
+            },
+            {
+              "title": "OneDrive files will not open",
+              "description": "Ask about OneDrive file access problems"
+            },
+            {
+              "title": "GEMS unavailable; Outlook works",
+              "description": "Ask about the recorded GEMS and DNS incident"
             }
           ]
         }
@@ -58,7 +94,8 @@
     }
   ],
   "validDomains": [
-    "dockerpoc-webapp01.azurewebsites.net"
+    "dockerpoc-webapp01.azurewebsites.net",
+    "token.botframework.com"
   ],
   "permissions": [
     "identity",
@@ -66,6 +103,6 @@
   ],
   "webApplicationInfo": {
     "id": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
-    "resource": "api://dockerpoc-webapp01.azurewebsites.net/9e65e729-0e91-4a00-a03d-e8b9d3e9e841"
+    "resource": "api://dockerpoc-webapp01.azurewebsites.net/botid-9e65e729-0e91-4a00-a03d-e8b9d3e9e841"
   }
 }

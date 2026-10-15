@@ -4,6 +4,7 @@ from __future__ import annotations
 import fcntl
 import json
 import os
+from actions.runtime_paths import runtime_path
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -14,12 +15,7 @@ DEFAULT_PATH = ROOT / "artifacts" / "logs" / "conversations.jsonl"
 
 
 def _log_path() -> Path:
-    configured = os.getenv("CONVERSATION_LOG_PATH")
-    if configured:
-        return Path(configured).expanduser()
-    if os.getenv("WEBSITE_INSTANCE_ID"):
-        return Path("/home/data/EmployeeAssist/logs/conversations.jsonl")
-    return DEFAULT_PATH
+    return runtime_path('logs/conversations.jsonl', DEFAULT_PATH, 'CONVERSATION_LOG_PATH', ROOT)
 
 
 def append_conversation(record: Mapping[str, Any]) -> str:

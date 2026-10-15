@@ -1,0 +1,62 @@
+version: '3.1'
+rules:
+- rule: Answer it_network_outage
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_network_outage
+  - action: action_answer_it
+- rule: Answer it_network_slowness
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_network_slowness
+  - action: action_answer_it
+- rule: Answer it_remote_access
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_remote_access
+  - action: action_answer_it
+- rule: Answer it_email_access
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_email_access
+  - action: action_answer_it
+- rule: Answer it_meeting_equipment
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_meeting_equipment
+  - action: action_answer_it
+- rule: Answer it_application_access
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_application_access
+  - action: action_answer_it
+- rule: Answer it_storage_collaboration
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_storage_collaboration
+  - action: action_answer_it
+- rule: Answer it_device_support
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_device_support
+  - action: action_answer_it
+- rule: Answer it_security
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_security
+  - action: action_answer_it
+- rule: Answer it_account_access
+  condition:
+  - active_loop: null
+  steps:
+  - intent: it_account_access
+  - action: action_answer_it

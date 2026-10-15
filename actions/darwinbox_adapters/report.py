@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+from actions.runtime_paths import runtime_path
 import re
 from datetime import date, datetime
 from pathlib import Path
@@ -110,9 +111,7 @@ def parse_employee_report(payload: Any, *, today: date | None = None) -> dict[st
 
 
 def directory_path() -> Path:
-    configured = os.getenv("DARWINBOX_EMPLOYEE_MAP_FILE", "").strip()
-    path = Path(configured).expanduser() if configured else ROOT / "data/employee_directory.json"
-    return path if path.is_absolute() else ROOT / path
+    return runtime_path('darwinbox/employee_directory.json', ROOT/'data/employee_directory.json', 'DARWINBOX_EMPLOYEE_MAP_FILE', ROOT)
 
 
 def replace_employee_directory(employees: Mapping[str, Mapping[str, Any]], path: Path | None = None) -> int:

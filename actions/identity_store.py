@@ -4,6 +4,8 @@ from __future__ import annotations
 import fcntl
 import json
 import os
+import logging
+from actions.runtime_paths import runtime_path
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -12,12 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def _path() -> Path:
-    configured = os.getenv("IDENTITY_STORE_PATH", "").strip()
-    if configured:
-        return Path(configured).expanduser()
-    if os.getenv("WEBSITE_INSTANCE_ID"):
-        return Path("/home/data/EmployeeAssist/identity/microsoft_identities.json")
-    return ROOT / "artifacts" / "identity" / "microsoft_identities.json"
+    return runtime_path('identity/microsoft_identities.json', ROOT/'artifacts/identity/microsoft_identities.json', 'IDENTITY_STORE_PATH', ROOT)
 
 
 def save_verified_identity(identity: Mapping[str, Any], source: str) -> dict[str, Any]:
@@ -37,20 +34,24 @@ def save_verified_identity(identity: Mapping[str, Any], source: str) -> dict[str
         "updated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
     }
     path = _path()
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a+", encoding="utf-8") as handle:
-        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
-        handle.seek(0)
-        try:
-            payload = json.load(handle)
-        except (json.JSONDecodeError, ValueError):
-            payload = {"version": 1, "identities": {}}
-        payload.setdefault("identities", {})[f"{tenant_id}:{object_id}"] = record
-        handle.seek(0)
-        handle.truncate()
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
-        handle.write("\n")
-        handle.flush()
-        os.fsync(handle.fileno())
-        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a+", encoding="utf-8") as handle:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            handle.seek(0)
+            try:
+                payload = json.load(handle)
+            except (json.JSONDecodeError, ValueError):
+                payload = {"version": 1, "identities": {}}
+            payload.setdefault("identities", {})[f"{tenant_id}:{object_id}"] = record
+            handle.seek(0)
+            handle.truncate()
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+    except OSError:
+        # Persistence is independent of the cryptographically verified identity.
+        logging.getLogger(__name__).warning('Verified identity could not be persisted; continuing authenticated request.')
     return record

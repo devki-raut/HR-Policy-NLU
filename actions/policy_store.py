@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import tempfile
+from actions.runtime_paths import runtime_path, runtime_root
 from actions.policy_processing import MAX_BYTES, process_pdf
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,22 +17,25 @@ DEFAULT_POLICY_ROOT = ROOT / 'data/policies'
 def _local_path(env_name, default):
     value = os.getenv(env_name, '').strip()
     path = Path(value).expanduser() if value else Path(default)
-    return path if path.is_absolute() else ROOT / path
+    return path if path.is_absolute() else (runtime_root() or ROOT) / path
 
 
 def policy_pdf_dir():
-    return _local_path('POLICY_PDF_DIR', DEFAULT_POLICY_ROOT / 'pdfs')
+    return _local_path('POLICY_PDF_DIR', runtime_path('policies/pdfs', DEFAULT_POLICY_ROOT/'pdfs'))
 
 
 def policy_markdown_dir():
-    return _local_path('POLICY_MARKDOWN_DIR', DEFAULT_POLICY_ROOT / 'mds')
+    return _local_path('POLICY_MARKDOWN_DIR', runtime_path('policies/mds', DEFAULT_POLICY_ROOT/'mds'))
 
 
 DEFAULT_INDEX = ROOT / 'data/policies/policies.json'
 
 
 def index_path():
-    return _local_path('POLICY_INDEX', DEFAULT_INDEX).resolve()
+    path = _local_path('POLICY_INDEX', runtime_path('policies/policies.json', DEFAULT_INDEX)).resolve()
+    if runtime_root() and not os.getenv('POLICY_INDEX','').strip():
+        _seed_runtime_library(path)
+    return path
 
 
 def atomic_write(path, content):
@@ -50,6 +54,23 @@ def atomic_write(path, content):
         temp.replace(path)
     finally:
         temp.unlink(missing_ok=True)
+
+
+def _seed_runtime_library(index):
+    # Copy bundled policy assets once; never overwrite runtime edits/cloud data.
+    if index.exists() or not DEFAULT_INDEX.exists():
+        return
+    root = index.parent
+    root.mkdir(parents=True, exist_ok=True)
+    with (root/'.bootstrap.lock').open('a') as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        if not index.exists():
+            for source in DEFAULT_POLICY_ROOT.rglob('*'):
+                if source.is_file() and source != DEFAULT_INDEX and source.suffix.lower() in {'.pdf','.md','.json'}:
+                    target = root/source.relative_to(DEFAULT_POLICY_ROOT)
+                    if not target.exists():
+                        atomic_write(target, source.read_bytes())
+            atomic_write(index, DEFAULT_INDEX.read_bytes())
 
 
 def validate_filename(filename):

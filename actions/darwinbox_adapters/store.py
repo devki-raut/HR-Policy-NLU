@@ -4,6 +4,7 @@ from __future__ import annotations
 import fcntl
 import json
 import os
+from actions.runtime_paths import runtime_path
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
@@ -17,12 +18,7 @@ def utc_now() -> str:
 
 
 def employee_store_path() -> Path:
-    configured = os.getenv("DARWINBOX_EMPLOYEE_STORE_PATH", "").strip()
-    if configured:
-        return Path(configured).expanduser()
-    if os.getenv("WEBSITE_INSTANCE_ID"):
-        return Path("/home/data/EmployeeAssist/darwinbox/employees.json")
-    return ROOT / "artifacts" / "private" / "darwinbox_employees.json"
+    return runtime_path('darwinbox/employees.json', ROOT/'artifacts/private/darwinbox_employees.json', 'DARWINBOX_EMPLOYEE_STORE_PATH', ROOT)
 
 
 def empty_store() -> dict[str, Any]:

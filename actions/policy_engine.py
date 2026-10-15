@@ -70,11 +70,8 @@ def tokens(text):
 
 
 def public_base_url():
-    for env_name in ("APP_PUBLIC_URL", "PUBLIC_BASE_URL", "BASE_URL"):
-        value = os.getenv(env_name, "").strip()
-        if value:
-            return value.rstrip("/")
-    return "http://127.0.0.1:8000"
+    from teams_app.web_paths import public_base_url as configured_url
+    return configured_url()
 
 
 def build_pdf_url(filename: str) -> str:

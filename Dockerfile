@@ -28,13 +28,13 @@ COPY config.yml domain.yml endpoints.yml /app/
 COPY models /app/models
 
 RUN useradd --create-home --uid 10001 appuser && \
-    mkdir -p /app/.cache /app/data/policies /app/artifacts/logs /app/artifacts/private /home/data/EmployeeAssist/darwinbox && \
-    chown -R appuser:appuser /app
+    mkdir -p /app/.cache /app/data/policies /app/artifacts/logs /app/artifacts/private /tmp/employeeassist/darwinbox && \
+    chown -R appuser:appuser /app /tmp/employeeassist
 USER appuser
 
 # Rasa (5005), actions (5055), and the standalone bot port (3978) stay internal.
 # EXPOSE 5005 5055 3978
-EXPOSE 8610
+EXPOSE 8610 8608
 
 FROM base AS deployment
 # The web process also exposes the Teams bot at POST /api/messages.

@@ -3,6 +3,7 @@ SHELL := /bin/bash
 PYTHON := .venv-runtime/bin/python
 PIP := .venv-runtime/bin/pip
 RASA := .venv-runtime/bin/rasa
+RASA_DATA := $(wildcard data/*.yml)
 
 -include .env
 
@@ -11,8 +12,10 @@ export FAQ_EMBEDDING_MODEL ?= sentence-transformers/all-MiniLM-L6-v2
 export FAQ_EMBEDDING_THRESHOLD ?= 0.75
 export FAQ_EMBEDDING_MARGIN ?= 0.01
 
-DEPLOYMENT_PID := artifacts/logs/deployment.pid
-DEPLOYMENT_LOG := artifacts/logs/deployment.log
+DEPLOYMENT_LOG_DIR ?= $(if $(DATA_ROOT),$(DATA_ROOT)/employeeassist/logs,$(if $(WEBSITE_INSTANCE_ID),/tmp/employeeassist/logs,artifacts/logs))
+DEPLOYMENT_PID := $(DEPLOYMENT_LOG_DIR)/deployment.pid
+DEPLOYMENT_LOG := $(DEPLOYMENT_LOG_DIR)/deployment.log
+WEB_LISTEN_PORT ?= $(or $(WEB_PORT),$(PORT),$(WEBSITES_PORT),$(if $(WEBSITE_INSTANCE_ID),8608,8610))
 
 .PHONY: setup install sync-darwinbox sync-employee-report sync-intents validate train test evaluate-final evaluate-unseen evaluate-fact-coverage benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
 
@@ -31,10 +34,10 @@ sync-intents:
 	$(PYTHON) scripts/sync_intents.py
 
 validate:
-	$(RASA) data validate
+	$(RASA) data validate --data $(RASA_DATA)
 
 train: sync-intents validate
-	$(RASA) train
+	$(RASA) train --data $(RASA_DATA)
 
 test:
 	@if [ -d tests ]; then $(PYTHON) -m unittest discover -s tests -v; else echo "No tests directory; skipping tests."; fi
@@ -78,7 +81,7 @@ start:
 
 # Run the combined local deployment in the background.
 run_deployment:
-	@mkdir -p artifacts/logs
+	@mkdir -p "$(DEPLOYMENT_LOG_DIR)"
 	@if [ -f "$(DEPLOYMENT_PID)" ] && kill -0 "$$(cat "$(DEPLOYMENT_PID)")" 2>/dev/null; then \
 		echo "EmployeeAssist is already running (PID $$(cat "$(DEPLOYMENT_PID)"))."; \
 	else \
@@ -125,7 +128,7 @@ status_deployment:
 	@./deploy/status.sh local
 
 logs_deployment:
-	@mkdir -p artifacts/logs
+	@mkdir -p "$(DEPLOYMENT_LOG_DIR)"
 	@touch "$(DEPLOYMENT_LOG)"
 	@tail -f "$(DEPLOYMENT_LOG)"
 
@@ -137,7 +140,16 @@ logs-deployment: logs_deployment
 # docker_web and docker_bot are intentionally disabled; deploy one endpoint.
 docker_deployment:
 	docker build --target deployment -f Dockerfile -t hr-policy-deployment .
-	docker run --rm -p 8610:8610 -v "$(CURDIR)/data/policies:/app/data/policies" -v "$(CURDIR)/artifacts:/app/artifacts" --env-file .env hr-policy-deployment
+	docker run --rm -p $(WEB_LISTEN_PORT):$(WEB_LISTEN_PORT) -v "$(CURDIR)/data/policies:/app/data/policies" -v "$(CURDIR)/artifacts:/app/artifacts" --env-file .env -e WEB_PORT=$(WEB_LISTEN_PORT) hr-policy-deployment
 
 clean:
 	rm -rf models .rasa __pycache__ actions/__pycache__ scripts/__pycache__
+
+
+# Rebuild source-backed IT FAQs and evaluate offline without sending messages.
+.PHONY: import-it-report evaluate-it
+import-it-report:
+	$(PYTHON) scripts/import_it_report.py
+
+evaluate-it:
+	$(PYTHON) scripts/evaluate_xls_faqs.py

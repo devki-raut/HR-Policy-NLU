@@ -1,0 +1,344 @@
+{
+  "note": "Frozen validation paraphrases; not included in NLU or retrieval candidates. Do not tune implementation against this set.",
+  "tests": [
+    {
+      "id": "validation_0",
+      "split": "held_out_validation",
+      "question": "Email remains usable but I cannot access the GEMS intranet.",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_dns"
+      ],
+      "expected_resolution_key": "dns"
+    },
+    {
+      "id": "validation_1",
+      "split": "held_out_validation",
+      "question": "The Citrix error says my country is wrong although I am in India.",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_geo"
+      ],
+      "expected_resolution_key": "geo"
+    },
+    {
+      "id": "validation_2",
+      "split": "held_out_validation",
+      "question": "Since replacing the laptop, my customer Citrix connection has stopped working.",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_mac"
+      ],
+      "expected_resolution_key": "mac"
+    },
+    {
+      "id": "validation_3",
+      "split": "held_out_validation",
+      "question": "What does the incident history say about restoring a provider fibre break?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_fiber"
+      ],
+      "expected_resolution_key": "fiber"
+    },
+    {
+      "id": "validation_4",
+      "split": "held_out_validation",
+      "question": "The wireless provider identified an antenna alignment fault at the branch.",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_alignment"
+      ],
+      "expected_resolution_key": "alignment"
+    },
+    {
+      "id": "validation_5",
+      "split": "held_out_validation",
+      "question": "Monitoring shows our WAN bandwidth is completely saturated.",
+      "expected_intent": "it_network_slowness",
+      "expected_faq_ids": [
+        "it_resolution_utilisation"
+      ],
+      "expected_resolution_key": "utilisation"
+    },
+    {
+      "id": "validation_6",
+      "split": "held_out_validation",
+      "question": "Our network engineer found a load balancing issue between the two ISPs.",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_load_balance"
+      ],
+      "expected_resolution_key": "load_balance"
+    },
+    {
+      "id": "validation_7",
+      "split": "held_out_validation",
+      "question": "The ISP says the base station has failed. Is there a similar incident?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_bts"
+      ],
+      "expected_resolution_key": "bts"
+    },
+    {
+      "id": "validation_8",
+      "split": "held_out_validation",
+      "question": "The Lavelle box has hung again and the business systems stopped responding.",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_device_stuck"
+      ],
+      "expected_resolution_key": "device_stuck"
+    },
+    {
+      "id": "validation_9",
+      "split": "held_out_validation",
+      "question": "Lavelle Cloud Station is unavailable following a cloud server failure.",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_cloud_station"
+      ],
+      "expected_resolution_key": "cloud_station"
+    },
+    {
+      "id": "validation_10",
+      "split": "held_out_validation",
+      "question": "The SD WAN device has a broken LAN port. What did IT do in the report?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_port"
+      ],
+      "expected_resolution_key": "port"
+    },
+    {
+      "id": "validation_11",
+      "split": "held_out_validation",
+      "question": "A faulty power adapter is keeping our network device offline.",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_adapter"
+      ],
+      "expected_resolution_key": "adapter"
+    },
+    {
+      "id": "validation_12",
+      "split": "held_out_validation",
+      "question": "Can the history help with a faulty SDWAN appliance at the site?",
+      "expected_intent": "it_device_support",
+      "expected_faq_ids": [
+        "it_resolution_sdwan"
+      ],
+      "expected_resolution_key": "sdwan"
+    },
+    {
+      "id": "validation_13",
+      "split": "held_out_validation",
+      "question": "The AD policy will not sync to our office computer.",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_ad_policy"
+      ],
+      "expected_resolution_key": "ad_policy"
+    },
+    {
+      "id": "validation_14",
+      "split": "held_out_validation",
+      "question": "My AD authentication is being rejected. Was a fix recorded?",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_ad_auth"
+      ],
+      "expected_resolution_key": "ad_auth"
+    },
+    {
+      "id": "validation_15",
+      "split": "held_out_validation",
+      "question": "The helpdesk confirmed my new work mailbox was not created.",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_resolution_mailbox_missing"
+      ],
+      "expected_resolution_key": "mailbox_missing"
+    },
+    {
+      "id": "validation_16",
+      "split": "held_out_validation",
+      "question": "What is recorded about having IT enable my mailbox archive?",
+      "expected_intent": "it_email_access",
+      "expected_faq_ids": [
+        "it_resolution_archive"
+      ],
+      "expected_resolution_key": "archive"
+    },
+    {
+      "id": "validation_17",
+      "split": "held_out_validation",
+      "question": "Who should approve the transfer of OneDrive access from another employee?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_resolution_onedrive_access"
+      ],
+      "expected_resolution_key": "onedrive_access"
+    },
+    {
+      "id": "validation_18",
+      "split": "held_out_validation",
+      "question": "I need a Microsoft 365 group for a project, but creation is blocked.",
+      "expected_intent": "it_storage_collaboration",
+      "expected_faq_ids": [
+        "it_resolution_m365_group"
+      ],
+      "expected_resolution_key": "m365_group"
+    },
+    {
+      "id": "validation_19",
+      "split": "held_out_validation",
+      "question": "Several business applications are failing across every branch at the same time.",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_dc_outage"
+      ],
+      "expected_resolution_key": "dc_outage"
+    },
+    {
+      "id": "validation_20",
+      "split": "held_out_validation",
+      "question": "We have a new user requiring Citrix access. Which request should be raised?",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_new_access"
+      ],
+      "expected_resolution_key": "new_access"
+    },
+    {
+      "id": "validation_21",
+      "split": "held_out_validation",
+      "question": "The assigned IT team closed my request as outside their scope. Who should investigate?",
+      "expected_intent": "it_account_access",
+      "expected_faq_ids": [
+        "it_resolution_local_it"
+      ],
+      "expected_resolution_key": "local_it"
+    },
+    {
+      "id": "validation_22",
+      "split": "held_out_validation",
+      "question": "Citrix login is failing, and support cannot find any user logs.",
+      "expected_intent": "it_remote_access",
+      "expected_faq_ids": [
+        "it_resolution_no_logs"
+      ],
+      "expected_resolution_key": "no_logs"
+    },
+    {
+      "id": "validation_23",
+      "split": "held_out_validation",
+      "question": "Our Teams voice traffic fails when one ISP circuit drops.",
+      "expected_intent": "it_meeting_equipment",
+      "expected_faq_ids": [
+        "it_resolution_traffic_failover"
+      ],
+      "expected_resolution_key": "traffic_failover"
+    },
+    {
+      "id": "validation_24",
+      "split": "held_out_validation",
+      "question": "What happened in the report when the branch required WAN link upgrades?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_upgrade"
+      ],
+      "expected_resolution_key": "upgrade"
+    },
+    {
+      "id": "validation_25",
+      "split": "held_out_validation",
+      "question": "Both WAN connections went down and recovered at the same time.",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_power"
+      ],
+      "expected_resolution_key": "power"
+    },
+    {
+      "id": "validation_26",
+      "split": "held_out_validation",
+      "question": "The technician says the PoE unit is hung. Is there a recorded fix?",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_poe"
+      ],
+      "expected_resolution_key": "poe"
+    },
+    {
+      "id": "validation_27",
+      "split": "held_out_validation",
+      "question": "The provider circuit takes no load until its network sessions are reset.",
+      "expected_intent": "it_network_outage",
+      "expected_faq_ids": [
+        "it_resolution_sessions"
+      ],
+      "expected_resolution_key": "sessions"
+    },
+    {
+      "id": "validation_28",
+      "split": "held_out_validation",
+      "question": "Salesforce only works over the primary connection, not the secondary.",
+      "expected_intent": "it_application_access",
+      "expected_faq_ids": [
+        "it_resolution_salesforce"
+      ],
+      "expected_resolution_key": "salesforce"
+    },
+    {
+      "id": "validation_ambiguous_0",
+      "split": "held_out_validation_ambiguity",
+      "question": "There is an internet problem at my site.",
+      "expected_intent": "it_network_outage",
+      "require_clarification": true
+    },
+    {
+      "id": "validation_ambiguous_1",
+      "split": "held_out_validation_ambiguity",
+      "question": "Something is wrong with Citrix.",
+      "expected_intent": "it_remote_access",
+      "require_clarification": true
+    },
+    {
+      "id": "validation_ambiguous_2",
+      "split": "held_out_validation_ambiguity",
+      "question": "I cannot access my business app.",
+      "expected_intent": "it_application_access",
+      "require_clarification": true
+    },
+    {
+      "id": "validation_ambiguous_3",
+      "split": "held_out_validation_ambiguity",
+      "question": "Our Teams meeting room has an issue.",
+      "expected_intent": "it_meeting_equipment",
+      "require_clarification": true
+    },
+    {
+      "id": "validation_ambiguous_4",
+      "split": "held_out_validation_ambiguity",
+      "question": "Outlook email fails to open.",
+      "expected_intent": "it_email_access",
+      "require_clarification": true
+    },
+    {
+      "id": "validation_ambiguous_5",
+      "split": "held_out_validation_ambiguity",
+      "question": "OneDrive documents are not opening.",
+      "expected_intent": "it_storage_collaboration",
+      "require_clarification": true
+    },
+    {
+      "id": "validation_ambiguous_6",
+      "split": "held_out_validation_ambiguity",
+      "question": "The Zscaler connector reports a security error.",
+      "expected_intent": "it_security",
+      "require_clarification": true
+    }
+  ]
+}

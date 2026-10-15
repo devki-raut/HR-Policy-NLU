@@ -88,17 +88,43 @@ class SendTests(unittest.IsolatedAsyncioTestCase):
         with patch('teams_app.bot_package.bot_handler._teams_identity', new=AsyncMock(return_value=identity)), patch.dict('os.environ', {'TEAMS_MAIL_OAUTH_CONNECTION': ''}), patch('teams_app.bot_package.bot_handler.send_draft', new=AsyncMock()) as send:
             await TeamsBot()._raise_ticket(context, {'request_id': self.key, 'ticket_subject': 'Edited subject', 'ticket_body': 'Edited body'})
             send.assert_not_awaited()
-            self.assertIn('Direct sending is not configured', context.send_activity.call_args.args[0])
+            self.assertIn('Teams mailbox SSO is not configured', context.send_activity.call_args.args[0])
 
     def test_inline_card(self):
         from teams_app.bot_package.bot_handler import _ticket_card
         outlook_url = 'https://outlook.office.com/mail/deeplink/compose?to=helpdesk%40emergys.com&subject=Access&body=Dear%20Team%2C'
         card = _ticket_card({'to': 'helpdesk@emergys.com', 'subject': 'Access', 'body': 'Dear Team,', 'outlook_url': outlook_url}, self.key)
         self.assertEqual([a['title'] for a in card['actions']], ['Raise a request', 'Open in Outlook', 'Cancel'])
-        self.assertEqual(card['actions'][1]['type'], 'Action.OpenUrl')
-        self.assertEqual(card['actions'][1]['url'], outlook_url)
-        self.assertEqual([i['id'] for i in card['body'] if i['type'] == 'Input.Text'], ['ticket_subject', 'ticket_body'])
+        self.assertEqual(card['actions'][1]['type'], 'Action.Submit')
+        self.assertEqual(card['actions'][1]['data']['command'], 'ticket_open_outlook')
+        self.assertEqual([i['id'] for i in card['body'] if i['type'] == 'Input.Text'], ['ticket_to', 'ticket_cc', 'ticket_subject', 'ticket_body'])
         self.assertEqual(card['actions'][0]['data']['request_id'], self.key)
 
 
 if __name__ == '__main__': unittest.main()
+
+class EditableRecipientsTests(SendTests):
+    async def test_changed_to_and_cc_reach_graph_and_outlook(self):
+        mail.update_draft(self.key,self.owner,'Updated subject','Internet issue','it@example.com; second@example.com','manager@example.com; IT@example.com')
+        with self.client(self.success):await mail.send_draft(self.key,self.owner,'mock-token','user')
+        m=self.posts[0]['message']
+        self.assertEqual([r['emailAddress']['address'] for r in m['toRecipients']],['it@example.com','second@example.com'])
+        self.assertEqual([r['emailAddress']['address'] for r in m['ccRecipients']],['manager@example.com'])
+
+    def test_invalid_recipient_input_is_rejected_before_send(self):
+        for value in ['','not an email','person@example.com\r\nBcc: stranger@example.com']:
+            with self.assertRaises(mail.MailError):mail.update_draft(self.key,self.owner,'Subject','Body',value,'')
+        with self.assertRaises(mail.MailError):mail.update_draft(self.key,self.owner,'Subject','Body','it@example.com','invalid-cc')
+
+    def test_old_database_schema_migrates_without_losing_drafts(self):
+        import sqlite3
+        root=Path(self.temp.name)/'migration'
+        path=root/'artifacts/private/teams_ticket_mail.sqlite3';path.parent.mkdir(parents=True)
+        with sqlite3.connect(path) as db:
+            db.execute('CREATE TABLE drafts (id TEXT PRIMARY KEY, owner TEXT, subject TEXT, body TEXT, status TEXT, created REAL)')
+            db.execute('INSERT INTO drafts VALUES (?,?,?,?,?,?)',('old',self.owner,'Old subject','Old body','draft',1))
+        with patch.object(mail,'ROOT',root):
+            record=mail.get_draft('old',self.owner)
+            self.assertEqual(record['to_list'],'helpdesk@emergys.com')
+            self.assertEqual(record['cc_list'],'')
+            self.assertEqual(record['body'],'Old body')

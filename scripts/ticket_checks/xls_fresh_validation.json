@@ -1,0 +1,173 @@
+{
+  "note": "Final fresh holdout, created after development. Excluded from NLU and retrieval text; do not tune on its results.",
+  "tests": [
+    {
+      "id": "fresh_0",
+      "split": "fresh_holdout",
+      "question": "Outlook is still accessible, but I cannot access GEMS. What similar fix is recorded?",
+      "expected_intent": "it_application_access",
+      "expected_resolution_key": "dns",
+      "expected_faq_ids": [
+        "it_resolution_dns"
+      ]
+    },
+    {
+      "id": "fresh_1",
+      "split": "fresh_holdout",
+      "question": "Citrix stopped connecting after the device was changed. What details should I give IT?",
+      "expected_intent": "it_remote_access",
+      "expected_resolution_key": "mac",
+      "expected_faq_ids": [
+        "it_resolution_mac"
+      ]
+    },
+    {
+      "id": "fresh_2",
+      "split": "fresh_holdout",
+      "question": "Could the Citrix access denied message relate to an incorrect detected country?",
+      "expected_intent": "it_remote_access",
+      "expected_resolution_key": "geo",
+      "expected_faq_ids": [
+        "it_resolution_geo"
+      ]
+    },
+    {
+      "id": "fresh_3",
+      "split": "fresh_holdout",
+      "question": "Our provider has confirmed that a fibre cable was cut. What does the report recommend?",
+      "expected_intent": "it_network_outage",
+      "expected_resolution_key": "fiber",
+      "expected_faq_ids": [
+        "it_resolution_fiber"
+      ]
+    },
+    {
+      "id": "fresh_4",
+      "split": "fresh_holdout",
+      "question": "Support says my work mailbox was never created. Who should verify provisioning?",
+      "expected_intent": "it_email_access",
+      "expected_resolution_key": "mailbox_missing",
+      "expected_faq_ids": [
+        "it_resolution_mailbox_missing"
+      ]
+    },
+    {
+      "id": "fresh_5",
+      "split": "fresh_holdout",
+      "question": "Can you explain the incident where the email archive was enabled?",
+      "expected_intent": "it_email_access",
+      "expected_resolution_key": "archive",
+      "expected_faq_ids": [
+        "it_resolution_archive"
+      ]
+    },
+    {
+      "id": "fresh_6",
+      "split": "fresh_holdout",
+      "question": "Who handles Microsoft 365 group creation when regular users are restricted?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_resolution_key": "m365_group",
+      "expected_faq_ids": [
+        "it_resolution_m365_group"
+      ]
+    },
+    {
+      "id": "fresh_7",
+      "split": "fresh_holdout",
+      "question": "How should IT handle an approved OneDrive access handover?",
+      "expected_intent": "it_storage_collaboration",
+      "expected_resolution_key": "onedrive_access",
+      "expected_faq_ids": [
+        "it_resolution_onedrive_access"
+      ]
+    },
+    {
+      "id": "fresh_8",
+      "split": "fresh_holdout",
+      "question": "The network device has a faulty LAN port. Was a workaround recorded?",
+      "expected_intent": "it_device_support",
+      "expected_resolution_key": "port",
+      "expected_faq_ids": [
+        "it_resolution_port"
+      ]
+    },
+    {
+      "id": "fresh_9",
+      "split": "fresh_holdout",
+      "question": "Our WAN circuit is fully utilised and users see very slow responses.",
+      "expected_intent": "it_network_slowness",
+      "expected_resolution_key": "utilisation",
+      "expected_faq_ids": [
+        "it_resolution_utilisation"
+      ]
+    },
+    {
+      "id": "fresh_10",
+      "split": "fresh_holdout",
+      "question": "What does the report say about an AD policy that is not synchronising?",
+      "expected_intent": "it_account_access",
+      "expected_resolution_key": "ad_policy",
+      "expected_faq_ids": [
+        "it_resolution_ad_policy"
+      ]
+    },
+    {
+      "id": "fresh_11",
+      "split": "fresh_holdout",
+      "question": "Two WAN links lost connectivity and came back at exactly the same time.",
+      "expected_intent": "it_network_outage",
+      "expected_resolution_key": "power",
+      "expected_faq_ids": [
+        "it_resolution_power"
+      ]
+    },
+    {
+      "id": "fresh_12",
+      "split": "fresh_holdout",
+      "question": "My OneDrive cannot open a shared document.",
+      "expected_intent": "it_storage_collaboration"
+    },
+    {
+      "id": "fresh_13",
+      "split": "fresh_holdout",
+      "question": "I am getting a firewall error from the Zscaler connector.",
+      "expected_intent": "it_security"
+    },
+    {
+      "id": "fresh_14",
+      "split": "fresh_holdout",
+      "question": "The computer system is not booting at all.",
+      "expected_intent": "it_device_support"
+    },
+    {
+      "id": "fresh_15",
+      "split": "fresh_holdout",
+      "question": "There is no internet connectivity anywhere in the branch.",
+      "expected_intent": "it_network_outage"
+    },
+    {
+      "id": "fresh_16",
+      "split": "fresh_holdout",
+      "question": "Outlook fails, although GEMS is working normally.",
+      "expected_intent": "it_email_access"
+    },
+    {
+      "id": "fresh_17",
+      "split": "fresh_holdout",
+      "question": "What does the maternity leave policy say about eligibility?",
+      "expected_intent": "policy_maternity"
+    },
+    {
+      "id": "fresh_18",
+      "split": "fresh_holdout",
+      "question": "Does the bereavement policy include parents in law?",
+      "expected_intent": "policy_bereavement"
+    },
+    {
+      "id": "fresh_19",
+      "split": "fresh_holdout",
+      "question": "Create an IT ticket because I need technical support.",
+      "expected_intent": "contact_support"
+    }
+  ]
+}
