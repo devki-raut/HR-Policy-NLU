@@ -9,6 +9,7 @@ from urllib.parse import quote
 
 import httpx
 from fastapi import HTTPException
+from actions.darwinbox_adapters.diagnostics import record_darwinbox_event
 from teams_app.web_paths import public_path
 
 
@@ -81,6 +82,9 @@ async def rasa_chat(sender, message, metadata=None):
     # generic policy questions by DIET. Map only these exact UI commands to
     # canonical training phrases; ordinary user text remains untouched.
     quick_actions = {
+        'my leave balance': 'What is my leave balance?',
+        'holiday calendar': 'Show the full holiday list',
+        'next holidays': 'What are the next holidays?',
         'show my leaves': 'What is my leave balance?',
         'show my leave balance': 'What is my leave balance?',
         'show the next 5 holidays': 'What are the next holidays?',
@@ -126,6 +130,20 @@ async def rasa_chat(sender, message, metadata=None):
             messages = response.json()
         if not isinstance(messages, list) or any(not isinstance(m, dict) for m in messages):
             raise ValueError('Invalid Rasa response')
+        component = 'bot' if sender.startswith('teams:') else 'web'
+        for item in messages:
+            custom = item.get('custom')
+            if not isinstance(custom, dict):
+                continue
+            operation = {'leave_balance_metadata': 'leave_balance',
+                         'holiday_list_metadata': 'holiday_list'}.get(custom.get('type'))
+            if operation:
+                status = custom.get('integration_status')
+                outcome = status if status in {
+                    'success', 'not_configured', 'api_error',
+                    'not_authorized_or_api_error', 'employee_not_mapped',
+                } else 'other'
+                record_darwinbox_event(component, operation, outcome, channel=component)
         return {'sender': sender, 'answer': '\n\n'.join(m['text'] for m in messages if isinstance(m.get('text'), str)), 'messages': messages}
     except httpx.TimeoutException as exc:
         raise HTTPException(504, 'Rasa response timed out') from exc

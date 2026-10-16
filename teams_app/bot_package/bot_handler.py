@@ -17,6 +17,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from actions.policy_store import index_path
 from actions.identity_store import save_verified_identity
+from actions.ticket_templates import prefill_draft
 from teams_app.bot_package.broadcast import remember, handle as handle_broadcast
 from teams_app.bot_package.broadcast import recipient_dialog
 from teams_app.bot_package import mail_sso
@@ -66,8 +67,11 @@ REPORT_PROMPT_QUESTIONS = [
     ("Microsoft 365 group", "How can I request a Microsoft 365 group?"),
     ("Recorded incident", "What happened in incident 346506?"),
 ]
-PROMPT_MENU_COMMANDS = {"prompt suggestions", "suggestions", "show suggestions", "show prompt suggestions"}
+PROMPT_MENU_COMMANDS = {"prompt suggestions", "suggestions", "show suggestions", "show prompt suggestions", "view prompts"}
 MENU_QUESTION_ALIASES = {
+    "my leave balance": "What is my leave balance?",
+    "holiday calendar": "Show the full holiday list",
+    "next holidays": "What are the next holidays?",
     "it network help": "The office internet link is down",
     "outlook login issue": "Outlook on the web is rejecting my login",
 }
@@ -85,17 +89,28 @@ def _question_list_card(questions, introduction):
 
 
 def _prompt_suggestions_card():
+    sections = (
+        ("HR questions", HR_PROMPT_QUESTIONS),
+        ("IT support", IT_PROMPT_QUESTIONS),
+        ("Recorded fixes", REPORT_PROMPT_QUESTIONS),
+    )
     return {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
         "type": "AdaptiveCard", "version": "1.4",
         "body": [
             {"type": "TextBlock", "text": "Prompt Suggestions from EmployeeAssist", "weight": "Bolder", "size": "Medium", "wrap": True},
-            {"type": "TextBlock", "text": "Choose a topic, then select a question to send it. You can also type your own question.", "wrap": True},
+            {"type": "TextBlock", "text": "Choose a question to send it, or type your own question.", "wrap": True},
+            *[
+                item
+                for title, questions in sections
+                for item in (
+                    {"type": "TextBlock", "text": title, "weight": "Bolder", "separator": True, "wrap": True},
+                    *[{"type": "ActionSet", "actions": [_message_action(label, question) for label, question in questions[start:start + 3]]}
+                      for start in range(0, len(questions), 3)],
+                )
+            ],
         ],
         "actions": [
-            {"type": "Action.ShowCard", "title": "HR questions", "card": _question_list_card(HR_PROMPT_QUESTIONS, "Leave, holidays and HR policies")},
-            {"type": "Action.ShowCard", "title": "IT support", "card": _question_list_card(IT_PROMPT_QUESTIONS, "Describe an IT issue for guidance. Use Create IT ticket to prepare a helpdesk request.")},
-            {"type": "Action.ShowCard", "title": "Recorded fixes", "card": _question_list_card(REPORT_PROMPT_QUESTIONS, "These questions retrieve historical incidents, not a confirmed diagnosis of your current issue.")},
             _message_action("Create IT ticket", "Create IT ticket"),
         ],
     }
@@ -128,18 +143,14 @@ def _welcome_card(display_name: str | None = None) -> dict:
                 ),
                 "wrap": True,
             },
-            {"type": "TextBlock", "text": "Choose a quick action:", "weight": "Bolder", "wrap": True},
-            {"type": "ActionSet", "actions": [{"type": "Action.ShowCard", "title": "IT support questions", "card": _it_questions_card()}]},
-            {"type": "ActionSet", "actions": [_message_action("Prompt suggestions", "Prompt suggestions")]},
+            {"type": "TextBlock", "text": "Choose a question:", "weight": "Bolder", "wrap": True},
+            {"type": "ActionSet", "actions": [_message_action("What is my leave balance?", "What is my leave balance?"), _message_action("Show the next 5 holidays", "Show the next 5 holidays")]},
+            {"type": "ActionSet", "actions": [_message_action("How many casual leaves?", "How many casual leaves are allowed?"), _message_action("Maternity leave entitlement?", "What is the maternity leave entitlement?")]},
+            {"type": "ActionSet", "actions": [_message_action("Emails stuck in Outbox?", "My emails are stuck in the Outbox. What should I check?"), _message_action("Wi-Fi connected, websites won't load?", "I’m connected to Wi-Fi, but websites won’t load. What can I try?")]},
+            {"type": "ActionSet", "actions": [_message_action("View prompts", "Prompt suggestions"), _message_action("Create IT ticket", "Create IT ticket")]},
         ],
         "actions": [
             _message_action("Help", "help"),
-            _message_action("Create IT ticket", "Create IT ticket"),
-            _message_action("My leave balance", "Show my leaves"),
-            _message_action("Next holidays", "Show the next 5 holidays"),
-            _message_action("Holiday calendar", "Show the full holiday list for this year"),
-            _message_action("Leave policy", "How many casual leaves are allowed?"),
-            _message_action("POSH", "How do I file a POSH complaint?"),
         ],
     }
 
@@ -225,7 +236,8 @@ def _holiday_card(metadata: dict) -> dict:
     }
 
 
-def _ticket_card(draft, request_id=None):
+def _ticket_card(draft, request_id=None, identity=None):
+    draft = prefill_draft(draft, identity)
     data = {'request_id': request_id}
     return {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -235,8 +247,8 @@ def _ticket_card(draft, request_id=None):
             {"type": "TextBlock", "text": "Describe the issue in the mail below. Include the application/device, exact error and start time if known.", "wrap": True},
             {"type": "Input.Text", "id": "ticket_to", "label": "To", "value": draft.get('to','helpdesk@emergys.com'), "maxLength": 2000, "isRequired": True, "errorMessage": "Enter at least one recipient email address."},
             {"type": "Input.Text", "id": "ticket_cc", "label": "CC (optional)", "value": draft.get('cc',''), "maxLength": 2000, "placeholder": "name@example.com; another@example.com"},
-            {"type": "Input.Text", "id": "ticket_subject", "label": "Subject", "value": draft.get('subject',''), "placeholder": "Internet connectivity issue", "maxLength": 180, "isRequired": True, "errorMessage": "Enter a subject."},
-            {"type": "Input.Text", "id": "ticket_body", "label": "Body", "value": draft.get('body',''), "placeholder": "Describe the issue or access request, affected device/application, exact error, impact and start time.", "isMultiline": True, "maxLength": 6000, "isRequired": True, "errorMessage": "Describe your issue or request."},
+            {"type": "Input.Text", "id": "ticket_subject", "label": "Subject", "value": draft['subject'], "maxLength": 180, "isRequired": True, "errorMessage": "Enter a subject."},
+            {"type": "Input.Text", "id": "ticket_body", "label": "Body", "value": draft['body'], "isMultiline": True, "maxLength": 6000, "isRequired": True, "errorMessage": "Describe your issue or request."},
             {"type": "TextBlock", "text": "Raise a request sends these fields from your Teams Microsoft mailbox using SSO. Open in Outlook prepares these same edited fields for manual sending. Enter in the body adds a new line; select Raise a request to send.", "wrap": True},
         ],
         "actions": [
@@ -481,6 +493,7 @@ class TeamsBot(ActivityHandler):
             ), None)
             ticket = next((item.get('custom') for item in messages if isinstance(item.get('custom'), dict) and item['custom'].get('type') == 'ticket_draft'), None)
             if ticket:
+                ticket = prefill_draft(ticket, identity)
                 await turn_context.send_activity(MessageFactory.attachment(CardFactory.adaptive_card(_ticket_card(ticket, create_draft(mail_owner(identity, turn_context.activity.conversation.id), ticket['subject'], ticket['body'], ticket.get('to','helpdesk@emergys.com'), ticket.get('cc',''))))))
                 return
             choices = [choice for item in messages for choice in item.get('buttons', [])]
@@ -490,7 +503,8 @@ class TeamsBot(ActivityHandler):
                 return
             if not texts and any(item.get('custom', {}).get('type') == 'ticket_state' for item in messages if isinstance(item.get('custom'), dict)):
                 return
-            if not texts and not evidence:
+            structured_answer = (leave_metadata and leave_metadata.get('status') == 'answered') or (holiday_metadata and holiday_metadata.get('status') == 'answered')
+            if not texts and not evidence and not structured_answer:
                 await turn_context.send_activity(
                     "I couldn't find a policy answer. Please rephrase your question."
                 )

@@ -40,7 +40,7 @@ class TicketTests(unittest.TestCase):
         self.assertEqual(values['ticket_details'], Tracker.latest_message['text'])
 
     def test_guest_signature(self):
-        self.assertTrue(draft('Outlook fails', 'Not sure', {'is_guest': True})[1].endswith('Ojas Kulkarni'))
+        self.assertTrue(draft('Outlook fails', 'Not sure', {'is_guest': True})[1].endswith('Employee'))
 
     def test_url_preserves_separate_fields(self):
         dispatcher = CollectingDispatcher()

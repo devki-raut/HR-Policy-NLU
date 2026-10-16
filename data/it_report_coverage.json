@@ -714,7 +714,7 @@
     },
     {
       "incident_id": "346580",
-      "routing_intent": "it_application_access",
+      "routing_intent": "it_device_support",
       "resolution_key": "missing",
       "status": "Cancelled",
       "id": "it_incident_346580"
@@ -889,7 +889,7 @@
     },
     {
       "incident_id": "346182",
-      "routing_intent": "it_application_access",
+      "routing_intent": "it_device_support",
       "resolution_key": "ad_policy",
       "status": "Closed",
       "id": "it_incident_346182"
@@ -938,7 +938,7 @@
     },
     {
       "incident_id": "346097",
-      "routing_intent": "it_application_access",
+      "routing_intent": "it_device_support",
       "resolution_key": "ad_policy",
       "status": "Closed",
       "id": "it_incident_346097"
@@ -1358,7 +1358,7 @@
     },
     {
       "incident_id": "344936",
-      "routing_intent": "it_network_outage",
+      "routing_intent": "it_device_support",
       "resolution_key": "observation",
       "status": "Closed",
       "id": "it_incident_344936"

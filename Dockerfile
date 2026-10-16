@@ -23,7 +23,10 @@ RUN python -m venv /app/.venv-jupyter && \
 COPY actions /app/actions
 COPY data /app/data
 COPY teams_app /app/teams_app
-COPY scripts /app/scripts
+COPY scripts/run_deployment.py scripts/jupyter_server_config.py \
+     scripts/check_darwinbox_config.py \
+     scripts/sync_darwinbox_employees.py scripts/sync_employee_report.py \
+     /app/scripts/
 COPY config.yml domain.yml endpoints.yml /app/
 COPY models /app/models
 

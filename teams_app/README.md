@@ -198,7 +198,7 @@ Selecting a question sends it through the normal conversation flow. The list
 also includes Create IT ticket.
 
 The personal Teams command menu has ten entries, including Prompt suggestions.
-The prepared update is `app_package/upload/EmployeeAssist-1.0.3.zip`; update the
+The prepared update is `app_package/upload/EmployeeAssist-1.0.10.zip`; update the
 installed Teams app package using this archive to refresh the native menu.
 The handler changes require restarting the application deployment. Existing
 chat cards remain unchanged; send `help` to obtain a new welcome card.

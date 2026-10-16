@@ -47,6 +47,9 @@ async def main() -> int:
     if not args.watch:
         return 0 if await synchronize() else 1
 
+    # Populate a missing/stale directory immediately on service start, then
+    # retain the daily India-time refresh schedule.
+    await synchronize()
     hour = int(os.getenv("DARWINBOX_REPORT_SYNC_HOUR", "16"))
     minute = int(os.getenv("DARWINBOX_REPORT_SYNC_MINUTE", "30"))
     if hour != 16 or not 0 <= minute <= 59:

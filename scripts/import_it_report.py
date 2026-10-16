@@ -7,6 +7,43 @@ import re
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
+ADDITIONAL_FAQS = ROOT / 'data/it_faq_additional_test_questions.md'
+
+
+def additional_faq_entries():
+    """Load reviewed troubleshooting Q&A as data-driven FAQ/NLU examples."""
+    if not ADDITIONAL_FAQS.is_file():
+        return []
+    from actions.it_knowledge import topic
+    section = ''
+    entries = []
+    for line in ADDITIONAL_FAQS.read_text(encoding='utf-8').splitlines():
+        if line.startswith('## '):
+            section = line[3:].strip()
+            continue
+        if not re.match(r'^\|\s*\d+\s*\|', line):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip('|').split('|')]
+        if len(cells) < 3:
+            continue
+        number, question, answer = cells[0], cells[1], '|'.join(cells[2:]).strip()
+        route = topic(question)
+        slug = re.sub(r'[^a-z0-9]+', '_', section.casefold()).strip('_')
+        entries.append({
+            'id': f'it_troubleshooting_{slug}_{number}',
+            'intent': route,
+            'routing_intent': route,
+            'question': question,
+            'utterances': [],
+            'answer': answer,
+            'answer_mode': 'it_troubleshooting',
+            'enabled': True,
+            'source': ADDITIONAL_FAQS.name,
+            'dataset': ADDITIONAL_FAQS.name,
+            'category': 'it_troubleshooting',
+            'incident_count': 0,
+        })
+    return entries
 
 class ReportParser(HTMLParser):
     def __init__(self):
@@ -101,12 +138,12 @@ def report_rows():
 
 def main():
     from collections import Counter
-    from actions.it_knowledge import TOPICS, RESOLUTIONS, resolution_key
+    from actions.it_knowledge import TOPICS, RESOLUTIONS, SYMPTOM_GUIDANCE, resolution_key
     source, rows = report_rows()
     names = {r.get(k, '') for r in rows for k in ('Caller', 'Analyst') if r.get(k)}
     faq_path = ROOT / 'data/faq_answers.json'
     faq = json.loads(faq_path.read_text())
-    retained = [e for e in faq['entries'] if e.get('dataset') != source.name]
+    retained = [e for e in faq['entries'] if e.get('dataset') not in {source.name, ADDITIONAL_FAQS.name}]
     entries = []
     examples = {key: list(values[1]) + PARAPHRASES.get(key, []) for key, values in TOPICS.items()}
     incidents = []
@@ -117,7 +154,7 @@ def main():
         solution = clean_text(row['Solution'], names)
         key = resolution_key(row['Solution'])
         incident_id = row['Incident ID']
-        question = 'What was recorded for: ' + symptom + '?'
+        question = f'What was recorded for incident {incident_id}: {symptom}?'
         if not solution:
             body = 'No solution is recorded in the report for this incident. Its status does not establish a fix.'
         elif key == 'closure_only':
@@ -140,13 +177,26 @@ def main():
                  'symptom': symptom, 'recorded_resolution': solution, 'resolution_key': key,
                  'status': row['Status'], 'report_category': row['Category']}
         incidents.append(entry); examples[route].extend([symptom, question])
+    additional_entries = additional_faq_entries()
+    for entry in additional_entries:
+        examples[entry['routing_intent']].append(entry['question'])
+    entries.extend(additional_entries)
     for route, (title, seeds, guidance) in TOPICS.items():
         entries.append({'id': route, 'intent': route, 'routing_intent': route,
-            'question': seeds[0], 'utterances': examples[route][1:], 'answer': guidance +
-            '\n\nSeveral causes can produce similar symptoms. Describe the exact error and what still works. '
-            'Choose Create IT ticket to prepare a helpdesk request.',
+            'question': seeds[0], 'utterances': examples[route][1:], 'answer': guidance,
             'answer_mode': 'it_guidance', 'enabled': True, 'source': 'General IT triage guidance',
             'dataset': source.name, 'category': 'it_support', 'title': title, 'incident_count': 0})
+    additional_questions = {entry['question'].strip().casefold() for entry in additional_entries}
+    for symptom_id, symptom in SYMPTOM_GUIDANCE.items():
+        if symptom['question'].strip().casefold() in additional_questions:
+            continue
+        examples[symptom['route']].extend([symptom['question'], *symptom['utterances']])
+        entries.append({'id': symptom_id, 'intent': symptom['route'],
+            'routing_intent': symptom['route'], 'question': symptom['question'],
+            'utterances': symptom['utterances'], 'answer': symptom['answer'],
+            'answer_mode': 'it_symptom_guidance', 'enabled': True,
+            'source': 'General IT troubleshooting guidance', 'dataset': source.name,
+            'category': 'it_symptom', 'incident_count': 0})
     tests = []
     for key, (question, train, heldout, summary) in RESOLUTIONS.items():
         evidence = [e for e in incidents if e['resolution_key'] == key]

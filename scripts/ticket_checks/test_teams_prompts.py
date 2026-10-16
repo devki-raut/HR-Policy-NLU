@@ -15,11 +15,14 @@ ROOT=Path(__file__).resolve().parents[2]
 class TeamsPromptTests(unittest.IsolatedAsyncioTestCase):
     def test_every_prompt_sends_the_question_and_groups_are_complete(self):
         card=_prompt_suggestions_card()
-        expected=[HR_PROMPT_QUESTIONS,IT_PROMPT_QUESTIONS,REPORT_PROMPT_QUESTIONS]
-        for action,questions in zip(card['actions'][:3],expected):
-            submits=[a for row in action['card']['body'][1:] for a in row['actions']]
+        expected=[('HR questions',HR_PROMPT_QUESTIONS),('IT support',IT_PROMPT_QUESTIONS),('Recorded fixes',REPORT_PROMPT_QUESTIONS)]
+        for title,questions in expected:
+            start=next(i for i,item in enumerate(card['body']) if item.get('text')==title)
+            end=next((i for i,item in enumerate(card['body'][start+1:],start+1) if item['type']=='TextBlock'),len(card['body']))
+            rows=card['body'][start+1:end]
+            submits=[action for row in rows for action in row['actions']]
             self.assertEqual([a['data']['msteams']['text'] for a in submits],[q for _,q in questions])
-            self.assertTrue(all(len(row['actions'])<=3 for row in action['card']['body'][1:]))
+            self.assertTrue(all(len(row['actions'])<=3 for row in rows))
         self.assertEqual(card['body'][0]['text'],'Prompt Suggestions from EmployeeAssist')
         self.assertEqual(card['actions'][-1]['data']['msteams']['text'],'Create IT ticket')
 
@@ -27,9 +30,15 @@ class TeamsPromptTests(unittest.IsolatedAsyncioTestCase):
         card=_welcome_card('Employee')
         self.assertTrue(any(a.get('data',{}).get('msteams',{}).get('text')=='Prompt suggestions'
                             for row in card['body'] for a in row.get('actions',[])))
+        questions=[a['data']['msteams']['text'] for row in card['body'] for a in row.get('actions',[])]
+        self.assertIn('How many casual leaves are allowed?',questions)
+        self.assertIn('My emails are stuck in the Outbox. What should I check?',questions)
+        buttons={a['title']:a['data']['msteams']['text'] for row in card['body'] for a in row.get('actions',[])}
+        self.assertEqual(buttons['Emails stuck in Outbox?'], 'My emails are stuck in the Outbox. What should I check?')
+        self.assertEqual(buttons["Wi-Fi connected, websites won't load?"], 'I’m connected to Wi-Fi, but websites won’t load. What can I try?')
 
     async def test_prompt_commands_are_handled_without_calling_rasa(self):
-        for text in ['Prompt suggestions','SHOW SUGGESTIONS','show prompt suggestions']:
+        for text in ['Prompt suggestions','SHOW SUGGESTIONS','show prompt suggestions','View prompts']:
             context=SimpleNamespace(activity=SimpleNamespace(text=text,value=None),send_activity=AsyncMock())
             with patch('teams_app.bot_package.bot_handler._teams_identity',AsyncMock(return_value={})), patch('teams_app.bot_package.bot_handler.httpx.AsyncClient') as http:
                 await TeamsBot().on_message_activity(context)
@@ -45,7 +54,11 @@ class TeamsPromptTests(unittest.IsolatedAsyncioTestCase):
             self.assertTrue(all(len(c['title'])<=32 and len(c['description'])<=128 for c in commands))
             self.assertIn('Prompt suggestions',[c['title'] for c in commands])
             self.assertFalse(any('broadcast' in c['title'].lower() for c in commands))
+            self.assertTrue(all(c.get('type') == 'prompt' and c.get('prompt') for c in commands))
+            self.assertEqual(manifest['manifestVersion'], '1.30')
+            self.assertEqual(manifest['version'], '1.0.10')
         folder=ROOT/'teams_app/app_package/upload'
-        with zipfile.ZipFile(folder/'EmployeeAssist-1.0.6.zip') as z:
-            self.assertEqual(set(z.namelist()),{'manifest.json','color.png','outline.png'})
-            self.assertEqual(z.read('manifest.json'),(folder/'manifest.json').read_bytes())
+        for archive in ('EmployeeAssist-1.0.10.zip','appPackage.zip'):
+            with zipfile.ZipFile(folder/archive) as z:
+                self.assertEqual(set(z.namelist()),{'manifest.json','color.png','outline.png'})
+                self.assertEqual(z.read('manifest.json'),(folder/'manifest.json').read_bytes())

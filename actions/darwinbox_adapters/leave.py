@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import logging
 from dataclasses import dataclass
 from typing import Any, Mapping
 
@@ -10,6 +11,8 @@ from .client import (
     DarwinboxClient,
     DarwinboxConfigurationError,
 )
+
+LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -128,7 +131,7 @@ class LeaveBalanceAdapter:
         return self.client.endpoint(
             url_env="DARWINBOX_LEAVE_BALANCE_URL",
             path_env="DARWINBOX_LEAVE_BALANCE_PATH",
-            default_path="/YOUR-PROVISIONED-LEAVE-BALANCE-ENDPOINT",
+            default_path="/leavesactionapi/leavebalance",
         )
 
     def payload(self, employee_no: str) -> dict[str, Any]:
@@ -177,8 +180,10 @@ class LeaveBalanceAdapter:
             payload=self.payload(employee_no),
             body_mode="json",
             basic_auth=(username, password) if username else None,
+            operation="leave_balance",
         )
         balances = parse_leave_balances(raw)
         if not balances:
+            LOGGER.warning("Darwinbox leave_balance response contained no recognizable balances")
             raise DarwinboxAPIError("Darwinbox returned no recognizable leave balances")
         return balances, raw

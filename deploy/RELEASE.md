@@ -1,9 +1,32 @@
-# EmployeeAssist 1.0.6
+# EmployeeAssist 1.0.10
 
 This release contains the current HR/IT classifier, FAQ data and trained Rasa
 model, editable To/CC mail forms, Teams mailbox SSO, admin broadcasts, email
 bootstrap and delegated superadmins, recipient popup reports, Azure writable
 paths and the prefixed Jupyter proxy.
+
+Version 1.0.10 adds startup creation and cloud mirroring for service logs,
+conversation audit events, the Darwinbox employee directory and the Teams
+ticket SQLite database. The employee report scheduler now refreshes immediately
+at startup before continuing its daily 16:30 Asia/Kolkata schedule.
+The Teams package now uses manifest schema 1.30 and declares all ten bot menu
+entries as prompt commands with the exact message Teams should send.
+
+This revision also fixes HR menu aliases and structured calendar rendering,
+loads action-worker settings explicitly, reports missing Darwinbox setting
+names in logs, and uses real editable subject/body text for an empty IT draft.
+Holiday mapping errors are caught and returned as integration replies.
+Outbox and connected-Wi-Fi browsing questions now use symptom-specific FAQ
+checks. The deployment supervisor also writes per-service log files while
+preserving container console output. Darwinbox requests log connectivity and
+HTTP failure stages without credential values; see [container-logs.md](container-logs.md).
+See [hr-mail-regressions.md](hr-mail-regressions.md) for diagnostics and the
+targeted fixes also applied to the HRv6 checkout.
+
+The deployment supervisor now accepts local commands to restart Rasa, actions,
+web/Teams bot, Jupyter, or all services without exiting the container. See
+[in-container-restart.md](in-container-restart.md). The obsolete workbook
+evaluator with a missing input workbook was removed from `scripts/`.
 
 The Jupyter server's base URL and default Lab path are now explicit launcher
 arguments, and the proxy repairs encoded login `next` targets as well as
@@ -51,14 +74,13 @@ Deployment auth fixes:
    reads process environment variables only, does not load credential files and
    prints checks without secret values. All checks should pass.
 5. Build the existing deployment target:
-   `docker build --target deployment -t employeeassist:1.0.6 .`
+   `docker build --target deployment -t employeeassist:1.0.10 .`
    Push that image through the existing Azure deployment pipeline and restart
    the complete deployment, including Jupyter. The Docker entry point is
    `python scripts/run_deployment.py web`.
-6. Upload `teams_app/app_package/upload/EmployeeAssist-1.0.6.zip` in Teams.
+6. Upload `teams_app/app_package/upload/EmployeeAssist-1.0.10.zip` in Teams.
 
-The bundle includes `models/20261015-182438-symmetric-patch.tar.gz`. No NLU data
-changed in these auth fixes, so retraining that model is unnecessary. Startup
+The bundle includes `models/20261017-002437-pleasant-comment.tar.gz`. Startup
 still needs the SentenceTransformer model cache or access to download
 `sentence-transformers/all-MiniLM-L6-v2`; it is not bundled in the source archive.
 The Jupyter Python environment is installed separately by the Dockerfile.
@@ -92,6 +114,7 @@ The code bundle is prepared locally. The container build, live Azure redirect,
 Teams consent/SSO, real mail delivery and popup rendering could not be verified
 in the restricted development environment.
 
-Generate the source archive with `python scripts/package_release.py`. It includes
-a per-file SHA-256 manifest and writes a checksum beside the archive under
-`artifacts/releases`.
+Generate the loose container handoff with
+`python scripts/package_docker_upload.py`. It creates the `/app` and runtime
+trees with a per-file manifest under
+`artifacts/releases/<version>`; it does not create ZIP archives.

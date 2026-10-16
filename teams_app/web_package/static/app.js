@@ -190,8 +190,8 @@ function appendTicket(result) {
   for (const [key, label, value, limit, placeholder] of [
     ['to', 'To', authConfig?.ticket_recipient || draft.to || 'helpdesk@emergys.com', 2000, 'helpdesk@example.com'],
     ['cc', 'CC (optional)', draft.cc || '', 2000, 'name@example.com; another@example.com'],
-    ['subject', 'Subject', draft.subject || '', 180, 'Internet connectivity issue'],
-    ['body', 'Body', draft.body || '', 6000, 'Describe the issue or access request, affected application/device, error and start time.'],
+    ['subject', 'Subject', draft.subject || 'IT support request', 180, ''],
+    ['body', 'Body', draft.body || 'Dear Team,\n\nI need assistance with an IT issue or access request.\n\nPlease help me resolve this issue.\n\nRegards,\nEmployee', 6000, ''],
   ]) {
     const field = document.createElement('label'); field.textContent = label;
     const input = document.createElement(key === 'body' ? 'textarea' : 'input');

@@ -2,11 +2,14 @@
 from __future__ import annotations
 
 import os
+import logging
 from dataclasses import dataclass
 from datetime import date, datetime
 from typing import Any, Mapping
 
 from .client import DarwinboxAPIError, DarwinboxClient, DarwinboxConfigurationError, required
+
+LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -121,8 +124,10 @@ class HolidayListAdapter:
             },
             body_mode="json",
             basic_auth=(username, password),
+            operation="holiday_list",
         )
         holidays = parse_holidays(raw)
         if not holidays:
+            LOGGER.warning("Darwinbox holiday_list response contained no recognizable holidays")
             raise DarwinboxAPIError("Darwinbox returned no recognizable holidays")
         return holidays, raw

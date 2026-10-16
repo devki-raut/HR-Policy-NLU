@@ -29,361 +29,406 @@ nlu:
 
     - GATI VPI location Adtech link is down
 
-    - What was recorded for: GATI VPI location Adtech link is down?
+    - What was recorded for incident 348394: GATI VPI location Adtech link is down?
 
     - Hi Prachi, As discussed, the Sify link at RJP is down, and the LAN port on the
     SD-WAN device is also not working. Kindly check and resolve the issue.
 
-    - What was recorded for: Hi Prachi, As discussed, the Sify link at RJP is down,
-    and the LAN port on the SD-WAN device is also not working. Kindly check and resolve
-    the issue.?
+    - What was recorded for incident 348383: Hi Prachi, As discussed, the Sify link
+    at RJP is down, and the LAN port on the SD-WAN device is also not working. Kindly
+    check and resolve the issue.?
 
     - SINGLE MEDIA DOWN AT EMAAW
 
-    - What was recorded for: SINGLE MEDIA DOWN AT EMAAW?
+    - What was recorded for incident 348381: SINGLE MEDIA DOWN AT EMAAW?
 
     - Ixm Location Link down kindly check and clear the issue
 
-    - What was recorded for: Ixm Location Link down kindly check and clear the issue?
+    - What was recorded for incident 348377: Ixm Location Link down kindly check and
+    clear the issue?
 
     - Tikona Link Down at Amazon Guwahati Location.
 
-    - What was recorded for: Tikona Link Down at Amazon Guwahati Location.?
+    - What was recorded for incident 348296: Tikona Link Down at Amazon Guwahati Location.?
 
     - Hi Prachi, Network down at HYDE location please check and resolve
 
-    - What was recorded for: Hi Prachi, Network down at HYDE location please check
-    and resolve?
+    - What was recorded for incident 348272: Hi Prachi, Network down at HYDE location
+    please check and resolve?
 
     - Link showing down at TSK location. [site gateway]
 
-    - What was recorded for: Link showing down at TSK location. [site gateway]?
+    - What was recorded for incident 348265: Link showing down at TSK location. [site
+    gateway]?
 
     - Both links down at BOMS IP address [site gateway]
 
-    - What was recorded for: Both links down at BOMS IP address [site gateway]?
+    - What was recorded for incident 348258: Both links down at BOMS IP address [site
+    gateway]?
 
     - Tikona link is down in BLRO .
 
-    - What was recorded for: Tikona link is down in BLRO .?
+    - What was recorded for incident 348254: Tikona link is down in BLRO .?
 
     - Network Connectivity Issue at Amazon Kolkata Site
 
-    - What was recorded for: Network Connectivity Issue at Amazon Kolkata Site?
+    - What was recorded for incident 348206: Network Connectivity Issue at Amazon
+    Kolkata Site?
+
+    - What was recorded for incident 348203: Tikona link is down in BLRO .?
 
     - We are facing a network down issue at Kolhapur ([site gateway]),
 
-    - What was recorded for: We are facing a network down issue at Kolhapur ([site
-    gateway]),?
+    - What was recorded for incident 348189: We are facing a network down issue at
+    Kolhapur ([site gateway]),?
 
     - both links is down at BOMN - IP [site gateway]
 
-    - What was recorded for: both links is down at BOMN - IP [site gateway]?
+    - What was recorded for incident 348179: both links is down at BOMN - IP [site
+    gateway]?
 
     - Facing network issue at Meesho_Bangalore location
 
-    - What was recorded for: Facing network issue at Meesho_Bangalore location?
+    - What was recorded for incident 348170: Facing network issue at Meesho_Bangalore
+    location?
 
     - Hi Team - Kindly check the ARA Location ADTECH link is down, kindly check. IP-
     [site gateway]
 
-    - What was recorded for: Hi Team - Kindly check the ARA Location ADTECH link is
-    down, kindly check. IP- [site gateway]?
+    - What was recorded for incident 348166: Hi Team - Kindly check the ARA Location
+    ADTECH link is down, kindly check. IP- [site gateway]?
 
     - Facing network issue at meesho_Banglore location
 
-    - What was recorded for: Facing network issue at meesho_Banglore location?
+    - What was recorded for incident 348111: Facing network issue at meesho_Banglore
+    location?
 
     - The Solapur Sify link (IP: [site gateway]) has been reported down since morning.
 
-    - What was recorded for: The Solapur Sify link (IP: [site gateway]) has been reported
-    down since morning.?
+    - What was recorded for incident 348106: The Solapur Sify link (IP: [site gateway])
+    has been reported down since morning.?
 
     - SHB LOCATION INTERNET NOT WORKING, PLS CHECK AND RESOLVE
 
-    - What was recorded for: SHB LOCATION INTERNET NOT WORKING, PLS CHECK AND RESOLVE?
+    - What was recorded for incident 348081: SHB LOCATION INTERNET NOT WORKING, PLS
+    CHECK AND RESOLVE?
 
     - Last Saturday network issue at Meesho_Bangalore location
 
-    - What was recorded for: Last Saturday network issue at Meesho_Bangalore location?
+    - What was recorded for incident 348073: Last Saturday network issue at Meesho_Bangalore
+    location?
 
     - Network issue
 
-    - What was recorded for: Network issue?
+    - What was recorded for incident 348068: Network issue?
 
     - Dear Team, BSNL network is due to down Kindly check and resolve the issue as
     soon as possible. Location HSRL- Schaeffler Hosur Circuit ID: [reference] Complaint
     ID: [reference]
 
-    - What was recorded for: Dear Team, BSNL network is due to down Kindly check and
-    resolve the issue as soon as possible. Location HSRL- Schaeffler Hosur Circuit
-    ID: [reference] Complaint ID: [reference]?
+    - What was recorded for incident 348007: Dear Team, BSNL network is due to down
+    Kindly check and resolve the issue as soon as possible. Location HSRL- Schaeffler
+    Hosur Circuit ID: [reference] Complaint ID: [reference]?
 
     - Hi Team - Kindly check at DGR location internet is not working . IP- [site gateway]
 
-    - What was recorded for: Hi Team - Kindly check at DGR location internet is not
-    working . IP- [site gateway]?
+    - What was recorded for incident 347875: Hi Team - Kindly check at DGR location
+    internet is not working . IP- [site gateway]?
 
     - Adtech Link Down at Amazon Guwahati Location.
 
-    - What was recorded for: Adtech Link Down at Amazon Guwahati Location.?
+    - What was recorded for incident 347857: Adtech Link Down at Amazon Guwahati Location.?
 
     - HI Team, Please check Amta amazon kolkata, adtech link is down, please support
     and resolve the issue as soon as possible.
 
-    - What was recorded for: HI Team, Please check Amta amazon kolkata, adtech link
-    is down, please support and resolve the issue as soon as possible.?
+    - What was recorded for incident 347838: HI Team, Please check Amta amazon kolkata,
+    adtech link is down, please support and resolve the issue as soon as possible.?
 
     - We are facing a link down issue at the PNQW location. IP Address: [site gateway]
 
-    - What was recorded for: We are facing a link down issue at the PNQW location.
-    IP Address: [site gateway]?
+    - What was recorded for incident 347578: We are facing a link down issue at the
+    PNQW location. IP Address: [site gateway]?
 
     - Airtel Link Down at Amazon Guwahati Location.
 
-    - What was recorded for: Airtel Link Down at Amazon Guwahati Location.?
+    - What was recorded for incident 347532: Airtel Link Down at Amazon Guwahati Location.?
 
     - Yesterday network down at Flipkart flex Bangalore project
 
-    - What was recorded for: Yesterday network down at Flipkart flex Bangalore project?
+    - What was recorded for incident 347388: Yesterday network down at Flipkart flex
+    Bangalore project?
 
     - All over operation stop due to network issues on site, Impact Starting time
     : 9:28 AM as on 04/10/2026 . Approx.. 20K shipments got breach due to network
     issue.
 
-    - What was recorded for: All over operation stop due to network issues on site,
-    Impact Starting time : 9:28 AM as on 04/10/2026 . Approx.. 20K shipments got breach
-    due to network issue.?
+    - What was recorded for incident 347333: All over operation stop due to network
+    issues on site, Impact Starting time : 9:28 AM as on 04/10/2026 . Approx.. 20K
+    shipments got breach due to network issue.?
 
     - CCUS location internet not working so pls check & resolve the issue .
 
-    - What was recorded for: CCUS location internet not working so pls check & resolve
-    the issue .?
+    - What was recorded for incident 347285: CCUS location internet not working so
+    pls check & resolve the issue .?
 
     - bho network down since half an hour [site gateway]
 
-    - What was recorded for: bho network down since half an hour [site gateway]?
+    - What was recorded for incident 346918: bho network down since half an hour [site
+    gateway]?
 
     - Single Media Down - MAAW
 
-    - What was recorded for: Single Media Down - MAAW?
+    - What was recorded for incident 346808: Single Media Down - MAAW?
 
     - idr network [site gateway] down.
 
-    - What was recorded for: idr network [site gateway] down.?
+    - What was recorded for incident 346775: idr network [site gateway] down.?
 
     - Tickona Link issues
 
-    - What was recorded for: Tickona Link issues?
+    - What was recorded for incident 346715: Tickona Link issues?
 
     - All internet service is down at ccdn
 
-    - What was recorded for: All internet service is down at ccdn?
+    - What was recorded for incident 346613: All internet service is down at ccdn?
 
     - in kota ou from yesterday evening internet not working, redinet and dlink modem
     show red light . blink
 
-    - What was recorded for: in kota ou from yesterday evening internet not working,
-    redinet and dlink modem show red light . blink?
+    - What was recorded for incident 346552: in kota ou from yesterday evening internet
+    not working, redinet and dlink modem show red light . blink?
 
     - We are observing a daily internet connectivity issue at the EPNQ location, which
     is impacting operations. Affected IP Address: [site gateway]
 
-    - What was recorded for: We are observing a daily internet connectivity issue
-    at the EPNQ location, which is impacting operations. Affected IP Address: [site
-    gateway]?
+    - What was recorded for incident 346465: We are observing a daily internet connectivity
+    issue at the EPNQ location, which is impacting operations. Affected IP Address:
+    [site gateway]?
 
     - BLR ATC both the links down please check the same.
 
-    - What was recorded for: BLR ATC both the links down please check the same.?
+    - What was recorded for incident 346359: BLR ATC both the links down please check
+    the same.?
 
     - Dear Team, Airtel point to point network is due to down Kindly check and resolve
     the issue as soon as possible. Location HSRL- Schaeffler Hosur
 
-    - What was recorded for: Dear Team, Airtel point to point network is due to down
-    Kindly check and resolve the issue as soon as possible. Location HSRL- Schaeffler
-    Hosur?
+    - What was recorded for incident 346273: Dear Team, Airtel point to point network
+    is due to down Kindly check and resolve the issue as soon as possible. Location
+    HSRL- Schaeffler Hosur?
 
     - All mentioned systems from morning today rebooted long time more than 2 hrs
     in office network.
 
-    - What was recorded for: All mentioned systems from morning today rebooted long
-    time more than 2 hrs in office network.?
+    - What was recorded for incident 346205: All mentioned systems from morning today
+    rebooted long time more than 2 hrs in office network.?
 
     - AGR location internet not working, all applications are not working. Pls check
 
-    - What was recorded for: AGR location internet not working, all applications are
-    not working. Pls check?
+    - What was recorded for incident 345965: AGR location internet not working, all
+    applications are not working. Pls check?
 
     - Dear Team Internet not working at CCUE Location
 
-    - What was recorded for: Dear Team Internet not working at CCUE Location?
+    - What was recorded for incident 345947: Dear Team Internet not working at CCUE
+    Location?
+
+    - What was recorded for incident 345870: SHB LOCATION INTERNET NOT WORKING, PLS
+    CHECK AND RESOLVE?
 
     - Airtel and BSNL Both link is down in HSRL .
 
-    - What was recorded for: Airtel and BSNL Both link is down in HSRL .?
+    - What was recorded for incident 345744: Airtel and BSNL Both link is down in
+    HSRL .?
 
     - Internet are not working in JHJ location
 
-    - What was recorded for: Internet are not working in JHJ location?
+    - What was recorded for incident 345742: Internet are not working in JHJ location?
+
+    - What was recorded for incident 345739: Dear Team, Airtel point to point network
+    is due to down Kindly check and resolve the issue as soon as possible. Location
+    HSRL- Schaeffler Hosur?
+
+    - What was recorded for incident 345693: Dear Team, BSNL network is due to down
+    Kindly check and resolve the issue as soon as possible. Location HSRL- Schaeffler
+    Hosur Circuit ID: [reference] Complaint ID: [reference]?
 
     - Wifi connectivity issue at Amazon Hubli
 
-    - What was recorded for: Wifi connectivity issue at Amazon Hubli?
+    - What was recorded for incident 345644: Wifi connectivity issue at Amazon Hubli?
 
     - Pls check [internal URL] this is not opening in our network
 
-    - What was recorded for: Pls check [internal URL] this is not opening in our network?
+    - What was recorded for incident 345623: Pls check [internal URL] this is not
+    opening in our network?
 
     - Network is down at the BLRY location please check and resolve the issue; all
     the applications are down at the site.
 
-    - What was recorded for: Network is down at the BLRY location please check and
-    resolve the issue; all the applications are down at the site.?
+    - What was recorded for incident 345619: Network is down at the BLRY location
+    please check and resolve the issue; all the applications are down at the site.?
 
     - Single Link Down at MAAW
 
-    - What was recorded for: Single Link Down at MAAW?
+    - What was recorded for incident 345609: Single Link Down at MAAW?
 
     - Tickona Link is down from last 1 month
 
-    - What was recorded for: Tickona Link is down from last 1 month?
+    - What was recorded for incident 345563: Tickona Link is down from last 1 month?
 
     - In LaVelle locations internet not working.
 
-    - What was recorded for: In LaVelle locations internet not working.?
+    - What was recorded for incident 345556: In LaVelle locations internet not working.?
 
     - Airttel Link is down from last Thursday 10th Sept
 
-    - What was recorded for: Airttel Link is down from last Thursday 10th Sept?
+    - What was recorded for incident 345554: Airttel Link is down from last Thursday
+    10th Sept?
 
     - The network link is up and connectivity appears to be available. However, the
     application is still not working. SPR ,GOIS,PNQW,ANR
 
-    - What was recorded for: The network link is up and connectivity appears to be
-    available. However, the application is still not working. SPR ,GOIS,PNQW,ANR?
+    - What was recorded for incident 345550: The network link is up and connectivity
+    appears to be available. However, the application is still not working. SPR ,GOIS,PNQW,ANR?
+
+    - What was recorded for incident 345467: Dear Team, Airtel point to point network
+    is due to down Kindly check and resolve the issue as soon as possible. Location
+    HSRL- Schaeffler Hosur?
 
     - my Outlook is freeze when i replay to all and draft mail open. i have free space
     of 18 gb on mail. i have try in different browser , and try in both wan and Lan
     network''. and my daily work is suffer, pls resolve this issue in urgent basis.
 
-    - What was recorded for: my Outlook is freeze when i replay to all and draft mail
-    open. i have free space of 18 gb on mail. i have try in different browser , and
-    try in both wan and Lan network''. and my daily work is suffer, pls resolve this
-    issue in urgent basis.?
+    - What was recorded for incident 345461: my Outlook is freeze when i replay to
+    all and draft mail open. i have free space of 18 gb on mail. i have try in different
+    browser , and try in both wan and Lan network''. and my daily work is suffer,
+    pls resolve this issue in urgent basis.?
 
     - TSK location link showing down. [site gateway]
 
-    - What was recorded for: TSK location link showing down. [site gateway]?
+    - What was recorded for incident 345332: TSK location link showing down. [site
+    gateway]?
 
     - ITA location link down issue. [site gateway]
 
-    - What was recorded for: ITA location link down issue. [site gateway]?
+    - What was recorded for incident 345317: ITA location link down issue. [site gateway]?
 
     - KNP both link down
 
-    - What was recorded for: KNP both link down?
+    - What was recorded for incident 345289: KNP both link down?
 
     - Internet now working at DELH.
 
-    - What was recorded for: Internet now working at DELH.?
+    - What was recorded for incident 345152: Internet now working at DELH.?
 
     - Dear Team Internet not working at CCUD Location
 
-    - What was recorded for: Dear Team Internet not working at CCUD Location?
-
-    - Through Office network NJP & CCUN ( Fortinet location) Outlook mail attachments
-    opening & downloading issue facing so pls check & resolve the issue , But same
-    laptop & same application properly at Lavell location .
-
-    - What was recorded for: Through Office network NJP & CCUN ( Fortinet location)
-    Outlook mail attachments opening & downloading issue facing so pls check & resolve
-    the issue , But same laptop & same application properly at Lavell location .?
+    - What was recorded for incident 345031: Dear Team Internet not working at CCUD
+    Location?
 
     - CCUK location Internet not working so pls check & resolve the issue . IP address
     - [site gateway]
 
-    - What was recorded for: CCUK location Internet not working so pls check & resolve
-    the issue . IP address - [site gateway]?
+    - What was recorded for incident 344807: CCUK location Internet not working so
+    pls check & resolve the issue . IP address - [site gateway]?
 
     - Application not working through internet only gems AGL working at KHP LAN IP-
     [site gateway]
 
-    - What was recorded for: Application not working through internet only gems AGL
-    working at KHP LAN IP- [site gateway]?
+    - What was recorded for incident 344788: Application not working through internet
+    only gems AGL working at KHP LAN IP- [site gateway]?
 
     - Dear Team After link up some of the port are not connecting though gatiho.com
 
-    - What was recorded for: Dear Team After link up some of the port are not connecting
-    though gatiho.com?
+    - What was recorded for incident 344776: Dear Team After link up some of the port
+    are not connecting though gatiho.com?
 
     - Tikona link at EKM frequently down.
 
-    - What was recorded for: Tikona link at EKM frequently down.?
+    - What was recorded for incident 344739: Tikona link at EKM frequently down.?
 
     - Airtel link down at BAT kindly check and resolve the issue
 
-    - What was recorded for: Airtel link down at BAT kindly check and resolve the
-    issue?
+    - What was recorded for incident 344738: Airtel link down at BAT kindly check
+    and resolve the issue?
 
     - Internet not working at Bhiwandi Meesho
 
-    - What was recorded for: Internet not working at Bhiwandi Meesho?
+    - What was recorded for incident 344736: Internet not working at Bhiwandi Meesho?
+
+    - What was recorded for incident 344555: Dear Team, Airtel point to point network
+    is due to down Kindly check and resolve the issue as soon as possible. Location
+    HSRL- Schaeffler Hosur?
 
     - log the call for GATI AMD ATC Tikona link is down
 
-    - What was recorded for: log the call for GATI AMD ATC Tikona link is down?
+    - What was recorded for incident 344513: log the call for GATI AMD ATC Tikona
+    link is down?
+
+    - What was recorded for incident 344502: Dear Team, BSNL network is due to down
+    Kindly check and resolve the issue as soon as possible. Location HSRL- Schaeffler
+    Hosur Circuit ID: [reference] Complaint ID: [reference]?
 
     - Schaeffler Vadodara BSNL Point to Point Link is down
 
-    - What was recorded for: Schaeffler Vadodara BSNL Point to Point Link is down?
+    - What was recorded for incident 344501: Schaeffler Vadodara BSNL Point to Point
+    Link is down?
 
     - airtel link is down at idr [site gateway] today
 
-    - What was recorded for: airtel link is down at idr [site gateway] today?
+    - What was recorded for incident 344499: airtel link is down at idr [site gateway]
+    today?
 
     - Pls log the call for GATI AMDW Airtel link down
 
-    - What was recorded for: Pls log the call for GATI AMDW Airtel link down?
+    - What was recorded for incident 344496: Pls log the call for GATI AMDW Airtel
+    link down?
 
     - JSPO LINK IS NOT WORTKING , KINDLY CHECK. IP- [site gateway]
 
-    - What was recorded for: JSPO LINK IS NOT WORTKING , KINDLY CHECK. IP- [site gateway]?
+    - What was recorded for incident 344414: JSPO LINK IS NOT WORTKING , KINDLY CHECK.
+    IP- [site gateway]?
 
     - Network is not working at BGNG location please check and resolve the issue
 
-    - What was recorded for: Network is not working at BGNG location please check
-    and resolve the issue?
+    - What was recorded for incident 344407: Network is not working at BGNG location
+    please check and resolve the issue?
 
     - 172.27.135.1One media link at Pune ATC is currently down. Kindly check the issue
     on priority and provide an update on the status and resolution. Your prompt support
     will be appreciated.
 
-    - What was recorded for: 172.27.135.1One media link at Pune ATC is currently down.
-    Kindly check the issue on priority and provide an update on the status and resolution.
-    Your prompt support will be appreciated.?
+    - What was recorded for incident 344401: 172.27.135.1One media link at Pune ATC
+    is currently down. Kindly check the issue on priority and provide an update on
+    the status and resolution. Your prompt support will be appreciated.?
 
     - Tikona Internet down at LKOD
 
-    - What was recorded for: Tikona Internet down at LKOD?
+    - What was recorded for incident 344377: Tikona Internet down at LKOD?
 
     - Kindly log the call for GATI BDQN Tikona link is down.
 
-    - What was recorded for: Kindly log the call for GATI BDQN Tikona link is down.?
+    - What was recorded for incident 344309: Kindly log the call for GATI BDQN Tikona
+    link is down.?
 
     - Gati SRT location ADtech link is down
 
-    - What was recorded for: Gati SRT location ADtech link is down?
+    - What was recorded for incident 344307: Gati SRT location ADtech link is down?
 
     - GATI AMDE Adtech Link is Down
 
-    - What was recorded for: GATI AMDE Adtech Link is Down?
+    - What was recorded for incident 344306: GATI AMDE Adtech Link is Down?
 
     - The Tikona link at PNQW (IP: [site gateway]) is currently down, and connectivity
     is unavailable.
 
-    - What was recorded for: The Tikona link at PNQW (IP: [site gateway]) is currently
-    down, and connectivity is unavailable.?
+    - What was recorded for incident 344303: The Tikona link at PNQW (IP: [site gateway])
+    is currently down, and connectivity is unavailable.?
+
+    - I’m connected to Wi-Fi, but websites won’t load. What can I try?
+
+    - My laptop cannot connect to the company Wi-Fi. What should I do?
 
     - What caused the reported provider fibre-cut outages?
 
@@ -487,141 +532,153 @@ nlu:
 
     - Internet dead slow in LKO mostly (mail & salesforce)
 
-    - What was recorded for: Internet dead slow in LKO mostly (mail & salesforce)?
+    - What was recorded for incident 348313: Internet dead slow in LKO mostly (mail
+    & salesforce)?
 
     - internet slow in wifi network , restart router, but same issue. email attachment,
     gems report are slow download and open apps slow. pls check.
 
-    - What was recorded for: internet slow in wifi network , restart router, but same
-    issue. email attachment, gems report are slow download and open apps slow. pls
-    check.?
+    - What was recorded for incident 348266: internet slow in wifi network , restart
+    router, but same issue. email attachment, gems report are slow download and open
+    apps slow. pls check.?
 
     - wifi internet slow , pls check, outllook, gems , downloading are very slow ,
     pls check
 
-    - What was recorded for: wifi internet slow , pls check, outllook, gems , downloading
-    are very slow , pls check?
+    - What was recorded for incident 348264: wifi internet slow , pls check, outllook,
+    gems , downloading are very slow , pls check?
 
     - Link is fluctuating at PNQO STC. Performance issue at PNQO STC. Service provider-Airtel
     and Sify. Gateway-[site gateway]
 
-    - What was recorded for: Link is fluctuating at PNQO STC. Performance issue at
-    PNQO STC. Service provider-Airtel and Sify. Gateway-[site gateway]?
+    - What was recorded for incident 348202: Link is fluctuating at PNQO STC. Performance
+    issue at PNQO STC. Service provider-Airtel and Sify. Gateway-[site gateway]?
 
     - Slow Network Issue at Meesho Bhiwandi Location
 
-    - What was recorded for: Slow Network Issue at Meesho Bhiwandi Location?
+    - What was recorded for incident 348165: Slow Network Issue at Meesho Bhiwandi
+    Location?
 
     - Internet dead slow in LKO
 
-    - What was recorded for: Internet dead slow in LKO?
+    - What was recorded for incident 348163: Internet dead slow in LKO?
 
     - Hi Team - Kindly check internet is fluctuated in this location, Kindly check,
 
-    - What was recorded for: Hi Team - Kindly check internet is fluctuated in this
-    location, Kindly check,?
+    - What was recorded for incident 348067: Hi Team - Kindly check internet is fluctuated
+    in this location, Kindly check,?
 
     - application running slow and user also facing wifi auto connect and disconnet
     issue at Zepto Farukhnagar, LAN_IP - [site gateway],
 
-    - What was recorded for: application running slow and user also facing wifi auto
-    connect and disconnet issue at Zepto Farukhnagar, LAN_IP - [site gateway],?
+    - What was recorded for incident 347777: application running slow and user also
+    facing wifi auto connect and disconnet issue at Zepto Farukhnagar, LAN_IP - [site
+    gateway],?
 
     - Network slownes issue
 
-    - What was recorded for: Network slownes issue?
+    - What was recorded for incident 347544: Network slownes issue?
 
     - Internet Slowness Issue
 
-    - What was recorded for: Internet Slowness Issue?
+    - What was recorded for incident 347208: Internet Slowness Issue?
 
     - internet slow in wifi
 
-    - What was recorded for: internet slow in wifi?
+    - What was recorded for incident 347165: internet slow in wifi?
 
     - wifi internet slow issue.
 
-    - What was recorded for: wifi internet slow issue.?
+    - What was recorded for incident 347161: wifi internet slow issue.?
 
     - all application running slow on LAN and WIFI at Zepto Fraukhnagar LAN_IP - [site
     gateway]
 
-    - What was recorded for: all application running slow on LAN and WIFI at Zepto
-    Fraukhnagar LAN_IP - [site gateway]?
+    - What was recorded for incident 347147: all application running slow on LAN and
+    WIFI at Zepto Fraukhnagar LAN_IP - [site gateway]?
 
     - Link fluctuation issue at PNQE branch. Gateway-[site gateway] User unable to
     use GKE
 
-    - What was recorded for: Link fluctuation issue at PNQE branch. Gateway-[site
-    gateway] User unable to use GKE?
+    - What was recorded for incident 346917: Link fluctuation issue at PNQE branch.
+    Gateway-[site gateway] User unable to use GKE?
 
     - We are facing a severe internet slowness issue at the GOA Amazon location. Affected
     IP Address: [site gateway]
 
-    - What was recorded for: We are facing a severe internet slowness issue at the
-    GOA Amazon location. Affected IP Address: [site gateway]?
+    - What was recorded for incident 346565: We are facing a severe internet slowness
+    issue at the GOA Amazon location. Affected IP Address: [site gateway]?
 
     - internet getting very slow at trz location kindly check and resolve the issue
 
-    - What was recorded for: internet getting very slow at trz location kindly check
-    and resolve the issue?
+    - What was recorded for incident 346460: internet getting very slow at trz location
+    kindly check and resolve the issue?
 
     - networking not working in lan and wifi . show internet access , but in browser
     no any one application open. and gke desktop application are open very slow. jais
     default network is [site gateway].
 
-    - What was recorded for: networking not working in lan and wifi . show internet
-    access , but in browser no any one application open. and gke desktop application
-    are open very slow. jais default network is [site gateway].?
+    - What was recorded for incident 345694: networking not working in lan and wifi
+    . show internet access , but in browser no any one application open. and gke desktop
+    application are open very slow. jais default network is [site gateway].?
 
     - We have been observing network slowness issues for the past few days, which
     are impacting our daily operations. Please find the details below: IP Address:
     [site gateway] Location: EDC EPNQ
 
-    - What was recorded for: We have been observing network slowness issues for the
-    past few days, which are impacting our daily operations. Please find the details
-    below: IP Address: [site gateway] Location: EDC EPNQ?
+    - What was recorded for incident 345692: We have been observing network slowness
+    issues for the past few days, which are impacting our daily operations. Please
+    find the details below: IP Address: [site gateway] Location: EDC EPNQ?
+
+    - What was recorded for incident 345637: Internet dead slow in LKO?
 
     - internet working slow in jhj
 
-    - What was recorded for: internet working slow in jhj?
+    - What was recorded for incident 345625: internet working slow in jhj?
 
     - internet working very slow at AGR Location
 
-    - What was recorded for: internet working very slow at AGR Location?
+    - What was recorded for incident 345493: internet working very slow at AGR Location?
+
+    - What was recorded for incident 345471: Internet dead slow in LKO?
 
     - in ejaic wifi internet slow work, while outlook mail open , and file download,
     and upload slow . issue., google sheet slow open. please check internet slow issue.
 
-    - What was recorded for: in ejaic wifi internet slow work, while outlook mail
-    open , and file download, and upload slow . issue., google sheet slow open. please
-    check internet slow issue.?
+    - What was recorded for incident 345020: in ejaic wifi internet slow work, while
+    outlook mail open , and file download, and upload slow . issue., google sheet
+    slow open. please check internet slow issue.?
 
     - Please check on urgent basis as Link is working very slow at MBHO Office [site
     gateway] / 152.1
 
-    - What was recorded for: Please check on urgent basis as Link is working very
-    slow at MBHO Office [site gateway] / 152.1?
+    - What was recorded for incident 344961: Please check on urgent basis as Link
+    is working very slow at MBHO Office [site gateway] / 152.1?
 
     - All applications are running very slow at BOMO LAN IP- [site gateway] LC CONTACT
     NO- [reference]
 
-    - What was recorded for: All applications are running very slow at BOMO LAN IP-
-    [site gateway] LC CONTACT NO- [reference]?
+    - What was recorded for incident 344556: All applications are running very slow
+    at BOMO LAN IP- [site gateway] LC CONTACT NO- [reference]?
 
     - hi team bwd superhub internet wifi slowness issue
 
-    - What was recorded for: hi team bwd superhub internet wifi slowness issue?
+    - What was recorded for incident 344335: hi team bwd superhub internet wifi slowness
+    issue?
 
     - GATI BDQS through Tikona Link 50 MBPS applications are working very slow
 
-    - What was recorded for: GATI BDQS through Tikona Link 50 MBPS applications are
-    working very slow?
+    - What was recorded for incident 344313: GATI BDQS through Tikona Link 50 MBPS
+    applications are working very slow?
 
     - Dear Team Due to single media down, Application is working slow at RGN location
 
-    - What was recorded for: Dear Team Due to single media down, Application is working
-    slow at RGN location?
+    - What was recorded for incident 344295: Dear Team Due to single media down, Application
+    is working slow at RGN location?
+
+    - My office Wi-Fi keeps disconnecting. What should I check?
+
+    - The office internet is very slow today. How can I troubleshoot it?
 
     - What happened when network links were fully utilised?
 
@@ -661,99 +718,116 @@ nlu:
 
     - Citrix is not working.
 
-    - What was recorded for: Citrix is not working.?
+    - What was recorded for incident 348282: Citrix is not working.?
 
     - AD self service not working through CITRIX
 
-    - What was recorded for: AD self service not working through CITRIX?
+    - What was recorded for incident 348172: AD self service not working through CITRIX?
 
     - MDY Franchisee Citrix not connected
 
-    - What was recorded for: MDY Franchisee Citrix not connected?
+    - What was recorded for incident 347849: MDY Franchisee Citrix not connected?
 
     - Citrix is not working
 
-    - What was recorded for: Citrix is not working?
+    - What was recorded for incident 347773: Citrix is not working?
 
     - Citrix application is opening but Gati.net ,GKE and GEMS is not working .
 
-    - What was recorded for: Citrix application is opening but Gati.net ,GKE and GEMS
-    is not working .?
+    - What was recorded for incident 347670: Citrix application is opening but Gati.net
+    ,GKE and GEMS is not working .?
 
     - Citrix uninstalling automatically
 
-    - What was recorded for: Citrix uninstalling automatically?
+    - What was recorded for incident 347287: Citrix uninstalling automatically?
 
     - citrixs not opened in cccf location :SAN_S006791
 
-    - What was recorded for: citrixs not opened in cccf location :SAN_S006791?
+    - What was recorded for incident 347193: citrixs not opened in cccf location :SAN_S006791?
 
     - Citrix is not being log in showing error 3011:sesion disconnected due to missing
     configuration. New PC MAC ADDRESS-[device MAC] AD ID-[user ID] MAIL [work account]
     OU CODE-SLI HOST NAME-BOMZ_SLI_INCH
 
-    - What was recorded for: Citrix is not being log in showing error 3011:sesion
-    disconnected due to missing configuration. New PC MAC ADDRESS-[device MAC] AD
-    ID-[user ID] MAIL [work account] OU CODE-SLI HOST NAME-BOMZ_SLI_INCH?
+    - What was recorded for incident 347003: Citrix is not being log in showing error
+    3011:sesion disconnected due to missing configuration. New PC MAC ADDRESS-[device
+    MAC] AD ID-[user ID] MAIL [work account] OU CODE-SLI HOST NAME-BOMZ_SLI_INCH?
 
     - Barmer cccf user instasafe not working , so give the access of citrix app for
     the following id [work account]
 
-    - What was recorded for: Barmer cccf user instasafe not working , so give the
-    access of citrix app for the following id [work account]?
+    - What was recorded for incident 346816: Barmer cccf user instasafe not working
+    , so give the access of citrix app for the following id [work account]?
 
     - please give access of Citrix app to [work account] user, he did not access the
     gems. from intellihub.
 
-    - What was recorded for: please give access of Citrix app to [work account] user,
-    he did not access the gems. from intellihub.?
+    - What was recorded for incident 346515: please give access of Citrix app to [work
+    account] user, he did not access the gems. from intellihub.?
 
     - please provide access of Citrix app to [work account] user. he show error login
     attempt failed , please contact your it administration.
 
-    - What was recorded for: please provide access of Citrix app to [work account]
-    user. he show error login attempt failed , please contact your it administration.?
+    - What was recorded for incident 346514: please provide access of Citrix app to
+    [work account] user. he show error login attempt failed , please contact your
+    it administration.?
 
     - MPL Location Citrix does not connect
 
-    - What was recorded for: MPL Location Citrix does not connect?
+    - What was recorded for incident 346350: MPL Location Citrix does not connect?
 
     - Gems bill back form not working through citrix.
 
-    - What was recorded for: Gems bill back form not working through citrix.?
+    - What was recorded for incident 346312: Gems bill back form not working through
+    citrix.?
 
     - Intranet is not connecting through Citrix
 
-    - What was recorded for: Intranet is not connecting through Citrix?
+    - What was recorded for incident 346293: Intranet is not connecting through Citrix?
 
     - config new citrix app in laptop
 
-    - What was recorded for: config new citrix app in laptop?
+    - What was recorded for incident 346195: config new citrix app in laptop?
 
     - After Citrix Installed Unable open the GEMS at BLSE CCCF
 
-    - What was recorded for: After Citrix Installed Unable open the GEMS at BLSE CCCF?
+    - What was recorded for incident 346194: After Citrix Installed Unable open the
+    GEMS at BLSE CCCF?
 
     - INSTASAFE NOT WORKING AT CCCF SHD_S074211
 
-    - What was recorded for: INSTASAFE NOT WORKING AT CCCF SHD_S074211?
+    - What was recorded for incident 346014: INSTASAFE NOT WORKING AT CCCF SHD_S074211?
+
+    - What was recorded for incident 345784: Citrix is not working?
 
     - RE - CITRUS VPN NOT WORKING AT BAU
 
-    - What was recorded for: RE - CITRUS VPN NOT WORKING AT BAU?
+    - What was recorded for incident 345564: RE - CITRUS VPN NOT WORKING AT BAU?
 
     - Require Citrix access [user ID]
 
-    - What was recorded for: Require Citrix access [user ID]?
+    - What was recorded for incident 345452: Require Citrix access [user ID]?
 
     - DMT user facing Citrix access denied error today only pls check and confirm
 
-    - What was recorded for: DMT user facing Citrix access denied error today only
-    pls check and confirm?
+    - What was recorded for incident 344498: DMT user facing Citrix access denied
+    error today only pls check and confirm?
 
     - ZTNA login issue.
 
-    - What was recorded for: ZTNA login issue.?
+    - What was recorded for incident 344490: ZTNA login issue.?
+
+    - The VPN disconnects every few minutes. What could be causing this?
+
+    - Citrix says access is denied. What should I check?
+
+    - Citrix stopped working after I changed my laptop. What should I do?
+
+    - Citrix is detecting the wrong country and denying access. What can I try?
+
+    - My VPN will not connect even though normal websites work. What should I check?
+
+    - Citrix login fails, but IT cannot find any login logs. What should be checked?
 
     - What happened in the Citrix access denied incident?
 
@@ -817,90 +891,106 @@ nlu:
 
     - Unable to login the outlook getting error
 
-    - What was recorded for: Unable to login the outlook getting error?
+    - What was recorded for incident 348328: Unable to login the outlook getting error?
 
     - Outlook not working in my system
 
-    - What was recorded for: Outlook not working in my system?
+    - What was recorded for incident 347197: Outlook not working in my system?
 
     - CHUNARA SHAILESH BHAI [user ID] MAIL ID -[work account] Dear , sir, outlook
     is not opening in the browser . getting " something went wrong" error with accessing
     outlook . please check and resolve the issue
 
-    - What was recorded for: CHUNARA SHAILESH BHAI [user ID] MAIL ID -[work account]
-    Dear , sir, outlook is not opening in the browser . getting " something went wrong"
-    error with accessing outlook . please check and resolve the issue?
+    - What was recorded for incident 347152: CHUNARA SHAILESH BHAI [user ID] MAIL
+    ID -[work account] Dear , sir, outlook is not opening in the browser . getting
+    " something went wrong" error with accessing outlook . please check and resolve
+    the issue?
 
     - Dear Team, Please reset common mail ID password, user unable to login id [work
     account]
 
-    - What was recorded for: Dear Team, Please reset common mail ID password, user
-    unable to login id [work account]?
+    - What was recorded for incident 346589: Dear Team, Please reset common mail ID
+    password, user unable to login id [work account]?
 
     - Intranet not working _Gems not working Outlook working fine [site gateway] BOMS
 
-    - What was recorded for: Intranet not working _Gems not working Outlook working
-    fine [site gateway] BOMS?
+    - What was recorded for incident 346506: Intranet not working _Gems not working
+    Outlook working fine [site gateway] BOMS?
 
     - Email directory not found
 
-    - What was recorded for: Email directory not found?
+    - What was recorded for incident 346494: Email directory not found?
 
     - E3 licence uer [work account] inplace archive showing only 11 gb storage data
 
-    - What was recorded for: E3 licence uer [work account] inplace archive showing
-    only 11 gb storage data?
+    - What was recorded for incident 346484: E3 licence uer [work account] inplace
+    archive showing only 11 gb storage data?
 
     - Archive mail box is full, even after applying policy to move mails to Online
     Archive every 30days.
 
-    - What was recorded for: Archive mail box is full, even after applying policy
-    to move mails to Online Archive every 30days.?
+    - What was recorded for incident 346360: Archive mail box is full, even after
+    applying policy to move mails to Online Archive every 30days.?
 
     - inplace archive space not showing in my mail storage
 
-    - What was recorded for: inplace archive space not showing in my mail storage?
+    - What was recorded for incident 345973: inplace archive space not showing in
+    my mail storage?
 
     - [work account] my mail not opening rectify the error
 
-    - What was recorded for: [work account] my mail not opening rectify the error?
+    - What was recorded for incident 345849: [work account] my mail not opening rectify
+    the error?
 
     - PLS CHANGE EMAIL ID PASSWORD OF [work account]
 
-    - What was recorded for: PLS CHANGE EMAIL ID PASSWORD OF [work account]?
+    - What was recorded for incident 345808: PLS CHANGE EMAIL ID PASSWORD OF [work
+    account]?
 
     - Outlook mail delivery issue
 
-    - What was recorded for: Outlook mail delivery issue?
+    - What was recorded for incident 345490: Outlook mail delivery issue?
 
     - Sharing Account of Email is not getting open
 
-    - What was recorded for: Sharing Account of Email is not getting open?
+    - What was recorded for incident 345082: Sharing Account of Email is not getting
+    open?
 
     - Facing issue in outlook application
 
-    - What was recorded for: Facing issue in outlook application?
+    - What was recorded for incident 344950: Facing issue in outlook application?
 
     - Mail is working at TVM. But gems application and Intelli hub site is not working
     please check on this.
 
-    - What was recorded for: Mail is working at TVM. But gems application and Intelli
-    hub site is not working please check on this.?
+    - What was recorded for incident 344938: Mail is working at TVM. But gems application
+    and Intelli hub site is not working please check on this.?
 
     - RKL CCCF MAIL ID UMANLE TO OPEN
 
-    - What was recorded for: RKL CCCF MAIL ID UMANLE TO OPEN?
+    - What was recorded for incident 344907: RKL CCCF MAIL ID UMANLE TO OPEN?
 
     - i have required access of create new group in outlook 365 application . when
     i click new button , then i show new group button hidden.
 
-    - What was recorded for: i have required access of create new group in outlook
-    365 application . when i click new button , then i show new group button hidden.?
+    - What was recorded for incident 344541: i have required access of create new
+    group in outlook 365 application . when i click new button , then i show new group
+    button hidden.?
 
     - hi team, pls provide netcore access to my mail user id [work account]
 
-    - What was recorded for: hi team, pls provide netcore access to my mail user id
-    [work account]?
+    - What was recorded for incident 344338: hi team, pls provide netcore access to
+    my mail user id [work account]?
+
+    - Outlook says my account is locked. What should I do?
+
+    - I can receive emails but cannot send them. What should I check?
+
+    - Outlook keeps asking me to sign in. How can I fix this?
+
+    - My emails are stuck in the Outbox. What should I check?
+
+    - I cannot open my work mailbox. What can I try?
 
     - What if a work mailbox has not been created?
 
@@ -949,35 +1039,47 @@ nlu:
     - C-TYPE Cable not pullimg IN / OUT automatically from cable cubby and alos HDMI
     cable also not working
 
-    - What was recorded for: C-TYPE Cable not pullimg IN / OUT automatically from
-    cable cubby and alos HDMI cable also not working?
+    - What was recorded for incident 348379: C-TYPE Cable not pullimg IN / OUT automatically
+    from cable cubby and alos HDMI cable also not working?
 
     - getting teams call hold and mail content downloading issue
 
-    - What was recorded for: getting teams call hold and mail content downloading
-    issue?
+    - What was recorded for incident 348168: getting teams call hold and mail content
+    downloading issue?
 
     - Team calls are not connecting
 
-    - What was recorded for: Team calls are not connecting?
+    - What was recorded for incident 347627: Team calls are not connecting?
 
     - Dear team at OU - DHG GDW in teams call hold ON issue facing during calls so
     pls check and resolve the issue.
 
-    - What was recorded for: Dear team at OU - DHG GDW in teams call hold ON issue
-    facing during calls so pls check and resolve the issue.?
+    - What was recorded for incident 347617: Dear team at OU - DHG GDW in teams call
+    hold ON issue facing during calls so pls check and resolve the issue.?
+
+    - What was recorded for incident 347607: Team calls are not connecting?
 
     - Teams call issue
 
-    - What was recorded for: Teams call issue?
+    - What was recorded for incident 347495: Teams call issue?
 
     - Teams call issue poor quality
 
-    - What was recorded for: Teams call issue poor quality?
+    - What was recorded for incident 344945: Teams call issue poor quality?
 
     - TEAMS CALL AND SALESFORCE ISSUE
 
-    - What was recorded for: TEAMS CALL AND SALESFORCE ISSUE?
+    - What was recorded for incident 344514: TEAMS CALL AND SALESFORCE ISSUE?
+
+    - Teams calls have no audio through my headset. What should I check?
+
+    - Other people cannot hear me in Teams meetings. How can I troubleshoot my microphone?
+
+    - My camera is not working in Teams. What can I try?
+
+    - Teams closes whenever I join a meeting. How can I troubleshoot this?
+
+    - I cannot share my screen in Teams. What should I check?
 
     - What fixed calls affected by provider-link drops?
 
@@ -1017,270 +1119,284 @@ nlu:
 
     - All Applications are not working @ DELG
 
-    - What was recorded for: All Applications are not working @ DELG?
+    - What was recorded for incident 348393: All Applications are not working @ DELG?
 
     - Application not opening at Nag- Mahel
 
-    - What was recorded for: Application not opening at Nag- Mahel?
+    - What was recorded for incident 348300: Application not opening at Nag- Mahel?
 
     - unable to do work
 
-    - What was recorded for: unable to do work?
+    - What was recorded for incident 348283: unable to do work?
 
     - All Applications are working very slow @ GGN
 
-    - What was recorded for: All Applications are working very slow @ GGN?
+    - What was recorded for incident 348174: All Applications are working very slow
+    @ GGN?
 
     - GATI GDN location all applications are working very slow
 
-    - What was recorded for: GATI GDN location all applications are working very slow?
+    - What was recorded for incident 348056: GATI GDN location all applications are
+    working very slow?
 
     - AKL location down
 
-    - What was recorded for: AKL location down?
+    - What was recorded for incident 347835: AKL location down?
 
     - Gems not working properly @ DELW
 
-    - What was recorded for: Gems not working properly @ DELW?
+    - What was recorded for incident 347801: Gems not working properly @ DELW?
 
     - Any application not working at Honda Bilashpur please resolve on priority.
 
-    - What was recorded for: Any application not working at Honda Bilashpur please
-    resolve on priority.?
+    - What was recorded for incident 347790: Any application not working at Honda
+    Bilashpur please resolve on priority.?
 
     - Application not working at JGP CCCO
 
-    - What was recorded for: Application not working at JGP CCCO?
+    - What was recorded for incident 347761: Application not working at JGP CCCO?
 
     - We are facing application performance issues at the Pune East location. IP Address:
     [site gateway]
 
-    - What was recorded for: We are facing application performance issues at the Pune
-    East location. IP Address: [site gateway]?
+    - What was recorded for incident 347595: We are facing application performance
+    issues at the Pune East location. IP Address: [site gateway]?
 
     - Application working slow at TSK location. [site gateway]
 
-    - What was recorded for: Application working slow at TSK location. [site gateway]?
+    - What was recorded for incident 347588: Application working slow at TSK location.
+    [site gateway]?
 
     - I am not receiving OTP in the Authenticator app. Please help reset/re-register
     my Authenticator account. OU : SWL [work account]
 
-    - What was recorded for: I am not receiving OTP in the Authenticator app. Please
-    help reset/re-register my Authenticator account. OU : SWL [work account]?
+    - What was recorded for incident 347504: I am not receiving OTP in the Authenticator
+    app. Please help reset/re-register my Authenticator account. OU : SWL [work account]?
 
     - Access Point Issue at Meesho Bangalore Location
 
-    - What was recorded for: Access Point Issue at Meesho Bangalore Location?
+    - What was recorded for incident 347489: Access Point Issue at Meesho Bangalore
+    Location?
 
     - applications are not working at RJP kindly check and resolve the issue
 
-    - What was recorded for: applications are not working at RJP kindly check and
-    resolve the issue?
+    - What was recorded for incident 347443: applications are not working at RJP kindly
+    check and resolve the issue?
 
     - Application not working at BBIC
 
-    - What was recorded for: Application not working at BBIC?
+    - What was recorded for incident 347375: Application not working at BBIC?
 
     - application not working at nagw
 
-    - What was recorded for: application not working at nagw?
+    - What was recorded for incident 347313: application not working at nagw?
 
     - We are continuously facing application performance issues at the EPNQ location.
     IP Address: [site gateway]
 
-    - What was recorded for: We are continuously facing application performance issues
-    at the EPNQ location. IP Address: [site gateway]?
+    - What was recorded for incident 347310: We are continuously facing application
+    performance issues at the EPNQ location. IP Address: [site gateway]?
 
     - Access point not able to be connecting at SLMO location kindly check and clear
     the issue
 
-    - What was recorded for: Access point not able to be connecting at SLMO location
-    kindly check and clear the issue?
+    - What was recorded for incident 347278: Access point not able to be connecting
+    at SLMO location kindly check and clear the issue?
 
     - Application not working at BBIE
 
-    - What was recorded for: Application not working at BBIE?
+    - What was recorded for incident 347189: Application not working at BBIE?
 
     - Rajkot Locations all applications are working very slow
 
-    - What was recorded for: Rajkot Locations all applications are working very slow?
+    - What was recorded for incident 347155: Rajkot Locations all applications are
+    working very slow?
 
     - Online file is not open
 
-    - What was recorded for: Online file is not open?
+    - What was recorded for incident 347085: Online file is not open?
 
     - Need attachment limit upto 20 MB
 
-    - What was recorded for: Need attachment limit upto 20 MB?
+    - What was recorded for incident 346978: Need attachment limit upto 20 MB?
 
     - Application not working at GUA location. [site gateway]
 
-    - What was recorded for: Application not working at GUA location. [site gateway]?
+    - What was recorded for incident 346814: Application not working at GUA location.
+    [site gateway]?
 
     - Application running slow in CCDN
 
-    - What was recorded for: Application running slow in CCDN?
+    - What was recorded for incident 346768: Application running slow in CCDN?
 
     - Application not working
 
-    - What was recorded for: Application not working?
+    - What was recorded for incident 346767: Application not working?
 
     - Getting connection error in public faced transactions through API
 
-    - What was recorded for: Getting connection error in public faced transactions
-    through API?
+    - What was recorded for incident 346641: Getting connection error in public faced
+    transactions through API?
 
     - Clients are not connecting with Gati_DELH ssid
 
-    - What was recorded for: Clients are not connecting with Gati_DELH ssid?
-
-    - Ms team install in my laptop
-
-    - What was recorded for: Ms team install in my laptop?
+    - What was recorded for incident 346635: Clients are not connecting with Gati_DELH
+    ssid?
 
     - APPLICATION IS NOT WORKING AT NAG_MAHEL
 
-    - What was recorded for: APPLICATION IS NOT WORKING AT NAG_MAHEL?
+    - What was recorded for incident 346472: APPLICATION IS NOT WORKING AT NAG_MAHEL?
 
     - Please check on urgnet basisa AP Not working even its powering on AP IP : 172..27.9.12
     / 113 BOMS
 
-    - What was recorded for: Please check on urgnet basisa AP Not working even its
-    powering on AP IP : 172..27.9.12 / 113 BOMS?
+    - What was recorded for incident 346365: Please check on urgnet basisa AP Not
+    working even its powering on AP IP : 172..27.9.12 / 113 BOMS?
 
     - Application is not working at NAG-MAHEL LOCATION
 
-    - What was recorded for: Application is not working at NAG-MAHEL LOCATION?
+    - What was recorded for incident 346259: Application is not working at NAG-MAHEL
+    LOCATION?
 
     - One Desktop in CCUO Location is not able to On and not able to reboot So kindly
     check.
 
-    - What was recorded for: One Desktop in CCUO Location is not able to On and not
-    able to reboot So kindly check.?
-
-    - One Laptop in PATO Location is not able to On and not able to reboot So kindly
-    check and close asap.
-
-    - What was recorded for: One Laptop in PATO Location is not able to On and not
-    able to reboot So kindly check and close asap.?
+    - What was recorded for incident 346189: One Desktop in CCUO Location is not able
+    to On and not able to reboot So kindly check.?
 
     - Dear IT Team - Kindly check My location PATO one system is getting hang a lot.
     Kindly check and close asap.
 
-    - What was recorded for: Dear IT Team - Kindly check My location PATO one system
-    is getting hang a lot. Kindly check and close asap.?
+    - What was recorded for incident 346177: Dear IT Team - Kindly check My location
+    PATO one system is getting hang a lot. Kindly check and close asap.?
 
     - System Getting Hanging
 
-    - What was recorded for: System Getting Hanging?
+    - What was recorded for incident 346173: System Getting Hanging?
 
     - System Getting Hanning
 
-    - What was recorded for: System Getting Hanning?
+    - What was recorded for incident 346172: System Getting Hanning?
 
     - gems not working
 
-    - What was recorded for: gems not working?
+    - What was recorded for incident 346159: gems not working?
 
     - PC DESKTOP NOT OPEN ( 5 SYSTEM )
 
-    - What was recorded for: PC DESKTOP NOT OPEN ( 5 SYSTEM )?
-
-    - The laptop and desktop are taking an unusually long time to reach the login
-    screen after a restart. This issue is occurring intermittently and is impacting
-    normal operations.
-
-    - What was recorded for: The laptop and desktop are taking an unusually long time
-    to reach the login screen after a restart. This issue is occurring intermittently
-    and is impacting normal operations.?
+    - What was recorded for incident 346114: PC DESKTOP NOT OPEN ( 5 SYSTEM )?
 
     - Application Working very slow at JGT CCCO
 
-    - What was recorded for: Application Working very slow at JGT CCCO?
+    - What was recorded for incident 346055: Application Working very slow at JGT
+    CCCO?
 
     - Applications are not working properly @ DELX
 
-    - What was recorded for: Applications are not working properly @ DELX?
+    - What was recorded for incident 345708: Applications are not working properly
+    @ DELX?
 
     - All critical applications, including IntelliHub, GEMS, SFA, Delivery Applications,
     and Booking Applications, have not been working since 1:00 PM today.
 
-    - What was recorded for: All critical applications, including IntelliHub, GEMS,
-    SFA, Delivery Applications, and Booking Applications, have not been working since
-    1:00 PM today.?
+    - What was recorded for incident 345648: All critical applications, including
+    IntelliHub, GEMS, SFA, Delivery Applications, and Booking Applications, have not
+    been working since 1:00 PM today.?
 
     - EAMDW locations all Applications are down
 
-    - What was recorded for: EAMDW locations all Applications are down?
+    - What was recorded for incident 345647: EAMDW locations all Applications are
+    down?
 
     - All LaVelle location of ENDA are down from last 20 min, pls check
 
-    - What was recorded for: All LaVelle location of ENDA are down from last 20 min,
-    pls check?
+    - What was recorded for incident 345566: All LaVelle location of ENDA are down
+    from last 20 min, pls check?
 
     - ALL APPLICATION WORKING DEAD SLOW TA DELW
 
-    - What was recorded for: ALL APPLICATION WORKING DEAD SLOW TA DELW?
+    - What was recorded for incident 345482: ALL APPLICATION WORKING DEAD SLOW TA
+    DELW?
 
     - Salesforce working dead slow at DELZ
 
-    - What was recorded for: Salesforce working dead slow at DELZ?
+    - What was recorded for incident 345477: Salesforce working dead slow at DELZ?
 
     - OUT LOOK password expired unable to reset ([work account])
 
-    - What was recorded for: OUT LOOK password expired unable to reset ([work account])?
+    - What was recorded for incident 345470: OUT LOOK password expired unable to reset
+    ([work account])?
 
     - All application not working at NAGW_NAGO stc
 
-    - What was recorded for: All application not working at NAGW_NAGO stc?
+    - What was recorded for incident 344999: All application not working at NAGW_NAGO
+    stc?
 
     - Application not Working at BRM GDW
 
-    - What was recorded for: Application not Working at BRM GDW?
+    - What was recorded for incident 344963: Application not Working at BRM GDW?
 
     - All Applications are working dead slow @ DELW
 
-    - What was recorded for: All Applications are working dead slow @ DELW?
+    - What was recorded for incident 344959: All Applications are working dead slow
+    @ DELW?
 
     - OGL ISP down,
 
-    - What was recorded for: OGL ISP down,?
+    - What was recorded for incident 344838: OGL ISP down,?
 
     - Salesforce working very slow at DELZ
 
-    - What was recorded for: Salesforce working very slow at DELZ?
+    - What was recorded for incident 344775: Salesforce working very slow at DELZ?
 
     - Unable to Connect AP at BBIO AP
 
-    - What was recorded for: Unable to Connect AP at BBIO AP?
+    - What was recorded for incident 344766: Unable to Connect AP at BBIO AP?
 
     - Gems , salesforce, outlook working very slow at ENDA location.
 
-    - What was recorded for: Gems , salesforce, outlook working very slow at ENDA
-    location.?
+    - What was recorded for incident 344746: Gems , salesforce, outlook working very
+    slow at ENDA location.?
 
     - MBD Location gems and other application working very slow. Pls check and resolve
 
-    - What was recorded for: MBD Location gems and other application working very
-    slow. Pls check and resolve?
+    - What was recorded for incident 344744: MBD Location gems and other application
+    working very slow. Pls check and resolve?
 
     - Dear team account has been locked showing pls confirm [work account]
 
-    - What was recorded for: Dear team account has been locked showing pls confirm
-    [work account]?
+    - What was recorded for incident 344667: Dear team account has been locked showing
+    pls confirm [work account]?
 
     - All Application are not working @ DELH
 
-    - What was recorded for: All Application are not working @ DELH?
+    - What was recorded for incident 344521: All Application are not working @ DELH?
 
     - All applications are not working properly @ FBD
 
-    - What was recorded for: All applications are not working properly @ FBD?
+    - What was recorded for incident 344378: All applications are not working properly
+    @ FBD?
 
     - Gati AMDE Location all applications are working very slow
 
-    - What was recorded for: Gati AMDE Location all applications are working very
-    slow?
+    - What was recorded for incident 344319: Gati AMDE Location all applications are
+    working very slow?
+
+    - What is the process for getting access to the reporting application?
+
+    - I cannot log in to the company portal. What can I try?
+
+    - GEMS is not opening. What should I check?
+
+    - GEMS is unavailable while Outlook still works. Is there a similar recorded fix?
+
+    - Salesforce is not loading, but other applications work. What can I try?
+
+    - GEMS and several other applications are down at every office. What should we
+    check?
+
+    - GKE displays an error while other business applications work. What should I
+    check?
 
     - Why can GEMS fail while Outlook still works?
 
@@ -1316,12 +1432,28 @@ nlu:
 
     - One drive is taking time to open
 
-    - What was recorded for: One drive is taking time to open?
+    - What was recorded for incident 347192: One drive is taking time to open?
 
     - One drive access of Aditya Kaliya to Gopi and Devanaboina Siva Naga Raju.
 
-    - What was recorded for: One drive access of Aditya Kaliya to Gopi and Devanaboina
-    Siva Naga Raju.?
+    - What was recorded for incident 345976: One drive access of Aditya Kaliya to
+    Gopi and Devanaboina Siva Naga Raju.?
+
+    - How do I request access to the project shared drive?
+
+    - I get “Access denied” when opening the team folder. What should I check?
+
+    - My permissions to the shared workspace were removed. Who can restore them?
+
+    - OneDrive files will not open. What should I check?
+
+    - I need access to a former colleague''s OneDrive. How is this handled?
+
+    - OneDrive says it is syncing, but my latest files are missing. What can I try?
+
+    - How can I request a Microsoft 365 group?
+
+    - I get access denied when opening a shared OneDrive folder. What should I check?
 
     - How was OneDrive and mailbox access handled?
 
@@ -1331,7 +1463,7 @@ nlu:
 
     - How can I request a OneDrive access transfer?
 
-    - How can I request a Microsoft 365 group?
+    - What did the incident report record about Microsoft 365 group creation?
 
     - Microsoft 365 group creation is restricted
 
@@ -1349,31 +1481,70 @@ nlu:
 
     - In Klm network switch not communicating properly.
 
-    - What was recorded for: In Klm network switch not communicating properly.?
+    - What was recorded for incident 346661: In Klm network switch not communicating
+    properly.?
+
+    - Ms team install in my laptop
+
+    - What was recorded for incident 346580: Ms team install in my laptop?
 
     - SYSTEM IS NOT BOOTING
 
-    - What was recorded for: SYSTEM IS NOT BOOTING?
+    - What was recorded for incident 346197: SYSTEM IS NOT BOOTING?
+
+    - One Laptop in PATO Location is not able to On and not able to reboot So kindly
+    check and close asap.
+
+    - What was recorded for incident 346182: One Laptop in PATO Location is not able
+    to On and not able to reboot So kindly check and close asap.?
 
     - System booting issue pls check
 
-    - What was recorded for: System booting issue pls check?
+    - What was recorded for incident 346179: System booting issue pls check?
+
+    - The laptop and desktop are taking an unusually long time to reach the login
+    screen after a restart. This issue is occurring intermittently and is impacting
+    normal operations.
+
+    - What was recorded for incident 346097: The laptop and desktop are taking an
+    unusually long time to reach the login screen after a restart. This issue is occurring
+    intermittently and is impacting normal operations.?
 
     - System booting issue in EAMDW all locations
 
-    - What was recorded for: System booting issue in EAMDW all locations?
+    - What was recorded for incident 346083: System booting issue in EAMDW all locations?
 
     - System booting issue in BOMZ
 
-    - What was recorded for: System booting issue in BOMZ?
+    - What was recorded for incident 346080: System booting issue in BOMZ?
 
     - BOMZ - Polycom device not powering on
 
-    - What was recorded for: BOMZ - Polycom device not powering on?
+    - What was recorded for incident 345028: BOMZ - Polycom device not powering on?
+
+    - Through Office network NJP & CCUN ( Fortinet location) Outlook mail attachments
+    opening & downloading issue facing so pls check & resolve the issue , But same
+    laptop & same application properly at Lavell location .
+
+    - What was recorded for incident 344936: Through Office network NJP & CCUN ( Fortinet
+    location) Outlook mail attachments opening & downloading issue facing so pls check
+    & resolve the issue , But same laptop & same application properly at Lavell location
+    .?
 
     - SD WAN faulty at HYDT office.
 
-    - What was recorded for: SD WAN faulty at HYDT office.?
+    - What was recorded for incident 344882: SD WAN faulty at HYDT office.?
+
+    - My laptop won’t start after an update. What should I do?
+
+    - My laptop screen is black, but the power light is on. How can I troubleshoot
+    it?
+
+    - My laptop battery is not charging. What should I check?
+
+    - My laptop freezes whenever I open Excel. What can I try?
+
+    - My keyboard has stopped working. How can I troubleshoot it?
 
     - What fixed a stuck Lavelle network device?
 
@@ -1419,20 +1590,34 @@ nlu:
     66452 Shekhar Ramjeet Singh COM-SEC and remove below Host name from PDF Exceptional
     List  MBHO EXPRESS HO_LT_VPOPR 66452 Shekhar Ramjeet Singh COM-SEC
 
-    - What was recorded for: lease add below new Host Name in PDF Exceptional List
-     MBHO EXPRESS HO_LT_HDCS 66452 Shekhar Ramjeet Singh COM-SEC and remove below
-    Host name from PDF Exceptional List  MBHO EXPRESS HO_LT_VPOPR 66452 Shekhar Ramjeet
-    Singh COM-SEC?
+    - What was recorded for incident 346382: lease add below new Host Name in PDF
+    Exceptional List  MBHO EXPRESS HO_LT_HDCS 66452 Shekhar Ramjeet Singh COM-SEC
+    and remove below Host name from PDF Exceptional List  MBHO EXPRESS HO_LT_VPOPR
+    66452 Shekhar Ramjeet Singh COM-SEC?
 
     - In klm firewall is not reachable.
 
-    - What was recorded for: In klm firewall is not reachable.?
+    - What was recorded for incident 345986: In klm firewall is not reachable.?
 
     - Hi Team i am not able to open the excel as i am getting error on zscalar. "Firewall
     or antivirus is blocking the zscaler connectors "
 
-    - What was recorded for: Hi Team i am not able to open the excel as i am getting
-    error on zscalar. "Firewall or antivirus is blocking the zscaler connectors "?
+    - What was recorded for incident 344657: Hi Team i am not able to open the excel
+    as i am getting error on zscalar. "Firewall or antivirus is blocking the zscaler
+    connectors "?
+
+    - Zscaler shows a firewall error. What should I check?
+
+    - An approved business application is blocked by the Zscaler security connector.
+    What should I do?
+
+    - I need to open an approved PDF, but the security policy blocks it. How do I
+    request an exception?
+
+    - Antivirus displays a warning when I open a downloaded file. What should I do?
+
+    - Zscaler blocks a work website, but other websites open normally. What should
+    I check?
 
     '
 - intent: it_account_access
@@ -1445,8 +1630,20 @@ nlu:
     - Dear Sir when I am login in Adselfservice showing Permission denied pls contact
     your administrator
 
-    - What was recorded for: Dear Sir when I am login in Adselfservice showing Permission
-    denied pls contact your administrator?
+    - What was recorded for incident 345256: Dear Sir when I am login in Adselfservice
+    showing Permission denied pls contact your administrator?
+
+    - My AD account is locked. What should I do?
+
+    - AD Self Service shows permission denied. What should I check?
+
+    - My domain policy is not synchronizing. What can I try?
+
+    - My domain login is rejected even though the password is correct. What should
+    I check?
+
+    - My domain account signs in to email but not to the company portal. What should
+    I do?
 
     - What did the report record about AD policy synchronisation?
 

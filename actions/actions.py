@@ -1,5 +1,6 @@
 import os
 import re
+import logging
 from datetime import datetime
 from typing import Any, Dict, List, Text
 from zoneinfo import ZoneInfo
@@ -8,6 +9,8 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
 from .conversation_log import append_conversation
+from .darwinbox_adapters.configuration import configuration_status
+from .darwinbox_adapters.diagnostics import record_darwinbox_event, setting_names
 from .darwinbox import (
     DarwinboxAPIError,
     DarwinboxConfigurationError,
@@ -322,9 +325,15 @@ class ActionPersonalLeaveBalance(Action):
         employee_no = None
         identity_metadata = {}
         mapping_fallback = True
+        leave_config = configuration_status()['leave']
+        record_darwinbox_event('actions', 'leave_balance', 'started',
+                               configured=leave_config['configured'],
+                               missing_settings=leave_config['missing'],
+                               auth_mode=leave_config['auth_mode'])
         try:
             employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker, allow_default=False)
             if not employee_no:
+                record_darwinbox_event('actions', 'leave_balance', 'identity_mapping_required')
                 answer = 'I could not map your signed-in account to an employee record. Contact HR or the application administrator to link your account before checking your personal leave balance.'
                 dispatcher.utter_message(text=answer)
                 _personal_log(dispatcher, tracker, question, answer, 'identity_mapping_required', 'employee_not_mapped', [])
@@ -332,11 +341,15 @@ class ActionPersonalLeaveBalance(Action):
             answer, balances = await _personal_balance_answer(employee_no)
             answer += _fallback_notice(identity_metadata, mapping_fallback)
             integration_status = "success"
-        except DarwinboxConfigurationError:
+        except DarwinboxConfigurationError as exc:
+            logging.getLogger(__name__).warning('Darwinbox leave configuration: %s', exc)
+            record_darwinbox_event('actions', 'leave_balance', 'configuration_error',
+                                   setting_names=setting_names(exc))
             answer = "The Darwinbox leave-balance adapter is not configured yet. Please contact the application administrator."
             status = "integration_unavailable"
             integration_status = "not_configured"
         except DarwinboxAPIError:
+            record_darwinbox_event('actions', 'leave_balance', 'api_error')
             answer = "I could not retrieve the Darwinbox leave balance right now. Please try again later or check Darwinbox directly."
             status = "integration_unavailable"
             integration_status = "api_error"
@@ -369,8 +382,13 @@ class ActionHolidayList(Action):
         holidays = []
         status = "answered"
         integration_status = "success"
-        employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker)
+        employee_no, identity_metadata, mapping_fallback = None, {}, False
+        holiday_config = configuration_status()['holidays']
+        record_darwinbox_event('actions', 'holiday_list', 'started',
+                               configured=holiday_config['configured'],
+                               missing_settings=holiday_config['missing'])
         try:
+            employee_no, identity_metadata, mapping_fallback = _employee_for_tracker(tracker)
             holidays, _raw = await fetch_holidays(employee_no, year)
             selected = (
                 [item for item in holidays if item.date.year == year]
@@ -421,12 +439,16 @@ class ActionHolidayList(Action):
                 answer = (
                     f"Darwinbox did not return any {'holidays for ' + str(year) if full_year else 'upcoming holidays'}."
                 )
-        except DarwinboxConfigurationError:
+        except DarwinboxConfigurationError as exc:
+            logging.getLogger(__name__).warning('Darwinbox holiday configuration: %s', exc)
+            record_darwinbox_event('actions', 'holiday_list', 'configuration_error',
+                                   setting_names=setting_names(exc))
             status = "integration_unavailable"
             integration_status = "not_configured"
             answer = "The Darwinbox holiday-list API is not configured yet. Please contact the application administrator."
             selected = []
         except DarwinboxAPIError:
+            record_darwinbox_event('actions', 'holiday_list', 'api_error')
             status = "integration_unavailable"
             integration_status = "not_authorized_or_api_error"
             answer = (

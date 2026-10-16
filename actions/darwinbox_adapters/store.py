@@ -4,6 +4,7 @@ from __future__ import annotations
 import fcntl
 import json
 import os
+from actions.runtime_bootstrap import employee_store_paths, mirror_file
 from actions.runtime_paths import runtime_path
 from contextlib import contextmanager
 from datetime import datetime, timezone
@@ -71,6 +72,9 @@ def save_store(value: Mapping[str, Any], path: Path | None = None) -> None:
         )
         os.chmod(temporary, 0o600)
         os.replace(temporary, path)
+    paths = employee_store_paths()
+    if len(paths) > 1 and path == paths[0]:
+        mirror_file(path, paths[1])
 
 
 def identity_keys(sender_id: str, metadata: Mapping[str, Any] | None) -> list[str]:

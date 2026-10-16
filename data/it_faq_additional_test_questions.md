@@ -1,0 +1,106 @@
+# IT FAQ test questions and expected answers
+
+This consolidated list contains 50 questions across the general IT support
+topics. The expected answers describe the behavior the chatbot should provide.
+Historical incident resolutions are presented as investigation leads, not as a
+confirmed diagnosis of a new problem.
+
+## Wi-Fi and network
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | My office Wi-Fi keeps disconnecting. What should I check? | Check whether the problem affects other devices and whether a wired connection remains stable. Reconnect to the approved Wi-Fi network and note the location, time and frequency of the disconnections. If several users are affected, IT should check the access point and network link. |
+| 2 | I’m connected to Wi-Fi, but websites won’t load. What can I try? | Try another website and check whether another device on the same Wi-Fi can browse. If only your device is affected, disconnect and reconnect to the approved Wi-Fi network. If multiple devices are affected, note the location, start time and browser error for IT. |
+| 3 | The office internet is very slow today. How can I troubleshoot it? | Check whether the slowdown affects one application or all websites, and compare Wi-Fi with a wired connection if available. Note when it occurs and whether colleagues are affected. IT can then check link quality, utilisation and provider faults. |
+| 4 | My laptop cannot connect to the company Wi-Fi. What should I do? | Confirm Wi-Fi is enabled and select the approved company network. Forget and reconnect to the network only if permitted, then compare with another device. Record any authentication error and send it to IT without sharing the Wi-Fi password. |
+| 5 | The VPN disconnects every few minutes. What could be causing this? | Check whether ordinary websites remain stable when the VPN disconnects. Retry the approved VPN client once and compare another approved network if available. Note the exact error, time and whether the device or network recently changed so IT can check the connection and registration. |
+
+## Outlook and email
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | Outlook says my account is locked. What should I do? | Try signing in through Outlook on the web and record the exact lock message. Do not repeatedly retry the password or share credentials. IT must verify the account lock and authentication status. |
+| 2 | I can receive emails but cannot send them. What should I check? | Check whether Outlook is offline and whether messages are accumulating in the Outbox. Look for a large attachment or sending error, then test Outlook on the web. Avoid repeatedly sending duplicate copies. |
+| 3 | Outlook keeps asking me to sign in. How can I fix this? | Check whether Outlook on the web accepts your work account and whether other Microsoft 365 services work. Record the exact prompt and whether it affects desktop, web or mobile. Do not share your password or MFA code with IT. |
+| 4 | My emails are stuck in the Outbox. What should I check? | Check that Outlook is online and your internet connection works. Look for a large attachment or a message showing an error. Try Outlook on the web and avoid sending duplicate copies. |
+| 5 | I cannot open my work mailbox. What can I try? | Check your connection and try Outlook on the web. Note whether the mailbox fails on web, desktop and mobile, and capture the exact error. Mailbox provisioning or access changes require IT review. |
+
+## Laptop and device
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | My laptop won’t start after an update. What should I do? | Disconnect nonessential accessories, connect the approved charger and check for lights or error messages. Try one normal restart. Record what appears on screen; further recovery or repair should be handled by IT. |
+| 2 | My laptop screen is black, but the power light is on. How can I troubleshoot it? | Check the screen brightness and disconnect an external display or dock if one is attached. Try the approved display shortcut or one normal restart. Note any fan, keyboard or startup sounds for IT. |
+| 3 | My laptop battery is not charging. What should I check? | Check that the approved charger is firmly connected to the laptop and a working outlet. Inspect it for visible damage and note whether Windows detects the charger. Do not use a damaged charger; ask IT to inspect it. |
+| 4 | My laptop freezes whenever I open Excel. What can I try? | Check whether Excel freezes with every workbook or only one file. Try opening Excel without that file and note any error or problematic add-in. Save your work and ask IT to review repeated crashes. |
+| 5 | My keyboard has stopped working. How can I troubleshoot it? | Reconnect an external keyboard or try another approved USB port. For a laptop keyboard, restart once and check whether the issue affects all keys. Report liquid damage, physical damage or persistent failure to IT. |
+
+## Access
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | How do I request access to the project shared drive? | Provide the shared-drive or folder name, required permission level, business reason and approving owner. IT must review and grant access; access to another employee’s data should not be assumed from previous requests. |
+| 2 | I get “Access denied” when opening the team folder. What should I check? | Confirm you are signed in with the correct work account and copy the exact folder path and error. Check whether colleagues with the same role can open it. The folder owner or IT must review your permissions. |
+| 3 | What is the process for getting access to the reporting application? | Provide the application name, required role, business purpose and manager or application-owner approval. IT or the application owner must provision the access. |
+| 4 | I cannot log in to the company portal. What can I try? | Confirm you are using the approved portal and correct work account, then test another work service. Record the exact sign-in error without sharing your password or MFA code. IT can check account status and permissions. |
+| 5 | My permissions to the shared workspace were removed. Who can restore them? | The workspace owner or IT must verify and restore the permissions. Provide the workspace name, access level previously held, when access stopped and any approval or error message. |
+
+## Teams and audio
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | Teams calls have no audio through my headset. What should I check? | In Teams device settings, select the correct headset for speaker and microphone and run a test call. Reconnect the headset and check whether it works in another application. |
+| 2 | Other people cannot hear me in Teams meetings. How can I troubleshoot my microphone? | Confirm you are not muted, select the correct microphone in Teams and run a test call. Check the operating-system microphone permission and whether another application is using the microphone. |
+| 3 | My camera is not working in Teams. What can I try? | Select the correct camera in Teams, close other applications using it and check camera permissions. Try a Teams test call and note whether the camera works in another approved application. |
+| 4 | Teams closes whenever I join a meeting. How can I troubleshoot this? | Check whether Teams is updated, restart it and try another meeting or the web version. Note whether the crash occurs in every meeting and capture any error for IT. |
+| 5 | I cannot share my screen in Teams. What should I check? | Confirm screen-sharing permission is enabled for Teams and try sharing a single window. Check whether the meeting organizer restricts sharing. Record any error and whether the issue occurs in the desktop and web clients. |
+
+## Citrix, VPN and ZTNA
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | Citrix says access is denied. What should I check? | Check that ordinary websites work and retry the approved Citrix client once. Record the complete error and whether you recently changed device or network. IT should verify your entitlement, device registration and security checks; do not bypass the restriction. |
+| 2 | Citrix stopped working after I changed my laptop. What should I do? | A recorded incident involved MAC-bound access after a device change. IT should verify whether that rule applies and update the registered device if approved. Provide your user ID, device MAC address and an error screenshot through the approved support channel. This historical fix is not a confirmed diagnosis of the current issue. |
+| 3 | Citrix is detecting the wrong country and denying access. What can I try? | A recorded incident was blocked because ISP routing made the user appear to be in another country. Try another approved network to compare the result and ask IT to verify routing and the geolocation security check. Do not bypass the security control. |
+| 4 | My VPN will not connect even though normal websites work. What should I check? | Retry the approved VPN client once and record the exact error, start time and network being used. Check whether the same account and device worked previously. IT should verify authentication, entitlement and device registration. |
+| 5 | Citrix login fails, but IT cannot find any login logs. What should be checked? | The historical report recommends checking the user device, whether the client generates local logs and whether network connectivity reaches the service. Missing logs do not prove an access-permission problem. Share the attempt time and client error with IT. |
+
+## Business applications
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | GEMS is not opening. What should I check? | Check whether other websites and business applications work, then retry GEMS in a fresh browser session. Record the exact error, start time and whether access is direct or through Citrix. IT can determine whether the problem is local or service-wide. |
+| 2 | GEMS is unavailable while Outlook still works. Is there a similar recorded fix? | In historical incident 346506, DNS configuration was missing on the broadband link and IT corrected it. Working Outlook alongside unavailable GEMS is a useful comparison, but it does not confirm DNS as the cause of a new incident. IT should verify the current DNS and network path. |
+| 3 | Salesforce is not loading, but other applications work. What can I try? | Retry Salesforce in a fresh browser session and note the exact error, time and network. A historical incident improved after IT routed Salesforce traffic through the primary link, but IT must verify the current routing before making a similar change. |
+| 4 | GEMS and several other applications are down at every office. What should we check? | Multiple applications failing across locations can indicate a wider service or data-centre incident. Record the affected applications, locations and start time, and ask IT to check the organization-wide service status rather than treating it as a single-device problem. |
+| 5 | GKE displays an error while other business applications work. What should I check? | Retry GKE in a fresh browser session and record the exact error and start time. Note whether the problem affects other users and whether direct access behaves differently. IT should compare the application service, network path and account permissions. |
+
+## OneDrive and Microsoft 365 groups
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | OneDrive files will not open. What should I check? | Check your connection and OneDrive sync status, then try opening the file in the web app. Determine whether one file or the entire library is affected and record the error for IT. |
+| 2 | I need access to a former colleague's OneDrive. How is this handled? | A historical request granted OneDrive and mailbox access to specifically authorized accounts. A new request requires owner or management approval and IT review; the earlier approval does not grant access to another user's data. |
+| 3 | OneDrive says it is syncing, but my latest files are missing. What can I try? | Check the OneDrive sync status for paused or failed items and verify the correct work account and folder. Compare the web app with the local folder and note the affected file names and errors. Avoid creating duplicate copies until the sync state is clear. |
+| 4 | How can I request a Microsoft 365 group? | The incident report says group creation is restricted for users. Provide the proposed group name, owners, members and business purpose in an IT request. IT must review and create the group. |
+| 5 | I get access denied when opening a shared OneDrive folder. What should I check? | Confirm you are signed in with the intended work account and ask the owner to verify the shared link and permissions. Record the folder name and exact error. The owner or IT must approve and restore access. |
+
+## Security restrictions
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | Zscaler shows a firewall error. What should I check? | Record the exact Zscaler message and whether other approved sites work. Retry once using the approved network and client. Keep the firewall and security connector enabled while IT reviews the restriction. |
+| 2 | An approved business application is blocked by the Zscaler security connector. What should I do? | Capture the application name, URL and complete block message, and check whether the block affects other users. Ask IT or Security to review the policy. Do not disable or bypass the connector. |
+| 3 | I need to open an approved PDF, but the security policy blocks it. How do I request an exception? | Provide the file source, business reason, owner and exact security message to IT or Security. They must review any exception. Do not disable antivirus, browser protection or the security connector. |
+| 4 | Antivirus displays a warning when I open a downloaded file. What should I do? | Stop opening the file, leave antivirus enabled and record the warning, file source and time. Do not forward the file to colleagues. Ask IT or Security to inspect it through the approved process. |
+| 5 | Zscaler blocks a work website, but other websites open normally. What should I check? | Confirm the address is correct and capture the block page or security message. Note whether colleagues are also affected. IT or Security should verify classification and access policy before allowing the site. |
+
+## AD and account access
+
+| # | Question | Expected chatbot answer |
+|---|---|---|
+| 1 | My AD account is locked. What should I do? | Confirm the exact sign-in error and which work services are affected. Avoid repeated attempts and never share your password or MFA code. IT should verify the lock and follow the approved account-recovery process. |
+| 2 | AD Self Service shows permission denied. What should I check? | Confirm you are using the correct work account and approved Self Service page, then record the complete error. A similar historical issue was referred to the responsible local IT team; the report did not document a reusable technical fix. |
+| 3 | My domain policy is not synchronizing. What can I try? | Connect to the approved company network or remote-access service and record any synchronization error. The historical report says IT restored policy synchronization but does not document the technical steps, so IT must investigate the current device and policy state. |
+| 4 | My domain login is rejected even though the password is correct. What should I check? | Check the selected account and sign-in domain, then note whether another work service accepts the login. The report contains an AD authentication incident without a documented technical fix. IT should inspect the current authentication error. |
+| 5 | My domain account signs in to email but not to the company portal. What should I do? | Record the portal error and confirm the same work account is being used. Since email still works, tell IT which services succeed and fail so they can check application permissions, policy synchronization and account status. Do not share credentials or MFA codes. |

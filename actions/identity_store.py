@@ -5,6 +5,7 @@ import fcntl
 import json
 import os
 import logging
+from actions.runtime_bootstrap import identity_paths, mirror_file
 from actions.runtime_paths import runtime_path
 from datetime import datetime, timezone
 from pathlib import Path
@@ -51,6 +52,9 @@ def save_verified_identity(identity: Mapping[str, Any], source: str) -> dict[str
             handle.flush()
             os.fsync(handle.fileno())
             fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        paths = identity_paths()
+        if len(paths) > 1 and path == paths[0]:
+            mirror_file(path, paths[1])
     except OSError:
         # Persistence is independent of the cryptographically verified identity.
         logging.getLogger(__name__).warning('Verified identity could not be persisted; continuing authenticated request.')

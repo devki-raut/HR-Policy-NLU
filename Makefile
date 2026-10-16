@@ -17,7 +17,7 @@ DEPLOYMENT_PID := $(DEPLOYMENT_LOG_DIR)/deployment.pid
 DEPLOYMENT_LOG := $(DEPLOYMENT_LOG_DIR)/deployment.log
 WEB_LISTEN_PORT ?= $(or $(WEB_PORT),$(PORT),$(WEBSITES_PORT),$(if $(WEBSITE_INSTANCE_ID),8608,8610))
 
-.PHONY: setup install sync-darwinbox sync-employee-report sync-intents validate train test evaluate-final evaluate-unseen evaluate-fact-coverage benchmark-embeddings actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
+.PHONY: setup install sync-darwinbox sync-employee-report sync-intents validate train test evaluate-final evaluate-unseen evaluate-fact-coverage actions chat serve start run_deployment restart_deployment restart-deployment stop_deployment stop-deployment status_deployment status-deployment logs_deployment logs-deployment docker_deployment clean
 
 setup:
 	python3 setup.py
@@ -50,9 +50,6 @@ evaluate-unseen:
 
 evaluate-fact-coverage:
 	$(PYTHON) scripts/evaluate_document_fact_coverage.py
-
-benchmark-embeddings:
-	$(PYTHON) scripts/benchmark_embeddings.py
 
 actions:
 	$(RASA) run actions

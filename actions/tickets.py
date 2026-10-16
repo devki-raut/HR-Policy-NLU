@@ -3,6 +3,7 @@ import re
 from urllib.parse import quote, urlencode
 from rasa_sdk import Action, FormValidationAction
 from rasa_sdk.events import SlotSet, ActiveLoop, FollowupAction
+from .ticket_templates import draft
 
 TICKET_SLOTS = ('ticket_details', 'ticket_error', 'ticket_started', 'ticket_subject', 'ticket_body', 'ticket_edit_value', 'ticket_edit_target')
 
@@ -18,16 +19,6 @@ def _described_request(text):
         " ", str(text or ""), flags=re.I,
     )
     return len(re.findall(r"[A-Za-z0-9][A-Za-z0-9'_-]*", remainder)) >= 2
-
-
-def draft(details, started, identity, error=None):
-    name = identity.get('display_name') or ('Ojas Kulkarni' if identity.get('is_guest') else identity.get('email') or 'Employee')
-    name = ' '.join(str(name).split())
-    subject = 'IT support required — ' + ' '.join(details.split())[:90]
-    error_line = f'\n\nError or behaviour: {error}' if error else ''
-    started_line = f'\n\nStarted: {started}' if started else ''
-    body = f'Dear Team,\n\n{details}{error_line}{started_line}\n\nPlease help me resolve this issue.\n\nRegards,\n{name}'
-    return subject, body
 
 
 def preview(dispatcher, subject, body):
@@ -59,7 +50,7 @@ class ActionStartTicket(Action):
             current if _described_request(current) else None
         )
         identity = tracker.latest_message.get('metadata') or {}
-        subject, body = draft(details, None, identity) if details else ('', '')
+        subject, body = draft(details, None, identity)
         preview(dispatcher, subject, body)
         return [ActiveLoop(None), SlotSet('requested_slot', None), SlotSet('ticket_pending', False), SlotSet('ticket_details', details),
                 SlotSet('ticket_subject', subject), SlotSet('ticket_body', body),

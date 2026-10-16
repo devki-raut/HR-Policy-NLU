@@ -1,7 +1,28 @@
 # EmployeeAssist
 
-Deployment configuration and the release procedure are documented in
-[deploy/RELEASE.md](deploy/RELEASE.md).
+EmployeeAssist is a Rasa-based HR and IT assistant for the web and Microsoft
+Teams. It answers reviewed HR policy questions with source evidence, retrieves
+IT troubleshooting guidance, shows Darwinbox leave balances and holidays,
+creates editable IT email requests, and supports controlled Teams broadcasts.
+
+The current release is **1.0.10**. Deployment configuration and the release
+procedure are documented in [deploy/RELEASE.md](deploy/RELEASE.md).
+
+## Current features
+
+- DIET intent classification followed by intent-scoped semantic FAQ retrieval.
+- Reviewed HR answers with policy excerpts and PDF source references.
+- Ten IT routing topics with cosine-based FAQ retrieval, troubleshooting tips,
+  historical incident references and clarification for ambiguous symptoms.
+- Personal Darwinbox leave balances, holiday lists and employee mapping.
+- Immediate and scheduled Darwinbox employee-directory synchronization.
+- Editable Teams and web IT-request drafts with Microsoft mailbox SSO.
+- Teams superadmin broadcasts with preview, confirmation, cancellation and
+  per-recipient delivery status.
+- Teams manifest schema 1.30 with ten native prompt suggestions.
+- Same-domain web, Teams bot and JupyterLab deployment behind one supervisor.
+- Local/cloud runtime detection, automatic state-file creation and cloud backup
+  copies for the employee directory, ticket database, conversations and logs.
 
 ## Architecture
 
@@ -21,25 +42,39 @@ They are excluded from HR policy evidence retrieval.
 
 - `data/policy_intents.json`: reviewed policy intents and NLU examples.
 - `data/faq_answers.json`: reviewed FAQ questions, utterances, fixed answers and sources.
+- `data/it_faq_additional_test_questions.md`: reviewed IT troubleshooting questions and answers.
+- `data/it_faqs.csv`: generated consolidated IT FAQ catalog.
 - `scripts/sync_intents.py`: build-time generator for Rasa NLU/rules/domain data.
+- `scripts/import_it_report.py`: generator for incident-backed IT FAQ and NLU data.
 
 You do **not** need to run `sync_intents.py` for every chat. Run `make sync-intents` after changing either JSON registry, then train again.
 
 ## Embeddings
 
-The FAQ matcher loads `sentence-transformers/all-MiniLM-L6-v2` directly inside the Rasa action server. No separate embedding HTTP service and no Rasa `LanguageModelFeaturizer` are required.
+The HR FAQ matcher loads `sentence-transformers/all-MiniLM-L6-v2` directly
+inside the Rasa action server. IT retrieval filters candidates with the DIET
+intent and ranks matching phrases using cosine similarity. No separate
+embedding HTTP service and no Rasa `LanguageModelFeaturizer` are required.
 
-## Bot Service
+## Microsoft Teams and Bot Service
 
-Azure Bot Service ->
-APP_ID/CLIENT_ID, CLIENT_SECRET, TENANT_ID
+The same Entra/Bot application ID is used by Azure Bot Service and the Teams
+package. Configure the bot messaging endpoint as:
 
-TERMS_URL, PRIVACY_URL -> dummy endpoints
-WEBSITE_URL ->
+```text
+https://dockerpoc-webapp01.azurewebsites.net/employeeassist/api/messages
+```
 
-32x32 , 192x192 logo
-manifest
-zip & upload on developer portal
+The Teams package is
+`teams_app/app_package/upload/EmployeeAssist-1.0.10.zip`. Its manifest uses
+schema 1.30 and contains ten prompt commands, each with the exact text Teams
+sends when selected. After changing a manifest, increment its application
+version, upload the new ZIP in Developer Portal, publish/distribute it, and
+update or reinstall the app in Teams. Restarting the bot alone does not replace
+an installed Teams manifest.
+
+See [Teams SSO and mail setup](deploy/teams-mail-sso.md) and
+[Teams application details](teams_app/README.md).
 
 ## Install
 
@@ -89,6 +124,76 @@ make run_deployment
 
 See `teams_app/README.md` for separate local and Docker commands.
 
+The supervisor supports child-service restarts after it is running:
+
+```bash
+.venv-runtime/bin/python scripts/run_deployment.py restart actions
+.venv-runtime/bin/python scripts/run_deployment.py restart rasa
+.venv-runtime/bin/python scripts/run_deployment.py restart web
+.venv-runtime/bin/python scripts/run_deployment.py restart jupyter
+```
+
+Changes to `scripts/run_deployment.py` require one complete container or App
+Service restart. See [in-container restart](deploy/in-container-restart.md).
+
+### Release files
+
+Generate the application and runtime packages with:
+
+```bash
+.venv-runtime/bin/python scripts/package_docker_upload.py
+```
+
+Version 1.0.10 produces a loose deployment tree under
+`artifacts/releases/1.0.10/`, with separate `app` and
+`tmp/employeeassist` directories. The `app` directory is a complete Docker and
+local deployment checkout containing the Makefile, Dockerfiles, requirements,
+deployment helpers, trained model and a credential-free `ENVIRONMENT.example`.
+Copy that template to `.env` and replace its placeholders locally, or configure
+the same settings in the hosting platform. ZIP files and real credentials are
+excluded from the release tree. The separately maintained Teams Developer
+Portal package remains under `teams_app/app_package/upload`.
+
+## Runtime files, backups and logs
+
+Runtime paths are selected from the environment:
+
+| Condition | Mode | Primary location |
+| --- | --- | --- |
+| `DATA_ROOT` is set | Configured runtime root | `<DATA_ROOT>/employeeassist` |
+| Azure supplies `WEBSITE_INSTANCE_ID` | Azure | `/tmp/employeeassist` |
+| Neither is set | Local | Project `data` and `artifacts` directories |
+
+The recommended portable employee-map setting is:
+
+```env
+DARWINBOX_EMPLOYEE_MAP_FILE=data/employee_directory.json
+```
+
+It resolves to the project `data` directory locally and under the runtime root
+in cloud mode. At startup and before supervisor-managed service restarts, the
+runtime bootstrap creates missing files and restores a missing cloud primary
+from its project backup.
+
+| State | Local primary | Cloud primary | Cloud backup |
+| --- | --- | --- | --- |
+| Employee map | `data/employee_directory.json` | runtime `data/employee_directory.json` | `/app/data/employee_directory.json` |
+| Ticket drafts | `artifacts/private/teams_ticket_mail.sqlite3` | runtime `private/teams_ticket_mail.sqlite3` | `/app/artifacts/private/teams_ticket_mail.sqlite3` |
+| Verified identities | `artifacts/identity/microsoft_identities.json` | runtime `identity/microsoft_identities.json` | `/app/artifacts/identity/microsoft_identities.json` |
+| Darwinbox state | `artifacts/private/darwinbox_employees.json` | runtime `darwinbox/employees.json` | `/app/artifacts/private/darwinbox_employees.json` |
+| Jupyter state | `artifacts/jupyter` | runtime `jupyter` | `/app/artifacts/jupyter` |
+| Conversations | `artifacts/logs/conversations.jsonl` | runtime `logs/conversations.jsonl` | `/app/artifacts/logs/conversations.jsonl` |
+| Service logs | `artifacts/logs/*.log` | runtime `logs/*.log` | `/app/artifacts/logs/*.log` |
+| Process control | `artifacts/control` | runtime `control` | Directory only; live files are not restored |
+
+SQLite backups use SQLite's backup API after committed changes. Employee-map,
+identity, Darwinbox state, conversation and log writes are mirrored to their
+cloud backup. Durable Jupyter configuration/data is copied during startup,
+service restarts and supervisor shutdown. Control sockets, PID/lock files and
+Jupyter kernel runtime files are recreated instead of restored. Both `/tmp`
+and `/app` remain container-local unless backed by persistent storage. See
+[container logging](deploy/container-logs.md).
+
 ## Darwinbox employee report sync
 
 EmployeeAssist can rebuild `data/employee_directory.json` from a Darwinbox
@@ -110,12 +215,22 @@ make sync-employee-report
 ```
 
 The normal local and Docker deployment starts a scheduler when these variables
-are configured. It refreshes at 16:30 Asia/Kolkata by default. Each successful
+are configured. It refreshes immediately when the scheduler starts and then at
+16:30 Asia/Kolkata each day. Supervisor-managed Rasa, actions, web, bot and
+Jupyter restarts also request a one-time refresh. Each successful
 refresh atomically replaces the active employee snapshot, so employees absent
 from the report are removed. The configured report is treated as the active
 employee dataset; generic report status fields are not interpreted as employment
 status. The guest profile is retained. Adjust the minute
 within the 4–5 PM window with `DARWINBOX_REPORT_SYNC_MINUTE`.
+
+Inspect the scheduler without exposing credentials:
+
+```bash
+tail -f artifacts/logs/employee-report-sync.log
+# Azure/container primary:
+tail -f /tmp/employeeassist/logs/employee-report-sync.log
+```
 
 ## IT support request composer
 
@@ -141,7 +256,8 @@ the owner and conversation, and atomically prevents duplicate sends. Unknown
 send outcomes are retained for Sent Items review and never automatically retried.
 
 See [deployment and SSO configuration](deploy/teams-mail-sso.md) before enabling
-live sending. The package is `teams_app/app_package/upload/EmployeeAssist-1.0.3.zip`.
+live sending. The package is
+`teams_app/app_package/upload/EmployeeAssist-1.0.10.zip`.
 
 ```bash
 PYTHON_DOTENV_DISABLED=1 .venv-runtime/bin/python -m unittest discover -s scripts/ticket_checks -p 'test_*.py'
@@ -151,8 +267,8 @@ HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHON_DOTENV_DISABLED=1 .venv-runtime/b
 ## IT incident FAQs and routing
 
 `data/Report_15_Oct_26_092938.xls` is a UTF-16 HTML incident export.
-Run `.venv-runtime/bin/python scripts/import_it_report.py` to regenerate six
-IT intents in `data/nlu_it.yml`, their rules, and six grouped FAQs in the
+Run `.venv-runtime/bin/python scripts/import_it_report.py` to regenerate ten
+IT intents in `data/nlu_it.yml`, their rules, and the generated FAQs in the
 existing `data/faq_answers.json`. The importer is idempotent. It omits caller
 columns, email addresses and IP addresses from training examples. Historical
 resolutions are not presented as diagnoses. IT FAQs use `action_answer_it`;

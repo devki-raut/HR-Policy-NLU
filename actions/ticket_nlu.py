@@ -1,7 +1,6 @@
-"""High-precision support routing alongside trained DIET intent detection."""
+"""Protect explicit ticket commands without overriding DIET IT intents."""
 import re
 from typing import Any, Dict, List
-from actions.it_support import gems_unavailable_outlook_working, explicit_it_route
 from rasa.engine.graph import ExecutionContext, GraphComponent
 from rasa.engine.recipes.default_recipe import DefaultV1Recipe
 from rasa.engine.storage.resource import Resource
@@ -11,13 +10,7 @@ from rasa.shared.nlu.training_data.message import Message
 
 POLICY = re.compile(r'\b(polic(?:y|ies)|rules?|guidelines?|entitlements?|eligibility|allowed)\b', re.I)
 CONTACT_INFO = re.compile(r'\b(?:what|which|where|how)\b.*\b(?:support|help\s*desk|IT)\b.*\b(?:email|address|phone|number|contact)\b|\bhow\s+(?:do|can)\s+I\s+contact\s+(?:IT|support|help\s*desk)\b', re.I)
-APPLICATION = re.compile(r'\b(outlook|outlok|vpn|wi[ -]?fi|laptop|computer|keyboard|printer|teams|darwinbox|internet|network|email)\b', re.I)
-FAILURE = re.compile(r"\b(?:not\s+(?:working|connecting|starting)|(?:won['’]?t|will\s+not)\s+(?:connect|work|start|open|load|boot|turn|let|sign|log)|cannot|can['’]?t|cant|failed|fails|broken|crash(?:es|ing)?|unable|errors?|locked|freezes?|disconnecting)\b", re.I)
 REQUEST = re.compile(r'\b(?:raise|create|open|log|prepare|draft)\b.*\b(?:ticket|support request|helpdesk email)\b|\bcontact\s+(?:IT|support|help\s*desk)\b', re.I)
-# A user can describe a problem without saying “ticket”.  Keep this
-# deliberately tied to a known work application/device or failure signal so
-# ordinary HR questions do not enter the support flow.
-ISSUE_REPORT = re.compile(r"\b(?:i\s+am|i'm|im|we\s+are|we're|my|the)\b.*\b(?:facing|experiencing|have|has|issue|problem|not\s+working|error|unable|failed|broken)\b", re.I)
 
 
 def support_route(text: str, predicted: str | None) -> str | None:
@@ -29,31 +22,8 @@ def support_route(text: str, predicted: str | None) -> str | None:
     # clarification intent merely because the issue wording is unfamiliar.
     if REQUEST.search(text):
         return 'contact_support'
-    explicit = explicit_it_route(text)
-    if explicit:
-        return None if explicit == predicted else explicit
-    if gems_unavailable_outlook_working(text):
-        return 'it_application_access'
-    if predicted and predicted.startswith('it_'):
-        return None
-    # Recover specific technical routes when DIET is uncertain or predicts
-    # the older generic issue intent. Require both a technology and a symptom.
-    issue = re.search(r"down|lost|slow|flap|fluctuat|issue|problem|denied|broken|cutting out|stuck|not open|no (?:network|internet)|unavailable", text, re.I) or FAILURE.search(text)
-    if issue:
-        if re.search(r"citrix|vpn|ztna|\bspa\b|self.service", text, re.I):
-            return 'it_remote_access'
-        if re.search(r"teams|team calls|hdmi|cable cubby|c-type|usb|meeting.*(?:audio|camera|microphone)", text, re.I):
-            return 'it_meeting_equipment'
-        if re.search(r"outlook|outlok|outllook|netcore|email|mail", text, re.I) and not re.search(r"network|internet|wi[ -]?fi|link", text, re.I):
-            return 'it_email_access'
-        if re.search(r"network|internet|wi[ -]?fi|\blan\b|\bwan\b|links?|airtel|sify|tikona|adtech|bsnl", text, re.I):
-            return 'it_network_slowness' if re.search(r"slow|flap|fluctuat|intermittent", text, re.I) else 'it_network_outage'
-        if re.search(r"gems|application|computer|laptop|printer", text, re.I):
-            return 'it_application_access'
-    if ISSUE_REPORT.search(text) and (APPLICATION.search(text) or FAILURE.search(text)):
-        return 'report_it_issue'
-    if APPLICATION.search(text) and FAILURE.search(text):
-        return 'contact_support' if REQUEST.search(text) else 'report_it_issue'
+    # DIET owns classification of ordinary IT questions. This component only
+    # protects explicit policy, contact-information and ticket commands.
     return None
 
 

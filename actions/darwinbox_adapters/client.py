@@ -3,12 +3,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import time
 from typing import Any
 from urllib.parse import urljoin, urlsplit
 
 import httpx
+from .diagnostics import record_darwinbox_event
+
+LOGGER = logging.getLogger(__name__)
 
 
 class DarwinboxConfigurationError(RuntimeError):
@@ -75,10 +79,13 @@ class DarwinboxClient:
         body_mode: str = "json",
         basic_auth: tuple[str, str] | None = None,
         headers: dict[str, str] | None = None,
+        operation: str = "darwinbox",
     ) -> Any:
         method = method.upper().strip()
         if method not in {"GET", "POST"}:
             raise DarwinboxConfigurationError("Darwinbox method must be POST or GET")
+        started = time.monotonic()
+        LOGGER.info("Darwinbox %s request started", operation)
         try:
             async with httpx.AsyncClient(timeout=self.timeout) as http:
                 request_kwargs: dict[str, Any] = {"headers": dict(headers or {})}
@@ -102,7 +109,21 @@ class DarwinboxClient:
                 )
                 response.raise_for_status()
                 result = response.json()
-        except (httpx.HTTPError, ValueError) as exc:
+        except httpx.HTTPStatusError as exc:
+            LOGGER.warning("Darwinbox %s HTTP status=%s", operation, exc.response.status_code)
+            record_darwinbox_event('actions', operation, 'http_error', http_status=exc.response.status_code)
+            raise DarwinboxAPIError(
+                "Darwinbox is unavailable or returned an invalid response"
+            ) from exc
+        except httpx.RequestError as exc:
+            LOGGER.warning("Darwinbox %s connection error=%s", operation, type(exc).__name__)
+            record_darwinbox_event('actions', operation, 'connection_error', exception_type=type(exc).__name__)
+            raise DarwinboxAPIError(
+                "Darwinbox is unavailable or returned an invalid response"
+            ) from exc
+        except ValueError as exc:
+            LOGGER.warning("Darwinbox %s response is not valid JSON", operation)
+            record_darwinbox_event('actions', operation, 'invalid_json')
             raise DarwinboxAPIError(
                 "Darwinbox is unavailable or returned an invalid response"
             ) from exc
@@ -111,7 +132,11 @@ class DarwinboxClient:
             if status is not None and str(status).casefold() not in {
                 "1", "true", "success", "successful", "200"
             }:
+                LOGGER.warning("Darwinbox %s API rejected response", operation)
+                record_darwinbox_event('actions', operation, 'api_rejected')
                 raise DarwinboxAPIError(
                     str(result.get("message") or "Darwinbox rejected the request")
                 )
+        LOGGER.info("Darwinbox %s request completed in %d ms", operation, int((time.monotonic() - started) * 1000))
+        record_darwinbox_event('actions', operation, 'api_success', duration_ms=int((time.monotonic() - started) * 1000))
         return result

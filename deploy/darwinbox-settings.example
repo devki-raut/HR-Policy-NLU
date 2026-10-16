@@ -1,0 +1,15 @@
+# Use the existing values from your Darwinbox administrator; these are placeholders.
+DARWINBOX_BASE_URL=https://your-tenant.darwinbox.in
+DARWINBOX_LEAVE_BALANCE_PATH=/leavesactionapi/leavebalance
+DARWINBOX_LEAVE_API_KEY=<existing-leave-api-key>
+DARWINBOX_LEAVE_USERNAME=<existing-basic-auth-username>
+DARWINBOX_LEAVE_PASSWORD=<existing-basic-auth-password>
+DARWINBOX_HOLIDAY_PATH=/leavesactionapi/holidaylist
+DARWINBOX_HOLIDAY_API_KEY=<existing-holiday-api-key>
+# Holidays reuse the leave username/password unless the following are set:
+# DARWINBOX_HOLIDAY_USERNAME=<holiday-basic-auth-username>
+# DARWINBOX_HOLIDAY_PASSWORD=<holiday-basic-auth-password>
+# Existing absolute DARWINBOX_LEAVE_BALANCE_URL / DARWINBOX_HOLIDAY_URL override paths.
+# For tenants using the legacy SHA-512 leave endpoint instead of API-key auth,
+# keep their provisioned URL and DARWINBOX_UID / DARWINBOX_ADMIN_EMAIL /
+# DARWINBOX_SECRET_KEY settings rather than replacing them with these placeholders.

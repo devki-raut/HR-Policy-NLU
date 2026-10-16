@@ -15,7 +15,7 @@ Open in Outlook uses the latest edited values and never sends automatically.
 This repository contains a combined tab and bot. Configure the app registration
 used by `webApplicationInfo.id` as follows:
 
-1. Expose the API resource matching both version 1.0.6 manifests:
+1. Expose the API resource matching both version 1.0.10 manifests:
    `api://dockerpoc-webapp01.azurewebsites.net/botid-9e65e729-0e91-4a00-a03d-e8b9d3e9e841`.
    Expose delegated `access_as_user`. The `botid-` prefix is required for this
    combined Teams bot/tab setup. If the deployment uses another app or hostname,
@@ -65,7 +65,7 @@ not persisted in application draft storage or audit logs.
 
 - Retrained model: `models/20261015-182438-symmetric-patch.tar.gz`.
 - Upload/update the Teams app with
-  `teams_app/app_package/upload/EmployeeAssist-1.0.6.zip`.
+  `teams_app/app_package/upload/EmployeeAssist-1.0.10.zip`.
 - From a deployment shell with the real environment available, run
   `make restart_deployment` (or restart the configured hosting service).
 - Verify `/health`, then open a fresh chat card using `help` and Create IT ticket.

@@ -6,16 +6,40 @@ change shared infrastructure or proof of a new incident's cause.
 import re
 
 TOPICS = {
-    'it_network_outage': ('Network outage', ['Our office internet link is down', 'Neither WAN circuit is available', 'The site has no network connectivity'], 'Record the site, start time and whether other users are affected. IT can check the provider links and network equipment.'),
-    'it_network_slowness': ('Slow or unstable network', ['The office internet is very slow', 'Our WAN link keeps flapping', 'Downloads are slow on Wi-Fi and LAN'], 'Record the site, time, affected applications and whether Wi-Fi, LAN or both are affected. IT can check utilisation, stability and provider faults.'),
-    'it_remote_access': ('Citrix, VPN and ZTNA', ['Citrix access is denied', 'My VPN session keeps disconnecting', 'ZTNA will not connect'], 'Record the remote-access client, exact error and start time. Say whether the device or network changed recently. IT must verify access and device registration.'),
-    'it_email_access': ('Email and mailbox', ['Outlook will not open my mailbox', 'Email attachments are loading slowly', 'My online archive mailbox is full'], 'Say whether the issue affects Outlook on the web, desktop or mobile, and provide the exact error. Access and archive changes need IT review.'),
-    'it_meeting_equipment': ('Teams calls and meeting equipment', ['Teams calls keep dropping', 'Our meeting room HDMI cable is broken', 'The conference room USB C connector is stuck'], 'Record the affected meeting, room or device and the exact behaviour. IT can inspect the device settings, cables and network.'),
-    'it_application_access': ('Business application', ['GEMS is unavailable', 'GKE will not open', 'Salesforce is not loading'], 'Record the application, exact error, start time and whether other applications work. Say whether access is direct or through Citrix.'),
-    'it_storage_collaboration': ('OneDrive and Microsoft 365 groups', ['OneDrive files will not open', 'I need approved access to a colleague OneDrive', 'How do I request a Microsoft 365 group?'], 'Record the file or collaboration service and exact error. Access transfers and group creation need an approved IT request.'),
-    'it_device_support': ('Computer and network hardware', ['My system is not booting', 'The SD WAN device is faulty', 'The LAN port is faulty'], 'Record the device, location and power or error indicators. Ask IT to inspect or replace faulty equipment; do not reconfigure shared equipment yourself.'),
-    'it_security': ('Security connector and application restrictions', ['Zscaler connector shows a firewall error', 'An application is blocked by the security connector', 'I need an approved PDF exception'], 'Record the application and exact security message. Ask IT to review the restriction; do not disable antivirus, firewall or security checks.'),
-    'it_account_access': ('AD and self-service account access', ['AD self service shows permission denied', 'My AD account is locked', 'My domain account is not synchronising'], 'Provide the exact sign-in error and affected account service, without passwords or MFA codes. IT can check authentication, permissions and policy synchronisation.'),
+    'it_network_outage': ('Network outage', ['Our office internet link is down', 'Neither WAN circuit is available', 'The site has no network connectivity'], 'Try another website and check whether another device on the same approved network works. If only your device is affected, reconnect to Wi-Fi or check its network cable. Note the site, start time and whether colleagues are affected; IT can check provider links and shared equipment.'),
+    'it_network_slowness': ('Slow or unstable network', ['The office internet is very slow', 'Our WAN link keeps flapping', 'Downloads are slow on Wi-Fi and LAN'], 'Check whether the slowdown affects one site or app, and compare Wi-Fi with a wired connection if available. Note when it happens and whether colleagues see it too. IT can check link quality, utilisation and provider faults.'),
+    'it_remote_access': ('Citrix, VPN and ZTNA', ['Citrix access is denied', 'My VPN session keeps disconnecting', 'ZTNA will not connect'], 'First check that ordinary websites load, then retry the approved remote-access client once. Note the exact error and whether you changed device or network. IT should verify access, device registration and any security restriction; do not bypass a block.'),
+    'it_email_access': ('Email and mailbox', ['Outlook will not open my mailbox', 'Email attachments are loading slowly', 'My online archive mailbox is full'], 'Check your connection and whether Outlook on the web works. For a sending problem, check whether Outlook is offline or an Outbox message has a large attachment; avoid resending duplicate copies. Tell IT whether web, desktop or mobile is affected and provide the exact error. IT must review mailbox access and archive changes.'),
+    'it_meeting_equipment': ('Teams calls and meeting equipment', ['Teams calls keep dropping', 'Our meeting room HDMI cable is broken', 'The conference room USB C connector is stuck'], 'For a call issue, check the selected speaker, microphone and camera, then try a Teams test call or another meeting. Note whether the problem follows one room, device or network. Report damaged or stuck connectors to IT rather than forcing them.'),
+    'it_application_access': ('Business application', ['GEMS is unavailable', 'GKE will not open', 'Salesforce is not loading'], 'Check whether other websites or business apps work, then retry the affected app in a fresh browser session. Note the exact error, start time and whether access is direct or through Citrix. If several locations or apps are affected, IT can check for a wider service issue.'),
+    'it_storage_collaboration': ('OneDrive and Microsoft 365 groups', ['OneDrive files will not open', 'I need approved access to a colleague OneDrive', 'How do I request a Microsoft 365 group?'], 'For a file problem, check your connection and OneDrive sync status, then see whether the file opens in the web app. Note whether one file or the whole library is affected and include the error. IT must review access transfers and group creation.'),
+    'it_device_support': ('Computer and network hardware', ['My system is not booting', 'The SD WAN device is faulty', 'The LAN port is faulty'], 'For a personal computer, check power, the charger and any visible error indicators; if the screen is blank, check its brightness or external display. Note the device and location. Ask IT to inspect faulty hardware, and leave shared network equipment changes to IT.'),
+    'it_security': ('Security connector and application restrictions', ['Zscaler connector shows a firewall error', 'An application is blocked by the security connector', 'I need an approved PDF exception'], 'Note the blocked app or site, exact security message and whether other approved sites work. Retry once on the approved network and client. Ask IT to review the restriction; keep antivirus, firewall and security checks enabled.'),
+    'it_account_access': ('AD and self-service account access', ['AD self service shows permission denied', 'My AD account is locked', 'My domain account is not synchronising'], 'Check that you selected the correct work account and sign-in page, and note whether another work service accepts your sign-in. Tell IT the exact error and affected service, without sharing passwords or MFA codes. IT can check locks, permissions and policy synchronisation.'),
+}
+
+
+SYMPTOM_GUIDANCE = {
+    'it_symptom_outbox': {
+        'route': 'it_email_access',
+        'question': 'My emails are stuck in the Outbox. What should I check?',
+        'utterances': [
+            'Outlook messages are stuck in my Outbox. What can I try?',
+            'Why are my emails not sending from the Outbox?',
+            'My mail is queued in Outlook and will not send.',
+        ],
+        'answer': 'Check that Outlook is online and your internet connection works. Open the Outbox and look for a large attachment or a message showing an error; avoid sending duplicate copies. Try Outlook on the web to see whether sending works there. If it still fails, tell IT whether this happens on web, desktop or mobile and include the exact error, without sharing your password.',
+    },
+    'it_symptom_wifi_browsing': {
+        'route': 'it_network_outage',
+        'question': 'I’m connected to Wi-Fi, but websites won’t load. What can I try?',
+        'utterances': [
+            'Wi-Fi says connected but no websites will open. What should I check?',
+            'I am online on Wi-Fi but web pages fail to load.',
+            'My wireless connection is up, yet I cannot browse websites.',
+        ],
+        'answer': 'Try another website and check whether another device on the same Wi-Fi can browse. If only one device is affected, disconnect and reconnect to the approved Wi-Fi network, then try again. If several devices or sites are affected, note the office location, when it started, and any browser error so IT can check the network. Do not change shared network equipment.',
+    },
 }
 
 
@@ -24,15 +48,17 @@ def topic(text):
     v = text.casefold()
     if re.search(r'citrix|vpn|ztna|\bspa\b|instasafe', v): return 'it_remote_access'
     if re.search(r'zscal|infected|antivirus|firewall|pdf.*(?:exception|exceptional)|adobe', v): return 'it_security'
-    if re.search(r'ad\s*self\s*service|adselfservice|\bad account\b|domain account|\bad policy\b', v): return 'it_account_access'
-    if re.search(r'one\s*drive|onedrive|microsoft\s*365\s*group|m365\s*group', v): return 'it_storage_collaboration'
+    if re.search(r'ad\s*self\s*service|adselfservice|\bad account\b|domain (?:account|policy|login)|\bad policy\b', v): return 'it_account_access'
+    if re.search(r'one\s*drive|onedrive|microsoft\s*365\s*group|m365\s*group|shared\s+(?:drive|folder|workspace)|team\s+folder', v): return 'it_storage_collaboration'
     if re.search(r'teams|team calls|hdmi|cable cubby|c-type|usb|meeting.*(?:audio|camera|microphone)', v): return 'it_meeting_equipment'
-    if re.search(r'not boot|booting|faulty|not powering|switch.*(?:communicat|fault)|sd\s*wan.*(?:fault|power)|port.*(?:fault|broken)', v): return 'it_device_support'
+    if re.search(r'\b(?:laptop|computer)\b.*wi[ -]?fi|wi[ -]?fi.*\b(?:laptop|computer)\b', v): return 'it_network_outage'
+    if re.search(r'\b(?:laptop|computer|keyboard|battery|charger|screen|display)\b|not boot|booting|faulty|not powering|switch.*(?:communicat|fault)|sd\s*wan.*(?:fault|power)|port.*(?:fault|broken)', v): return 'it_device_support'
     # Working Outlook is context for a GEMS failure, not an email failure.
     if re.search(r'\bgems\b|\bgke\b|intellihub|salesforce', v) and re.search(r'outlook\s+(?:(?:is|was|still)\s+)?(?:works|worked|working|available)', v): return 'it_application_access'
     if re.search(r'outlook|outlok|outllook|netcore|mail|archive', v) and not re.search(r'network|internet|wi[ -]?fi|\blink\b|\blinks\b', v): return 'it_email_access'
     if re.search(r'network|internet|wi[ -]?fi|\blan\b|\bwan\b|\blinks?\b|airtel|sify|tikona|adtech|bsnl|media down', v):
-        return 'it_network_slowness' if re.search(r'slow|flap|fluctuat|intermittent|performance|dropp', v) else 'it_network_outage'
+        return 'it_network_slowness' if re.search(r'slow|flap|fluctuat|intermittent|performance|dropp|disconnect', v) else 'it_network_outage'
+    if re.search(r'\b(?:reporting application|company portal|business application)\b', v): return 'it_application_access'
     return 'it_application_access'
 
 # key -> canonical question, training paraphrases, held-out paraphrases, summary.
@@ -56,7 +82,7 @@ RESOLUTIONS = {
  'mailbox_missing': ('What if a work mailbox has not been created?', ['IT says no mailbox exists for my work account', 'My mailbox was never created', 'The work email account has no provisioned mailbox'], ['My user ID exists but a mailbox has not been provisioned', 'The helpdesk found that my work mailbox does not exist'], 'The report records a mailbox that had not been created and directs the requester to check with HR. HR and IT need to verify the provisioning request; the bot cannot create the mailbox.'),
  'archive': ('What was recorded about enabling mailbox archive?', ['How do I request email archive enablement?', 'IT needs to enable my mailbox archive', 'My work email needs online archive enabled'], ['I need the helpdesk to activate mailbox archiving', 'Can IT enable the archive feature on my mailbox?'], 'A recorded incident says archive was enabled. The report does not provide end-user configuration steps; ask IT to check archive provisioning and capacity.'),
  'onedrive_access': ('How was OneDrive and mailbox access handled?', ['I need approved access to a colleague OneDrive and mailbox', 'IT must grant access to a former colleague OneDrive', 'How can I request a OneDrive access transfer?'], ['How do I obtain approved access to another employee files in OneDrive?', 'A colleague OneDrive and mailbox need an authorised access handover'], 'A recorded request says IT provided OneDrive and full mailbox access to specified authorised accounts. New access must be reviewed by IT; historical approval does not grant access to other users.'),
- 'm365_group': ('How can I request a Microsoft 365 group?', ['Microsoft 365 group creation is restricted', 'I cannot create a new M365 group', 'Who can create an Office 365 group?'], ['I need a Microsoft 365 group but users cannot create one', 'What details should I give IT for a new M365 collaboration group?'], 'The report says Microsoft 365 group creation was restricted for users. Raise an IT request explaining the exact purpose/use of the group; the IT team creates the group.'),
+ 'm365_group': ('What did the incident report record about Microsoft 365 group creation?', ['Microsoft 365 group creation is restricted', 'I cannot create a new M365 group', 'Who can create an Office 365 group?'], ['I need a Microsoft 365 group but users cannot create one', 'What details should I give IT for a new M365 collaboration group?'], 'The report says Microsoft 365 group creation was restricted for users. Raise an IT request explaining the exact purpose/use of the group; the IT team creates the group.'),
  'dc_outage': ('What if many business applications fail at all locations?', ['GEMS and other applications are down across all sites', 'All branches lost access to business applications', 'The data centre outage affects all applications'], ['Every location has lost several critical business systems at once', 'GEMS IntelliHub and booking systems are unavailable company wide'], 'The report records a data-centre issue that affected applications across locations. IT should check service-wide incident status rather than assume a local access fault.'),
  'new_access': ('How do I request a new Citrix installation or entitlement?', ['I need new Citrix access', 'Please enable Citrix for a new user', 'How do I request a new remote access entitlement?'], ['A new joiner needs Citrix provisioned', 'What process is recorded for a new remote application access requirement?'], 'A recorded new Citrix requirement was redirected to a service request (SR). Submit the requested access and business requirement for IT review.'),
  'local_it': ('Who should handle an incident outside the assigned team scope?', ['The assigned support team says this is outside their scope', 'My AD self service permission error was referred to local IT', 'Who handles the issue if this team cannot support it?'], ['The incident was closed because a different IT team owns the service', 'The assigned analyst asked me to contact the concerned local support team'], 'The report directs out-of-scope issues to the concerned local IT or support team. Closing the incident for scope does not establish that the underlying problem was fixed.'),

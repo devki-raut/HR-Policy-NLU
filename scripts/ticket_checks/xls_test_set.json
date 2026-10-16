@@ -1546,7 +1546,7 @@
       "id": "source_346580",
       "split": "source_reconstruction",
       "question": "What happened in incident 346580?",
-      "expected_intent": "it_application_access",
+      "expected_intent": "it_device_support",
       "expected_faq_ids": [
         "it_incident_346580"
       ],
@@ -1796,7 +1796,7 @@
       "id": "source_346182",
       "split": "source_reconstruction",
       "question": "What happened in incident 346182?",
-      "expected_intent": "it_application_access",
+      "expected_intent": "it_device_support",
       "expected_faq_ids": [
         "it_incident_346182"
       ],
@@ -1866,7 +1866,7 @@
       "id": "source_346097",
       "split": "source_reconstruction",
       "question": "What happened in incident 346097?",
-      "expected_intent": "it_application_access",
+      "expected_intent": "it_device_support",
       "expected_faq_ids": [
         "it_incident_346097"
       ],
@@ -2466,7 +2466,7 @@
       "id": "source_344936",
       "split": "source_reconstruction",
       "question": "What happened in incident 344936?",
-      "expected_intent": "it_network_outage",
+      "expected_intent": "it_device_support",
       "expected_faq_ids": [
         "it_incident_344936"
       ],

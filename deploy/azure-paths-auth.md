@@ -59,7 +59,7 @@ use a writable persistent mount or external storage when that is required.
 The reverse proxy can preserve or strip `/employeeassist/`; page assets, API
 calls, legal links, policy links, and Jupyter forwarding support both forms.
 The Teams upload package is
-`teams_app/app_package/upload/EmployeeAssist-1.0.6.zip`; its tab and legal URLs
+`teams_app/app_package/upload/EmployeeAssist-1.0.10.zip`; its tab and legal URLs
 use lowercase `/employeeassist/`, preserving current commands and the SSO resource.
 Update the Azure Bot messaging endpoint to
 `https://dockerpoc-webapp01.azurewebsites.net/employeeassist/api/messages`.

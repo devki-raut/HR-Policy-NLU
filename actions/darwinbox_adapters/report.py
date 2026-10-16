@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 import os
-from actions.runtime_paths import runtime_path
+from actions.runtime_paths import runtime_mirror_paths, runtime_path
 import re
 from datetime import date, datetime
 from pathlib import Path
@@ -114,11 +114,17 @@ def directory_path() -> Path:
     return runtime_path('darwinbox/employee_directory.json', ROOT/'data/employee_directory.json', 'DARWINBOX_EMPLOYEE_MAP_FILE', ROOT)
 
 
+def directory_paths() -> tuple[Path, ...]:
+    return runtime_mirror_paths('darwinbox/employee_directory.json', ROOT/'data/employee_directory.json', 'DARWINBOX_EMPLOYEE_MAP_FILE', ROOT)
+
+
 def replace_employee_directory(employees: Mapping[str, Mapping[str, Any]], path: Path | None = None) -> int:
     """Replace the full active snapshot atomically while retaining the guest profile."""
     if not employees:
         raise DarwinboxAPIError("Darwinbox report contained no recognizable active employee records")
-    path = path or directory_path()
+    explicit_path = path is not None
+    paths = (path,) if explicit_path else directory_paths()
+    path = paths[0]
     guest: Mapping[str, Any] = DEFAULT_GUEST
     try:
         current = json.loads(path.read_text(encoding="utf-8"))
@@ -135,6 +141,13 @@ def replace_employee_directory(employees: Mapping[str, Mapping[str, Any]], path:
         temporary = Path(handle.name)
     os.chmod(temporary, 0o600)
     temporary.replace(path)
+    if len(paths) > 1:
+        backup = paths[1]
+        backup.parent.mkdir(parents=True, exist_ok=True)
+        backup_temporary = backup.with_suffix(backup.suffix + f'.{os.getpid()}.tmp')
+        backup_temporary.write_bytes(path.read_bytes())
+        os.chmod(backup_temporary, 0o600)
+        backup_temporary.replace(backup)
     return len(snapshot) - 1
 
 

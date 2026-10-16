@@ -1,7 +1,7 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.19",
-  "version": "1.0.6",
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "version": "1.0.10",
   "id": "9e65e729-0e91-4a00-a03d-e8b9d3e9e841",
   "packageName": "com.emergys.employeeassist",
   "developer": {
@@ -49,44 +49,64 @@
           ],
           "commands": [
             {
-              "title": "help",
-              "description": "Show EmployeeAssist help and quick actions"
+              "title": "Help",
+              "description": "Show EmployeeAssist help and quick actions",
+              "type": "prompt",
+              "prompt": "help"
             },
             {
               "title": "Prompt suggestions",
-              "description": "Browse HR questions, IT support questions and recorded incident fixes"
+              "description": "Browse HR questions, IT support questions and recorded incident fixes",
+              "type": "prompt",
+              "prompt": "Prompt suggestions"
             },
             {
               "title": "Create IT ticket",
-              "description": "Prepare a helpdesk request describing your IT issue"
+              "description": "Prepare a helpdesk request describing your IT issue",
+              "type": "prompt",
+              "prompt": "Create IT ticket"
             },
             {
               "title": "Show my leaves",
-              "description": "Fetch your current personal leave balance"
+              "description": "Fetch your current personal leave balance",
+              "type": "prompt",
+              "prompt": "Show my leaves"
             },
             {
               "title": "Show the next 5 holidays",
-              "description": "Show upcoming holidays"
+              "description": "Show upcoming holidays",
+              "type": "prompt",
+              "prompt": "Show the next 5 holidays"
             },
             {
               "title": "IT network help",
-              "description": "Ask about an office internet or network outage"
+              "description": "Ask about an office internet or network outage",
+              "type": "prompt",
+              "prompt": "I’m connected to Wi-Fi, but websites won’t load. What can I try?"
             },
             {
               "title": "Citrix access is denied",
-              "description": "Ask about Citrix access errors and similar recorded incidents"
+              "description": "Ask about Citrix access errors and similar recorded incidents",
+              "type": "prompt",
+              "prompt": "I get access denied when I open Citrix. What should I check?"
             },
             {
               "title": "Outlook login issue",
-              "description": "Ask about Outlook sign-in problems"
+              "description": "Ask about Outlook sign-in problems",
+              "type": "prompt",
+              "prompt": "Outlook keeps asking me to sign in. How can I fix this?"
             },
             {
               "title": "OneDrive files will not open",
-              "description": "Ask about OneDrive file access problems"
+              "description": "Ask about OneDrive file access problems",
+              "type": "prompt",
+              "prompt": "My OneDrive files will not open. What should I check?"
             },
             {
               "title": "GEMS unavailable; Outlook works",
-              "description": "Ask about the recorded GEMS and DNS incident"
+              "description": "Ask about the recorded GEMS and DNS incident",
+              "type": "prompt",
+              "prompt": "GEMS is unavailable, but Outlook works. What should I check?"
             }
           ]
         }

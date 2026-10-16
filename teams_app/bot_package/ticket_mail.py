@@ -1,6 +1,6 @@
 """Owned Teams drafts and duplicate-resistant delegated Graph sends."""
 import os
-from actions.runtime_paths import runtime_path
+from actions.runtime_bootstrap import backup_sqlite, bootstrap_runtime_files, ticket_database_paths
 import json
 import logging
 from datetime import datetime, timezone
@@ -20,9 +20,12 @@ class MailError(RuntimeError):
 
 
 def _db():
-    path = runtime_path('private/teams_ticket_mail.sqlite3', ROOT/'artifacts/private/teams_ticket_mail.sqlite3', 'TEAMS_TICKET_DB', ROOT)
+    paths = ticket_database_paths(ROOT)
+    path = paths[0]
     path.parent.mkdir(parents=True, exist_ok=True)
-    db = sqlite3.connect(path, timeout=10)
+    db = sqlite3.connect(path, timeout=10, factory=_MirroredConnection)
+    db.primary_path = path
+    db.backup_path = paths[1] if len(paths) > 1 else None
     os.chmod(path, 0o600)
     db.row_factory = sqlite3.Row
     db.execute('CREATE TABLE IF NOT EXISTS drafts (id TEXT PRIMARY KEY, owner TEXT, subject TEXT, body TEXT, status TEXT, created REAL)')
@@ -33,6 +36,17 @@ def _db():
         db.execute("ALTER TABLE drafts ADD COLUMN cc_list TEXT NOT NULL DEFAULT ''")
     db.execute('CREATE TABLE IF NOT EXISTS pending_auth (owner TEXT PRIMARY KEY, draft_id TEXT, connection TEXT, exchange_id TEXT, expires REAL, status TEXT)')
     return db
+
+
+class _MirroredConnection(sqlite3.Connection):
+    primary_path: Path
+    backup_path: Path | None
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        result = super().__exit__(exc_type, exc_value, traceback)
+        if exc_type is None and self.backup_path is not None:
+            backup_sqlite(self.primary_path, self.backup_path)
+        return result
 
 
 def owner(identity, conversation_id):
@@ -130,13 +144,16 @@ def claim_auth(identity_owner, expected_draft=None, expected_exchange=None):
 def mail_event(event, key, recipient, **details):
     """Append structured audit events without tokens or email content."""
     try:
-        path = runtime_path('logs/ticket_mail.log', ROOT/'artifacts/logs/ticket_mail.log', 'TICKET_MAIL_LOG_PATH', ROOT)
-        path.parent.mkdir(parents=True, exist_ok=True)
+        from actions.runtime_paths import runtime_log_paths
+        paths = runtime_log_paths('logs/ticket_mail.log', ROOT/'artifacts/logs/ticket_mail.log', 'TICKET_MAIL_LOG_PATH', ROOT)
         record = {'timestamp': datetime.now(timezone.utc).isoformat(), 'event': event,
                   'request_id': key, 'recipient': recipient, **details}
-        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
-        with os.fdopen(descriptor, 'a') as handle:
-            handle.write(json.dumps(record) + '\n')
+        line = json.dumps(record) + '\n'
+        for path in paths:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+            with os.fdopen(descriptor, 'a') as handle:
+                handle.write(line)
     except OSError:
         logging.getLogger(__name__).exception('Could not write ticket mail audit log')
 
